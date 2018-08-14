@@ -35,6 +35,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
         
         self.bookMarkContainerView.backgroundColor = UIColor(hex: "#ff573d")
         
+       self.collegeContainerView.layer.cornerRadius = 2
+        self.bookMarkContainerView.layer.cornerRadius = 2
+        
     }
     
     func configure() {

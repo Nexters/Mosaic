@@ -52,6 +52,10 @@ class HomeViewController: UIViewController {
         let logo = UIImage(named: "icLogotype")
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icMy"), style: .plain, target: self, action: #selector(myPageButtonDidTap(_ :)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icFilter"), style: .plain, target: self, action: #selector(filterButtonDidTap(_ :)))
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+
     }
     
     func setupSearchBar() {
@@ -78,10 +82,12 @@ class HomeViewController: UIViewController {
         self.collectionView.backgroundColor = .clear
     }
     
+    @objc
     @IBAction func myPageButtonDidTap(_ sender: UIBarButtonItem) {
         
     }
   
+    @objc
     @IBAction func filterButtonDidTap(_ sender: UIBarButtonItem) {
         
     }
@@ -120,7 +126,7 @@ open class CardsCollectionViewLayout: UICollectionViewLayout {
     
     // MARK: - Layout configuration
     
-    public var itemSize: CGSize = CGSize(width: 300, height: 300) {
+    public var itemSize: CGSize = CGSize(width: UIScreen.main.bounds.width - 18, height: 416) {
         didSet{
             invalidateLayout()
         }

@@ -7,20 +7,16 @@
 //
 
 import UIKit
-extension UIColor {
-    convenience init(red: Int, green: Int, blue: Int) {
-        self.init(red: CGFloat(red)/255 ,
-                  green: CGFloat(green)/255,
-                  blue: CGFloat(blue)/255,
-                  alpha: 1.0)
-    }
+enum ColorPalette {
+    static let background = UIColor(hex: "#ff573dz")
+    static let searchView = UIColor(hex: "#e62f12")
 }
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     static func create() -> HomeViewController? {
         return UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? HomeViewController
     }
@@ -34,7 +30,7 @@ class HomeViewController: UIViewController {
         
         self.setupSearchBar()
         
-        self.view.backgroundColor = UIColor(hex:"#ff573dz")
+        self.view.backgroundColor = ColorPalette.background
     }
 
     @objc
@@ -42,19 +38,30 @@ class HomeViewController: UIViewController {
         let logo = UIImage(named: "icLogotype")
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icMy"), style: .plain, target: self, action: #selector(myPageButtonDidTap(_ :)))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icFilter"), style: .plain, target: self, action: #selector(filterButtonDidTap(_ :)))
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icMy"), style: .plain, target: self, action: #selector(myPageButtonDidTap))
         
-        self.navigationController?.navigationBar.barTintColor = UIColor(hex:"#ff573dz")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icFilter"), style: .plain, target: self, action: #selector(filterButtonDidTap))
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        self.navigationController?.navigationBar.barTintColor = ColorPalette.background
         
         self.navigationController?.navigationBar.clipsToBounds = true
 
     }
     
+    @objc
+    func myPageButtonDidTap() {
+        
+    }
+    
+    @objc
+    func filterButtonDidTap() {
+        
+    }
+    
     func setupSearchBar() {
-        self.searchView.backgroundColor = UIColor(hex: "#e62f12")
+        self.searchView.backgroundColor = ColorPalette.searchView
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(searchBarViewDidTap))
         self.searchView.addGestureRecognizer(tapGestureRecognizer)
     }
@@ -67,8 +74,7 @@ class HomeViewController: UIViewController {
     func setupCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.layer.borderColor = UIColor.blue.cgColor
-        self.collectionView.layer.borderWidth = 0.5
+        
         let xib = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
         self.collectionView.register(xib, forCellWithReuseIdentifier: "HomeCollectionViewCell")
         self.collectionView.isPagingEnabled = true
@@ -77,27 +83,9 @@ class HomeViewController: UIViewController {
         self.collectionView.backgroundColor = .clear
     }
     
-    @objc
-    @IBAction func myPageButtonDidTap(_ sender: UIBarButtonItem) {
-        
-    }
-  
-    @objc
-    @IBAction func filterButtonDidTap(_ sender: UIBarButtonItem) {
-        
-    }
-    
     @IBAction func writeButtonDidTap(_ sender: UIButton) {
         
     }
-    
-    var colors: [UIColor]  = [
-        UIColor(red: 237, green: 37, blue: 78),
-        UIColor(red: 249, green: 220, blue: 92),
-        UIColor(red: 194, green: 234, blue: 189),
-        UIColor(red: 1, green: 25, blue: 54),
-        UIColor(red: 255, green: 184, blue: 209)
-    ]
     
 }
 

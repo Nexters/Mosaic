@@ -35,18 +35,8 @@ class HomeViewController: UIViewController {
         self.setupSearchBar()
         
         self.view.backgroundColor = UIColor(hex:"#ff573dz")
-        
-    
-        
-        self.navigationController?.navigationBar.barTintColor = UIColor(hex:"#ff573dz")
-     
-        self.navigationController?.navigationBar.clipsToBounds = true
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    
 
-    }
     @objc
     func setupNavigation() {
         let logo = UIImage(named: "icLogotype")
@@ -55,6 +45,11 @@ class HomeViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icMy"), style: .plain, target: self, action: #selector(myPageButtonDidTap(_ :)))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icFilter"), style: .plain, target: self, action: #selector(filterButtonDidTap(_ :)))
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(hex:"#ff573dz")
+        
+        self.navigationController?.navigationBar.clipsToBounds = true
 
     }
     

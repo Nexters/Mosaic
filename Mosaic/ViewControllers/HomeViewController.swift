@@ -109,7 +109,7 @@ open class CardsCollectionViewLayout: UICollectionViewLayout {
     
     // MARK: - Layout configuration
     
-    public var itemSize: CGSize = CGSize(width: UIScreen.main.bounds.width - 18, height: 416) {
+    public var itemSize: CGSize = CGSize(width: UIScreen.main.bounds.width - 36, height: 400) {
         didSet{
             invalidateLayout()
         }

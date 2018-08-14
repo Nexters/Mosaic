@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14587D772122A9D400F13CCA /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14587D762122A9D400F13CCA /* UIFont+.swift */; };
+		14587D7A2122D9C100F13CCA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14587D792122D9C100F13CCA /* Post.swift */; };
 		1463941F212269E800FC601C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463941E212269E800FC601C /* AppDelegate.swift */; };
 		14639421212269E800FC601C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14639420212269E800FC601C /* ViewController.swift */; };
 		14639424212269E800FC601C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14639422212269E800FC601C /* Main.storyboard */; };
@@ -29,10 +31,16 @@
 		1463945221226AFB00FC601C /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */; };
 		1463945421226B1000FC601C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1463945321226B1000FC601C /* Home.storyboard */; };
 		1463945621226B8800FC601C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463945521226B8800FC601C /* HomeViewController.swift */; };
+		146394662122A8C100FC601C /* NanumSquareBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146394642122A8BD00FC601C /* NanumSquareBold.ttf */; };
+		146394672122A8C100FC601C /* NanumSquareExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146394622122A8BD00FC601C /* NanumSquareExtraBold.ttf */; };
+		146394682122A8C100FC601C /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146394632122A8BD00FC601C /* NanumSquareLight.ttf */; };
+		146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146394652122A8BD00FC601C /* NanumSquareRegular.ttf */; };
 		3D62673548BC0C0A4027AE41 /* Pods_Mosaic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736F2222DA5719142B55CF54 /* Pods_Mosaic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14587D762122A9D400F13CCA /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		14587D792122D9C100F13CCA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1463941B212269E800FC601C /* Mosaic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mosaic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1463941E212269E800FC601C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14639420212269E800FC601C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +65,10 @@
 		1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		1463945321226B1000FC601C /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		1463945521226B8800FC601C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		146394622122A8BD00FC601C /* NanumSquareExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareExtraBold.ttf; sourceTree = "<group>"; };
+		146394632122A8BD00FC601C /* NanumSquareLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareLight.ttf; sourceTree = "<group>"; };
+		146394642122A8BD00FC601C /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
+		146394652122A8BD00FC601C /* NanumSquareRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRegular.ttf; sourceTree = "<group>"; };
 		5196FD7F98DEDB51AC5EC75E /* Pods-Mosaic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosaic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mosaic/Pods-Mosaic.release.xcconfig"; sourceTree = "<group>"; };
 		6FE8D32E4799239E2FBEBA77 /* Pods-Mosaic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosaic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mosaic/Pods-Mosaic.debug.xcconfig"; sourceTree = "<group>"; };
 		736F2222DA5719142B55CF54 /* Pods_Mosaic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mosaic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14587D782122D9AF00F13CCA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14587D792122D9C100F13CCA /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		14639412212269E800FC601C = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +115,8 @@
 		1463941D212269E800FC601C /* Mosaic */ = {
 			isa = PBXGroup;
 			children = (
+				14587D782122D9AF00F13CCA /* Model */,
+				146394592122A7BA00FC601C /* Font */,
 				1463943021226AAD00FC601C /* Extension */,
 				1463943421226ACA00FC601C /* Storyboard */,
 				1463943321226AC200FC601C /* Protocol */,
@@ -118,6 +140,7 @@
 				1463943721226AE100FC601C /* UIAlertController+Show.swift */,
 				1463943821226AE100FC601C /* UIApplication+topViewController.swift */,
 				1463943B21226AE100FC601C /* UIColor+.swift */,
+				14587D762122A9D400F13CCA /* UIFont+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -160,6 +183,17 @@
 				1463945321226B1000FC601C /* Home.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		146394592122A7BA00FC601C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				146394642122A8BD00FC601C /* NanumSquareBold.ttf */,
+				146394622122A8BD00FC601C /* NanumSquareExtraBold.ttf */,
+				146394632122A8BD00FC601C /* NanumSquareLight.ttf */,
+				146394652122A8BD00FC601C /* NanumSquareRegular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		40F5263A8526811E1E5CF97D /* Pods */ = {
@@ -239,10 +273,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				146394682122A8C100FC601C /* NanumSquareLight.ttf in Resources */,
 				14639429212269E900FC601C /* LaunchScreen.storyboard in Resources */,
+				146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */,
 				1463945421226B1000FC601C /* Home.storyboard in Resources */,
 				14639426212269E900FC601C /* Assets.xcassets in Resources */,
+				146394672122A8C100FC601C /* NanumSquareExtraBold.ttf in Resources */,
 				14639424212269E800FC601C /* Main.storyboard in Resources */,
+				146394662122A8C100FC601C /* NanumSquareBold.ttf in Resources */,
 				1463945121226AFB00FC601C /* HomeCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +347,8 @@
 				1463944E21226AEC00FC601C /* KeyboardControlService.swift in Sources */,
 				1463945221226AFB00FC601C /* HomeCollectionViewCell.swift in Sources */,
 				1463943F21226AE100FC601C /* UIApplication+topViewController.swift in Sources */,
+				14587D772122A9D400F13CCA /* UIFont+.swift in Sources */,
+				14587D7A2122D9C100F13CCA /* Post.swift in Sources */,
 				1463941F212269E800FC601C /* AppDelegate.swift in Sources */,
 				1463944921226AEC00FC601C /* TransparentNavBarService.swift in Sources */,
 				1463943E21226AE100FC601C /* UIAlertController+Show.swift in Sources */,

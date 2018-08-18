@@ -80,7 +80,8 @@ class HomeViewController: UIViewController {
     @objc
     func searchBarViewDidTap() {
         guard let viewController = SearchViewController.create() else { return }
-        self.present(viewController, animated: false, completion: nil)
+        let navigation = UINavigationController(rootViewController: viewController)
+        self.present(navigation, animated: false, completion: nil)
     }
     
     func setupCollectionView() {

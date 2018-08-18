@@ -50,6 +50,9 @@ class FilterViewController: UIViewController {
         self.navigationController?.navigationBar.backgroundColor = UIColor(hex: "#ff573d")
     self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
+        self.title = "관심분야"
+    self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
        //self.navigationItem.titleView =
         
     }

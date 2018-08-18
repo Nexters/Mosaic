@@ -62,10 +62,10 @@ class MyPageViewController: UIViewController {
         self.profileView.backgroundColor = UIColor(hex: "#ff573d")
         self.nickNameLabel.font = UIFont.nanumExtraBold(size: 14)
         self.nickNameLabel.textColor = UIColor.white
-        self.nickNameLabel.text = "이화여자대학교 | SOGANG2039"
+        self.nickNameLabel.text = "연세대학교 | YONSEI2039"
         self.emailLabel.font = UIFont.nanumExtraBold(size: 12)
         self.emailLabel.textColor = UIColor(hex: "#ffc9c1")
-        self.emailLabel.text = "yurisung@ewhain.netz"
+        self.emailLabel.text = "cheong@yonsei.netz"
     
     }
     
@@ -75,12 +75,6 @@ class MyPageViewController: UIViewController {
         self.tableView.tableFooterView = UIView()
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
 extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {

@@ -29,6 +29,10 @@ class SearchViewController: UIViewController {
         self.view.backgroundColor = UIColor(hex: "#ff573d")
        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.isHidden = true
+    }
     
     func setupSearchBar() {
        self.searchView.backgroundColor = UIColor(hex: "#e62f12")
@@ -46,6 +50,8 @@ class SearchViewController: UIViewController {
         
         self.searchTextField.attributedPlaceholder = NSAttributedString(string: "검색어를 입력하세요", attributes: placeholderAttribute)
         self.searchTextField.returnKeyType = .search
+        self.searchTextField.delegate = self
+        self.searchTextField.textColor = .white
     }
     
     func setupTableView() {
@@ -77,6 +83,15 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let viewController = SearchResultViewController.create(keyword: self.searchTextField.text ?? "") else { return false }
+        
+self.navigationController?.pushViewController(viewController, animated: true)
+        
+        return true
+    }
+}
 class SearchTableViewCell: UITableViewCell
 {
     @IBOutlet weak var recentSearchKeywordLabel: UILabel!

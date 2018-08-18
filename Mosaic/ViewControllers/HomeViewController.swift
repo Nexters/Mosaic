@@ -52,6 +52,8 @@ class HomeViewController: UIViewController {
     
     @objc
     func myPageButtonDidTap() {
+        guard let viewController = MyPageViewController.create() else { return }
+        self.navigationController?.pushViewController(viewController, animated: true)
         
     }
     

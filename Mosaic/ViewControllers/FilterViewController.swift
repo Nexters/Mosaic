@@ -37,6 +37,15 @@ class FilterViewController: UIViewController {
     
     func setupNavigation() {
         self.navigationController?.navigationBar.tintColor = UIColor.red
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSearchClose"), style: .plain, target: self, action: #selector(colseButtonDidTap))
+        self.navigationController?.navigationBar.backgroundColor = UIColor(hex: "#ff573d")
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+    }
+    
+    @objc
+    func colseButtonDidTap() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func setupBackgroundView() {
@@ -48,6 +57,7 @@ class FilterViewController: UIViewController {
         self.collectionView.dataSource = self
         let xib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
         self.collectionView.register(xib, forCellWithReuseIdentifier: FilterCollectionViewCell.reuseIdentifier)
+        self.collectionView.allowsMultipleSelection = true
         
     }
 
@@ -93,14 +103,24 @@ class FilterCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool{
         didSet{
-            self.highlightView.backgroundColor = isSelected ? UIColor.red : UIColor(hex: "#ccf6ff")
+            self.highlightView.backgroundColor = isSelected ? UIColor(hex: "#e62f12") : UIColor(hex: "#ccf6ff")
+            self.backgroundColor = isSelected ? UIColor(hex: "#fc543a") : UIColor.white
         }
     }
     override func awakeFromNib() {
+        super.awakeFromNib()
+
         self.highlightView.backgroundColor = UIColor(hex: "#ccf6ff")
         self.titleLabel.font = UIFont.nanumExtraBold(size: 14)
+        self.layer.cornerRadius = 2
+        self.backgroundColor = .white
         
-        super.awakeFromNib()
+        self.layer.shadowColor = UIColor(hex: "#c2c2c2").cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 0.0)
+        self.layer.shadowRadius = 20
+        self.layer.shadowOpacity = 0.2
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 0).cgPath
     }
     
     override func prepareForReuse() {

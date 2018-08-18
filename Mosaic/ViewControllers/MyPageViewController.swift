@@ -19,6 +19,7 @@ class MyPageViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var profileView: UIView!
+    
     static func create() -> MyPageViewController? {
         return UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? MyPageViewController
     }
@@ -133,6 +134,8 @@ class MyPageTableViewCell: UITableViewCell {
         self.countLabel.textColor = UIColor(hex: "#fb5339")
         
         self.selectionStyle = .none
+        
+        
     }
     
     override func prepareForReuse() {

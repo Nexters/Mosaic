@@ -60,7 +60,8 @@ class HomeViewController: UIViewController {
     @objc
     func filterButtonDidTap() {
         guard let viewController = FilterViewController.create() else { return }
-        self.navigationController?.pushViewController(viewController, animated: true)
+        let navigation = UINavigationController(rootViewController: viewController)
+        self.present(navigation, animated: true, completion: nil)
     }
     
     func setupSearchBar() {

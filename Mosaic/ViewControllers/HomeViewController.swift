@@ -17,6 +17,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     static func create() -> HomeViewController? {
         return UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? HomeViewController
     }
@@ -31,6 +35,8 @@ class HomeViewController: UIViewController {
         self.setupSearchBar()
         
         self.view.backgroundColor = ColorPalette.background
+        
+        self.setNeedsStatusBarAppearanceUpdate()
     }
 
     @objc
@@ -68,11 +74,13 @@ class HomeViewController: UIViewController {
         self.searchView.backgroundColor = ColorPalette.searchView
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(searchBarViewDidTap))
         self.searchView.addGestureRecognizer(tapGestureRecognizer)
+        self.searchView.layer.cornerRadius = 2
     }
     
     @objc
     func searchBarViewDidTap() {
-        // FIXME: - 검색화면viwe
+        guard let viewController = SearchViewController.create() else { return }
+        self.present(viewController, animated: false, completion: nil)
     }
     
     func setupCollectionView() {

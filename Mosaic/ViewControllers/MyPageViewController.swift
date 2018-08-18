@@ -20,12 +20,14 @@ class MyPageViewController: UIViewController {
 
     @IBOutlet weak var profileView: UIView!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     static func create() -> MyPageViewController? {
         return UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? MyPageViewController
     }
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,7 +60,12 @@ class MyPageViewController: UIViewController {
     
     func setupProfileView() {
         self.profileView.backgroundColor = UIColor(hex: "#ff573d")
-        
+        self.nickNameLabel.font = UIFont.nanumExtraBold(size: 14)
+        self.nickNameLabel.textColor = UIColor.white
+        self.nickNameLabel.text = "이화여자대학교 | SOGANG2039"
+        self.emailLabel.font = UIFont.nanumExtraBold(size: 12)
+        self.emailLabel.textColor = UIColor(hex: "#ffc9c1")
+        self.emailLabel.text = "yurisung@ewhain.netz"
     
     }
     
@@ -102,7 +109,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageTableViewCell.reuseIdentifier, for: indexPath) as? MyPageTableViewCell else { return UITableViewCell() }
-        cell.configure(title: Title.init(rawValue: indexPath.row)?.titleLabel, isHiddenNewImage: true)
+        cell.configure(title: Title.init(rawValue: indexPath.row)?.titleLabel, isHiddenNewImage: true, isCountHidden: true)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -134,7 +141,7 @@ class MyPageTableViewCell: UITableViewCell {
         self.countLabel.textColor = UIColor(hex: "#fb5339")
         
         self.selectionStyle = .none
-        
+        self.separatorInset = UIEdgeInsets.zero
         
     }
     
@@ -142,8 +149,9 @@ class MyPageTableViewCell: UITableViewCell {
         super.prepareForReuse()
     }
     
-    func configure(title: String? ,isHiddenNewImage: Bool = false) {
+    func configure(title: String?, isHiddenNewImage: Bool = false, isCountHidden: Bool = false) {
         self.titleLabel.text = title
         self.newImageView.isHidden = isHiddenNewImage
+        self.countLabel.isHidden = isCountHidden
     }
 }

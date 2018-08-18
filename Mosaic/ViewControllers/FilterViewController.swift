@@ -15,6 +15,7 @@ class FilterViewController: UIViewController {
     static func create() -> FilterViewController? {
         return UIStoryboard(name: "Filter", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? FilterViewController
     }
+    
     var typeTuple: [(emoji: String, title: String)] = [
        (emoji: "🤫", title: "익명제보"),
        (emoji: "🏆", title: "공모전"),
@@ -25,6 +26,10 @@ class FilterViewController: UIViewController {
        (emoji: "👫", title: "동아리"),
        (emoji: "👻", title: "아무말")
     ]
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,13 +38,19 @@ class FilterViewController: UIViewController {
         self.setupCollectionView()
         
         self.setupBackgroundView()
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+    self.navigationController?.navigationBar.barTintColor = ColorPalette.background
+
     }
     
     func setupNavigation() {
         self.navigationController?.navigationBar.tintColor = UIColor.red
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSearchClose"), style: .plain, target: self, action: #selector(colseButtonDidTap))
         self.navigationController?.navigationBar.backgroundColor = UIColor(hex: "#ff573d")
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+       //self.navigationItem.titleView =
         
     }
     

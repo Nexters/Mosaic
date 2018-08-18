@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141A8A4D212813D400362A47 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141A8A4C212813D400362A47 /* Search.storyboard */; };
+		141A8A4F212813E500362A47 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141A8A4E212813E500362A47 /* SearchViewController.swift */; };
+		141A8A512128278200362A47 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141A8A502128278200362A47 /* SearchResultViewController.swift */; };
+		141A8A5321282C8700362A47 /* TypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141A8A5221282C8700362A47 /* TypeView.xib */; };
+		141A8A5521282C9300362A47 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141A8A5421282C9200362A47 /* TypeView.swift */; };
 		143DD4682127F45B00F5979D /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 143DD4672127F45B00F5979D /* MyPage.storyboard */; };
 		143DD46A2127F46800F5979D /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143DD4692127F46800F5979D /* MyPageViewController.swift */; };
 		143DD46C2127FDC500F5979D /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 143DD46B2127FDC500F5979D /* Filter.storyboard */; };
@@ -44,6 +49,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		141A8A4C212813D400362A47 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		141A8A4E212813E500362A47 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		141A8A502128278200362A47 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		141A8A5221282C8700362A47 /* TypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeView.xib; sourceTree = "<group>"; };
+		141A8A5421282C9200362A47 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
 		143DD4672127F45B00F5979D /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		143DD4692127F46800F5979D /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		143DD46B2127FDC500F5979D /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
@@ -162,6 +172,8 @@
 				14639420212269E800FC601C /* ViewController.swift */,
 				143DD4692127F46800F5979D /* MyPageViewController.swift */,
 				143DD46D2127FDD400F5979D /* FilterViewController.swift */,
+				141A8A4E212813E500362A47 /* SearchViewController.swift */,
+				141A8A502128278200362A47 /* SearchResultViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -172,6 +184,8 @@
 				1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */,
 				1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */,
 				143DD4742128073900F5979D /* FilterCollectionViewCell.xib */,
+				141A8A5421282C9200362A47 /* TypeView.swift */,
+				141A8A5221282C8700362A47 /* TypeView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,6 +210,7 @@
 				1463945321226B1000FC601C /* Home.storyboard */,
 				143DD4672127F45B00F5979D /* MyPage.storyboard */,
 				143DD46B2127FDC500F5979D /* Filter.storyboard */,
+				141A8A4C212813D400362A47 /* Search.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -292,6 +307,7 @@
 				143DD4682127F45B00F5979D /* MyPage.storyboard in Resources */,
 				14639429212269E900FC601C /* LaunchScreen.storyboard in Resources */,
 				143DD4762128073900F5979D /* FilterCollectionViewCell.xib in Resources */,
+				141A8A5321282C8700362A47 /* TypeView.xib in Resources */,
 				146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */,
 				1463945421226B1000FC601C /* Home.storyboard in Resources */,
 				14639426212269E900FC601C /* Assets.xcassets in Resources */,
@@ -300,6 +316,7 @@
 				14639424212269E800FC601C /* Main.storyboard in Resources */,
 				146394662122A8C100FC601C /* NanumSquareBold.ttf in Resources */,
 				1463945121226AFB00FC601C /* HomeCollectionViewCell.xib in Resources */,
+				141A8A4D212813D400362A47 /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,10 +373,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				143DD46E2127FDD400F5979D /* FilterViewController.swift in Sources */,
+				141A8A512128278200362A47 /* SearchResultViewController.swift in Sources */,
 				14639421212269E800FC601C /* ViewController.swift in Sources */,
 				1463943D21226AE100FC601C /* String+Size.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,
 				1463945621226B8800FC601C /* HomeViewController.swift in Sources */,
+				141A8A5521282C9300362A47 /* TypeView.swift in Sources */,
 				1463943C21226AE100FC601C /* NSObject+.swift in Sources */,
 				1463944121226AE100FC601C /* NSObject+reuseIdentifier.swift in Sources */,
 				1463944A21226AEC00FC601C /* EnumCollection.swift in Sources */,
@@ -367,6 +386,7 @@
 				1463945221226AFB00FC601C /* HomeCollectionViewCell.swift in Sources */,
 				1463943F21226AE100FC601C /* UIApplication+topViewController.swift in Sources */,
 				14587D772122A9D400F13CCA /* UIFont+.swift in Sources */,
+				141A8A4F212813E500362A47 /* SearchViewController.swift in Sources */,
 				14587D7A2122D9C100F13CCA /* Post.swift in Sources */,
 				1463941F212269E800FC601C /* AppDelegate.swift in Sources */,
 				1463944921226AEC00FC601C /* TransparentNavBarService.swift in Sources */,

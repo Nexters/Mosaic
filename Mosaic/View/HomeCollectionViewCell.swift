@@ -17,9 +17,9 @@ extension ColorPalette {
 class HomeCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var typeView: UIView!
     @IBOutlet weak var collegeContainerView: UIView!
     @IBOutlet weak var collegeImageView: UIImageView!
     @IBOutlet weak var collegeNameLabel: UILabel!
@@ -31,6 +31,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bookMarkImageView: UIImageView!
     @IBOutlet weak var bookMarkLabel: UILabel!
     
+    @IBOutlet weak var lineView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -41,10 +43,17 @@ class HomeCollectionViewCell: UICollectionViewCell {
         self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor(hex: "#dddddd").cgColor
         
+        self.layer.cornerRadius = 2
+        self.lineView.backgroundColor = UIColor(hex: "#dbdbdb")
     }
     
     func setupTopView() {
         self.setupTopLabels()
+        let typeView = TypeView.create(frame: self.typeView.bounds)
+        typeView.setup()
+        typeView.configure(title: "공모전🏆")
+        self.typeView.addSubview(typeView)
+        
     }
     
     func setupTopLabels() {
@@ -58,9 +67,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
             .font: UIFont.nanumRegular(size: 16),
             .foregroundColor: ColorPalette.description,
             .paragraphStyle: paragraphStyle,
-            .kern: -2
+            .kern: -1
         ]
-        let str = "안녕하세요. IT  연합동아리 넥스터즈 입니다.\n넥스터즈 내 사진 소모임을 함께 하실 디자이너 분들을 모십니다.\n모임은 매주 일요일 오후 강남에서 하고 있습니다. 📷  DSLR, 미러리스.."
+        
+        let str = "올해 하반기에 열리는 전국 비보이\n댄스대회에 함께 할 팀원을 구합니다. 올해로\n4회째 수상하고 있습니다. 체계적인 연습과\n끈끈한 팀워크로 대학 동안 즐거운 추억을\n만드실 여러분들의 연락 기다립니다.\n올해도 수상 가즈아 🔥"
 
         self.descriptionLabel.attributedText = NSAttributedString(string: str, attributes: descriptionAttributes)
     

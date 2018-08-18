@@ -40,7 +40,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="AWs-S4-lRw">
-                                        <rect key="frame" x="38.5" y="234" width="240" height="40"/>
+                                        <rect key="frame" x="38.5" y="269" width="240" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="2tu-P6-ql6"/>
@@ -54,9 +54,9 @@
                                         </collectionViewFlowLayout>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFR-mT-EzF">
-                                        <rect key="frame" x="25" y="98" width="267" height="124"/>
+                                        <rect key="frame" x="25" y="97" width="267" height="160"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="124" id="Q5D-2G-wJN"/>
+                                            <constraint firstAttribute="height" constant="160" id="Q5D-2G-wJN"/>
                                         </constraints>
                                         <string key="text">안녕하세요. IT 연합동아리 넥스터즈 입니다.
 넥스터즈 내 사진 소모임을 함께 하실 디자이너 분들을 모십니다. 모임은 매주 일요일 오후
@@ -66,17 +66,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41j-06-o5x">
-                                        <rect key="frame" x="125.5" y="66" width="66" height="24"/>
+                                        <rect key="frame" x="124.5" y="66" width="68" height="24"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="6hj-k1-yy4"/>
-                                            <constraint firstAttribute="width" constant="66" id="fEa-pN-djW"/>
+                                            <constraint firstAttribute="width" constant="68" id="fEa-pN-djW"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="hFR-mT-EzF" firstAttribute="top" secondItem="41j-06-o5x" secondAttribute="bottom" constant="8" id="R5c-YK-fy3"/>
+                                    <constraint firstItem="hFR-mT-EzF" firstAttribute="top" secondItem="41j-06-o5x" secondAttribute="bottom" constant="7" id="R5c-YK-fy3"/>
                                     <constraint firstItem="AWs-S4-lRw" firstAttribute="centerX" secondItem="JjE-1N-gLh" secondAttribute="centerX" id="VYx-bK-WU7"/>
                                     <constraint firstItem="41j-06-o5x" firstAttribute="top" secondItem="FTw-Ca-2CF" secondAttribute="bottom" constant="27" id="XV2-DD-6i8"/>
                                     <constraint firstItem="FTw-Ca-2CF" firstAttribute="centerX" secondItem="JjE-1N-gLh" secondAttribute="centerX" id="gRv-SJ-W9O"/>
@@ -97,7 +97,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8z8-vF-BBz">
-                                <rect key="frame" x="0.0" y="300" width="317" height="115"/>
+                                <rect key="frame" x="0.0" y="317" width="317" height="98"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PL7-Wl-tg8">
                                         <rect key="frame" x="25" y="0.0" width="267" height="89"/>
@@ -108,7 +108,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWz-v5-smS">
                                                         <rect key="frame" x="0.0" y="17" width="89" height="55"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OdL-Ie-2E5">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icYonseiUnivIos" translatesAutoresizingMaskIntoConstraints="NO" id="OdL-Ie-2E5">
                                                                 <rect key="frame" x="27.5" y="0.0" width="35" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="35" id="LCQ-bG-CW2"/>
@@ -248,10 +248,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="115" id="Je3-ac-0dc"/>
+                                    <constraint firstAttribute="height" constant="98" id="Je3-ac-0dc"/>
                                     <constraint firstAttribute="trailing" secondItem="PL7-Wl-tg8" secondAttribute="trailing" constant="25" id="LxB-mB-4YC"/>
                                     <constraint firstItem="PL7-Wl-tg8" firstAttribute="leading" secondItem="8z8-vF-BBz" secondAttribute="leading" constant="25" id="UTK-7h-N3i"/>
-                                    <constraint firstAttribute="bottom" secondItem="PL7-Wl-tg8" secondAttribute="bottom" constant="26" id="axf-WN-o3W"/>
+                                    <constraint firstAttribute="bottom" secondItem="PL7-Wl-tg8" secondAttribute="bottom" constant="9" id="axf-WN-o3W"/>
                                     <constraint firstItem="PL7-Wl-tg8" firstAttribute="top" secondItem="8z8-vF-BBz" secondAttribute="top" id="oSq-On-wH5"/>
                                 </constraints>
                             </view>
@@ -288,8 +288,10 @@
                 <outlet property="collegeNameLabel" destination="5HQ-Pk-mck" id="3un-3U-jAR"/>
                 <outlet property="commentImageView" destination="EYX-PJ-XBq" id="4Mu-Ok-BZE"/>
                 <outlet property="commentLabel" destination="dkj-Sv-v50" id="TvH-hA-R9c"/>
-                <outlet property="descriptionLabel" destination="hFR-mT-EzF" id="muQ-5E-Rs4"/>
+                <outlet property="descriptionLabel" destination="hFR-mT-EzF" id="rgd-j5-w1w"/>
+                <outlet property="lineView" destination="j5b-Oh-6In" id="r8K-6q-W2G"/>
                 <outlet property="timeLabel" destination="FTw-Ca-2CF" id="aM3-wm-UWU"/>
+                <outlet property="typeView" destination="41j-06-o5x" id="fag-eE-1EC"/>
             </connections>
             <point key="canvasLocation" x="115.5" y="257.5"/>
         </collectionViewCell>
@@ -297,5 +299,6 @@
     <resources>
         <image name="icComment" width="16" height="17"/>
         <image name="icScrap" width="10" height="15"/>
+        <image name="icYonseiUnivIos" width="34" height="34"/>
     </resources>
 </document>

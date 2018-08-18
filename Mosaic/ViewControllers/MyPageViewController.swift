@@ -23,6 +23,8 @@ class MyPageViewController: UIViewController {
         return UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? MyPageViewController
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,8 +47,12 @@ class MyPageViewController: UIViewController {
     
     }
     func setupNavigation() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSearchBack")!, style: .plain, target: self, action: #selector(backButtonDidTap))
         
-        
+    }
+    @objc
+    func backButtonDidTap() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func setupProfileView() {
@@ -70,6 +76,22 @@ class MyPageViewController: UIViewController {
 }
 
 extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
+    enum Title: Int {
+        case scrap
+        case myArticle
+        case auth
+        
+        var titleLabel: String {
+            switch self {
+            case .scrap:
+                return "내가 스크랩한 글"
+            case .myArticle:
+                return "내가 작성한 글"
+            case .auth:
+                return "인증 초기화"
+            }
+        }
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
         
@@ -78,7 +100,8 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         return 3
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MyPageTableViewCell.reuseIdentifier, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageTableViewCell.reuseIdentifier, for: indexPath) as? MyPageTableViewCell else { return UITableViewCell() }
+        cell.configure(title: Title.init(rawValue: indexPath.row)?.titleLabel, isHiddenNewImage: true)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -116,7 +139,8 @@ class MyPageTableViewCell: UITableViewCell {
         super.prepareForReuse()
     }
     
-    func configure(isHiddenNewImage: Bool = false) {
+    func configure(title: String? ,isHiddenNewImage: Bool = false) {
+        self.titleLabel.text = title
         self.newImageView.isHidden = isHiddenNewImage
     }
 }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		143DD4682127F45B00F5979D /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 143DD4672127F45B00F5979D /* MyPage.storyboard */; };
 		143DD46A2127F46800F5979D /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143DD4692127F46800F5979D /* MyPageViewController.swift */; };
+		143DD46C2127FDC500F5979D /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 143DD46B2127FDC500F5979D /* Filter.storyboard */; };
+		143DD46E2127FDD400F5979D /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143DD46D2127FDD400F5979D /* FilterViewController.swift */; };
+		143DD4762128073900F5979D /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143DD4742128073900F5979D /* FilterCollectionViewCell.xib */; };
 		14587D772122A9D400F13CCA /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14587D762122A9D400F13CCA /* UIFont+.swift */; };
 		14587D7A2122D9C100F13CCA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14587D792122D9C100F13CCA /* Post.swift */; };
 		1463941F212269E800FC601C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463941E212269E800FC601C /* AppDelegate.swift */; };
@@ -43,6 +46,9 @@
 /* Begin PBXFileReference section */
 		143DD4672127F45B00F5979D /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		143DD4692127F46800F5979D /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		143DD46B2127FDC500F5979D /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
+		143DD46D2127FDD400F5979D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		143DD4742128073900F5979D /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		14587D762122A9D400F13CCA /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		14587D792122D9C100F13CCA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1463941B212269E800FC601C /* Mosaic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mosaic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +161,7 @@
 				1463945521226B8800FC601C /* HomeViewController.swift */,
 				14639420212269E800FC601C /* ViewController.swift */,
 				143DD4692127F46800F5979D /* MyPageViewController.swift */,
+				143DD46D2127FDD400F5979D /* FilterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -164,6 +171,7 @@
 			children = (
 				1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */,
 				1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */,
+				143DD4742128073900F5979D /* FilterCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,6 +195,7 @@
 				14639422212269E800FC601C /* Main.storyboard */,
 				1463945321226B1000FC601C /* Home.storyboard */,
 				143DD4672127F45B00F5979D /* MyPage.storyboard */,
+				143DD46B2127FDC500F5979D /* Filter.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -282,10 +291,12 @@
 				146394682122A8C100FC601C /* NanumSquareLight.ttf in Resources */,
 				143DD4682127F45B00F5979D /* MyPage.storyboard in Resources */,
 				14639429212269E900FC601C /* LaunchScreen.storyboard in Resources */,
+				143DD4762128073900F5979D /* FilterCollectionViewCell.xib in Resources */,
 				146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */,
 				1463945421226B1000FC601C /* Home.storyboard in Resources */,
 				14639426212269E900FC601C /* Assets.xcassets in Resources */,
 				146394672122A8C100FC601C /* NanumSquareExtraBold.ttf in Resources */,
+				143DD46C2127FDC500F5979D /* Filter.storyboard in Resources */,
 				14639424212269E800FC601C /* Main.storyboard in Resources */,
 				146394662122A8C100FC601C /* NanumSquareBold.ttf in Resources */,
 				1463945121226AFB00FC601C /* HomeCollectionViewCell.xib in Resources */,
@@ -344,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				143DD46E2127FDD400F5979D /* FilterViewController.swift in Sources */,
 				14639421212269E800FC601C /* ViewController.swift in Sources */,
 				1463943D21226AE100FC601C /* String+Size.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,

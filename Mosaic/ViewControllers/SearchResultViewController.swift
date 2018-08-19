@@ -169,7 +169,7 @@ class SearchResultTableViewCell: UITableViewCell {
     
     func configure() {
         let typeView = TypeView.create(frame: self.typeView.bounds)
-        typeView.setup()
+        typeView.setup(fontSize: 14)
         typeView.configure(title: "공모전🏆")
         self.typeView.addSubview(typeView)
         self.nickNameLabel.text = "이화여자대학교 | EWHA0001"

@@ -12,6 +12,8 @@
 		141A8A512128278200362A47 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141A8A502128278200362A47 /* SearchResultViewController.swift */; };
 		141A8A5321282C8700362A47 /* TypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141A8A5221282C8700362A47 /* TypeView.xib */; };
 		141A8A5521282C9300362A47 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141A8A5421282C9200362A47 /* TypeView.swift */; };
+		141A8A5721290DE200362A47 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141A8A5621290DE200362A47 /* Me.swift */; };
+		141A8A592129146E00362A47 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141A8A582129146E00362A47 /* ApiManager.swift */; };
 		143DD4682127F45B00F5979D /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 143DD4672127F45B00F5979D /* MyPage.storyboard */; };
 		143DD46A2127F46800F5979D /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143DD4692127F46800F5979D /* MyPageViewController.swift */; };
 		143DD46C2127FDC500F5979D /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 143DD46B2127FDC500F5979D /* Filter.storyboard */; };
@@ -54,6 +56,8 @@
 		141A8A502128278200362A47 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		141A8A5221282C8700362A47 /* TypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeView.xib; sourceTree = "<group>"; };
 		141A8A5421282C9200362A47 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
+		141A8A5621290DE200362A47 /* Me.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
+		141A8A582129146E00362A47 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		143DD4672127F45B00F5979D /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		143DD4692127F46800F5979D /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		143DD46B2127FDC500F5979D /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				14587D792122D9C100F13CCA /* Post.swift */,
+				141A8A5621290DE200362A47 /* Me.swift */,
+				141A8A582129146E00362A47 /* ApiManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,15 +337,21 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Mosaic/Pods-Mosaic-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +392,7 @@
 				1463945621226B8800FC601C /* HomeViewController.swift in Sources */,
 				141A8A5521282C9300362A47 /* TypeView.swift in Sources */,
 				1463943C21226AE100FC601C /* NSObject+.swift in Sources */,
+				141A8A592129146E00362A47 /* ApiManager.swift in Sources */,
 				1463944121226AE100FC601C /* NSObject+reuseIdentifier.swift in Sources */,
 				1463944A21226AEC00FC601C /* EnumCollection.swift in Sources */,
 				1463944E21226AEC00FC601C /* KeyboardControlService.swift in Sources */,
@@ -395,6 +408,7 @@
 				1463944021226AE100FC601C /* String+NilOrEmpty.swift in Sources */,
 				1463944C21226AEC00FC601C /* TaCoSetUpService.swift in Sources */,
 				1463944221226AE100FC601C /* UIColor+.swift in Sources */,
+				141A8A5721290DE200362A47 /* Me.swift in Sources */,
 				1463944D21226AEC00FC601C /* GradientService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,10 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9BD2FZATPN;
 				INFOPLIST_FILE = Mosaic/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Zedd.Mosaic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -562,10 +573,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9BD2FZATPN;
 				INFOPLIST_FILE = Mosaic/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Zedd.Mosaic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

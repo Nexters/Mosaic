@@ -38,23 +38,16 @@ class FilterViewController: UIViewController {
         self.setupCollectionView()
         
         self.setupBackgroundView()
-    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        
-    self.navigationController?.navigationBar.barTintColor = ColorPalette.background
-
     }
     
     func setupNavigation() {
-        self.navigationController?.navigationBar.tintColor = UIColor.red
+        self.navigationController?.navigationBar.barTintColor = ColorPalette.background
+        self.navigationController?.navigationBar.isTranslucent = false
+
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSearchClose"), style: .plain, target: self, action: #selector(colseButtonDidTap))
-        self.navigationController?.navigationBar.backgroundColor = UIColor(hex: "#ff573d")
-    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        
+       
         self.title = "관심분야"
-    self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        
-       //self.navigationItem.titleView =
-        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
     
     @objc

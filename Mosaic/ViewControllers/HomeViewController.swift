@@ -37,6 +37,8 @@ class HomeViewController: UIViewController {
         self.view.backgroundColor = ColorPalette.background
         
         self.setNeedsStatusBarAppearanceUpdate()
+        
+        ApiManager.shared.getMyProfile()
     }
 
     @objc
@@ -48,7 +50,7 @@ class HomeViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icMy"), style: .plain, target: self, action: #selector(myPageButtonDidTap))
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icFilter"), style: .plain, target: self, action: #selector(filterButtonDidTap))
-    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
         self.navigationController?.navigationBar.barTintColor = ColorPalette.background
         

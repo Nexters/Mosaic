@@ -19,8 +19,8 @@ class TypeView: UIView {
         
     }
     
-    func setup() {
-          self.typeLabel.font = UIFont.nanumExtraBold(size: 16)
+    func setup(fontSize: CGFloat = 16) {
+        self.typeLabel.font = UIFont.nanumExtraBold(size: fontSize)
         self.typeLabel.textColor = UIColor(hex: "#474747")
         
     }

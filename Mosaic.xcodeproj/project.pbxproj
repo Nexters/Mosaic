@@ -22,7 +22,6 @@
 		14587D772122A9D400F13CCA /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14587D762122A9D400F13CCA /* UIFont+.swift */; };
 		14587D7A2122D9C100F13CCA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14587D792122D9C100F13CCA /* Post.swift */; };
 		1463941F212269E800FC601C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463941E212269E800FC601C /* AppDelegate.swift */; };
-		14639421212269E800FC601C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14639420212269E800FC601C /* ViewController.swift */; };
 		14639424212269E800FC601C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14639422212269E800FC601C /* Main.storyboard */; };
 		14639426212269E900FC601C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14639425212269E900FC601C /* Assets.xcassets */; };
 		14639429212269E900FC601C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14639427212269E900FC601C /* LaunchScreen.storyboard */; };
@@ -67,7 +66,6 @@
 		14587D792122D9C100F13CCA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1463941B212269E800FC601C /* Mosaic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mosaic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1463941E212269E800FC601C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		14639420212269E800FC601C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		14639423212269E800FC601C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		14639425212269E900FC601C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14639428212269E900FC601C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				1463945521226B8800FC601C /* HomeViewController.swift */,
-				14639420212269E800FC601C /* ViewController.swift */,
 				143DD4692127F46800F5979D /* MyPageViewController.swift */,
 				143DD46D2127FDD400F5979D /* FilterViewController.swift */,
 				141A8A4E212813E500362A47 /* SearchViewController.swift */,
@@ -386,7 +383,6 @@
 			files = (
 				143DD46E2127FDD400F5979D /* FilterViewController.swift in Sources */,
 				141A8A512128278200362A47 /* SearchResultViewController.swift in Sources */,
-				14639421212269E800FC601C /* ViewController.swift in Sources */,
 				1463943D21226AE100FC601C /* String+Size.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,
 				1463945621226B8800FC601C /* HomeViewController.swift in Sources */,
@@ -557,7 +553,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9BD2FZATPN;
 				INFOPLIST_FILE = Mosaic/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Zedd.Mosaic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -573,7 +572,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9BD2FZATPN;
 				INFOPLIST_FILE = Mosaic/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Zedd.Mosaic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

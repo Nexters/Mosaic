@@ -38,21 +38,15 @@ class MyPageViewController: UIViewController {
         self.setupTableView()
         
         self.view.backgroundColor = UIColor(hex: "#ff573d")
-
-        // Do any additional setup after loading the view.
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+
+    func setupNavigation() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-    
-    }
-    func setupNavigation() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSearchBack")!, style: .plain, target: self, action: #selector(backButtonDidTap))
-        
     }
+    
     @objc
     func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
@@ -66,7 +60,6 @@ class MyPageViewController: UIViewController {
         self.emailLabel.font = UIFont.nanumExtraBold(size: 12)
         self.emailLabel.textColor = UIColor(hex: "#ffc9c1")
         self.emailLabel.text = "cheong@yonsei.netz"
-    
     }
     
     func setupTableView() {
@@ -78,6 +71,7 @@ class MyPageViewController: UIViewController {
 }
 
 extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
+    
     enum Title: Int {
         case scrap
         case myArticle
@@ -93,19 +87,25 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                 return "인증 초기화"
             }
         }
+        static var allCases: [Title] {
+            return [.scrap, .myArticle, .auth]
+        }
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return Title.allCases.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageTableViewCell.reuseIdentifier, for: indexPath) as? MyPageTableViewCell else { return UITableViewCell() }
         cell.configure(title: Title.init(rawValue: indexPath.row)?.titleLabel, isHiddenNewImage: true, isCountHidden: true)
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return MyPageTableViewCell.height
     }
@@ -115,6 +115,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
 class MyPageTableViewCell: UITableViewCell {
     
     static var height: CGFloat { return 56 }
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var newImageView: UIImageView!
@@ -125,9 +126,19 @@ class MyPageTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
+    func setupLabels() {
+        
         self.titleLabel.font = UIFont.nanumBold(size: 14)
         self.newImageView.backgroundColor = UIColor(hex: "#64c8dd")
         self.newImageView.layer.cornerRadius = self.newImageView.frame.width / 2
+        
         self.myArticleCountLabel.font = UIFont.nanumExtraBold(size: 10)
         self.myArticleCountLabel.textColor = .white
         
@@ -136,11 +147,6 @@ class MyPageTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         self.separatorInset = UIEdgeInsets.zero
-        
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
     }
     
     func configure(title: String?, isHiddenNewImage: Bool = false, isCountHidden: Bool = false) {

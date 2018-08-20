@@ -9,10 +9,11 @@
 import UIKit
 
 class SearchResultViewController: UIViewController {
-
     
     @IBOutlet weak var tableView: UITableView!
+    
     var searchKeyowrd: String = ""
+    
     static func create(keyword: String) -> SearchResultViewController? {
         let view =  UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? SearchResultViewController
         view?.searchKeyowrd = keyword
@@ -23,33 +24,34 @@ class SearchResultViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupTableView()
-        self.setupNaviation()
-    self.navigationController?.navigationBar.isHidden = false
-        self.view.backgroundColor = UIColor(hex: "#ff573d")
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
-        self.title = self.searchKeyowrd
-    self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-
-
+        self.setupNaviation()
+        
+        self.view.backgroundColor = UIColor(hex: "#ff573d")
+        
     }
     func setupNaviation() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSearchBack"), style: .plain, target: self, action: #selector(backButtonDidTap))
-
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.isHidden = false
+        self.title = self.searchKeyowrd
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     @objc
     func backButtonDidTap() {
-    self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
+    
     func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = UIColor(hex: "#ff573d")
     }
-
+    
 }
 extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 10
     }
@@ -60,16 +62,16 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCountTableViewCell.reuseIdentifier, for: indexPath) as? SearchResultCountTableViewCell else { return UITableViewCell() }
-            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCountTableViewCell.reuseIdentifier, for: indexPath) as? SearchResultCountTableViewCell else { return UITableViewCell() }
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.reuseIdentifier, for: indexPath) as? SearchResultTableViewCell else { return UITableViewCell() }
             cell.configure()
             return cell
-
+            
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return UITableViewAutomaticDimension
@@ -77,17 +79,21 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
             return SearchResultTableViewCell.height
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
@@ -97,13 +103,20 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
 class SearchResultCountTableViewCell: UITableViewCell {
     
     @IBOutlet weak var countLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.countLabel.font = UIFont.nanumRegular(size: 18)
-        self.countLabel.textColor = UIColor(hex: "#ffc9c1")
+        
+        self.setupLables()
     }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
+    }
+    
+    func setupLables() {
+        self.countLabel.font = UIFont.nanumRegular(size: 18)
+        self.countLabel.textColor = UIColor(hex: "#ffc9c1")
     }
     
     func configure(count: Int) {
@@ -113,9 +126,9 @@ class SearchResultCountTableViewCell: UITableViewCell {
 
 class SearchResultTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var typeViewTrailing: NSLayoutConstraint!
     static var height: CGFloat { return 141 }
 
+    @IBOutlet weak var typeViewTrailing: NSLayoutConstraint!
     @IBOutlet weak var typeView: UIView!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -129,13 +142,14 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var newCommentCountLabel: UILabel!
     
     @IBOutlet weak var lineView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         self.setupLables()
     }
     
     func setupLables() {
-        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 7
         let descriptionAttribute: [NSAttributedStringKey: Any] = [

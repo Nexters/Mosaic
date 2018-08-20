@@ -17,15 +17,20 @@ class SearchViewController: UIViewController {
     var recentKeyword: [String] = [
         "이화여자대학교 인근 맛집", "사용자조사방법론", "인포메이션아키텍쳐", "전성진 교수님 수업 분위기", "이대 주변 스터디룸"
     ]
+    
     @IBOutlet weak var tableView: UITableView!
+    
     static func create() -> SearchViewController? {
         return UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? SearchViewController
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setupSearchBar()
+        
         self.setupTableView()
+        
         self.view.backgroundColor = UIColor(hex: "#ff573d")
        
     }
@@ -68,6 +73,7 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
@@ -86,25 +92,26 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let viewController = SearchResultViewController.create(keyword: self.searchTextField.text ?? "") else { return false }
-        
-self.navigationController?.pushViewController(viewController, animated: true)
-        
+        self.navigationController?.pushViewController(viewController, animated: true)
         return true
     }
 }
-class SearchTableViewCell: UITableViewCell
-{
+class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var recentSearchKeywordLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.recentSearchKeywordLabel.font = UIFont.nanumBold(size: 13)
-        self.recentSearchKeywordLabel.textColor = UIColor(hex: "#ffc9c1")
+
         self.selectionStyle = .none
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+    }
+    
+    func setupLabels() {
+        self.recentSearchKeywordLabel.font = UIFont.nanumBold(size: 13)
+        self.recentSearchKeywordLabel.textColor = UIColor(hex: "#ffc9c1")
     }
     
     func configure(recentKeyword: String) {

@@ -74,9 +74,11 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 8
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.reuseIdentifier, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
         cell.configure(data: self.typeTuple[indexPath.item])
@@ -114,6 +116,7 @@ class FilterCollectionViewCell: UICollectionViewCell {
             self.backgroundColor = isSelected ? UIColor(hex: "#fc543a") : UIColor.white
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 

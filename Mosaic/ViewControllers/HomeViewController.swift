@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
 
     @objc
     func setupNavigation() {
+        
         let logo = UIImage(named: "icLogotype")
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
@@ -92,6 +93,7 @@ class HomeViewController: UIViewController {
         
         let xib = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
         self.collectionView.register(xib, forCellWithReuseIdentifier: "HomeCollectionViewCell")
+        
         self.collectionView.isPagingEnabled = true
         self.collectionView.showsHorizontalScrollIndicator = false
         
@@ -106,13 +108,12 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
         cell.configure()
         
         return cell
@@ -123,7 +124,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 open class CardsCollectionViewLayout: UICollectionViewLayout {
     
     // MARK: - Layout configuration
-    
     public var itemSize: CGSize = CGSize(width: UIScreen.main.bounds.width - 36, height: 400) {
         didSet{
             invalidateLayout()

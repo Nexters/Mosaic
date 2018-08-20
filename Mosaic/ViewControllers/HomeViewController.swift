@@ -17,6 +17,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     static func create() -> HomeViewController? {
         return UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? HomeViewController
     }
@@ -31,10 +35,15 @@ class HomeViewController: UIViewController {
         self.setupSearchBar()
         
         self.view.backgroundColor = ColorPalette.background
+        
+        self.setNeedsStatusBarAppearanceUpdate()
+        
+        ApiManager.shared.getMyProfile()
     }
 
     @objc
     func setupNavigation() {
+        
         let logo = UIImage(named: "icLogotype")
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
@@ -42,7 +51,7 @@ class HomeViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icMy"), style: .plain, target: self, action: #selector(myPageButtonDidTap))
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icFilter"), style: .plain, target: self, action: #selector(filterButtonDidTap))
-    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
         self.navigationController?.navigationBar.barTintColor = ColorPalette.background
         
@@ -52,23 +61,30 @@ class HomeViewController: UIViewController {
     
     @objc
     func myPageButtonDidTap() {
+        guard let viewController = MyPageViewController.create() else { return }
+        self.navigationController?.pushViewController(viewController, animated: true)
         
     }
     
     @objc
     func filterButtonDidTap() {
-        
+        guard let viewController = FilterViewController.create() else { return }
+        let navigation = UINavigationController(rootViewController: viewController)
+        self.present(navigation, animated: true, completion: nil)
     }
     
     func setupSearchBar() {
         self.searchView.backgroundColor = ColorPalette.searchView
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(searchBarViewDidTap))
         self.searchView.addGestureRecognizer(tapGestureRecognizer)
+        self.searchView.layer.cornerRadius = 2
     }
     
     @objc
     func searchBarViewDidTap() {
-        // FIXME: - 검색화면viwe
+        guard let viewController = SearchViewController.create() else { return }
+        let navigation = UINavigationController(rootViewController: viewController)
+        self.present(navigation, animated: false, completion: nil)
     }
     
     func setupCollectionView() {
@@ -77,6 +93,7 @@ class HomeViewController: UIViewController {
         
         let xib = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
         self.collectionView.register(xib, forCellWithReuseIdentifier: "HomeCollectionViewCell")
+        
         self.collectionView.isPagingEnabled = true
         self.collectionView.showsHorizontalScrollIndicator = false
         
@@ -91,13 +108,12 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
         cell.configure()
         
         return cell
@@ -108,8 +124,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 open class CardsCollectionViewLayout: UICollectionViewLayout {
     
     // MARK: - Layout configuration
-    
-    public var itemSize: CGSize = CGSize(width: UIScreen.main.bounds.width - 18, height: 416) {
+    public var itemSize: CGSize = CGSize(width: UIScreen.main.bounds.width - 36, height: 400) {
         didSet{
             invalidateLayout()
         }

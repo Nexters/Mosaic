@@ -12,7 +12,9 @@ import Alamofire
 import AlamofireObjectMapper
 
 class ApiManager {
+    
     static let shared: ApiManager = ApiManager()
+    
     func getMyProfile() {
 
     }

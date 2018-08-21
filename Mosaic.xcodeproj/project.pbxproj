@@ -35,7 +35,6 @@
 		1463944921226AEC00FC601C /* TransparentNavBarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944321226AEC00FC601C /* TransparentNavBarService.swift */; };
 		1463944A21226AEC00FC601C /* EnumCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944421226AEC00FC601C /* EnumCollection.swift */; };
 		1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944521226AEC00FC601C /* ShadowRoundService.swift */; };
-		1463944C21226AEC00FC601C /* TaCoSetUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944621226AEC00FC601C /* TaCoSetUpService.swift */; };
 		1463944D21226AEC00FC601C /* GradientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944721226AEC00FC601C /* GradientService.swift */; };
 		1463944E21226AEC00FC601C /* KeyboardControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944821226AEC00FC601C /* KeyboardControlService.swift */; };
 		1463945121226AFB00FC601C /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */; };
@@ -47,6 +46,17 @@
 		146394682122A8C100FC601C /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146394632122A8BD00FC601C /* NanumSquareLight.ttf */; };
 		146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146394652122A8BD00FC601C /* NanumSquareRegular.ttf */; };
 		3D62673548BC0C0A4027AE41 /* Pods_Mosaic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736F2222DA5719142B55CF54 /* Pods_Mosaic.framework */; };
+		FC06DA9E212A505A00B3C35B /* TableCollectionView + SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DA9D212A505A00B3C35B /* TableCollectionView + SetUp.swift */; };
+		FC06DAA0212A595C00B3C35B /* Writing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC06DA9F212A595C00B3C35B /* Writing.storyboard */; };
+		FC06DAA2212A597400B3C35B /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAA1212A597400B3C35B /* WritingViewController.swift */; };
+		FC06DAA6212A59F200B3C35B /* AccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC06DAA4212A59F200B3C35B /* AccessoryView.xib */; };
+		FC06DAA7212A59F200B3C35B /* AccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAA5212A59F200B3C35B /* AccessoryView.swift */; };
+		FC06DAAB212A5A2200B3C35B /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC06DAA9212A5A2200B3C35B /* ImageCollectionViewCell.xib */; };
+		FC06DAAC212A5A2200B3C35B /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAAA212A5A2200B3C35B /* ImageCollectionViewCell.swift */; };
+		FC06DAB1212A5AF000B3C35B /* ImagePickerControllerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB0212A5AF000B3C35B /* ImagePickerControllerPresentable.swift */; };
+		FC06DAB3212A6C6400B3C35B /* UITextView + centerVertically.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB2212A6C6400B3C35B /* UITextView + centerVertically.swift */; };
+		FC06DAB5212AF6CB00B3C35B /* WritingFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB4212AF6CB00B3C35B /* WritingFilterViewController.swift */; };
+		FC06DAB7212AFDF400B3C35B /* UIViewController + create.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,7 +90,6 @@
 		1463944321226AEC00FC601C /* TransparentNavBarService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentNavBarService.swift; sourceTree = "<group>"; };
 		1463944421226AEC00FC601C /* EnumCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumCollection.swift; sourceTree = "<group>"; };
 		1463944521226AEC00FC601C /* ShadowRoundService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowRoundService.swift; sourceTree = "<group>"; };
-		1463944621226AEC00FC601C /* TaCoSetUpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaCoSetUpService.swift; sourceTree = "<group>"; };
 		1463944721226AEC00FC601C /* GradientService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientService.swift; sourceTree = "<group>"; };
 		1463944821226AEC00FC601C /* KeyboardControlService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardControlService.swift; sourceTree = "<group>"; };
 		1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -94,6 +103,17 @@
 		5196FD7F98DEDB51AC5EC75E /* Pods-Mosaic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosaic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mosaic/Pods-Mosaic.release.xcconfig"; sourceTree = "<group>"; };
 		6FE8D32E4799239E2FBEBA77 /* Pods-Mosaic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosaic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mosaic/Pods-Mosaic.debug.xcconfig"; sourceTree = "<group>"; };
 		736F2222DA5719142B55CF54 /* Pods_Mosaic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mosaic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC06DA9D212A505A00B3C35B /* TableCollectionView + SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableCollectionView + SetUp.swift"; sourceTree = "<group>"; };
+		FC06DA9F212A595C00B3C35B /* Writing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Writing.storyboard; sourceTree = "<group>"; };
+		FC06DAA1212A597400B3C35B /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
+		FC06DAA4212A59F200B3C35B /* AccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccessoryView.xib; sourceTree = "<group>"; };
+		FC06DAA5212A59F200B3C35B /* AccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryView.swift; sourceTree = "<group>"; };
+		FC06DAA9212A5A2200B3C35B /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		FC06DAAA212A5A2200B3C35B /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC06DAB0212A5AF000B3C35B /* ImagePickerControllerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerControllerPresentable.swift; sourceTree = "<group>"; };
+		FC06DAB2212A6C6400B3C35B /* UITextView + centerVertically.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView + centerVertically.swift"; sourceTree = "<group>"; };
+		FC06DAB4212AF6CB00B3C35B /* WritingFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingFilterViewController.swift; sourceTree = "<group>"; };
+		FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + create.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +185,9 @@
 				1463943821226AE100FC601C /* UIApplication+topViewController.swift */,
 				1463943B21226AE100FC601C /* UIColor+.swift */,
 				14587D762122A9D400F13CCA /* UIFont+.swift */,
+				FC06DA9D212A505A00B3C35B /* TableCollectionView + SetUp.swift */,
+				FC06DAB2212A6C6400B3C35B /* UITextView + centerVertically.swift */,
+				FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -177,6 +200,8 @@
 				143DD46D2127FDD400F5979D /* FilterViewController.swift */,
 				141A8A4E212813E500362A47 /* SearchViewController.swift */,
 				141A8A502128278200362A47 /* SearchResultViewController.swift */,
+				FC06DAA1212A597400B3C35B /* WritingViewController.swift */,
+				FC06DAB4212AF6CB00B3C35B /* WritingFilterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -184,11 +209,11 @@
 		1463943221226ABC00FC601C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */,
-				1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */,
-				143DD4742128073900F5979D /* FilterCollectionViewCell.xib */,
-				141A8A5421282C9200362A47 /* TypeView.swift */,
-				141A8A5221282C8700362A47 /* TypeView.xib */,
+				FC06DAA8212A5A2200B3C35B /* ImageCollectionViewCell */,
+				FC06DAA3212A59F200B3C35B /* AccessoryView */,
+				FC06DAAD212A5A2900B3C35B /* HomeCollectionViewCell */,
+				FC06DAAF212A5A4400B3C35B /* FilterCollectionViewCell */,
+				FC06DAAE212A5A3B00B3C35B /* TypeView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,8 +225,8 @@
 				1463944721226AEC00FC601C /* GradientService.swift */,
 				1463944821226AEC00FC601C /* KeyboardControlService.swift */,
 				1463944521226AEC00FC601C /* ShadowRoundService.swift */,
-				1463944621226AEC00FC601C /* TaCoSetUpService.swift */,
 				1463944321226AEC00FC601C /* TransparentNavBarService.swift */,
+				FC06DAB0212A5AF000B3C35B /* ImagePickerControllerPresentable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -214,6 +239,7 @@
 				143DD4672127F45B00F5979D /* MyPage.storyboard */,
 				143DD46B2127FDC500F5979D /* Filter.storyboard */,
 				141A8A4C212813D400362A47 /* Search.storyboard */,
+				FC06DA9F212A595C00B3C35B /* Writing.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -244,6 +270,50 @@
 				736F2222DA5719142B55CF54 /* Pods_Mosaic.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC06DAA3212A59F200B3C35B /* AccessoryView */ = {
+			isa = PBXGroup;
+			children = (
+				FC06DAA4212A59F200B3C35B /* AccessoryView.xib */,
+				FC06DAA5212A59F200B3C35B /* AccessoryView.swift */,
+			);
+			path = AccessoryView;
+			sourceTree = "<group>";
+		};
+		FC06DAA8212A5A2200B3C35B /* ImageCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FC06DAA9212A5A2200B3C35B /* ImageCollectionViewCell.xib */,
+				FC06DAAA212A5A2200B3C35B /* ImageCollectionViewCell.swift */,
+			);
+			path = ImageCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		FC06DAAD212A5A2900B3C35B /* HomeCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */,
+				1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */,
+			);
+			path = HomeCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		FC06DAAE212A5A3B00B3C35B /* TypeView */ = {
+			isa = PBXGroup;
+			children = (
+				141A8A5421282C9200362A47 /* TypeView.swift */,
+				141A8A5221282C8700362A47 /* TypeView.xib */,
+			);
+			path = TypeView;
+			sourceTree = "<group>";
+		};
+		FC06DAAF212A5A4400B3C35B /* FilterCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				143DD4742128073900F5979D /* FilterCollectionViewCell.xib */,
+			);
+			path = FilterCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +377,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				146394682122A8C100FC601C /* NanumSquareLight.ttf in Resources */,
+				FC06DAA0212A595C00B3C35B /* Writing.storyboard in Resources */,
+				FC06DAAB212A5A2200B3C35B /* ImageCollectionViewCell.xib in Resources */,
 				143DD4682127F45B00F5979D /* MyPage.storyboard in Resources */,
 				14639429212269E900FC601C /* LaunchScreen.storyboard in Resources */,
 				143DD4762128073900F5979D /* FilterCollectionViewCell.xib in Resources */,
@@ -314,6 +386,7 @@
 				146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */,
 				1463945421226B1000FC601C /* Home.storyboard in Resources */,
 				14639426212269E900FC601C /* Assets.xcassets in Resources */,
+				FC06DAA6212A59F200B3C35B /* AccessoryView.xib in Resources */,
 				146394672122A8C100FC601C /* NanumSquareExtraBold.ttf in Resources */,
 				143DD46C2127FDC500F5979D /* Filter.storyboard in Resources */,
 				14639424212269E800FC601C /* Main.storyboard in Resources */,
@@ -386,26 +459,33 @@
 				1463943D21226AE100FC601C /* String+Size.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,
 				1463945621226B8800FC601C /* HomeViewController.swift in Sources */,
+				FC06DAB1212A5AF000B3C35B /* ImagePickerControllerPresentable.swift in Sources */,
 				141A8A5521282C9300362A47 /* TypeView.swift in Sources */,
 				1463943C21226AE100FC601C /* NSObject+.swift in Sources */,
 				141A8A592129146E00362A47 /* ApiManager.swift in Sources */,
 				1463944121226AE100FC601C /* NSObject+reuseIdentifier.swift in Sources */,
 				1463944A21226AEC00FC601C /* EnumCollection.swift in Sources */,
+				FC06DAAC212A5A2200B3C35B /* ImageCollectionViewCell.swift in Sources */,
+				FC06DAB5212AF6CB00B3C35B /* WritingFilterViewController.swift in Sources */,
 				1463944E21226AEC00FC601C /* KeyboardControlService.swift in Sources */,
 				1463945221226AFB00FC601C /* HomeCollectionViewCell.swift in Sources */,
 				1463943F21226AE100FC601C /* UIApplication+topViewController.swift in Sources */,
+				FC06DAA7212A59F200B3C35B /* AccessoryView.swift in Sources */,
 				14587D772122A9D400F13CCA /* UIFont+.swift in Sources */,
 				141A8A4F212813E500362A47 /* SearchViewController.swift in Sources */,
 				14587D7A2122D9C100F13CCA /* Post.swift in Sources */,
+				FC06DAB3212A6C6400B3C35B /* UITextView + centerVertically.swift in Sources */,
 				1463941F212269E800FC601C /* AppDelegate.swift in Sources */,
+				FC06DAB7212AFDF400B3C35B /* UIViewController + create.swift in Sources */,
 				1463944921226AEC00FC601C /* TransparentNavBarService.swift in Sources */,
 				1463943E21226AE100FC601C /* UIAlertController+Show.swift in Sources */,
 				143DD46A2127F46800F5979D /* MyPageViewController.swift in Sources */,
 				1463944021226AE100FC601C /* String+NilOrEmpty.swift in Sources */,
-				1463944C21226AEC00FC601C /* TaCoSetUpService.swift in Sources */,
+				FC06DA9E212A505A00B3C35B /* TableCollectionView + SetUp.swift in Sources */,
 				1463944221226AE100FC601C /* UIColor+.swift in Sources */,
 				141A8A5721290DE200362A47 /* Me.swift in Sources */,
 				1463944D21226AEC00FC601C /* GradientService.swift in Sources */,
+				FC06DAA2212A597400B3C35B /* WritingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

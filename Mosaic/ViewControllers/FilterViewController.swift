@@ -65,7 +65,6 @@ class FilterViewController: UIViewController {
         let xib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
         self.collectionView.register(xib, forCellWithReuseIdentifier: FilterCollectionViewCell.reuseIdentifier)
         self.collectionView.allowsMultipleSelection = true
-        
     }
 
 }
@@ -82,6 +81,7 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.reuseIdentifier, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
         cell.configure(data: self.typeTuple[indexPath.item])
+        cell.setColor(.home)
         return cell
     }
     
@@ -104,16 +104,23 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
 }
+
+enum FilterType {
+    case home, writing
+}
 class FilterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var highlightView: UIView!
+    var selectedBackgroundColor: UIColor = UIColor(hex: "#fc543a")
+    var deselectedBackgroundColor: UIColor = .white
     
     override var isSelected: Bool{
         didSet{
-            self.highlightView.backgroundColor = isSelected ? UIColor(hex: "#e62f12") : UIColor(hex: "#ccf6ff")
-            self.backgroundColor = isSelected ? UIColor(hex: "#fc543a") : UIColor.white
+            self.highlightView.backgroundColor = isSelected ? .clear : UIColor(hex: "#ccf6ff")
+            self.backgroundColor = isSelected ? self.selectedBackgroundColor : self.deselectedBackgroundColor
+            self.titleLabel.textColor = isSelected ? .white : .black
         }
     }
     
@@ -141,5 +148,15 @@ class FilterCollectionViewCell: UICollectionViewCell {
         self.emojiLabel.text = data.emoji
         self.titleLabel.text = data.title
     }
-
+    
+    func setColor(_ type: FilterType) {
+        switch type {
+        case .home:
+            self.selectedBackgroundColor = UIColor(hex: "#fc543a")
+            self.deselectedBackgroundColor = .white
+        case .writing:
+            self.selectedBackgroundColor = UIColor.Palette.robinSEgg
+            self.deselectedBackgroundColor = .white
+        }
+    }
 }

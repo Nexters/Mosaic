@@ -101,7 +101,9 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func writeButtonDidTap(_ sender: UIButton) {
-        
+        guard let viewController = WritingViewController.create(storyboard: "Writing") as? WritingViewController else {return}
+        let navigation = UINavigationController(rootViewController: viewController)
+        self.present(navigation, animated: true, completion: nil)
     }
     
 }

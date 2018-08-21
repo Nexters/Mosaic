@@ -28,11 +28,9 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     //MARK: - PROPERTY
     //MARK: UI
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var accessoryView: AccessoryView!
     var saveButton: UIBarButtonItem!
     //MARK: CONSTRAINT
-    @IBOutlet weak var imageCollectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var accessoryViewHeightConstaint: NSLayoutConstraint!
     @IBOutlet weak var accessoryViewBottomConstraint: NSLayoutConstraint!
     //MARK: STORED OR COMPUTED
@@ -117,8 +115,8 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     //MARK: SET UP ACCESSORYVIEW
     func setUpAccessoryView() {
         ImagePickerController.shared.delegate = self
+        self.accessoryView.setUp(.writing, delegate: self)
         self.accessoryView.addTarget(self, selector: #selector(showImagePicker))
-        self.accessoryView.hideChatUI()
     }
     
     func setAccessoryViewContraint(height: CGFloat, bottom: CGFloat) {
@@ -129,15 +127,15 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     //MARK: SET UP IMAGECOLLECTIONVIEW
     func setUpImageCollectionView() {
-        self.imageCollectionView.setUp(target: self, cell: ImageCollectionViewCell.self)
-        let layout = CustomCollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        self.imageCollectionView.collectionViewLayout = layout
+//        self.imageCollectionView.setUp(target: self, cell: ImageCollectionViewCell.self)
+//        let layout = CustomCollectionViewFlowLayout()
+//        layout.scrollDirection = .horizontal
+//        self.imageCollectionView.collectionViewLayout = layout
     }
     
     func showImageCollectionView(_ value: Bool) {
         UIView.animate(withDuration: 1) {
-            self.imageCollectionViewHeightConstraint.constant = value ? 60.0 : 0.0
+//            self.imageCollectionViewHeightConstraint.constant = value ? 60.0 : 0.0
             self.view.layoutIfNeeded()
         }
     }
@@ -150,6 +148,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     @objc
     func closeButtonDidTap() {
+        self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -168,8 +167,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     func imagesApped(image: UIImage) {
         self.images.append(image)
-        self.imageCollectionView.collectionViewLayout.invalidateLayout()
-        self.imageCollectionView.reloadData()
+        self.accessoryView.reloadCollectionView()
     }
 }
 
@@ -186,20 +184,30 @@ extension WritingViewController: ImagePickerControllerPresentable {
 }
 
 //MARK: UICOLLECTIONVIEWDELEGATE, UICOLLECTIONVIEWDATASOURCE
-extension WritingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension WritingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.setUpUI()
         cell.image = images[indexPath.row]
+        cell.transform = CGAffineTransform(scaleX: -1, y: 1)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.images.remove(at: indexPath.row)
         collectionView.deleteItems(at: [indexPath])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 33, height: 33)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
 
@@ -212,3 +220,11 @@ class CustomCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
 }
 
+//MARK: ACCESSORYVIEWDELEGATE
+extension WritingViewController: AccessoryViewDelegate {
+    func accessoryView(_ view: AccessoryView) {
+        
+    }
+    
+    
+}

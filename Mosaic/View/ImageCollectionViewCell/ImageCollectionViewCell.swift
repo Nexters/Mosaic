@@ -15,4 +15,18 @@ class ImageCollectionViewCell: UICollectionViewCell {
             self.thumbnail.image = image
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setUpUI()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
+    func setUpUI() { 
+        self.thumbnail.layer.cornerRadius = 2
+        self.thumbnail.clipsToBounds = true
+    }
 }

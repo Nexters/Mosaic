@@ -87,8 +87,6 @@ class WritingFilterViewController: UIViewController, TransparentNavBarService {
         self.collectionView.backgroundColor = UIColor(hex: "#f0f0f0")
         self.collectionView.setUp(target: self, cell: FilterCollectionViewCell.self)
         self.collectionView.allowsMultipleSelection = true
-        FilterCollectionViewCell.selectedBackgroundColor = UIColor.Palette.robinSEgg
-        FilterCollectionViewCell.selectedHighlightViewBackgroundColor = UIColor.Palette.coolBlue
     }
     
 }
@@ -105,6 +103,7 @@ extension WritingFilterViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.reuseIdentifier, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
         cell.configure(data: self.categories[indexPath.item])
+        cell.setColor(.writing)
         return cell
     }
     

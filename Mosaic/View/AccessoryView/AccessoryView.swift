@@ -11,6 +11,9 @@ import UIKit
 class AccessoryView: UIView {
     @IBOutlet weak private var contentView: UIView!
     @IBOutlet weak private var imageButton: UIButton!
+    @IBOutlet weak private var textContainerView: UIView!
+    @IBOutlet weak private var textfield: UITextField!
+    @IBOutlet weak private var sendButton: UIButton!
     
     static var height: CGFloat = 44.0
     
@@ -24,7 +27,6 @@ class AccessoryView: UIView {
         setUpView()
     }
 
-    
     private func setUpView() {
         Bundle.main.loadNibNamed(AccessoryView.reuseIdentifier, owner: self, options: nil)
         addSubview(self.contentView)
@@ -39,5 +41,9 @@ class AccessoryView: UIView {
     
     func setContentViewBackgroundColor(_ color: UIColor?) {
         self.contentView.backgroundColor = color
+    }
+    
+    func hideChatUI() {
+        self.textContainerView.isHidden = true
     }
 }

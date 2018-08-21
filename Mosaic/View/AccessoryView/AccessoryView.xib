@@ -15,6 +15,9 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="4C2-2q-I0M"/>
                 <outlet property="imageButton" destination="Smd-j8-sjN" id="zoO-E5-E6D"/>
+                <outlet property="sendButton" destination="VJL-in-pWy" id="yFz-ts-6lb"/>
+                <outlet property="textContainerView" destination="sWV-IQ-SHd" id="uQB-i5-AKh"/>
+                <outlet property="textfield" destination="UDx-Xw-Yb1" id="wtg-Fr-f8U"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

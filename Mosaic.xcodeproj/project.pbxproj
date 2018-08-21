@@ -56,6 +56,7 @@
 		FC06DAB1212A5AF000B3C35B /* ImagePickerControllerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB0212A5AF000B3C35B /* ImagePickerControllerPresentable.swift */; };
 		FC06DAB3212A6C6400B3C35B /* UITextView + centerVertically.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB2212A6C6400B3C35B /* UITextView + centerVertically.swift */; };
 		FC06DAB5212AF6CB00B3C35B /* WritingFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB4212AF6CB00B3C35B /* WritingFilterViewController.swift */; };
+		FC06DAB7212AFDF400B3C35B /* UIViewController + create.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		FC06DAB0212A5AF000B3C35B /* ImagePickerControllerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerControllerPresentable.swift; sourceTree = "<group>"; };
 		FC06DAB2212A6C6400B3C35B /* UITextView + centerVertically.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView + centerVertically.swift"; sourceTree = "<group>"; };
 		FC06DAB4212AF6CB00B3C35B /* WritingFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingFilterViewController.swift; sourceTree = "<group>"; };
+		FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + create.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				14587D762122A9D400F13CCA /* UIFont+.swift */,
 				FC06DA9D212A505A00B3C35B /* TableCollectionView + SetUp.swift */,
 				FC06DAB2212A6C6400B3C35B /* UITextView + centerVertically.swift */,
+				FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				14587D7A2122D9C100F13CCA /* Post.swift in Sources */,
 				FC06DAB3212A6C6400B3C35B /* UITextView + centerVertically.swift in Sources */,
 				1463941F212269E800FC601C /* AppDelegate.swift in Sources */,
+				FC06DAB7212AFDF400B3C35B /* UIViewController + create.swift in Sources */,
 				1463944921226AEC00FC601C /* TransparentNavBarService.swift in Sources */,
 				1463943E21226AE100FC601C /* UIAlertController+Show.swift in Sources */,
 				143DD46A2127F46800F5979D /* MyPageViewController.swift in Sources */,

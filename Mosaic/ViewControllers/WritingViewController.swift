@@ -38,15 +38,12 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     //MARK: STORED OR COMPUTED
     var images: [UIImage] = [] {
         didSet {
-            showImageCollectionView(!images.isEmpty)
+//            showImageCollectionView(!images.isEmpty)
         }
     }
-    
+    var selectedCategory: [Category] = []
     //MARK: - METHOD
     //MARK: INITIALIZE
-    static func create() -> WritingViewController? {
-        return UIStoryboard(name: "Writing", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? WritingViewController
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +56,11 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setAccessoryViewContraint(height: AccessoryView.height + bottomInset, bottom: 0)
         self.textView.becomeFirstResponder()
     }
@@ -116,6 +118,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     func setUpAccessoryView() {
         ImagePickerController.shared.delegate = self
         self.accessoryView.addTarget(self, selector: #selector(showImagePicker))
+        self.accessoryView.hideChatUI()
     }
     
     func setAccessoryViewContraint(height: CGFloat, bottom: CGFloat) {
@@ -152,12 +155,15 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     @objc
     func saveButtonDidTap() {
-        imagesApped(image: #imageLiteral(resourceName: "icWritingFilterDown"))
+        
     }
     
     @objc
     func categoryButtonDidTap() {
-    
+        guard let viewController = WritingFilterViewController.create(storyboard: "Filter") as? WritingFilterViewController else {return}
+        viewController.previousViewController = self
+        let navigation = UINavigationController(rootViewController: viewController)
+        self.present(navigation, animated: true, completion: nil)
     }
     
     func imagesApped(image: UIImage) {

@@ -14,7 +14,7 @@
         <!--Writing View Controller-->
         <scene sceneID="XBi-hW-nfW">
             <objects>
-                <viewController storyboardIdentifier="WritingViewController" id="FuN-hx-ETO" customClass="WritingViewController" customModule="Mosaic_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WritingViewController" id="FuN-hx-ETO" customClass="WritingViewController" customModule="Mosaic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="69f-cT-dlq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,10 +40,10 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="clW-2k-1Yy">
-                                <rect key="frame" x="0.0" y="623" width="375" height="0.0"/>
+                                <rect key="frame" x="0.0" y="563" width="375" height="60"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" id="6ew-D9-kKh"/>
+                                    <constraint firstAttribute="height" constant="60" id="6ew-D9-kKh"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wMY-Ta-W4l">
                                     <size key="itemSize" width="50" height="50"/>
@@ -53,14 +53,16 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ojn-Yg-Trb">
+                                        <rect key="frame" x="0.0" y="5" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISs-1f-RqV" customClass="AccessoryView" customModule="Mosaic_iOS" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISs-1f-RqV" customClass="AccessoryView" customModule="Mosaic" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Qyu-6l-6FY"/>

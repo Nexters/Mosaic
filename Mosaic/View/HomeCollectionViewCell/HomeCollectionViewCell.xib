@@ -299,6 +299,6 @@
     <resources>
         <image name="icComment" width="16" height="17"/>
         <image name="icScrap" width="10" height="15"/>
-        <image name="icYonseiUnivIos" width="34" height="34"/>
+        <image name="icYonseiUnivIos" width="52" height="52"/>
     </resources>
 </document>

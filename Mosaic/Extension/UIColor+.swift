@@ -9,7 +9,20 @@
 import Foundation
 import UIKit
 
+
 extension UIColor {
+    struct Palette {
+        static var robinSEgg: UIColor {
+            return UIColor(red: 102.0 / 255.0, green: 227.0 / 255.0, blue: 1.0, alpha: 1.0)
+        }
+        static var darkGreyBlue: UIColor {
+            return UIColor(red: 45.0 / 255.0, green: 50.0 / 255.0, blue: 83.0 / 255.0, alpha: 1.0)
+        }
+        static var coolBlue: UIColor {
+            return UIColor(red: 79.0 / 255.0, green: 156.0 / 255.0, blue: 186.0 / 255.0, alpha: 1.0)
+        }
+    }
+    
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         let hexString: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let scanner = Scanner(string: hexString)

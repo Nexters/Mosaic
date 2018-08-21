@@ -87,6 +87,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                 return "인증 초기화"
             }
         }
+        
         static var allCases: [Title] {
             return [.scrap, .myArticle, .auth]
         }
@@ -109,8 +110,19 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return MyPageTableViewCell.height
     }
-
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch Title(rawValue: indexPath.row)! {
+        case .scrap:
+            let viewController = SearchResultViewController.create(type: .scrap)!
+            self.navigationController?.pushViewController(viewController, animated: true)
+        case .myArticle:
+            let viewController = SearchResultViewController.create(type: .myArticles)!
+            self.navigationController?.pushViewController(viewController, animated: true)
+        default:
+            break
+        }
+    }
 }
 class MyPageTableViewCell: UITableViewCell {
     
@@ -126,6 +138,7 @@ class MyPageTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         
     }
     

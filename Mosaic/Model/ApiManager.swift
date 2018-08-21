@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import Moya
-import Alamofire
 import AlamofireObjectMapper
 
 class ApiManager {
@@ -16,6 +14,6 @@ class ApiManager {
     static let shared: ApiManager = ApiManager()
     
     func getMyProfile() {
-
+        
     }
 }

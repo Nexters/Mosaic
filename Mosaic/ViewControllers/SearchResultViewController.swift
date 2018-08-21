@@ -8,15 +8,22 @@
 
 import UIKit
 
+enum ResultType {
+    case search(keyword: String)
+    case scrap
+    case myArticles
+}
+
 class SearchResultViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     var searchKeyowrd: String = ""
+    var type: ResultType?
     
-    static func create(keyword: String) -> SearchResultViewController? {
+    static func create(type: ResultType) -> SearchResultViewController? {
         let view =  UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? SearchResultViewController
-        view?.searchKeyowrd = keyword
+        view?.type = type
         return view
     }
     
@@ -34,7 +41,18 @@ class SearchResultViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSearchBack"), style: .plain, target: self, action: #selector(backButtonDidTap))
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.isHidden = false
-        self.title = self.searchKeyowrd
+        
+        
+        var navigationTitle: String = ""
+        switch self.type! {
+        case .search(let keyword):
+            navigationTitle = keyword
+        case .scrap:
+            navigationTitle = "내가 스크랩한 글"
+        case .myArticles:
+            navigationTitle = "내가 작성한 글"
+        }
+        self.title = navigationTitle
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     

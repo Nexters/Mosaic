@@ -11,7 +11,6 @@ import ObjectMapper
 import Moya
 
 class Result: Mappable {
-    
     var status: Int = 0
     var message: String?
     var code: Int = 0
@@ -30,7 +29,6 @@ class Result: Mappable {
     
 }
 class Me: Mappable {
-    
     var uuid: String = ""
     var nickName: String = ""
     var university: University?
@@ -50,6 +48,7 @@ class Me: Mappable {
         self.mapping(map: map)
     }
 }
+
 class University {
     var idx: Int = 0
     var name: String = ""

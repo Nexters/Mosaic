@@ -65,7 +65,8 @@ class FilterViewController: UIViewController {
         let xib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
         self.collectionView.register(xib, forCellWithReuseIdentifier: FilterCollectionViewCell.reuseIdentifier)
         self.collectionView.allowsMultipleSelection = true
-        
+        FilterCollectionViewCell.selectedBackgroundColor = UIColor(hex: "#fc543a")
+        FilterCollectionViewCell.selectedHighlightViewBackgroundColor = UIColor(hex: "#e62f12")
     }
 
 }
@@ -109,11 +110,17 @@ class FilterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var highlightView: UIView!
+    static var selectedBackgroundColor: UIColor = UIColor(hex: "#fc543a")
+    static var deselectedBackgroundColor: UIColor = .white
+    static var selectedHighlightViewBackgroundColor: UIColor = UIColor(hex: "#e62f12")
+    static var deselectedHighlightViewBackgroundColor: UIColor = UIColor(hex: "#ccf6ff")
     
     override var isSelected: Bool{
         didSet{
-            self.highlightView.backgroundColor = isSelected ? UIColor(hex: "#e62f12") : UIColor(hex: "#ccf6ff")
-            self.backgroundColor = isSelected ? UIColor(hex: "#fc543a") : UIColor.white
+            self.highlightView.backgroundColor =
+                isSelected ? FilterCollectionViewCell.selectedHighlightViewBackgroundColor : FilterCollectionViewCell.deselectedHighlightViewBackgroundColor
+            self.backgroundColor =
+                isSelected ? FilterCollectionViewCell.selectedBackgroundColor : FilterCollectionViewCell.deselectedBackgroundColor
         }
     }
     

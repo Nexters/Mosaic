@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,7 +56,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuH-8x-0je" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="485.60000000000002" y="-138.0809595202399"/>
+            <point key="canvasLocation" x="322" y="-116"/>
+        </scene>
+        <!--Writing Filter View Controller-->
+        <scene sceneID="MfK-qj-9WU">
+            <objects>
+                <viewController storyboardIdentifier="WritingFilterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OzQ-af-hqg" customClass="WritingFilterViewController" customModule="Mosaic" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Aq8-61-J7K"/>
+                        <viewControllerLayoutGuide type="bottom" id="zgK-sg-axb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Yo-Zy-Rjf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Ep-Ys-USu">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mVK-Mg-WXT">
+                                    <size key="itemSize" width="192" height="291"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="18" minY="32" maxX="18" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCollectionViewCell" id="Aaj-dP-lwc" customClass="FilterCollectionViewCell" customModule="Mosaic" customModuleProvider="target">
+                                        <rect key="frame" x="91.5" y="32" width="192" height="291"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="192" height="291"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2Ep-Ys-USu" firstAttribute="leading" secondItem="8Yo-Zy-Rjf" secondAttribute="leading" id="5gt-Lh-eVt"/>
+                            <constraint firstAttribute="trailing" secondItem="2Ep-Ys-USu" secondAttribute="trailing" id="Jga-Wl-7O2"/>
+                            <constraint firstItem="zgK-sg-axb" firstAttribute="top" secondItem="2Ep-Ys-USu" secondAttribute="bottom" id="nNl-CJ-GtM"/>
+                            <constraint firstItem="2Ep-Ys-USu" firstAttribute="top" secondItem="Aq8-61-J7K" secondAttribute="bottom" id="pme-TZ-lnm"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="2Ep-Ys-USu" id="zqd-Td-szO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KyQ-Ap-fXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1124" y="-116.49175412293854"/>
         </scene>
     </scenes>
 </document>

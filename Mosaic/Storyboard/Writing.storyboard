@@ -22,46 +22,27 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ai-WO-b32">
                                 <rect key="frame" x="8" y="72" width="359" height="432"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zjj-hp-iqe">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="432"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zjj-hp-iqe" customClass="VerticallyCenteredTextView" customModule="Mosaic" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="343" height="535"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6X-CW-cpo" customClass="MimicPlaceholderView" customModule="Mosaic" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="343" height="535"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="m6X-CW-cpo" firstAttribute="top" secondItem="6ai-WO-b32" secondAttribute="top" constant="8" id="GVf-cM-I4g"/>
                                     <constraint firstAttribute="width" secondItem="6ai-WO-b32" secondAttribute="height" multiplier="358:431" id="KBl-fk-NU4"/>
-                                    <constraint firstItem="Zjj-hp-iqe" firstAttribute="top" secondItem="6ai-WO-b32" secondAttribute="top" id="Omj-RW-tS4"/>
-                                    <constraint firstAttribute="trailing" secondItem="Zjj-hp-iqe" secondAttribute="trailing" id="cwX-oo-7vl"/>
-                                    <constraint firstItem="Zjj-hp-iqe" firstAttribute="centerX" secondItem="6ai-WO-b32" secondAttribute="centerX" id="fuE-0v-AYS"/>
-                                    <constraint firstAttribute="bottom" secondItem="Zjj-hp-iqe" secondAttribute="bottom" id="lhI-18-6MV"/>
-                                    <constraint firstItem="Zjj-hp-iqe" firstAttribute="leading" secondItem="6ai-WO-b32" secondAttribute="leading" id="yUe-Zq-a0Y"/>
+                                    <constraint firstItem="Zjj-hp-iqe" firstAttribute="top" secondItem="6ai-WO-b32" secondAttribute="top" constant="8" id="Omj-RW-tS4"/>
+                                    <constraint firstItem="m6X-CW-cpo" firstAttribute="leading" secondItem="6ai-WO-b32" secondAttribute="leading" constant="8" id="QS8-z4-Gn6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zjj-hp-iqe" secondAttribute="trailing" constant="8" id="cwX-oo-7vl"/>
+                                    <constraint firstAttribute="trailing" secondItem="m6X-CW-cpo" secondAttribute="trailing" constant="8" id="wj5-zI-mUu"/>
+                                    <constraint firstItem="Zjj-hp-iqe" firstAttribute="leading" secondItem="6ai-WO-b32" secondAttribute="leading" constant="8" id="yUe-Zq-a0Y"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="clW-2k-1Yy">
-                                <rect key="frame" x="0.0" y="563" width="375" height="60"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="6ew-D9-kKh"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wMY-Ta-W4l">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ojn-Yg-Trb">
-                                        <rect key="frame" x="0.0" y="5" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISs-1f-RqV" customClass="AccessoryView" customModule="Mosaic" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
@@ -72,14 +53,13 @@
                         <color key="backgroundColor" red="0.35686274509803922" green="0.87450980392156863" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6ai-WO-b32" firstAttribute="leading" secondItem="UGf-RR-Nf9" secondAttribute="leading" constant="8" id="4hh-Gv-454"/>
-                            <constraint firstItem="ISs-1f-RqV" firstAttribute="top" secondItem="clW-2k-1Yy" secondAttribute="bottom" id="K1T-I4-ps0"/>
+                            <constraint firstItem="ISs-1f-RqV" firstAttribute="top" secondItem="Zjj-hp-iqe" secondAttribute="bottom" constant="8" id="Ic8-qY-wuM"/>
                             <constraint firstItem="UGf-RR-Nf9" firstAttribute="trailing" secondItem="ISs-1f-RqV" secondAttribute="trailing" id="Ke2-8v-TvX"/>
                             <constraint firstItem="UGf-RR-Nf9" firstAttribute="trailing" secondItem="6ai-WO-b32" secondAttribute="trailing" constant="8" id="Z9Y-bu-I3j"/>
                             <constraint firstItem="6ai-WO-b32" firstAttribute="top" secondItem="UGf-RR-Nf9" secondAttribute="top" constant="8" id="bZo-pG-hJK"/>
                             <constraint firstItem="ISs-1f-RqV" firstAttribute="leading" secondItem="UGf-RR-Nf9" secondAttribute="leading" id="blf-Qa-d9G"/>
+                            <constraint firstItem="ISs-1f-RqV" firstAttribute="top" secondItem="m6X-CW-cpo" secondAttribute="bottom" constant="8" id="gHr-oj-uhm"/>
                             <constraint firstAttribute="bottom" secondItem="ISs-1f-RqV" secondAttribute="bottom" id="kMN-LU-26y"/>
-                            <constraint firstItem="clW-2k-1Yy" firstAttribute="leading" secondItem="UGf-RR-Nf9" secondAttribute="leading" id="mez-XQ-aQ0"/>
-                            <constraint firstItem="UGf-RR-Nf9" firstAttribute="trailing" secondItem="clW-2k-1Yy" secondAttribute="trailing" id="oWR-63-qkq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UGf-RR-Nf9"/>
                     </view>
@@ -88,8 +68,7 @@
                         <outlet property="accessoryView" destination="ISs-1f-RqV" id="Pwo-8k-jff"/>
                         <outlet property="accessoryViewBottomConstraint" destination="kMN-LU-26y" id="AS9-Jy-tby"/>
                         <outlet property="accessoryViewHeightConstaint" destination="Qyu-6l-6FY" id="YmS-ac-kMo"/>
-                        <outlet property="imageCollectionView" destination="clW-2k-1Yy" id="rMF-0F-6Jn"/>
-                        <outlet property="imageCollectionViewHeightConstraint" destination="6ew-D9-kKh" id="bHA-nB-EOW"/>
+                        <outlet property="mimicPlaceholderView" destination="m6X-CW-cpo" id="Ww6-4O-eDp"/>
                         <outlet property="textView" destination="Zjj-hp-iqe" id="y3Q-wR-MHZ"/>
                     </connections>
                 </viewController>

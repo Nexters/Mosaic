@@ -13,10 +13,9 @@ class WritingFilterViewController: UIViewController, TransparentNavBarService {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var previousViewController: WritingViewController?
-    var selectedCategory: [Category]? {
+    var selectedCategory: Category? {
         set {
-            guard let value = newValue else {return}
-            self.previousViewController?.selectedCategory = value
+            self.previousViewController?.selectedCategory = newValue
         }
         get {
             guard let selectedCategory = self.previousViewController?.selectedCategory else {return nil}
@@ -51,11 +50,12 @@ class WritingFilterViewController: UIViewController, TransparentNavBarService {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         for (index, item) in self.categories.enumerated() {
-            if let selectedCategory = self.selectedCategory,
-                !selectedCategory.filter({$0.title == item.title}).isEmpty {
-                self.collectionView.selectItem(at: IndexPath(row: index, section: 0),
+            guard let selectedCategory = self.selectedCategory else {return}
+            if item.title == selectedCategory.title {
+                self.collectionView.selectItem(at:  IndexPath(row: index, section: 0),
                                                animated: true,
                                                scrollPosition: .top)
+                return
             }
         }
     }
@@ -86,7 +86,7 @@ class WritingFilterViewController: UIViewController, TransparentNavBarService {
     func setUpCollectionView() {
         self.collectionView.backgroundColor = UIColor(hex: "#f0f0f0")
         self.collectionView.setUp(target: self, cell: FilterCollectionViewCell.self)
-        self.collectionView.allowsMultipleSelection = true
+        self.collectionView.allowsMultipleSelection = false
     }
     
 }
@@ -119,14 +119,13 @@ extension WritingFilterViewController: UICollectionViewDelegate, UICollectionVie
         let item = collectionView.cellForItem(at: indexPath)
         if item?.isSelected ?? false {
             self.collectionView.deselectItem(at: indexPath, animated: true)
+            if self.selectedCategory?.title == self.categories[indexPath.row].title {
+                self.selectedCategory = nil
+            }
         } else {
             self.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-            self.selectedCategory?.append(categories[indexPath.row])
+            self.selectedCategory = categories[indexPath.row]
         }
         return false
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        self.selectedCategory = self.selectedCategory?.filter({ $0.title != self.categories[indexPath.row].title })
     }
 }

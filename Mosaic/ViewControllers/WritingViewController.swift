@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import TLPhotoPicker
+import Photos
 
 //https://stackoverflow.com/questions/46282987/iphone-x-how-to-handle-view-controller-inputaccessoryview
 //http://ahbou.org/post/165762292157/iphone-x-inputaccessoryview-fix
@@ -27,21 +29,18 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     //MARK: - PROPERTY
     //MARK: UI
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var textView: VerticallyCenteredTextView!
     @IBOutlet weak var accessoryView: AccessoryView!
-    var saveButton: UIBarButtonItem!
+    @IBOutlet weak var mimicPlaceholderView: MimicPlaceholderView!
+    var navigationBarTitleButton: UIButton = UIButton(type: .custom)
+    var saveButton: UIButton = UIButton(type: .custom)
     //MARK: CONSTRAINT
-    @IBOutlet weak var imageCollectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var accessoryViewHeightConstaint: NSLayoutConstraint!
     @IBOutlet weak var accessoryViewBottomConstraint: NSLayoutConstraint!
     //MARK: STORED OR COMPUTED
-    var images: [UIImage] = [] {
-        didSet {
-//            showImageCollectionView(!images.isEmpty)
-        }
-    }
-    var selectedCategory: [Category] = []
+    var selectedCategory: Category?
+    
+    var selectedAssets = [TLPHAsset]()
     //MARK: - METHOD
     //MARK: INITIALIZE
     
@@ -51,19 +50,18 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         setUpKeyboard()
         setupNavigationBar()
         setUpAccessoryView()
-        setUpImageCollectionView()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+        setUpTextView()
+        setUpMimicPlaceHolderView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setAccessoryViewContraint(height: AccessoryView.height + bottomInset, bottom: 0)
         self.textView.becomeFirstResponder()
+        updateNavigationBarTitle(category: self.selectedCategory)
+        self.mimicPlaceholderView.blinking()
     }
+
     
     deinit {
         self.removeKeyboardControl()
@@ -76,7 +74,6 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     //MARK: SET UP
     func setUp() {
         self.view.backgroundColor = UIColor.Palette.robinSEgg
-        self.images.removeAll()
     }
     
     //MARK: SET UP KEYBOARD
@@ -97,28 +94,32 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     //MARK: SET UP NAVIGATIONBAR
     func setupNavigationBar() {
         self.transparentNavigationBar()
-        let button = UIButton(type: .custom)
-        button.setTitle("카테고리 선택", for: .normal)
-        button.titleLabel?.shadowOffset = CGSize(width: 1, height: 1)
-        button.setTitleShadowColor(.gray, for: .normal)
-        button.setImage(UIImage(named: "icWritingFilterDown"), for: .normal)
-        button.semanticContentAttribute =
+        
+        self.navigationBarTitleButton.setTitle("카테고리 선택", for: .normal)
+        self.navigationBarTitleButton.titleLabel?.shadowOffset = CGSize(width: 1, height: 1)
+        self.navigationBarTitleButton.setTitleShadowColor(.gray, for: .normal)
+        self.navigationBarTitleButton.setImage(UIImage(named: "icWritingFilterDown"), for: .normal)
+        self.navigationBarTitleButton.semanticContentAttribute =
             (UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft)
-        button.addTarget(self, action: #selector(categoryButtonDidTap), for: .touchUpInside)
-        self.navigationItem.titleView = button
+        self.navigationBarTitleButton.addTarget(self, action: #selector(categoryButtonDidTap), for: .touchUpInside)
+        self.navigationBarTitleButton.titleLabel?.font = UIFont.nanumExtraBold(size: 18)
+        self.navigationBarTitleButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.navigationItem.titleView = self.navigationBarTitleButton
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSearchClose"), style: .plain, target: self, action: #selector(closeButtonDidTap))
         
-        self.saveButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(saveButtonDidTap))
-        self.saveButton.tintColor = UIColor.Palette.darkGreyBlue
-        self.navigationItem.rightBarButtonItem = self.saveButton
+        self.saveButton.addTarget(self, action: #selector(saveButtonDidTap), for: .touchUpInside)
+        self.saveButton.setTitle("저장", for: .normal)
+        self.saveButton.titleLabel?.font = UIFont.nanumExtraBold(size: 14.0)
+        self.saveButton.setTitleColor(UIColor.Palette.coolBlue, for: .normal)
+        self.navigationItem.setRightBarButton(UIBarButtonItem(customView: self.saveButton), animated: true)
+        enableButton(self.saveButton, false)
     }
     
     //MARK: SET UP ACCESSORYVIEW
     func setUpAccessoryView() {
-        ImagePickerController.shared.delegate = self
+        self.accessoryView.setUp(.writing, delegate: self)
         self.accessoryView.addTarget(self, selector: #selector(showImagePicker))
-        self.accessoryView.hideChatUI()
     }
     
     func setAccessoryViewContraint(height: CGFloat, bottom: CGFloat) {
@@ -127,35 +128,51 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         self.view.layoutIfNeeded()
     }
     
-    //MARK: SET UP IMAGECOLLECTIONVIEW
-    func setUpImageCollectionView() {
-        self.imageCollectionView.setUp(target: self, cell: ImageCollectionViewCell.self)
-        let layout = CustomCollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        self.imageCollectionView.collectionViewLayout = layout
+    //MARK: SET UP TEXTVIEW
+    func setUpTextView() {
+        self.textView.delegate = self
+        self.textView.isHidden = true
+        self.textView.font = UIFont.nanumRegular(size: 16)
+        self.textView.tintColor = UIColor.Palette.coral
     }
     
-    func showImageCollectionView(_ value: Bool) {
-        UIView.animate(withDuration: 1) {
-            self.imageCollectionViewHeightConstraint.constant = value ? 60.0 : 0.0
-            self.view.layoutIfNeeded()
-        }
+    //MARK: SET UP MIMICPLACEHOLDERVIEW
+    func setUpMimicPlaceHolderView() {
+        self.mimicPlaceholderView.isHidden = false
+        self.mimicPlaceholderView.backgroundColor = .clear
+        self.mimicPlaceholderView.setBlinkView(color: self.textView.tintColor)
+        self.mimicPlaceholderView.setLabel(text: "내용을 적어보세요.", font: UIFont.nanumRegular(size: 16))
     }
     
     //MARK: ACTION
     @objc
     func showImagePicker() {
-        showImagePickerController()
+        var configure = TLPhotosPickerConfigure()
+        configure.numberOfColumn = 3
+        configure.maxSelectedAssets = 3
+        configure.mediaType = PHAssetMediaType.image
+        configure.cancelTitle = "취소"
+        configure.doneTitle = "완료"
+        
+        let photoPicker = TLPhotosPickerViewController()
+        photoPicker.delegate = self
+        photoPicker.configure = configure
+        photoPicker.selectedAssets = self.selectedAssets
+        photoPicker.didExceedMaximumNumberOfSelection = { [weak self] (picker) in
+            UIAlertController.showMessage("선택가능한 숫자를 초과했습니다.")
+        }
+        self.present(photoPicker, animated: true, completion: nil)
     }
     
     @objc
     func closeButtonDidTap() {
+        self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc
     func saveButtonDidTap() {
-        
+        print("save")
     }
     
     @objc
@@ -166,49 +183,119 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         self.present(navigation, animated: true, completion: nil)
     }
     
-    func imagesApped(image: UIImage) {
-        self.images.append(image)
-        self.imageCollectionView.collectionViewLayout.invalidateLayout()
-        self.imageCollectionView.reloadData()
+    func updateNavigationBarTitle(category: Category?) {
+        if let category = category {
+            navigationBarTitleButton.setTitle(category.title + category.emoji, for: .normal)
+        } else {
+            navigationBarTitleButton.setTitle("카테고리 선택", for: .normal)
+        }
+    }
+    
+    func enableButton(_ button: UIButton, _ enable: Bool) {
+        button.isEnabled = enable
+        switch button.isEnabled {
+        case true:
+            button.setTitleColor(.white, for: .normal)
+        case false:
+            button.setTitleColor(UIColor.Palette.coolBlue, for: .normal)
+        }
+    }
+    
+    func enableSaveButton(_ length: Int) {
+        let isEmpty = !(0 < length)
+        self.textView.isHidden = isEmpty
+        self.mimicPlaceholderView.isHidden = !isEmpty
+        if !isEmpty && self.selectedCategory != nil {
+            enableButton(self.saveButton, true)
+        } else {
+            enableButton(self.saveButton, false)
+        }
     }
 }
 
 //MARK: - EXTENSION
-//MARK: IMAGEPICKERCONTROLLERPRESENTABLE
-extension WritingViewController: ImagePickerControllerPresentable {
-    func imagePickerController(_ picker: UIImagePickerController, selectedImage image: UIImage) {
-        imagesApped(image: image)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
-    }
-}
 
 //MARK: UICOLLECTIONVIEWDELEGATE, UICOLLECTIONVIEWDATASOURCE
-extension WritingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension WritingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.images.count
+        return self.selectedAssets.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-        cell.image = images[indexPath.row]
+        cell.setUpUI()
+        let asset = self.selectedAssets[indexPath.row]
+        if let image = asset.fullResolutionImage {
+            cell.image = image
+        }else {
+            print("Can't get image at local storage, try download image")
+            asset.cloudImageDownload(progressBlock: { (progress) in
+                DispatchQueue.main.async {
+                    cell.label.text = "\(100*progress)%"
+                }
+                }, completionBlock: { (image) in
+                    if let image = image {
+                        DispatchQueue.main.async {
+                            cell.image = image
+                            cell.label.isHidden = true
+                        }
+                    }
+            })
+        }
+        cell.transform = CGAffineTransform(scaleX: -1, y: 1)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.images.remove(at: indexPath.row)
-        collectionView.deleteItems(at: [indexPath])
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 33, height: 33)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
 
-//https://stackoverflow.com/questions/35639994/uicollectionview-received-layout-attributes-for-a-cell-with-an-index-path-that-d
-class CustomCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    private var cache = [UICollectionViewLayoutAttributes]()
-    override func invalidateLayout() {
-        super.invalidateLayout()
-        cache.removeAll()
+//MARK: TLPhotosPickerViewControllerDelegate
+extension WritingViewController: TLPhotosPickerViewControllerDelegate {
+    func handleNoAlbumPermissions(picker: TLPhotosPickerViewController) {
+        picker.dismiss(animated: true) {
+            let alert = UIAlertController(title: "", message: "Denied albums permissions granted", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func handleNoCameraPermissions(picker: TLPhotosPickerViewController) {
+        let alert = UIAlertController(title: "", message: "Denied camera permissions granted", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        picker.present(alert, animated: true, completion: nil)
+    }
+    
+    func dismissPhotoPicker(withTLPHAssets: [TLPHAsset]) {
+        self.selectedAssets = withTLPHAssets
+        self.accessoryView.reloadCollectionView()
     }
 }
 
+//MARK: UITEXTVIEWDELEGATE
+extension WritingViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let prospectiveText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let length = prospectiveText.count
+        enableSaveButton(length)
+        
+        return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        let length = self.textView.text.count
+        enableSaveButton(length)
+    }
+}
+
+//MARK: ACCESSORYVIEWDELEGATE
+extension WritingViewController: AccessoryViewDelegate {
+    func accessoryView(_ view: AccessoryView) {
+        
+    }
+}

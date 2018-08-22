@@ -57,6 +57,9 @@
 		FC06DAB3212A6C6400B3C35B /* UITextView + centerVertically.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB2212A6C6400B3C35B /* UITextView + centerVertically.swift */; };
 		FC06DAB5212AF6CB00B3C35B /* WritingFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB4212AF6CB00B3C35B /* WritingFilterViewController.swift */; };
 		FC06DAB7212AFDF400B3C35B /* UIViewController + create.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */; };
+		FC06DAB9212D5E2F00B3C35B /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */; };
+		FC06DABE212D624C00B3C35B /* MimicPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC06DABD212D624C00B3C35B /* MimicPlaceholderView.xib */; };
+		FC06DAC0212D62B100B3C35B /* MimicPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +117,9 @@
 		FC06DAB2212A6C6400B3C35B /* UITextView + centerVertically.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView + centerVertically.swift"; sourceTree = "<group>"; };
 		FC06DAB4212AF6CB00B3C35B /* WritingFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingFilterViewController.swift; sourceTree = "<group>"; };
 		FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + create.swift"; sourceTree = "<group>"; };
+		FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
+		FC06DABD212D624C00B3C35B /* MimicPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MimicPlaceholderView.xib; sourceTree = "<group>"; };
+		FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimicPlaceholderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,11 +215,13 @@
 		1463943221226ABC00FC601C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FC06DABA212D622500B3C35B /* MimicPlaceholderView */,
 				FC06DAA8212A5A2200B3C35B /* ImageCollectionViewCell */,
 				FC06DAA3212A59F200B3C35B /* AccessoryView */,
 				FC06DAAD212A5A2900B3C35B /* HomeCollectionViewCell */,
 				FC06DAAF212A5A4400B3C35B /* FilterCollectionViewCell */,
 				FC06DAAE212A5A3B00B3C35B /* TypeView */,
+				FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,6 +324,15 @@
 			path = FilterCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		FC06DABA212D622500B3C35B /* MimicPlaceholderView */ = {
+			isa = PBXGroup;
+			children = (
+				FC06DABD212D624C00B3C35B /* MimicPlaceholderView.xib */,
+				FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */,
+			);
+			path = MimicPlaceholderView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -386,6 +403,7 @@
 				146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */,
 				1463945421226B1000FC601C /* Home.storyboard in Resources */,
 				14639426212269E900FC601C /* Assets.xcassets in Resources */,
+				FC06DABE212D624C00B3C35B /* MimicPlaceholderView.xib in Resources */,
 				FC06DAA6212A59F200B3C35B /* AccessoryView.xib in Resources */,
 				146394672122A8C100FC601C /* NanumSquareExtraBold.ttf in Resources */,
 				143DD46C2127FDC500F5979D /* Filter.storyboard in Resources */,
@@ -460,6 +478,7 @@
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,
 				1463945621226B8800FC601C /* HomeViewController.swift in Sources */,
 				FC06DAB1212A5AF000B3C35B /* ImagePickerControllerPresentable.swift in Sources */,
+				FC06DAC0212D62B100B3C35B /* MimicPlaceholderView.swift in Sources */,
 				141A8A5521282C9300362A47 /* TypeView.swift in Sources */,
 				1463943C21226AE100FC601C /* NSObject+.swift in Sources */,
 				141A8A592129146E00362A47 /* ApiManager.swift in Sources */,
@@ -481,6 +500,7 @@
 				1463943E21226AE100FC601C /* UIAlertController+Show.swift in Sources */,
 				143DD46A2127F46800F5979D /* MyPageViewController.swift in Sources */,
 				1463944021226AE100FC601C /* String+NilOrEmpty.swift in Sources */,
+				FC06DAB9212D5E2F00B3C35B /* VerticallyCenteredTextView.swift in Sources */,
 				FC06DA9E212A505A00B3C35B /* TableCollectionView + SetUp.swift in Sources */,
 				1463944221226AE100FC601C /* UIColor+.swift in Sources */,
 				141A8A5721290DE200362A47 /* Me.swift in Sources */,
@@ -631,7 +651,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9BD2FZATPN;
+				DEVELOPMENT_TEAM = EPWV8KDDJE;
 				INFOPLIST_FILE = Mosaic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -650,7 +670,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9BD2FZATPN;
+				DEVELOPMENT_TEAM = EPWV8KDDJE;
 				INFOPLIST_FILE = Mosaic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

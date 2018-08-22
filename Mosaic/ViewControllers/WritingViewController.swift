@@ -27,9 +27,11 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     //MARK: - PROPERTY
     //MARK: UI
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: VerticallyCenteredTextView!
     @IBOutlet weak var accessoryView: AccessoryView!
-    var saveButton: UIBarButtonItem!
+    @IBOutlet weak var mimicPlaceholderView: MimicPlaceholderView!
+    var navigationBarTitleButton: UIButton?
+    var saveButton: UIBarButtonItem?
     //MARK: CONSTRAINT
     @IBOutlet weak var accessoryViewHeightConstaint: NSLayoutConstraint!
     @IBOutlet weak var accessoryViewBottomConstraint: NSLayoutConstraint!
@@ -39,7 +41,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
 //            showImageCollectionView(!images.isEmpty)
         }
     }
-    var selectedCategory: [Category] = []
+    var selectedCategory: Category?
     //MARK: - METHOD
     //MARK: INITIALIZE
     
@@ -49,19 +51,17 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         setUpKeyboard()
         setupNavigationBar()
         setUpAccessoryView()
-        setUpImageCollectionView()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+        setUpTextView()
+        setUpMimicPlaceHolderView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setAccessoryViewContraint(height: AccessoryView.height + bottomInset, bottom: 0)
         self.textView.becomeFirstResponder()
+        updateNavigationBarTitle(category: self.selectedCategory)
     }
+
     
     deinit {
         self.removeKeyboardControl()
@@ -95,7 +95,8 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     //MARK: SET UP NAVIGATIONBAR
     func setupNavigationBar() {
         self.transparentNavigationBar()
-        let button = UIButton(type: .custom)
+        self.navigationBarTitleButton = UIButton(type: .custom)
+        guard let button = self.navigationBarTitleButton else {return}
         button.setTitle("카테고리 선택", for: .normal)
         button.titleLabel?.shadowOffset = CGSize(width: 1, height: 1)
         button.setTitleShadowColor(.gray, for: .normal)
@@ -103,12 +104,18 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         button.semanticContentAttribute =
             (UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft)
         button.addTarget(self, action: #selector(categoryButtonDidTap), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.nanumExtraBold(size: 18)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         self.navigationItem.titleView = button
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSearchClose"), style: .plain, target: self, action: #selector(closeButtonDidTap))
         
         self.saveButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(saveButtonDidTap))
-        self.saveButton.tintColor = UIColor.Palette.darkGreyBlue
+        guard let saveButton = self.saveButton else {return}
+        saveButton.tintColor = UIColor.Palette.darkGreyBlue
+        
+        saveButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.nanumExtraBold(size: 14.0)], for: .normal)
+
         self.navigationItem.rightBarButtonItem = self.saveButton
     }
     
@@ -125,19 +132,20 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         self.view.layoutIfNeeded()
     }
     
-    //MARK: SET UP IMAGECOLLECTIONVIEW
-    func setUpImageCollectionView() {
-//        self.imageCollectionView.setUp(target: self, cell: ImageCollectionViewCell.self)
-//        let layout = CustomCollectionViewFlowLayout()
-//        layout.scrollDirection = .horizontal
-//        self.imageCollectionView.collectionViewLayout = layout
+    //MARK: SET UP TEXTVIEW
+    func setUpTextView() {
+        self.textView.delegate = self
+        self.textView.isHidden = true
+        self.textView.font = UIFont.nanumRegular(size: 16)
+        self.textView.tintColor = UIColor.Palette.coral
     }
     
-    func showImageCollectionView(_ value: Bool) {
-        UIView.animate(withDuration: 1) {
-//            self.imageCollectionViewHeightConstraint.constant = value ? 60.0 : 0.0
-            self.view.layoutIfNeeded()
-        }
+    //MARK: SET UP MIMICPLACEHOLDERVIEW
+    func setUpMimicPlaceHolderView() {
+        self.mimicPlaceholderView.isHidden = false
+        self.mimicPlaceholderView.backgroundColor = .clear
+        self.mimicPlaceholderView.setBlinkView(color: self.textView.tintColor)
+        self.mimicPlaceholderView.setLabel(text: "내용을 적어보세요.", font: UIFont.nanumRegular(size: 16))
     }
     
     //MARK: ACTION
@@ -168,6 +176,15 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     func imagesApped(image: UIImage) {
         self.images.append(image)
         self.accessoryView.reloadCollectionView()
+    }
+    
+    func updateNavigationBarTitle(category: Category?) {
+        guard let button = self.navigationBarTitleButton else {return}
+        if let category = category {
+            button.setTitle(category.title + category.emoji, for: .normal)
+        } else {
+            button.setTitle("카테고리 선택", for: .normal)
+        }
     }
 }
 
@@ -211,12 +228,14 @@ extension WritingViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 }
 
-//https://stackoverflow.com/questions/35639994/uicollectionview-received-layout-attributes-for-a-cell-with-an-index-path-that-d
-class CustomCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    private var cache = [UICollectionViewLayoutAttributes]()
-    override func invalidateLayout() {
-        super.invalidateLayout()
-        cache.removeAll()
+//MARK: UITEXTVIEWDELEGATE
+extension WritingViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let prospectiveText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let length = prospectiveText.count
+        self.textView.isHidden = !(0 < length)
+        self.mimicPlaceholderView.isHidden = (0 < length)
+        return true
     }
 }
 
@@ -225,6 +244,4 @@ extension WritingViewController: AccessoryViewDelegate {
     func accessoryView(_ view: AccessoryView) {
         
     }
-    
-    
 }

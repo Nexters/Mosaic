@@ -301,8 +301,8 @@
 		FC06DAAD212A5A2900B3C35B /* HomeCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */,
 				1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */,
+				1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */,
 			);
 			path = HomeCollectionViewCell;
 			sourceTree = "<group>";
@@ -663,7 +663,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EPWV8KDDJE;
 				INFOPLIST_FILE = Mosaic/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Zedd.Mosaic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -679,7 +682,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EPWV8KDDJE;
 				INFOPLIST_FILE = Mosaic/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Zedd.Mosaic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

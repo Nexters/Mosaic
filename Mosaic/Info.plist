@@ -33,6 +33,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>앨범에 대한 접근권한을 요청합니다.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>카메라에 대한 접근권한을 요청합니다.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

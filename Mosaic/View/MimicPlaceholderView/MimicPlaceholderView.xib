@@ -29,11 +29,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcH-YW-rjw">
-                    <rect key="frame" x="247.5" y="336" width="2" height="15.5"/>
+                    <rect key="frame" x="247.5" y="335" width="2" height="18"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="2" id="5dh-0g-6fa"/>
-                        <constraint firstAttribute="height" constant="16" id="T35-OD-80c"/>
+                        <constraint firstAttribute="height" constant="18" id="T35-OD-80c"/>
                     </constraints>
                 </view>
             </subviews>

@@ -10,6 +10,8 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbnail:UIImageView!
+    @IBOutlet weak var label:UILabel!
+    
     var image: UIImage? {
         didSet {
             self.thumbnail.image = image
@@ -28,5 +30,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
     func setUpUI() { 
         self.thumbnail.layer.cornerRadius = 2
         self.thumbnail.clipsToBounds = true
+        self.label.isHidden = true
     }
 }

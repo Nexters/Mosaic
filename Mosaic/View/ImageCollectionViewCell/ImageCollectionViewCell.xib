@@ -27,15 +27,27 @@
                             <constraint firstAttribute="width" constant="28" id="7PG-LR-jh6"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbe-Fn-gUj">
+                        <rect key="frame" x="66.5" y="40" width="28" height="28"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="Rbe-Fn-gUj" firstAttribute="centerY" secondItem="Ol1-S9-TzK" secondAttribute="centerY" id="6PX-Lm-oYY"/>
+                <constraint firstItem="Rbe-Fn-gUj" firstAttribute="width" secondItem="Ol1-S9-TzK" secondAttribute="width" id="8QH-IL-VIE"/>
+                <constraint firstItem="Rbe-Fn-gUj" firstAttribute="height" secondItem="Ol1-S9-TzK" secondAttribute="height" id="CMr-3L-EAO"/>
                 <constraint firstItem="Ol1-S9-TzK" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="Yu4-qX-tyS"/>
+                <constraint firstItem="Rbe-Fn-gUj" firstAttribute="centerX" secondItem="Ol1-S9-TzK" secondAttribute="centerX" id="fkR-MH-srv"/>
                 <constraint firstItem="Ol1-S9-TzK" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="fyM-XM-r0m"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="160" height="109"/>
             <connections>
+                <outlet property="label" destination="Rbe-Fn-gUj" id="ZmE-58-Nbd"/>
                 <outlet property="thumbnail" destination="Ol1-S9-TzK" id="0Ah-Oz-d9r"/>
             </connections>
             <point key="canvasLocation" x="-21" y="83.5"/>

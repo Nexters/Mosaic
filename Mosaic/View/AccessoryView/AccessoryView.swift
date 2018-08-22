@@ -19,9 +19,6 @@ extension AccessoryViewDelegate where Self: UICollectionViewDelegate & UICollect
 class AccessoryView: UIView {
     @IBOutlet weak private var contentView: UIView!
     @IBOutlet weak private var imageButton: UIButton!
-    @IBOutlet weak private var textContainerView: UIView!
-    @IBOutlet weak private var textfield: UITextField!
-    @IBOutlet weak private var sendButton: UIButton!
     @IBOutlet weak private var collectionView: UICollectionView!
     
     static var height: CGFloat = 44.0
@@ -54,19 +51,8 @@ class AccessoryView: UIView {
         self.contentView.backgroundColor = color
     }
     
-    func setUp(_ type: AccessoryType, delegate: AccessoryViewDelegate? = nil) {
-        self.delegate = delegate
-        switch type {
-        case .writing :
-            self.textContainerView.isHidden = true
-            self.collectionView.isHidden = false
-            if let delegate = self.delegate as? UICollectionViewDelegate & UICollectionViewDataSource {
-                self.collectionView.setUp(target: delegate, cell: ImageCollectionViewCell.self)
-            }
-        case .comment :
-            self.textContainerView.isHidden = false
-            self.collectionView.isHidden = true
-        }
+    func collectionView(_ delegateAndDataSource: UICollectionViewDelegate & UICollectionViewDataSource) {
+        self.collectionView.setUp(target: delegateAndDataSource, cell: ImageCollectionViewCell.self)
     }
     
     func reloadCollectionView() {

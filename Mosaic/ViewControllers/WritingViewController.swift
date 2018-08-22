@@ -48,7 +48,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         super.viewDidLoad()
         setUp()
         setUpKeyboard()
-        setupNavigationBar()
+        setUpNavigationBar()
         setUpAccessoryView()
         setUpTextView()
         setUpMimicPlaceHolderView()
@@ -92,7 +92,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     }
     
     //MARK: SET UP NAVIGATIONBAR
-    func setupNavigationBar() {
+    func setUpNavigationBar() {
         self.transparentNavigationBar()
         
         self.navigationBarTitleButton.setTitle("카테고리 선택", for: .normal)
@@ -118,7 +118,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     //MARK: SET UP ACCESSORYVIEW
     func setUpAccessoryView() {
-        self.accessoryView.setUp(.writing, delegate: self)
+        self.accessoryView.collectionView(self)
         self.accessoryView.addTarget(self, selector: #selector(showImagePicker))
     }
     
@@ -149,7 +149,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     func showImagePicker() {
         var configure = TLPhotosPickerConfigure()
         configure.numberOfColumn = 3
-        configure.maxSelectedAssets = 3
+        configure.maxSelectedAssets = 5
         configure.mediaType = PHAssetMediaType.image
         configure.cancelTitle = "취소"
         configure.doneTitle = "완료"

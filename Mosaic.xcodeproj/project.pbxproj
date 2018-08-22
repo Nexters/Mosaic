@@ -62,6 +62,10 @@
 		FC06DAC0212D62B100B3C35B /* MimicPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */; };
 		FC627774212D9028008BAC6F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC627773212D9028008BAC6F /* Detail.storyboard */; };
 		FC627776212D903D008BAC6F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627775212D903D008BAC6F /* DetailViewController.swift */; };
+		FC627778212D974B008BAC6F /* CommentAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC627777212D974B008BAC6F /* CommentAccessoryView.xib */; };
+		FC62777A212D975A008BAC6F /* CommentAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627779212D975A008BAC6F /* CommentAccessoryView.swift */; };
+		FC62777E212DBF51008BAC6F /* CategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC62777D212DBF51008BAC6F /* CategoryView.xib */; };
+		FC627780212DBF5F008BAC6F /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62777F212DBF5F008BAC6F /* CategoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +128,10 @@
 		FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimicPlaceholderView.swift; sourceTree = "<group>"; };
 		FC627773212D9028008BAC6F /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		FC627775212D903D008BAC6F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FC627777212D974B008BAC6F /* CommentAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentAccessoryView.xib; sourceTree = "<group>"; };
+		FC627779212D975A008BAC6F /* CommentAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAccessoryView.swift; sourceTree = "<group>"; };
+		FC62777D212DBF51008BAC6F /* CategoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryView.xib; sourceTree = "<group>"; };
+		FC62777F212DBF5F008BAC6F /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +228,7 @@
 		1463943221226ABC00FC601C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FC62777C212DBF42008BAC6F /* CategoryView */,
 				FC06DABA212D622500B3C35B /* MimicPlaceholderView */,
 				FC06DAA8212A5A2200B3C35B /* ImageCollectionViewCell */,
 				FC06DAA3212A59F200B3C35B /* AccessoryView */,
@@ -227,6 +236,7 @@
 				FC06DAAF212A5A4400B3C35B /* FilterCollectionViewCell */,
 				FC06DAAE212A5A3B00B3C35B /* TypeView */,
 				FC06DAC1212D6EA900B3C35B /* VerticallyCenteredTextView */,
+				FC62777B212D9765008BAC6F /* CommentAccessoryView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,6 +357,24 @@
 			path = VerticallyCenteredTextView;
 			sourceTree = "<group>";
 		};
+		FC62777B212D9765008BAC6F /* CommentAccessoryView */ = {
+			isa = PBXGroup;
+			children = (
+				FC627777212D974B008BAC6F /* CommentAccessoryView.xib */,
+				FC627779212D975A008BAC6F /* CommentAccessoryView.swift */,
+			);
+			path = CommentAccessoryView;
+			sourceTree = "<group>";
+		};
+		FC62777C212DBF42008BAC6F /* CategoryView */ = {
+			isa = PBXGroup;
+			children = (
+				FC62777D212DBF51008BAC6F /* CategoryView.xib */,
+				FC62777F212DBF5F008BAC6F /* CategoryView.swift */,
+			);
+			path = CategoryView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -414,6 +442,7 @@
 				14639429212269E900FC601C /* LaunchScreen.storyboard in Resources */,
 				143DD4762128073900F5979D /* FilterCollectionViewCell.xib in Resources */,
 				141A8A5321282C8700362A47 /* TypeView.xib in Resources */,
+				FC62777E212DBF51008BAC6F /* CategoryView.xib in Resources */,
 				146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */,
 				1463945421226B1000FC601C /* Home.storyboard in Resources */,
 				14639426212269E900FC601C /* Assets.xcassets in Resources */,
@@ -426,6 +455,7 @@
 				146394662122A8C100FC601C /* NanumSquareBold.ttf in Resources */,
 				1463945121226AFB00FC601C /* HomeCollectionViewCell.xib in Resources */,
 				141A8A4D212813D400362A47 /* Search.storyboard in Resources */,
+				FC627778212D974B008BAC6F /* CommentAccessoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +522,7 @@
 				143DD46E2127FDD400F5979D /* FilterViewController.swift in Sources */,
 				141A8A512128278200362A47 /* SearchResultViewController.swift in Sources */,
 				1463943D21226AE100FC601C /* String+Size.swift in Sources */,
+				FC62777A212D975A008BAC6F /* CommentAccessoryView.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,
 				1463945621226B8800FC601C /* HomeViewController.swift in Sources */,
 				FC06DAB1212A5AF000B3C35B /* ImagePickerControllerPresentable.swift in Sources */,
@@ -517,6 +548,7 @@
 				1463943E21226AE100FC601C /* UIAlertController+Show.swift in Sources */,
 				143DD46A2127F46800F5979D /* MyPageViewController.swift in Sources */,
 				FC627776212D903D008BAC6F /* DetailViewController.swift in Sources */,
+				FC627780212DBF5F008BAC6F /* CategoryView.swift in Sources */,
 				1463944021226AE100FC601C /* String+NilOrEmpty.swift in Sources */,
 				FC06DAB9212D5E2F00B3C35B /* VerticallyCenteredTextView.swift in Sources */,
 				FC06DA9E212A505A00B3C35B /* TableCollectionView + SetUp.swift in Sources */,

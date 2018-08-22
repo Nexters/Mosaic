@@ -9,38 +9,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mosaic/ViewControllers/WritingViewController.swift"
-            timestampString = "556511307.211706"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "imagePickerController(_:selectedImage:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mosaic/ViewControllers/WritingViewController.swift"
-            timestampString = "556511307.2118061"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "imagePickerController(_:selectedImage:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Mosaic/Protocol/ImagePickerControllerPresentable.swift"
             timestampString = "556509083.385927"
             startingColumnNumber = "9223372036854775807"
@@ -54,11 +22,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mosaic/ViewControllers/WritingFilterViewController.swift"
-            timestampString = "556511307.2119319"
+            timestampString = "556630918.872539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
@@ -74,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mosaic/ViewControllers/WritingFilterViewController.swift"
-            timestampString = "556511307.212438"
+            timestampString = "556630918.872605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -89,13 +57,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mosaic/ViewControllers/WritingFilterViewController.swift"
-            timestampString = "556511307.212777"
+            filePath = "Mosaic/ViewControllers/WritingViewController.swift"
+            timestampString = "556633413.666639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "viewDidAppear(_:)"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "WritingViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mosaic/ViewControllers/WritingViewController.swift"
+            timestampString = "556633413.667091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "showImagePicker()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,14 +89,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mosaic/ViewControllers/WritingFilterViewController.swift"
-            timestampString = "556511307.2132879"
+            filePath = "Mosaic/ViewControllers/WritingViewController.swift"
+            timestampString = "556633413.6673779"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "229"
+            endingLineNumber = "229">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -121,14 +103,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mosaic/ViewControllers/WritingFilterViewController.swift"
-            timestampString = "556511307.213855"
+            filePath = "Mosaic/ViewControllers/WritingViewController.swift"
+            timestampString = "556633413.667639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "231"
+            endingLineNumber = "231">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -137,46 +117,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mosaic/ViewControllers/WritingFilterViewController.swift"
-            timestampString = "556511307.2143559"
+            filePath = "Mosaic/ViewControllers/WritingViewController.swift"
+            timestampString = "556633413.66789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mosaic.WritingFilterViewController.viewDidAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "Mosaic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igwang-yong/Mosaic/Mosaic/ViewControllers/WritingFilterViewController.swift"
-                  timestampString = "556504826.0371619"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "1413">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 ((emoji: Swift.String, title: Swift.String)) -&gt; Swift.Bool in Mosaic.WritingFilterViewController.viewDidAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "Mosaic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igwang-yong/Mosaic/Mosaic/ViewControllers/WritingFilterViewController.swift"
-                  timestampString = "556504826.039537"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "91">
-               </Location>
-            </Locations>
+            startingLineNumber = "228"
+            endingLineNumber = "228">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -185,46 +131,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mosaic/ViewControllers/WritingFilterViewController.swift"
-            timestampString = "556511307.21487"
+            filePath = "Mosaic/ViewControllers/WritingViewController.swift"
+            timestampString = "556633413.668159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "collectionView(_:didDeselectItemAt:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mosaic.WritingFilterViewController.collectionView(__ObjC.UICollectionView, didDeselectItemAt: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "Mosaic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igwang-yong/Mosaic/Mosaic/ViewControllers/WritingFilterViewController.swift"
-                  timestampString = "556507514.648605"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "131"
-                  endingLineNumber = "131"
-                  offsetFromSymbolStart = "50">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 ((emoji: Swift.String, title: Swift.String)) -&gt; Swift.Bool in Mosaic.WritingFilterViewController.collectionView(__ObjC.UICollectionView, didDeselectItemAt: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "Mosaic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igwang-yong/Mosaic/Mosaic/ViewControllers/WritingFilterViewController.swift"
-                  timestampString = "556507514.651401"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "131"
-                  endingLineNumber = "131"
-                  offsetFromSymbolStart = "70">
-               </Location>
-            </Locations>
+            startingLineNumber = "234"
+            endingLineNumber = "234">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

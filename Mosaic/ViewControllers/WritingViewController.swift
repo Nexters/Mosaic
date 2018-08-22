@@ -60,6 +60,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         setAccessoryViewContraint(height: AccessoryView.height + bottomInset, bottom: 0)
         self.textView.becomeFirstResponder()
         updateNavigationBarTitle(category: self.selectedCategory)
+        self.mimicPlaceholderView.blinking()
     }
 
     

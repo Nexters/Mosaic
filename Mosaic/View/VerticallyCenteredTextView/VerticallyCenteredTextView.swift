@@ -15,6 +15,10 @@ class VerticallyCenteredTextView: UITextView {
         }
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        verticallyCenter()
+    }
     func verticallyCenter() {
         var topCorrection = (self.bounds.size.height - self.contentSize.height * self.zoomScale) / 2.0
         topCorrection = max(0, topCorrection)

@@ -29,8 +29,15 @@ class MimicPlaceholderView: UIView {
         
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        blinking()
+    }
+    
+    func blinking() {
+        self.blinkingView.alpha = 0.0
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       options: [.curveLinear, .repeat, .autoreverse],
+                       animations: {self.blinkingView.alpha = 1.0},
+                       completion: nil)
     }
     
     func setLabel(text: String?, textColor: UIColor = .black, font: UIFont) {
@@ -43,11 +50,4 @@ class MimicPlaceholderView: UIView {
         self.blinkingView.backgroundColor = color
     }
     
-    func blinking() {
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       options: [.curveLinear, .repeat, .autoreverse],
-                       animations: {self.blinkingView.alpha = 0.0},
-                       completion: nil)
-    }
 }

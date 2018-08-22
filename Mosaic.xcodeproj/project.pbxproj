@@ -221,7 +221,7 @@
 				FC06DAAD212A5A2900B3C35B /* HomeCollectionViewCell */,
 				FC06DAAF212A5A4400B3C35B /* FilterCollectionViewCell */,
 				FC06DAAE212A5A3B00B3C35B /* TypeView */,
-				FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */,
+				FC06DAC1212D6EA900B3C35B /* VerticallyCenteredTextView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -331,6 +331,14 @@
 				FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */,
 			);
 			path = MimicPlaceholderView;
+			sourceTree = "<group>";
+		};
+		FC06DAC1212D6EA900B3C35B /* VerticallyCenteredTextView */ = {
+			isa = PBXGroup;
+			children = (
+				FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */,
+			);
+			path = VerticallyCenteredTextView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4147841D335D6B1D846430DD4DDD4D1F"
-               BuildableName = "Pods_Mosaic.framework"
-               BlueprintName = "Pods-Mosaic"
+               BlueprintIdentifier = "3980ED650DB352A717CF1BB7C2BCBAA8"
+               BuildableName = "TLPhotoPicker.bundle"
+               BlueprintName = "TLPhotoPicker-TLPhotoPicker"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4147841D335D6B1D846430DD4DDD4D1F"
-            BuildableName = "Pods_Mosaic.framework"
-            BlueprintName = "Pods-Mosaic"
+            BlueprintIdentifier = "3980ED650DB352A717CF1BB7C2BCBAA8"
+            BuildableName = "TLPhotoPicker.bundle"
+            BlueprintName = "TLPhotoPicker-TLPhotoPicker"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

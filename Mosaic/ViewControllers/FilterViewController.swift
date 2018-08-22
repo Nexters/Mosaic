@@ -38,6 +38,7 @@ class FilterViewController: UIViewController {
         self.setupCollectionView()
         
         self.setupBackgroundView()
+        
     }
     
     func setupNavigation() {

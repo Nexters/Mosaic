@@ -39,7 +39,6 @@ class FilterViewController: UIViewController {
         
         self.setupBackgroundView()
         
-        ApiManager.shared.requestCategory()
     }
     
     func setupNavigation() {

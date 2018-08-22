@@ -20,10 +20,12 @@ class SearchResultViewController: UIViewController {
     
     var searchKeyowrd: String = ""
     var type: ResultType?
+    var articleList: [Article]?
     
-    static func create(type: ResultType) -> SearchResultViewController? {
+    static func create(type: ResultType, article: [Article]?) -> SearchResultViewController? {
         let view =  UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? SearchResultViewController
         view?.type = type
+        view?.articleList = article
         return view
     }
     
@@ -35,6 +37,8 @@ class SearchResultViewController: UIViewController {
         self.setupNaviation()
         
         self.view.backgroundColor = UIColor(hex: "#ff573d")
+        
+        self.requestArticles()
         
     }
     func setupNaviation() {
@@ -54,6 +58,17 @@ class SearchResultViewController: UIViewController {
         }
         self.title = navigationTitle
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
+    func requestArticles() {
+        switch self.type! {
+        case .scrap:
+            ApiManager.shared.requestMyScraps()
+        case .myArticles:
+            ApiManager.shared.requestMyArticles()
+        default:
+            return 
+        }
     }
     
     @objc

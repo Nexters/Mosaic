@@ -91,7 +91,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let viewController = SearchResultViewController.create(type: .search(keyword: textField.text ?? "")) else { return false }
+        guard let viewController = SearchResultViewController.create(type: .search(keyword: textField.text ?? ""), article: nil) else { return false }
         self.navigationController?.pushViewController(viewController, animated: true)
         return true
     }

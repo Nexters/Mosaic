@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MyPageViewController: UIViewController {
 
@@ -19,6 +20,8 @@ class MyPageViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var profileView: UIView!
+    
+    var me: Me?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -38,6 +41,14 @@ class MyPageViewController: UIViewController {
         self.setupTableView()
         
         self.view.backgroundColor = UIColor(hex: "#ff573d")
+        
+        ApiManager.shared.requestMyProfile { (code, response) in
+            if code == 200 {
+                self.me = response
+                self.updateMyPage()
+                self.tableView.reloadData()
+            }
+        }
     }
 
     func setupNavigation() {
@@ -67,6 +78,13 @@ class MyPageViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
         
+    }
+    
+    func updateMyPage() {
+        let url = URL(string: self.me?.university?.imageUrl ?? "")
+        self.collegeImageView.kf.setImage(with: url)
+        self.nickNameLabel.text = "\(self.me?.university?.name ?? "") | \(self.me?.nickName ?? "")"
+        self.emailLabel.text = "\(self.me?.email ?? "")"
     }
 }
 
@@ -103,7 +121,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageTableViewCell.reuseIdentifier, for: indexPath) as? MyPageTableViewCell else { return UITableViewCell() }
-        cell.configure(title: Title.init(rawValue: indexPath.row)?.titleLabel, isHiddenNewImage: true, isCountHidden: true)
+        cell.configure(title: Title.init(rawValue: indexPath.row)?.titleLabel, isHiddenNewImage: true, me: self.me)
         return cell
     }
     
@@ -114,10 +132,10 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch Title(rawValue: indexPath.row)! {
         case .scrap:
-            let viewController = SearchResultViewController.create(type: .scrap)!
+            let viewController = SearchResultViewController.create(type: .scrap, article: nil)!
             self.navigationController?.pushViewController(viewController, animated: true)
         case .myArticle:
-            let viewController = SearchResultViewController.create(type: .myArticles)!
+            let viewController = SearchResultViewController.create(type: .myArticles, article: nil)!
             self.navigationController?.pushViewController(viewController, animated: true)
         default:
             break
@@ -139,6 +157,7 @@ class MyPageTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        self.setupLabels()
         
     }
     
@@ -162,9 +181,20 @@ class MyPageTableViewCell: UITableViewCell {
         self.separatorInset = UIEdgeInsets.zero
     }
     
-    func configure(title: String?, isHiddenNewImage: Bool = false, isCountHidden: Bool = false) {
+    func configure(title: String?, isHiddenNewImage: Bool = false, me: Me?) {
+        guard let myData = me else { return }
         self.titleLabel.text = title
         self.newImageView.isHidden = isHiddenNewImage
-        self.countLabel.isHidden = isCountHidden
+        switch title! {
+        case "내가 스크랩한 글":
+            self.countLabel.text = "\(myData.scrapCount)"
+        case "내가 작성한 글":
+            self.countLabel.text = "\(myData.articleCount)"
+        default:
+            self.countLabel.isHidden = true
+        }
+        
     }
+    
+
 }

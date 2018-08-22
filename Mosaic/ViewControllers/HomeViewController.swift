@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
         
         self.setNeedsStatusBarAppearanceUpdate()
         
-        ApiManager.shared.getMyProfile()
+        ApiManager.shared.requestMyProfile()
     }
 
     @objc

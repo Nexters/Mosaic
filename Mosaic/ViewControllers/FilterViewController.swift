@@ -38,6 +38,8 @@ class FilterViewController: UIViewController {
         self.setupCollectionView()
         
         self.setupBackgroundView()
+        
+        ApiManager.shared.requestCategory()
     }
     
     func setupNavigation() {

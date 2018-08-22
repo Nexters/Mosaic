@@ -9,12 +9,11 @@
 import Foundation
 import ObjectMapper
 import Moya
-
 class Result: Mappable {
     var status: Int = 0
     var message: String?
     var code: Int = 0
-    var result: Me?
+    var result: Any?
     
     func mapping(map: Map) {
         status <- map["httpStatus"]
@@ -44,6 +43,7 @@ class Me: Mappable {
         updatedAt <- map["updatedAt"]
         authorities <- map["authorities"]
     }
+    
     required init?(map: Map) {
         self.mapping(map: map)
     }
@@ -55,3 +55,23 @@ class University {
     var domain: String = ""
     var imageUrl: String = ""
 }
+
+class Categories: Mappable {
+    
+    var emoji: String = ""
+    var idx: Int = 0
+    var name: String = ""
+    var uuid: String = ""
+   
+    func mapping(map: Map) {
+        emoji <- map["emoji"]
+        idx <- map["idx"]
+        name <- map["name"]
+        uuid <- map["uuid"]
+    }
+    
+    required init?(map: Map) {
+        self.mapping(map: map)
+    }
+}
+

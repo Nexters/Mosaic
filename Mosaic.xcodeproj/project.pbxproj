@@ -60,6 +60,8 @@
 		FC06DAB9212D5E2F00B3C35B /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */; };
 		FC06DABE212D624C00B3C35B /* MimicPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC06DABD212D624C00B3C35B /* MimicPlaceholderView.xib */; };
 		FC06DAC0212D62B100B3C35B /* MimicPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */; };
+		FC627774212D9028008BAC6F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC627773212D9028008BAC6F /* Detail.storyboard */; };
+		FC627776212D903D008BAC6F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627775212D903D008BAC6F /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +122,8 @@
 		FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		FC06DABD212D624C00B3C35B /* MimicPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MimicPlaceholderView.xib; sourceTree = "<group>"; };
 		FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimicPlaceholderView.swift; sourceTree = "<group>"; };
+		FC627773212D9028008BAC6F /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		FC627775212D903D008BAC6F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +212,7 @@
 				141A8A502128278200362A47 /* SearchResultViewController.swift */,
 				FC06DAA1212A597400B3C35B /* WritingViewController.swift */,
 				FC06DAB4212AF6CB00B3C35B /* WritingFilterViewController.swift */,
+				FC627775212D903D008BAC6F /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 				143DD46B2127FDC500F5979D /* Filter.storyboard */,
 				141A8A4C212813D400362A47 /* Search.storyboard */,
 				FC06DA9F212A595C00B3C35B /* Writing.storyboard */,
+				FC627773212D9028008BAC6F /* Detail.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -416,6 +422,7 @@
 				146394672122A8C100FC601C /* NanumSquareExtraBold.ttf in Resources */,
 				143DD46C2127FDC500F5979D /* Filter.storyboard in Resources */,
 				14639424212269E800FC601C /* Main.storyboard in Resources */,
+				FC627774212D9028008BAC6F /* Detail.storyboard in Resources */,
 				146394662122A8C100FC601C /* NanumSquareBold.ttf in Resources */,
 				1463945121226AFB00FC601C /* HomeCollectionViewCell.xib in Resources */,
 				141A8A4D212813D400362A47 /* Search.storyboard in Resources */,
@@ -509,6 +516,7 @@
 				1463944921226AEC00FC601C /* TransparentNavBarService.swift in Sources */,
 				1463943E21226AE100FC601C /* UIAlertController+Show.swift in Sources */,
 				143DD46A2127F46800F5979D /* MyPageViewController.swift in Sources */,
+				FC627776212D903D008BAC6F /* DetailViewController.swift in Sources */,
 				1463944021226AE100FC601C /* String+NilOrEmpty.swift in Sources */,
 				FC06DAB9212D5E2F00B3C35B /* VerticallyCenteredTextView.swift in Sources */,
 				FC06DA9E212A505A00B3C35B /* TableCollectionView + SetUp.swift in Sources */,

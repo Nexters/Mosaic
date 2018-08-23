@@ -20,12 +20,12 @@ class SearchResultViewController: UIViewController {
     
     var searchKeyowrd: String = ""
     var type: ResultType?
-    var articleList: [Article]?
+    var articles: [Article]?
     
     static func create(type: ResultType, article: [Article]?) -> SearchResultViewController? {
         let view =  UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? SearchResultViewController
         view?.type = type
-        view?.articleList = article
+        //view?.articles = article
         return view
     }
     
@@ -63,12 +63,24 @@ class SearchResultViewController: UIViewController {
     func requestArticles() {
         switch self.type! {
         case .scrap:
-            ApiManager.shared.requestMyScraps()
+            ApiManager.shared.requestMyScraps { (code, articles) in
+                if code == 200 {
+                    self.articles = articles
+                    self.tableView.reloadData()
+                }
+            }
         case .myArticles:
-            ApiManager.shared.requestMyArticles()
+            ApiManager.shared.requestMyArticles { (code, articles) in
+                if code == 200 {
+                    self.articles = articles
+                    self.tableView.reloadData()
+                }
+            }
         default:
             return 
         }
+        self.tableView.reloadData()
+
     }
     
     @objc
@@ -86,7 +98,7 @@ class SearchResultViewController: UIViewController {
 extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return (self.articles?.count ?? 0) + 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,10 +108,11 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCountTableViewCell.reuseIdentifier, for: indexPath) as? SearchResultCountTableViewCell else { return UITableViewCell() }
+            cell.configure(count: self.articles?.count ?? 0)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.reuseIdentifier, for: indexPath) as? SearchResultTableViewCell else { return UITableViewCell() }
-            cell.configure()
+            cell.configure(type: self.type!, article: self.articles?[indexPath.row])
             return cell
             
         }
@@ -153,7 +166,7 @@ class SearchResultCountTableViewCell: UITableViewCell {
     }
     
     func configure(count: Int) {
-        self.countLabel.text = "\(count)의 결과"
+        self.countLabel.text = count == 0 ? "검색결과가 없습니다. :(" : "\(count)개의 결과"
     }
 }
 
@@ -161,6 +174,9 @@ class SearchResultTableViewCell: UITableViewCell {
     
     static var height: CGFloat { return 141 }
 
+    @IBOutlet weak var scrapImageViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var scrapImageView: UIImageView!
+    @IBOutlet weak var commentLabelForMine: UILabel!
     @IBOutlet weak var typeViewTrailing: NSLayoutConstraint!
     @IBOutlet weak var typeView: UIView!
     @IBOutlet weak var commentLabel: UILabel!
@@ -175,9 +191,17 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var newCommentCountLabel: UILabel!
     
     @IBOutlet weak var lineView: UIView!
+    var type: ResultType?
+    
+    let descriptionAttribute: [NSAttributedStringKey: Any] = [
+        .font: UIFont.nanumRegular(size: 13),
+        .foregroundColor: UIColor(hex: "#474747")
+    ]
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.selectionStyle = .none
         
         self.setupLables()
     }
@@ -200,7 +224,7 @@ class SearchResultTableViewCell: UITableViewCell {
         self.newCommentCountLabel.font = UIFont.nanumExtraBold(size: 10)
         self.newCommentCountLabel.textColor = .white
         self.newCommentCountLabel.isHidden = true
-        self.typeViewTrailing.constant = 20
+        //self.typeViewTrailing.constant = 20
         
         self.nickNameLabel.font = UIFont.nanumExtraBold(size: 10)
         self.nickNameLabel.textColor = UIColor(hex: "#474747")
@@ -208,19 +232,55 @@ class SearchResultTableViewCell: UITableViewCell {
         self.commentLabel.textColor = UIColor(hex: "#fc543a")
         self.lineView.backgroundColor = UIColor(hex: "#dbdbdb")
         self.imageViewWidth.constant = 0
+        
+        self.commentLabelForMine.font = UIFont.nanumBold(size: 10)
+        self.commentLabelForMine.textColor = UIColor(hex: "#999999")
+        self.commentLabelForMine.isHidden = true
+        
+        self.scrapImageView.isHidden = true
+        self.scrapImageViewWidth.constant = 0
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
     }
     
-    func configure() {
+    func configure(type: ResultType, article: Article?) {
+        guard let article = article else { return }
+
         let typeView = TypeView.create(frame: self.typeView.bounds)
+        
         typeView.setup(fontSize: 14)
         typeView.configure(title: "공모전🏆")
         self.typeView.addSubview(typeView)
-        self.nickNameLabel.text = "이화여자대학교 | EWHA0001"
-        self.dateLabel.text = "3월 22일"
-        self.commentLabel.text = "댓글 24"
+        
+        self.descriptionLabel.attributedText = NSAttributedString(string: article.content ?? "", attributes: self.descriptionAttribute)
+        
+        if article.imageUrls?.isEmpty == true {
+            self.imageViewWidth.constant = 0
+        } else {
+            self.imageViewWidth.constant = 59
+        }
+        
+        switch type {
+        case .search:
+            self.commentLabel.text = "댓글 \(article.replies)"
+            self.nickNameLabel.text = "\(article.writer?.university?.name ?? "") | \(article.writer?.nickName ?? "")"
+        case .scrap:
+            self.scrapImageViewWidth.constant = 30
+            self.scrapImageView.isHidden = false
+            self.commentLabel.text = "댓글 \(article.replies)"
+            self.nickNameLabel.text = "\(article.writer?.university?.name ?? "") | \(article.writer?.nickName ?? "")"
+        case .myArticles:
+            self.nickNameLabel.text = "3월 22일"
+            self.nickNameLabel.font = UIFont.nanumBold(size: 10)
+            self.nickNameLabel.textColor = UIColor(hex: "#999999")
+            self.nickNameLabel.sizeToFit()
+            self.commentLabelForMine.isHidden = false
+            self.commentLabelForMine.text = "댓글 \(article.replies)"
+            self.dateLabel.isHidden = true
+            self.commentLabel.text = "삭제"
+            
+        }
     }
 }

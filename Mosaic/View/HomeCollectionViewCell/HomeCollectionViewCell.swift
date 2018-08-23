@@ -60,20 +60,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
         self.timeLabel.font = UIFont.nanumBold(size: 12)
         self.timeLabel.textColor = ColorPalette.subText
         
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 7
-        paragraphStyle.alignment = .center
-        let descriptionAttributes: [NSAttributedStringKey: Any] = [
-            .font: UIFont.nanumRegular(size: 16),
-            .foregroundColor: ColorPalette.description,
-            .paragraphStyle: paragraphStyle,
-            .kern: -1
-        ]
-        
-        let str = "올해 하반기에 열리는 전국 비보이\n댄스대회에 함께 할 팀원을 구합니다. 올해로\n4회째 수상하고 있습니다. 체계적인 연습과\n끈끈한 팀워크로 대학 동안 즐거운 추억을\n만드실 여러분들의 연락 기다립니다.\n올해도 수상 가즈아 🔥"
-
-        self.descriptionLabel.attributedText = NSAttributedString(string: str, attributes: descriptionAttributes)
-    
     }
     
     func setupBottomView() {
@@ -90,22 +76,41 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     func setupBottomeLabels() {
-        
-        let attribute: [NSAttributedStringKey: Any] = [
-            .font: UIFont.nanumBold(size: 10),
-            .foregroundColor: ColorPalette.subText
-        ]
+      
         
         // FIXME: - 모델에서 가져온 값.
-        self.collegeNameLabel.attributedText = NSAttributedString(string: "SOGANG2039", attributes: attribute)
-        self.commentLabel.attributedText = NSAttributedString(string: "댓글 24", attributes: attribute)
-        self.bookMarkLabel.attributedText = NSAttributedString(string: "스크랩", attributes: attribute)
         
         // logic: 내가 스크랩한 글인지 판단하는 필드 있어야ㅕ함.
     }
     
     
-    func configure() {
-    
+    func configure(article: Article?) {
+        guard let article = article else { return }
+        
+        let attribute: [NSAttributedStringKey: Any] = [
+            .font: UIFont.nanumBold(size: 10),
+            .foregroundColor: ColorPalette.subText
+        ]
+        self.collegeNameLabel.attributedText = NSAttributedString(string: article.writer?.nickName ?? "", attributes: attribute)
+        self.commentLabel.attributedText = NSAttributedString(string: "댓글 \(article.replies)", attributes: attribute)
+        self.bookMarkLabel.attributedText = NSAttributedString(string: "스크랩", attributes: attribute)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 7
+        paragraphStyle.alignment = .center
+        let descriptionAttributes: [NSAttributedStringKey: Any] = [
+            .font: UIFont.nanumRegular(size: 16),
+            .foregroundColor: ColorPalette.description,
+            .paragraphStyle: paragraphStyle,
+            .kern: -1
+        ]
+        
+        self.descriptionLabel.attributedText = NSAttributedString(string: article.content ?? "", attributes: descriptionAttributes)
+        
+        if article.imageUrls?.isEmpty == true {
+            
+        } else {
+            
+        }
     }
 }

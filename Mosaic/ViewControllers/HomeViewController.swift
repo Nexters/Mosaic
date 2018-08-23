@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var articles: [Article]?
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -37,6 +37,13 @@ class HomeViewController: UIViewController {
         self.view.backgroundColor = ColorPalette.background
         
         self.setNeedsStatusBarAppearanceUpdate()
+        
+        ApiManager.shared.requestHomeArticles { (code, articles) in
+            if code == 200 {
+                self.articles = articles
+                self.collectionView.reloadData()
+            }
+        }
         
     }
 
@@ -110,12 +117,12 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.articles?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
-        cell.configure()
+        cell.configure(article: self.articles?[indexPath.row])
         
         return cell
     }

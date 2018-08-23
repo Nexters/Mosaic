@@ -13,6 +13,8 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     //MARK: UI
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var categoryView: CategoryView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var contentView: UIView!
     
     var scrapBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icScrapNol"),
                                                           style: .plain,
@@ -24,13 +26,21 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     @IBOutlet weak var deleteButtonBottomConstraint: NSLayoutConstraint!
 
     //MARK: - METHOD
+    //MARK: INIT
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setUpKeyboard()
         setUpNavigationBar()
-        
+        setUpCategoryView()
+        setUpTableView()
+        setUpContentView()
 //        self.accessoryViewHeight.constant = CommentAccessoryView.changedHeight
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
     }
     //MARK: SET UP KEYBOARD
     func setUpKeyboard() {
@@ -59,6 +69,13 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         
         self.navigationItem.rightBarButtonItem = scrapBarButton
     }
+    //MARK: SET UP TABLEVIEW
+    func setUpTableView() {
+        self.tableView.setUp(target: self, cell: CommentTableViewCell.self)
+        self.tableView.allowsSelection = false
+//        tableView.estimatedRowHeight = 50
+//        tableView.rowHeight = UITableViewAutomaticDimension
+    }
     
     //MARK: SET UP NAVIGATIONBAR
     func showDeleteButton() {
@@ -66,9 +83,15 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     }
     
     //MARK: SET UP CATEGORYVIEW
-    func setCategoryView() {
+    func setUpCategoryView() {
+        self.categoryView.backgroundColor = .clear
         self.categoryView.font = UIFont.nanumExtraBold(size: 16)
         self.categoryView.category = (emoji: "🤫", title: "익명제보")
+    }
+    
+    //MARK: SET UP CONTENTVIEW
+    func setUpContentView() {
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     //MAKR: ACTION
@@ -80,5 +103,26 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     @objc
     func scrapButtonDidTap() {
         
+    }
+}
+
+//MARK: - EXTENSION
+//MARK: UITABLEVIEWDELEGATE, UITABLEVIEWDATASOURCE
+extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: CommentTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        if indexPath.row == 1 {
+            cell.str = "Note we have also set the tableview’s rowHeight property. By doing so, we have can expect the self-sizing behavior for a cell. Furthermore, I have noticed some developers override heightForRowAtIndexPath to achieve a similar effect. This should be avoided for the following reason."
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }

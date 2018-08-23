@@ -16,6 +16,7 @@ class CommentAccessoryView: UIView {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var nicknameLabel: UILabel!
     
     static var normalHeight: CGFloat = 52
     static var changedHeight: CGFloat = 112
@@ -24,6 +25,10 @@ class CommentAccessoryView: UIView {
         super.awakeFromNib()
         self.thumbnail.layer.cornerRadius = 2
         self.thumbnail.clipsToBounds = true
+        
+        self.textField.font = UIFont.nanumRegular(size: 12)
+        self.textField.tintColor = UIColor.Palette.coral
+        self.nicknameLabel.font = UIFont.nanumRegular(size: 12)
     }
     
     override init(frame: CGRect) {

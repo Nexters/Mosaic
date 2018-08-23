@@ -66,6 +66,10 @@
 		FC62777A212D975A008BAC6F /* CommentAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627779212D975A008BAC6F /* CommentAccessoryView.swift */; };
 		FC62777E212DBF51008BAC6F /* CategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC62777D212DBF51008BAC6F /* CategoryView.xib */; };
 		FC627780212DBF5F008BAC6F /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62777F212DBF5F008BAC6F /* CategoryView.swift */; };
+		FC627789212E364E008BAC6F /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627787212E364E008BAC6F /* CommentTableViewCell.swift */; };
+		FC62778A212E364E008BAC6F /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC627788212E364E008BAC6F /* CommentTableViewCell.xib */; };
+		FC62778D212E477C008BAC6F /* RECommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62778B212E477C008BAC6F /* RECommentTableViewCell.swift */; };
+		FC62778E212E477C008BAC6F /* RECommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC62778C212E477C008BAC6F /* RECommentTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +136,10 @@
 		FC627779212D975A008BAC6F /* CommentAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAccessoryView.swift; sourceTree = "<group>"; };
 		FC62777D212DBF51008BAC6F /* CategoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryView.xib; sourceTree = "<group>"; };
 		FC62777F212DBF5F008BAC6F /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		FC627787212E364E008BAC6F /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		FC627788212E364E008BAC6F /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		FC62778B212E477C008BAC6F /* RECommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RECommentTableViewCell.swift; sourceTree = "<group>"; };
+		FC62778C212E477C008BAC6F /* RECommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RECommentTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +236,7 @@
 		1463943221226ABC00FC601C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FC627786212E363A008BAC6F /* CommentTableViewCell */,
 				FC62777C212DBF42008BAC6F /* CategoryView */,
 				FC06DABA212D622500B3C35B /* MimicPlaceholderView */,
 				FC06DAA8212A5A2200B3C35B /* ImageCollectionViewCell */,
@@ -237,6 +246,7 @@
 				FC06DAAE212A5A3B00B3C35B /* TypeView */,
 				FC06DAC1212D6EA900B3C35B /* VerticallyCenteredTextView */,
 				FC62777B212D9765008BAC6F /* CommentAccessoryView */,
+				FC62778F212E4786008BAC6F /* RECommentTableViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -375,6 +385,24 @@
 			path = CategoryView;
 			sourceTree = "<group>";
 		};
+		FC627786212E363A008BAC6F /* CommentTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FC627787212E364E008BAC6F /* CommentTableViewCell.swift */,
+				FC627788212E364E008BAC6F /* CommentTableViewCell.xib */,
+			);
+			path = CommentTableViewCell;
+			sourceTree = "<group>";
+		};
+		FC62778F212E4786008BAC6F /* RECommentTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FC62778B212E477C008BAC6F /* RECommentTableViewCell.swift */,
+				FC62778C212E477C008BAC6F /* RECommentTableViewCell.xib */,
+			);
+			path = RECommentTableViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -437,6 +465,7 @@
 			files = (
 				146394682122A8C100FC601C /* NanumSquareLight.ttf in Resources */,
 				FC06DAA0212A595C00B3C35B /* Writing.storyboard in Resources */,
+				FC62778E212E477C008BAC6F /* RECommentTableViewCell.xib in Resources */,
 				FC06DAAB212A5A2200B3C35B /* ImageCollectionViewCell.xib in Resources */,
 				143DD4682127F45B00F5979D /* MyPage.storyboard in Resources */,
 				14639429212269E900FC601C /* LaunchScreen.storyboard in Resources */,
@@ -444,6 +473,7 @@
 				141A8A5321282C8700362A47 /* TypeView.xib in Resources */,
 				FC62777E212DBF51008BAC6F /* CategoryView.xib in Resources */,
 				146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */,
+				FC62778A212E364E008BAC6F /* CommentTableViewCell.xib in Resources */,
 				1463945421226B1000FC601C /* Home.storyboard in Resources */,
 				14639426212269E900FC601C /* Assets.xcassets in Resources */,
 				FC06DABE212D624C00B3C35B /* MimicPlaceholderView.xib in Resources */,
@@ -524,6 +554,7 @@
 				1463943D21226AE100FC601C /* String+Size.swift in Sources */,
 				FC62777A212D975A008BAC6F /* CommentAccessoryView.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,
+				FC627789212E364E008BAC6F /* CommentTableViewCell.swift in Sources */,
 				1463945621226B8800FC601C /* HomeViewController.swift in Sources */,
 				FC06DAB1212A5AF000B3C35B /* ImagePickerControllerPresentable.swift in Sources */,
 				FC06DAC0212D62B100B3C35B /* MimicPlaceholderView.swift in Sources */,
@@ -555,6 +586,7 @@
 				1463944221226AE100FC601C /* UIColor+.swift in Sources */,
 				141A8A5721290DE200362A47 /* Me.swift in Sources */,
 				1463944D21226AEC00FC601C /* GradientService.swift in Sources */,
+				FC62778D212E477C008BAC6F /* RECommentTableViewCell.swift in Sources */,
 				FC06DAA2212A597400B3C35B /* WritingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

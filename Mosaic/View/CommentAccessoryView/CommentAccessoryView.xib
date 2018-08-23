@@ -16,6 +16,7 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="FMC-TQ-QBK"/>
                 <outlet property="deleteButton" destination="ZS5-yd-qb4" id="ach-fL-yeN"/>
                 <outlet property="imageButton" destination="Izh-5m-49E" id="AQd-WS-fHC"/>
+                <outlet property="nicknameLabel" destination="Cuf-fN-8H5" id="vVy-Ma-ZNg"/>
                 <outlet property="sendButton" destination="HY1-zr-24e" id="dnd-mg-UAP"/>
                 <outlet property="textField" destination="hM8-Z9-0vy" id="LIw-Pj-lav"/>
                 <outlet property="thumbnail" destination="V6U-Oa-E34" id="4qh-Az-U0T"/>
@@ -60,12 +61,17 @@
                             </constraints>
                             <state key="normal" image="icSendNol"/>
                         </button>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="댓글을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hM8-Z9-0vy">
-                            <rect key="frame" x="71" y="11" width="248" height="30"/>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="댓글을 입력하세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hM8-Z9-0vy">
+                            <rect key="frame" x="146" y="18.5" width="173" height="15"/>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@EWHA0001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuf-fN-8H5">
+                            <rect key="frame" x="69" y="19" width="75" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="1" green="0.3411764705882353" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
                         <constraint firstItem="cMG-5g-FOD" firstAttribute="centerY" secondItem="YC1-tG-XVN" secondAttribute="centerY" id="5Mv-sc-VO8"/>
@@ -75,9 +81,11 @@
                         <constraint firstItem="cMG-5g-FOD" firstAttribute="leading" secondItem="Izh-5m-49E" secondAttribute="trailing" constant="10" id="LqZ-Nc-qSQ"/>
                         <constraint firstAttribute="height" constant="52" id="PEx-tV-wLf"/>
                         <constraint firstAttribute="trailing" secondItem="HY1-zr-24e" secondAttribute="trailing" constant="16" id="SQ3-Wk-mfs"/>
+                        <constraint firstItem="hM8-Z9-0vy" firstAttribute="leading" secondItem="Cuf-fN-8H5" secondAttribute="trailing" constant="2" id="V9s-eO-tYK"/>
+                        <constraint firstItem="Cuf-fN-8H5" firstAttribute="centerY" secondItem="cMG-5g-FOD" secondAttribute="centerY" id="Zwv-wR-eRp"/>
                         <constraint firstItem="HY1-zr-24e" firstAttribute="centerY" secondItem="YC1-tG-XVN" secondAttribute="centerY" id="bFr-Pt-G2U"/>
                         <constraint firstItem="Izh-5m-49E" firstAttribute="leading" secondItem="YC1-tG-XVN" secondAttribute="leading" constant="14" id="f1O-wX-pwP"/>
-                        <constraint firstItem="hM8-Z9-0vy" firstAttribute="leading" secondItem="cMG-5g-FOD" secondAttribute="trailing" constant="16" id="h93-Of-zQF"/>
+                        <constraint firstItem="Cuf-fN-8H5" firstAttribute="leading" secondItem="cMG-5g-FOD" secondAttribute="trailing" constant="14" id="gqr-MU-Oid"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZS5-yd-qb4">

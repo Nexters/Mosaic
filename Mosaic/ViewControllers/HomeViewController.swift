@@ -121,6 +121,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewController = DetailViewController.create(storyboard: "Detail") as? DetailViewController else {return}
+        let navigation = UINavigationController(rootViewController: viewController)
+        self.present(navigation, animated: true, completion: nil)
+    }
+    
 }
 
 open class CardsCollectionViewLayout: UICollectionViewLayout {

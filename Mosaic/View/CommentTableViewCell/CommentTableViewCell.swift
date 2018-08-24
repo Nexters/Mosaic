@@ -13,6 +13,7 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var universityLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var myMimicLableButton: UIButton!
+    @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var replyButton: UIButton!
@@ -22,15 +23,16 @@ class CommentTableViewCell: UITableViewCell {
             self.contentLabel.text = str
         }
     }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpUI()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func setUpUI() {
@@ -46,6 +48,9 @@ class CommentTableViewCell: UITableViewCell {
         self.myMimicLableButton.titleLabel?.font = UIFont.nanumBold(size: 9)
         self.myMimicLableButton.clipsToBounds = true
         self.myMimicLableButton.layer.cornerRadius = 2
+        
+        self.thumbnail.clipsToBounds = true
+        self.thumbnail.layer.cornerRadius = 5
         
         self.replyButton.titleLabel?.font = UIFont.nanumBold(size: 10)
         self.replyButton.layer.borderWidth = 1

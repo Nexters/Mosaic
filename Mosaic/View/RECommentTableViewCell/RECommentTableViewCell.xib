@@ -6,20 +6,117 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RECommentTableViewCell" id="KGk-i7-Jjw" customClass="RECommentTableViewCell" customModule="Mosaic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RECommentTableViewCell" rowHeight="246" id="KGk-i7-Jjw" customClass="RECommentTableViewCell" customModule="Mosaic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="463" height="246"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="463" height="245.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icYonseiUnivIos" translatesAutoresizingMaskIntoConstraints="NO" id="7b4-I7-e04">
+                        <rect key="frame" x="68" y="27" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="B0f-sK-xSJ"/>
+                            <constraint firstAttribute="width" secondItem="7b4-I7-e04" secondAttribute="height" multiplier="1:1" id="ct7-7R-q67"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이화여자대학교" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4x1-w9-GQm">
+                        <rect key="frame" x="96" y="30" width="73" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYm-NM-zxE">
+                        <rect key="frame" x="173" y="32.5" width="1" height="10"/>
+                        <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="8uU-eb-hfm"/>
+                            <constraint firstAttribute="width" constant="1" id="ppz-Gb-tow"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EWHA0001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDn-w6-vv3">
+                        <rect key="frame" x="178" y="30.5" width="64" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVb-Pv-ZJd">
+                        <rect key="frame" x="96" y="178" width="320" height="18"/>
+                        <string key="text">비걸은 안되나요? 댄스하나는 자신 있습니다. 이화여자대학교 
+힙합 댄스팀 플라이입니다. 연락주세요!</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="1시간 전" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ir8-Sa-VwQ">
+                        <rect key="frame" x="96" y="207" width="34" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mlv-rD-ley">
+                        <rect key="frame" x="248" y="31.5" width="21" height="13"/>
+                        <color key="backgroundColor" red="0.1764705882" green="0.1960784314" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <inset key="contentEdgeInsets" minX="3" minY="1" maxX="3" maxY="1"/>
+                        <state key="normal" title="MY">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgBackKoreauniv" translatesAutoresizingMaskIntoConstraints="NO" id="AvJ-gz-Tvt">
+                        <rect key="frame" x="96" y="56" width="110" height="110"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="110" id="Wkm-3h-0Cu"/>
+                            <constraint firstAttribute="width" secondItem="AvJ-gz-Tvt" secondAttribute="height" multiplier="1:1" id="qL6-iR-TyW"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="fVb-Pv-ZJd" firstAttribute="leading" secondItem="4x1-w9-GQm" secondAttribute="leading" id="2Wy-yV-LHQ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="fVb-Pv-ZJd" secondAttribute="trailing" constant="27" id="9jD-Vh-KhD"/>
+                    <constraint firstItem="AvJ-gz-Tvt" firstAttribute="top" secondItem="4x1-w9-GQm" secondAttribute="bottom" constant="12" id="DJz-xq-3zC"/>
+                    <constraint firstItem="AvJ-gz-Tvt" firstAttribute="width" secondItem="AvJ-gz-Tvt" secondAttribute="height" multiplier="1:1" id="GPj-KJ-CCW"/>
+                    <constraint firstItem="PYm-NM-zxE" firstAttribute="centerY" secondItem="4x1-w9-GQm" secondAttribute="centerY" id="KU5-Gh-qsA"/>
+                    <constraint firstItem="bDn-w6-vv3" firstAttribute="leading" secondItem="PYm-NM-zxE" secondAttribute="trailing" constant="4" id="MYo-g9-NwR"/>
+                    <constraint firstItem="bDn-w6-vv3" firstAttribute="centerY" secondItem="PYm-NM-zxE" secondAttribute="centerY" id="Qxj-n3-EYc"/>
+                    <constraint firstItem="4x1-w9-GQm" firstAttribute="centerY" secondItem="7b4-I7-e04" secondAttribute="centerY" id="e9F-7F-Ti8"/>
+                    <constraint firstItem="bDn-w6-vv3" firstAttribute="centerY" secondItem="Mlv-rD-ley" secondAttribute="centerY" id="hY9-I3-JQn"/>
+                    <constraint firstItem="7b4-I7-e04" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="48" id="iEp-HL-d5N"/>
+                    <constraint firstItem="AvJ-gz-Tvt" firstAttribute="leading" secondItem="4x1-w9-GQm" secondAttribute="leading" id="jPO-La-by5"/>
+                    <constraint firstItem="4x1-w9-GQm" firstAttribute="leading" secondItem="7b4-I7-e04" secondAttribute="trailing" constant="8" id="kKa-LI-4g9"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Ir8-Sa-VwQ" secondAttribute="bottom" constant="16" id="nlm-4q-5WD"/>
+                    <constraint firstItem="7b4-I7-e04" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="q30-K6-Mks"/>
+                    <constraint firstItem="Mlv-rD-ley" firstAttribute="leading" secondItem="bDn-w6-vv3" secondAttribute="trailing" constant="6" id="qTU-C1-UGl"/>
+                    <constraint firstItem="Ir8-Sa-VwQ" firstAttribute="leading" secondItem="fVb-Pv-ZJd" secondAttribute="leading" id="ruS-bu-egZ"/>
+                    <constraint firstItem="fVb-Pv-ZJd" firstAttribute="top" secondItem="AvJ-gz-Tvt" secondAttribute="bottom" constant="12" id="v1a-US-VEU"/>
+                    <constraint firstItem="PYm-NM-zxE" firstAttribute="leading" secondItem="4x1-w9-GQm" secondAttribute="trailing" constant="4" id="v3G-ep-QiX"/>
+                    <constraint firstItem="Ir8-Sa-VwQ" firstAttribute="top" secondItem="fVb-Pv-ZJd" secondAttribute="bottom" constant="11" id="wtz-a3-LnA"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="contentLabel" destination="fVb-Pv-ZJd" id="2LT-bb-CkF"/>
+                <outlet property="myMimicLableButton" destination="Mlv-rD-ley" id="IXX-l8-tZJ"/>
+                <outlet property="nicknameLabel" destination="bDn-w6-vv3" id="tx9-Ia-0tt"/>
+                <outlet property="thumbnail" destination="AvJ-gz-Tvt" id="wBI-ST-Nxu"/>
+                <outlet property="timeLabel" destination="Ir8-Sa-VwQ" id="iiT-mD-ba1"/>
+                <outlet property="universityLabel" destination="4x1-w9-GQm" id="RgQ-FD-5Dz"/>
+                <outlet property="universityLogoImageView" destination="7b4-I7-e04" id="tWg-A1-fLZ"/>
+            </connections>
+            <point key="canvasLocation" x="105.5" y="155"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icYonseiUnivIos" width="52" height="52"/>
+        <image name="imgBackKoreauniv" width="460" height="640"/>
+    </resources>
 </document>

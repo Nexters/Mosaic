@@ -9,16 +9,43 @@
 import UIKit
 
 class RECommentTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var universityLogoImageView: UIImageView!
+    @IBOutlet weak var universityLabel: UILabel!
+    @IBOutlet weak var nicknameLabel: UILabel!
+    @IBOutlet weak var myMimicLableButton: UIButton!
+    @IBOutlet weak var thumbnail: UIImageView!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    var str: String? {
+        didSet {
+            self.contentLabel.text = str
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setUpUI()
+    }
+    
+    func setUpUI() {
+        self.universityLogoImageView.clipsToBounds = true
+        self.universityLabel.font = UIFont.nanumBold(size: 12)
+        
+        self.nicknameLabel.font = UIFont.nanumRegular(size: 12)
+        
+        self.contentLabel.font = UIFont.nanumRegular(size: 12)
+        
+        self.timeLabel.font = UIFont.nanumRegular(size: 10)
+        
+        self.myMimicLableButton.titleLabel?.font = UIFont.nanumBold(size: 9)
+        self.myMimicLableButton.clipsToBounds = true
+        self.myMimicLableButton.layer.cornerRadius = 2
+        
+        self.thumbnail.clipsToBounds = true
+        self.thumbnail.layer.cornerRadius = 5
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
 }

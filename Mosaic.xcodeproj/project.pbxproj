@@ -70,6 +70,8 @@
 		FC62778A212E364E008BAC6F /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC627788212E364E008BAC6F /* CommentTableViewCell.xib */; };
 		FC62778D212E477C008BAC6F /* RECommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62778B212E477C008BAC6F /* RECommentTableViewCell.swift */; };
 		FC62778E212E477C008BAC6F /* RECommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC62778C212E477C008BAC6F /* RECommentTableViewCell.xib */; };
+		FC627791212F8C6C008BAC6F /* PagingImageCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC627790212F8C6C008BAC6F /* PagingImageCollectionView.xib */; };
+		FC627793212F8C7C008BAC6F /* PagingImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +142,8 @@
 		FC627788212E364E008BAC6F /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		FC62778B212E477C008BAC6F /* RECommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RECommentTableViewCell.swift; sourceTree = "<group>"; };
 		FC62778C212E477C008BAC6F /* RECommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RECommentTableViewCell.xib; sourceTree = "<group>"; };
+		FC627790212F8C6C008BAC6F /* PagingImageCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagingImageCollectionView.xib; sourceTree = "<group>"; };
+		FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingImageCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,7 +240,6 @@
 		1463943221226ABC00FC601C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FC627786212E363A008BAC6F /* CommentTableViewCell */,
 				FC62777C212DBF42008BAC6F /* CategoryView */,
 				FC06DABA212D622500B3C35B /* MimicPlaceholderView */,
 				FC06DAA8212A5A2200B3C35B /* ImageCollectionViewCell */,
@@ -246,7 +249,9 @@
 				FC06DAAE212A5A3B00B3C35B /* TypeView */,
 				FC06DAC1212D6EA900B3C35B /* VerticallyCenteredTextView */,
 				FC62777B212D9765008BAC6F /* CommentAccessoryView */,
+				FC627786212E363A008BAC6F /* CommentTableViewCell */,
 				FC62778F212E4786008BAC6F /* RECommentTableViewCell */,
+				FC627794212F8C95008BAC6F /* PagingImageCollectionView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -403,6 +408,15 @@
 			path = RECommentTableViewCell;
 			sourceTree = "<group>";
 		};
+		FC627794212F8C95008BAC6F /* PagingImageCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				FC627790212F8C6C008BAC6F /* PagingImageCollectionView.xib */,
+				FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */,
+			);
+			path = PagingImageCollectionView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -470,6 +484,7 @@
 				143DD4682127F45B00F5979D /* MyPage.storyboard in Resources */,
 				14639429212269E900FC601C /* LaunchScreen.storyboard in Resources */,
 				143DD4762128073900F5979D /* FilterCollectionViewCell.xib in Resources */,
+				FC627791212F8C6C008BAC6F /* PagingImageCollectionView.xib in Resources */,
 				141A8A5321282C8700362A47 /* TypeView.xib in Resources */,
 				FC62777E212DBF51008BAC6F /* CategoryView.xib in Resources */,
 				146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */,
@@ -551,6 +566,7 @@
 			files = (
 				143DD46E2127FDD400F5979D /* FilterViewController.swift in Sources */,
 				141A8A512128278200362A47 /* SearchResultViewController.swift in Sources */,
+				FC627793212F8C7C008BAC6F /* PagingImageCollectionView.swift in Sources */,
 				1463943D21226AE100FC601C /* String+Size.swift in Sources */,
 				FC62777A212D975A008BAC6F /* CommentAccessoryView.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,

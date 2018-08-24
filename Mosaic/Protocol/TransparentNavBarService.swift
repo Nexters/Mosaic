@@ -2,6 +2,7 @@ import UIKit
 
 protocol TransparentNavBarService: class {
 }
+
 extension TransparentNavBarService where Self: UIViewController {
     func transparentNavigationBar(shadowImage: UIImage? = nil) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)

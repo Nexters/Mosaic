@@ -14,7 +14,6 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var categoryView: CategoryView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var contentView: UIView!
     
     var scrapBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icScrapNol"),
                                                           style: .plain,
@@ -34,13 +33,17 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         setUpNavigationBar()
         setUpCategoryView()
         setUpTableView()
-        setUpContentView()
-//        self.accessoryViewHeight.constant = CommentAccessoryView.changedHeight
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        guard let headerView = tableView.tableHeaderView else {return }
+        let size = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        if headerView.frame.size.height != size.height {
+            headerView.frame.size.height = size.height
+            tableView.tableHeaderView = headerView
+            tableView.layoutIfNeeded()
+        }
     }
     //MARK: SET UP KEYBOARD
     func setUpKeyboard() {
@@ -62,19 +65,22 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     //MARK: SET UP NAVIGATIONBAR
     func setUpNavigationBar() {
         self.transparentNavigationBar()
+        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icClose"),
                                                                 style: .plain,
                                                                 target: self,
                                                                 action: #selector(closeButtonDidTap))
         
         self.navigationItem.rightBarButtonItem = scrapBarButton
+        
     }
     //MARK: SET UP TABLEVIEW
     func setUpTableView() {
         self.tableView.setUp(target: self, cell: CommentTableViewCell.self)
+        self.tableView.setUp(target: self, cell: RECommentTableViewCell.self)
         self.tableView.allowsSelection = false
-//        tableView.estimatedRowHeight = 50
-//        tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 50
+        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     //MARK: SET UP NAVIGATIONBAR
@@ -85,13 +91,8 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     //MARK: SET UP CATEGORYVIEW
     func setUpCategoryView() {
         self.categoryView.backgroundColor = .clear
-        self.categoryView.font = UIFont.nanumExtraBold(size: 16)
         self.categoryView.category = (emoji: "🤫", title: "익명제보")
-    }
-    
-    //MARK: SET UP CONTENTVIEW
-    func setUpContentView() {
-        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.categoryView.setUp()
     }
     
     //MAKR: ACTION
@@ -111,18 +112,20 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: CommentTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         if indexPath.row == 1 {
-            cell.str = "Note we have also set the tableview’s rowHeight property. By doing so, we have can expect the self-sizing behavior for a cell. Furthermore, I have noticed some developers override heightForRowAtIndexPath to achieve a similar effect. This should be avoided for the following reason."
+            let recell: RECommentTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            recell.str = "Note we have also set the tableview’s rowHeight property. By doing so, we have can expect the self-sizing behavior for a cell. Furthermore, I have noticed some developers override heightForRowAtIndexPath to achieve a similar effect. This should be avoided for the following reason."
+            return recell
         }
-        return cell
+        else {
+            let cell: CommentTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
+    
+    
 }

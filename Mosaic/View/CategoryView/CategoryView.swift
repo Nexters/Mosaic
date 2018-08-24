@@ -22,8 +22,6 @@ class CategoryView: UIView {
 //    var text: String?
     @IBInspectable
     var textColor: UIColor? = UIColor(hex: "#474747")
-    lazy
-    var font: UIFont = self.label.font
     var category: Category?
     
     override init(frame: CGRect) {
@@ -46,8 +44,8 @@ class CategoryView: UIView {
         self.highlightView.backgroundColor = self.highlightColor
     }
     
-    func setup(fontSize: CGFloat = 16) {
-        self.label.font = UIFont.nanumExtraBold(size: fontSize)
+    func setUp(font: UIFont = UIFont.nanumExtraBold(size: 16)) {
+        self.label.font = font
         
     }
     
@@ -57,12 +55,8 @@ class CategoryView: UIView {
         if let category = self.category {
             self.label.text = category.title + category.emoji
         }
-        self.label.font = self.font
         self.label.textColor = self.textColor
         self.highlightViewHeightConstrinat.constant = self.highlighHeight
     }
-    
-    func setCategory(_ category: Category) {
-        
-    }
+
 }

@@ -103,7 +103,7 @@ extension WritingFilterViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.reuseIdentifier, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(data: self.categories[indexPath.item])
+        //cell.configure(data: self.categories[indexPath.item])
         cell.setColor(.writing)
         return cell
     }

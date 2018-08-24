@@ -12,11 +12,13 @@ enum ColorPalette {
     static let searchView = UIColor(hex: "#e62f12")
 }
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, HomeDelegate {
+    
 
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var articles: [Article]?
+    var categories: [String: String] = [:]
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -38,7 +40,17 @@ class HomeViewController: UIViewController {
         
         self.setNeedsStatusBarAppearanceUpdate()
         
-        ApiManager.shared.getMyProfile()
+        ApiManager.shared.requestHomeArticles { (code, articles) in
+            if code == 200 {
+                self.articles = articles
+                self.collectionView.reloadData()
+            }
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     @objc
@@ -91,13 +103,11 @@ class HomeViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        let xib = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
-        self.collectionView.register(xib, forCellWithReuseIdentifier: "HomeCollectionViewCell")
-        
         self.collectionView.isPagingEnabled = true
         self.collectionView.showsHorizontalScrollIndicator = false
         
         self.collectionView.backgroundColor = .clear
+        self.collectionView.layer.cornerRadius = 2
     }
     
     @IBAction func writeButtonDidTap(_ sender: UIButton) {
@@ -106,18 +116,29 @@ class HomeViewController: UIViewController {
         self.present(navigation, animated: true, completion: nil)
     }
     
+    func goToComment() {
+        //FIXME: -
+    }
+    
+    func bookmarkButtondDidTap(cell: HomeCollectionViewCell, isScraped: Bool) {
+        guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
+        
+        ApiManager.shared.updateBookMark(type: isScraped ? .delete : .add, article: self.articles![indexPath.item]) { (code, article) in
+            print(code, article)
+        }
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.articles?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
-        cell.configure()
-        
+        cell.configure(article: self.articles?[indexPath.row])
+        cell.delegate = self
         return cell
     }
     

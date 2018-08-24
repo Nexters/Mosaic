@@ -37,7 +37,6 @@
 		1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944521226AEC00FC601C /* ShadowRoundService.swift */; };
 		1463944D21226AEC00FC601C /* GradientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944721226AEC00FC601C /* GradientService.swift */; };
 		1463944E21226AEC00FC601C /* KeyboardControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944821226AEC00FC601C /* KeyboardControlService.swift */; };
-		1463945121226AFB00FC601C /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */; };
 		1463945221226AFB00FC601C /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */; };
 		1463945421226B1000FC601C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1463945321226B1000FC601C /* Home.storyboard */; };
 		1463945621226B8800FC601C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463945521226B8800FC601C /* HomeViewController.swift */; };
@@ -45,6 +44,7 @@
 		146394672122A8C100FC601C /* NanumSquareExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146394622122A8BD00FC601C /* NanumSquareExtraBold.ttf */; };
 		146394682122A8C100FC601C /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146394632122A8BD00FC601C /* NanumSquareLight.ttf */; };
 		146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146394652122A8BD00FC601C /* NanumSquareRegular.ttf */; };
+		14812FE9212BF9F2004AC6F5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14812FE8212BF9F2004AC6F5 /* Category.swift */; };
 		3D62673548BC0C0A4027AE41 /* Pods_Mosaic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736F2222DA5719142B55CF54 /* Pods_Mosaic.framework */; };
 		FC06DA9E212A505A00B3C35B /* TableCollectionView + SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DA9D212A505A00B3C35B /* TableCollectionView + SetUp.swift */; };
 		FC06DAA0212A595C00B3C35B /* Writing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC06DA9F212A595C00B3C35B /* Writing.storyboard */; };
@@ -108,7 +108,6 @@
 		1463944521226AEC00FC601C /* ShadowRoundService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowRoundService.swift; sourceTree = "<group>"; };
 		1463944721226AEC00FC601C /* GradientService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientService.swift; sourceTree = "<group>"; };
 		1463944821226AEC00FC601C /* KeyboardControlService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardControlService.swift; sourceTree = "<group>"; };
-		1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		1463945321226B1000FC601C /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		1463945521226B8800FC601C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		146394632122A8BD00FC601C /* NanumSquareLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareLight.ttf; sourceTree = "<group>"; };
 		146394642122A8BD00FC601C /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
 		146394652122A8BD00FC601C /* NanumSquareRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRegular.ttf; sourceTree = "<group>"; };
+		14812FE8212BF9F2004AC6F5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5196FD7F98DEDB51AC5EC75E /* Pods-Mosaic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosaic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mosaic/Pods-Mosaic.release.xcconfig"; sourceTree = "<group>"; };
 		6FE8D32E4799239E2FBEBA77 /* Pods-Mosaic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosaic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mosaic/Pods-Mosaic.debug.xcconfig"; sourceTree = "<group>"; };
 		736F2222DA5719142B55CF54 /* Pods_Mosaic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mosaic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +166,7 @@
 				14587D792122D9C100F13CCA /* Post.swift */,
 				141A8A5621290DE200362A47 /* Me.swift */,
 				141A8A582129146E00362A47 /* ApiManager.swift */,
+				14812FE8212BF9F2004AC6F5 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,7 +336,6 @@
 		FC06DAAD212A5A2900B3C35B /* HomeCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */,
 				1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */,
 			);
 			path = HomeCollectionViewCell;
@@ -501,7 +501,6 @@
 				14639424212269E800FC601C /* Main.storyboard in Resources */,
 				FC627774212D9028008BAC6F /* Detail.storyboard in Resources */,
 				146394662122A8C100FC601C /* NanumSquareBold.ttf in Resources */,
-				1463945121226AFB00FC601C /* HomeCollectionViewCell.xib in Resources */,
 				141A8A4D212813D400362A47 /* Search.storyboard in Resources */,
 				FC627778212D974B008BAC6F /* CommentAccessoryView.xib in Resources */,
 			);
@@ -608,6 +607,7 @@
 				1463944D21226AEC00FC601C /* GradientService.swift in Sources */,
 				FC62778D212E477C008BAC6F /* RECommentTableViewCell.swift in Sources */,
 				FC06DAA2212A597400B3C35B /* WritingViewController.swift in Sources */,
+				14812FE9212BF9F2004AC6F5 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

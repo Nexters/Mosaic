@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     var articles: [Article]?
+    var categories: [String: String] = [:]
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -45,6 +46,10 @@ class HomeViewController: UIViewController {
             }
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     @objc
@@ -101,6 +106,7 @@ class HomeViewController: UIViewController {
         self.collectionView.showsHorizontalScrollIndicator = false
         
         self.collectionView.backgroundColor = .clear
+        self.collectionView.layer.cornerRadius = 2
     }
     
     @IBAction func writeButtonDidTap(_ sender: UIButton) {

@@ -16,22 +16,27 @@ extension ColorPalette {
 
 class HomeCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var descriptionLabelHeight: NSLayoutConstraint!
     @IBOutlet weak var typeView: UIView!
-    @IBOutlet weak var collegeContainerView: UIView!
+    @IBOutlet weak var commentContainerView: UIView!
     @IBOutlet weak var collegeImageView: UIImageView!
     @IBOutlet weak var collegeNameLabel: UILabel!
     
     @IBOutlet weak var commentImageView: UIImageView!
     @IBOutlet weak var commentLabel: UILabel!
     
+    @IBOutlet weak var imageCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var bookMarkContainerView: UIView!
     @IBOutlet weak var bookMarkImageView: UIImageView!
     @IBOutlet weak var bookMarkLabel: UILabel!
     
     @IBOutlet weak var lineView: UIView!
+    
+    var imageUrls: [String] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,6 +51,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 2
         self.lineView.backgroundColor = UIColor(hex: "#dbdbdb")
     }
+    override func prepareForReuse() {
+        self.setupCollectioView()
+    }
     
     func setupTopView() {
         self.setupTopLabels()
@@ -53,6 +61,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         typeView.setup()
         typeView.configure(title: "공모전🏆")
         self.typeView.addSubview(typeView)
+        self.setupCollectioView()
         
     }
     
@@ -68,25 +77,25 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     func setupContainerViews() {
-        self.collegeContainerView.backgroundColor = ColorPalette.collegeContainer
+        self.commentContainerView.backgroundColor = ColorPalette.collegeContainer
         self.bookMarkContainerView.backgroundColor = ColorPalette.bookmarkContainer
         
-        self.collegeContainerView.layer.cornerRadius = 2
+        self.commentContainerView.layer.cornerRadius = 2
         self.bookMarkContainerView.layer.cornerRadius = 2
     }
     
+    func setupCollectioView() {
+        self.imageCollectionView.delegate = self
+        self.imageCollectionView.dataSource = self
+    }
+    
     func setupBottomeLabels() {
-      
-        
-        // FIXME: - 모델에서 가져온 값.
-        
-        // logic: 내가 스크랩한 글인지 판단하는 필드 있어야ㅕ함.
+
     }
     
     
     func configure(article: Article?) {
         guard let article = article else { return }
-        
         let attribute: [NSAttributedStringKey: Any] = [
             .font: UIFont.nanumBold(size: 10),
             .foregroundColor: ColorPalette.subText
@@ -106,11 +115,73 @@ class HomeCollectionViewCell: UICollectionViewCell {
         ]
         
         self.descriptionLabel.attributedText = NSAttributedString(string: article.content ?? "", attributes: descriptionAttributes)
-        
+        self.imageUrls = article.imageUrls ?? []
+
         if article.imageUrls?.isEmpty == true {
-            
+            self.descriptionLabelHeight.constant = 160
+            self.imageCollectionViewHeight.constant = 0
+            self.imageCollectionView.reloadData()
+
         } else {
-            
+            self.descriptionLabelHeight.constant = 124
+            self.imageCollectionViewHeight.constant = 40
+            self.imageCollectionView.reloadData()
+
+        }
+    }
+}
+extension HomeCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(min(3, self.imageUrls.count))
+        return min(3, self.imageUrls.count)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeImageCollectionViewCell.reuseIdentifier, for: indexPath) as? HomeImageCollectionViewCell else { return UICollectionViewCell() }
+        if indexPath.item == 2 && self.imageUrls.count > 3{
+            cell.configure(urls: self.imageUrls[indexPath.row], isBlured: true, count: self.imageUrls.count - 3)
+        } else {
+             cell.configure(urls: self.imageUrls[indexPath.row])
+        }
+
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 40, height: 40)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 6
+    }
+}
+class HomeImageCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var articleImageView: UIImageView!
+    
+    override func awakeFromNib() {
+        self.blurView.isHidden = true
+        self.countLabel.isHidden = true
+        self.layer.cornerRadius = 2
+        super.awakeFromNib()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
+    func configure(urls: String, isBlured: Bool = false, count: Int = 0) {
+        let url = URL(string: urls)
+        self.articleImageView.kf.setImage(with: url)
+        
+        if isBlured {
+            self.blurView.isHidden = false
+            self.countLabel.isHidden = false
+            self.countLabel.text = "+\(count)"
+        } else {
+            self.blurView.isHidden = true
+            self.countLabel.isHidden = true
         }
     }
 }

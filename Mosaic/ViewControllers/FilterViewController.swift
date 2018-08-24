@@ -7,14 +7,18 @@
 //
 
 import UIKit
-
+//protocol FilterDataSource {
+//    var categories: [String: String] { get set }
+//}
 class FilterViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+
     
     static func create() -> FilterViewController? {
         return UIStoryboard(name: "Filter", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? FilterViewController
     }
+    var categories: [Categories] = []
     
     var typeTuple: [(emoji: String, title: String)] = [
        (emoji: "🤫", title: "익명제보"),
@@ -38,6 +42,11 @@ class FilterViewController: UIViewController {
         self.setupCollectionView()
         
         self.setupBackgroundView()
+        
+        ApiManager.shared.requestCategories { (code, categories) in
+            self.categories = categories ?? []
+            self.collectionView.reloadData()
+        }
         
     }
     
@@ -76,12 +85,12 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return self.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.reuseIdentifier, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(data: self.typeTuple[indexPath.item])
+        cell.configure(data: self.categories[indexPath.item])
         cell.setColor(.home)
         return cell
     }
@@ -100,6 +109,7 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
             self.collectionView.deselectItem(at: indexPath, animated: true)
         } else {
             self.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+            //self.categories.updateValue(self.typ, forKey: "categories")
         }
         return false
     }
@@ -109,6 +119,7 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
 enum FilterType {
     case home, writing
 }
+
 class FilterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var emojiLabel: UILabel!
@@ -145,9 +156,9 @@ class FilterCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
     }
     
-    func configure(data: (emoji: String, title: String)) {
+    func configure(data: Categories) {
         self.emojiLabel.text = data.emoji
-        self.titleLabel.text = data.title
+        self.titleLabel.text = data.name
     }
     
     func setColor(_ type: FilterType) {

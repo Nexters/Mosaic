@@ -37,7 +37,6 @@
 		1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944521226AEC00FC601C /* ShadowRoundService.swift */; };
 		1463944D21226AEC00FC601C /* GradientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944721226AEC00FC601C /* GradientService.swift */; };
 		1463944E21226AEC00FC601C /* KeyboardControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463944821226AEC00FC601C /* KeyboardControlService.swift */; };
-		1463945121226AFB00FC601C /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */; };
 		1463945221226AFB00FC601C /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */; };
 		1463945421226B1000FC601C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1463945321226B1000FC601C /* Home.storyboard */; };
 		1463945621226B8800FC601C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463945521226B8800FC601C /* HomeViewController.swift */; };
@@ -96,7 +95,6 @@
 		1463944521226AEC00FC601C /* ShadowRoundService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowRoundService.swift; sourceTree = "<group>"; };
 		1463944721226AEC00FC601C /* GradientService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientService.swift; sourceTree = "<group>"; };
 		1463944821226AEC00FC601C /* KeyboardControlService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardControlService.swift; sourceTree = "<group>"; };
-		1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		1463945321226B1000FC601C /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		1463945521226B8800FC601C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -304,7 +302,6 @@
 		FC06DAAD212A5A2900B3C35B /* HomeCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				1463944F21226AFB00FC601C /* HomeCollectionViewCell.xib */,
 				1463945021226AFB00FC601C /* HomeCollectionViewCell.swift */,
 			);
 			path = HomeCollectionViewCell;
@@ -420,7 +417,6 @@
 				143DD46C2127FDC500F5979D /* Filter.storyboard in Resources */,
 				14639424212269E800FC601C /* Main.storyboard in Resources */,
 				146394662122A8C100FC601C /* NanumSquareBold.ttf in Resources */,
-				1463945121226AFB00FC601C /* HomeCollectionViewCell.xib in Resources */,
 				141A8A4D212813D400362A47 /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

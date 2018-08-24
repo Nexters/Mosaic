@@ -48,6 +48,24 @@ class ResultArray: Mappable {
     }
     
 }
+class ResutlCategories: Mappable {
+    var status: Int = 0
+    var message: String?
+    var code: Int = 0
+    var result: [Categories]?
+    
+    func mapping(map: Map) {
+        status <- map["httpStatus"]
+        message <- map["message"]
+        code <- map["responseCode"]
+        result <- map["result"]
+    }
+    
+    required init?(map: Map) {
+        self.mapping(map: map)
+    }
+    
+}
 
 class Me: Mappable {
     var uuid: String = ""
@@ -134,7 +152,7 @@ class Article: Mappable {
         content <- map["content"]
         createdAt <- map["createdAt"]
         idx <- map["idx"]
-        imageUrls <- map["imageUrls"]
+        imageUrls <- map["imgUrls"]
         replies <- map["replies"]
         isScraped <- map["scrap"]
         thumbnailUrls <- map["thumbnailUrls"]

@@ -41,8 +41,7 @@ class ApiManager {
     
     func requestHomeArticles(completion: @escaping (_ code: Int?, _ response: [Article]?) -> Void) {
         let url = "\(self.url)/apis/scripts"
-        Alamofire.request(url, method: .get, parameters: nil, headers: ["Authorization": self.token]).responseObject { (response: DataResponse<ResultArray>) in
-            print(response.response?.statusCode)
+        Alamofire.request(url, method: .get, parameters: [:], headers: ["Authorization": self.token]).responseObject { (response: DataResponse<ResultArray>) in
             let articles = response.result.value?.result
             completion(response.response?.statusCode, articles)
         }
@@ -64,8 +63,12 @@ class ApiManager {
         }
     }
     
-    func requestSearchArticles() {
-         let url = "\(self.url)/apis/scripts/search"
+    func requestCategories(completion: @escaping (_ code: Int?, _ response: [Categories]?) -> Void) {
+        let url = "\(self.url)/categories"
+        Alamofire.request(url, method: .get).responseObject { (response: DataResponse<ResutlCategories>) in
+            let categories = response.result.value?.result
+            completion(response.response?.statusCode, categories)
+        }
     }
 }
 

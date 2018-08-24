@@ -14,12 +14,9 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var searchView: UIView!
     
-    var recentKeyword: [String] = [
-        "이화여자대학교 인근 맛집", "사용자조사방법론", "인포메이션아키텍쳐", "전성진 교수님 수업 분위기", "이대 주변 스터디룸"
-    ]
-    
     @IBOutlet weak var tableView: UITableView!
     
+    var recentKeyword: [String] = []
     static func create() -> SearchViewController? {
         return UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? SearchViewController
     }
@@ -32,10 +29,14 @@ class SearchViewController: UIViewController {
         self.setupTableView()
         
         self.view.backgroundColor = UIColor(hex: "#ff573d")
-       
+        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        self.setupRecentKeyword()
+        
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -67,6 +68,12 @@ class SearchViewController: UIViewController {
         self.tableView.backgroundColor = UIColor(hex: "#ff573d")
     }
     
+    func setupRecentKeyword() {
+        self.recentKeyword = UserDefaults.standard.array(forKey: "recentKeyword") as? [String] ?? []
+        self.recentKeyword.reverse()
+        self.tableView.reloadData()
+    }
+    
     @IBAction func cancelButtonDidTap(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }
@@ -75,7 +82,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.recentKeyword.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,12 +94,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewController = SearchResultViewController.create(type: .search(keyword: self.recentKeyword[indexPath.row]), article: nil) else { return }
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let viewController = SearchResultViewController.create(type: .search(keyword: textField.text ?? ""), article: nil) else { return false }
+        guard let text = textField.text else { return false }
+        if !text.isEmpty, !self.recentKeyword.contains(text) { self.recentKeyword.append(text) }
         self.navigationController?.pushViewController(viewController, animated: true)
+        UserDefaults.standard.set(self.recentKeyword, forKey: "recentKeyword")
         return true
     }
 }

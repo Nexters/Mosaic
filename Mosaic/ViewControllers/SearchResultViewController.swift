@@ -62,6 +62,13 @@ class SearchResultViewController: UIViewController {
     
     func requestArticles() {
         switch self.type! {
+        case .search:
+            ApiManager.shared.requestArticle(at: self.searchKeyowrd) { (code, articles) in
+                if code == 200 {
+                    self.articles = articles
+                    self.tableView.reloadData()
+                }
+            }
         case .scrap:
             ApiManager.shared.requestMyScraps { (code, articles) in
                 if code == 200 {
@@ -76,10 +83,8 @@ class SearchResultViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             }
-        default:
-            return 
+
         }
-        self.tableView.reloadData()
 
     }
     

@@ -97,9 +97,6 @@ class HomeViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        let xib = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
-        self.collectionView.register(xib, forCellWithReuseIdentifier: "HomeCollectionViewCell")
-        
         self.collectionView.isPagingEnabled = true
         self.collectionView.showsHorizontalScrollIndicator = false
         

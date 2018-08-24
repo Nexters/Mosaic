@@ -40,9 +40,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFR-mT-EzF">
-                                        <rect key="frame" x="25" y="97" width="267" height="160"/>
+                                        <rect key="frame" x="25" y="97" width="267" height="124"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="Q5D-2G-wJN"/>
+                                            <constraint firstAttribute="height" constant="124" id="Q5D-2G-wJN"/>
                                         </constraints>
                                         <string key="text">안녕하세요. IT 연합동아리 넥스터즈 입니다.
 넥스터즈 내 사진 소모임을 함께 하실 디자이너 분들을 모십니다. 모임은 매주 일요일 오후
@@ -59,30 +59,37 @@
                                             <constraint firstAttribute="width" constant="68" id="fEa-pN-djW"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tfF-24-0FB">
-                                        <rect key="frame" x="58" y="246" width="720" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="tfF-24-0FB">
+                                        <rect key="frame" x="92" y="233" width="132" height="40"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gyg-h1-8YJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gyg-h1-8YJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Fsu-Be-LEZ"/>
+                                                </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0q-p0-PLg">
-                                                <rect key="frame" x="240" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q0q-p0-PLg">
+                                                <rect key="frame" x="46" y="0.0" width="40" height="40"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSf-WZ-sYL">
-                                                <rect key="frame" x="480" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cSf-WZ-sYL">
+                                                <rect key="frame" x="92" y="0.0" width="40" height="40"/>
                                             </imageView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="h2v-Ff-5Wg"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="tfF-24-0FB" firstAttribute="top" secondItem="hFR-mT-EzF" secondAttribute="bottom" constant="12" id="2pL-xP-qEj"/>
                                     <constraint firstItem="hFR-mT-EzF" firstAttribute="top" secondItem="41j-06-o5x" secondAttribute="bottom" constant="7" id="R5c-YK-fy3"/>
                                     <constraint firstItem="41j-06-o5x" firstAttribute="top" secondItem="FTw-Ca-2CF" secondAttribute="bottom" constant="27" id="XV2-DD-6i8"/>
                                     <constraint firstItem="FTw-Ca-2CF" firstAttribute="centerX" secondItem="JjE-1N-gLh" secondAttribute="centerX" id="gRv-SJ-W9O"/>
                                     <constraint firstItem="41j-06-o5x" firstAttribute="centerX" secondItem="JjE-1N-gLh" secondAttribute="centerX" id="mJX-et-6lc"/>
                                     <constraint firstItem="hFR-mT-EzF" firstAttribute="leading" secondItem="JjE-1N-gLh" secondAttribute="leading" constant="25" id="pY2-hX-FBu"/>
                                     <constraint firstAttribute="height" constant="300" id="pir-Ug-8g1"/>
+                                    <constraint firstItem="tfF-24-0FB" firstAttribute="centerX" secondItem="JjE-1N-gLh" secondAttribute="centerX" id="pzv-XP-G3i"/>
                                     <constraint firstItem="FTw-Ca-2CF" firstAttribute="top" secondItem="JjE-1N-gLh" secondAttribute="top" constant="26" id="rIa-2X-LoP"/>
                                     <constraint firstItem="hFR-mT-EzF" firstAttribute="centerX" secondItem="JjE-1N-gLh" secondAttribute="centerX" id="rTp-qK-Sno"/>
                                     <constraint firstAttribute="trailing" secondItem="hFR-mT-EzF" secondAttribute="trailing" constant="25" id="wyF-zR-9dR"/>

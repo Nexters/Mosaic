@@ -36,6 +36,10 @@ extension UIColor {
         static var paleGrey: UIColor {
             return UIColor(red: 237.0 / 255.0, green: 237.0 / 255.0, blue: 240.0 / 255.0, alpha: 1.0)
         }
+        static var silver: UIColor {
+            return UIColor(red: 205.0 / 255.0, green: 207.0 / 255.0, blue: 209.0 / 255.0, alpha: 1.0)
+        }
+
     }
     
     convenience init(hex: String, alpha: CGFloat = 1.0) {

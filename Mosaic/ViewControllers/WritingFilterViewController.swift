@@ -70,6 +70,7 @@ class WritingFilterViewController: UIViewController, TransparentNavBarService {
         let button = UIButton(type: .custom)
         button.setTitle("카테고리 선택", for: .normal)
         button.titleLabel?.shadowOffset = CGSize(width: 1, height: 1)
+        button.titleLabel?.font = UIFont.nanumExtraBold(size: 18)
         button.setTitleShadowColor(.gray, for: .normal)
         button.setImage(UIImage(named: "icWritingFilterUp"), for: .normal)
         button.semanticContentAttribute =

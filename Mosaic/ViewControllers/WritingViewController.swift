@@ -35,12 +35,10 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     var navigationBarTitleButton: UIButton = UIButton(type: .custom)
     var saveButton: UIButton = UIButton(type: .custom)
     //MARK: CONSTRAINT
-    @IBOutlet weak var accessoryViewHeightConstaint: NSLayoutConstraint!
     @IBOutlet weak var accessoryViewBottomConstraint: NSLayoutConstraint!
     //MARK: STORED OR COMPUTED
     var selectedCategory: Category?
     
-    var selectedAssets = [TLPHAsset]()
     //MARK: - METHOD
     //MARK: INITIALIZE
     
@@ -56,7 +54,6 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setAccessoryViewContraint(height: AccessoryView.height + bottomInset, bottom: 0)
         self.textView.becomeFirstResponder()
         updateNavigationBarTitle(category: self.selectedCategory)
         self.mimicPlaceholderView.blinking()
@@ -81,19 +78,21 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         self.setKeyboardControl(willShow: { [weak self] (rect, duration) in
             guard let `self` = self else {return}
             UIView.animate(withDuration: duration, animations: {
-                self.setAccessoryViewContraint(height: AccessoryView.height, bottom: rect.height)
+                self.accessoryViewBottomConstraint.constant =  rect.height - bottomInset
+                self.view.layoutIfNeeded()
             })
             }, willHide: { [weak self] (rect, duration) in
                 guard let `self` = self else {return}
                 UIView.animate(withDuration: duration, animations: {
-                    self.setAccessoryViewContraint(height: AccessoryView.height + bottomInset, bottom: 0)
+                    self.accessoryViewBottomConstraint.constant =  0
+                    self.view.layoutIfNeeded()
                 })
         })
     }
     
     //MARK: SET UP NAVIGATIONBAR
     func setUpNavigationBar() {
-        self.transparentNavigationBar()
+        self.transparentNavigationBar(shadowImage: #imageLiteral(resourceName: "icWritingShadow"))
         
         self.navigationBarTitleButton.setTitle("카테고리 선택", for: .normal)
         self.navigationBarTitleButton.titleLabel?.shadowOffset = CGSize(width: 1, height: 1)
@@ -118,14 +117,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     //MARK: SET UP ACCESSORYVIEW
     func setUpAccessoryView() {
-        self.accessoryView.delegate = self
         self.accessoryView.addTarget(self, selector: #selector(showImagePicker))
-    }
-    
-    func setAccessoryViewContraint(height: CGFloat, bottom: CGFloat) {
-        self.accessoryViewHeightConstaint.constant = height
-        self.accessoryViewBottomConstraint.constant =  bottom
-        self.view.layoutIfNeeded()
     }
     
     //MARK: SET UP TEXTVIEW
@@ -157,8 +149,8 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         let photoPicker = TLPhotosPickerViewController()
         photoPicker.delegate = self
         photoPicker.configure = configure
-        photoPicker.selectedAssets = self.selectedAssets
-        photoPicker.didExceedMaximumNumberOfSelection = { [weak self] (picker) in
+        photoPicker.selectedAssets = self.accessoryView.selectedAssets
+        photoPicker.didExceedMaximumNumberOfSelection = { (picker) in
             UIAlertController.showMessage("선택가능한 숫자를 초과했습니다.")
         }
         self.present(photoPicker, animated: true, completion: nil)
@@ -214,47 +206,6 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
 }
 
 //MARK: - EXTENSION
-
-//MARK: UICOLLECTIONVIEWDELEGATE, UICOLLECTIONVIEWDATASOURCE
-extension WritingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.selectedAssets.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-        cell.setUpUI()
-        let asset = self.selectedAssets[indexPath.row]
-        if let image = asset.fullResolutionImage {
-            cell.image = image
-        }else {
-            print("Can't get image at local storage, try download image")
-            asset.cloudImageDownload(progressBlock: { (progress) in
-                DispatchQueue.main.async {
-                    cell.label.text = "\(100*progress)%"
-                }
-                }, completionBlock: { (image) in
-                    if let image = image {
-                        DispatchQueue.main.async {
-                            cell.image = image
-                            cell.label.isHidden = true
-                        }
-                    }
-            })
-        }
-        cell.transform = CGAffineTransform(scaleX: -1, y: 1)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 28, height: 28)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 6
-    }
-}
-
 //MARK: TLPhotosPickerViewControllerDelegate
 extension WritingViewController: TLPhotosPickerViewControllerDelegate {
     func handleNoAlbumPermissions(picker: TLPhotosPickerViewController) {
@@ -272,7 +223,7 @@ extension WritingViewController: TLPhotosPickerViewControllerDelegate {
     }
     
     func dismissPhotoPicker(withTLPHAssets: [TLPHAsset]) {
-        self.selectedAssets = withTLPHAssets
+        self.accessoryView.selectedAssets = withTLPHAssets
         self.accessoryView.reloadCollectionView()
     }
 }
@@ -291,8 +242,4 @@ extension WritingViewController: UITextViewDelegate {
         let length = self.textView.text.count
         enableSaveButton(length)
     }
-}
-
-//MARK: ACCESSORYVIEWDELEGATE
-extension WritingViewController: AccessoryViewDelegate {
 }

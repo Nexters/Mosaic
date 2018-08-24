@@ -16,7 +16,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     @IBOutlet weak var categoryView: CategoryView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentView: UIView!
-    var scrapBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icScrapNol"),
+    var scrapBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icScrapNol")?.withRenderingMode(.alwaysTemplate),
                                                           style: .plain,
                                                           target: self,
                                                           action: #selector(scrapButtonDidTap))
@@ -37,6 +37,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         setUpTableView()
         setUpCommentView()
         setUpPagingImageCollectionView()
+//        showDeleteButton()
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,13 +71,14 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     func setUpNavigationBar() {
         self.transparentNavigationBar()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icClose"),
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icClose")?.withRenderingMode(.alwaysOriginal),
                                                                 style: .plain,
                                                                 target: self,
                                                                 action: #selector(closeButtonDidTap))
         
         self.navigationItem.rightBarButtonItem = scrapBarButton
-        
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.Palette.silver
+//        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.Palette.coral
     }
     //MARK: SET UP TABLEVIEW
     func setUpTableView() {

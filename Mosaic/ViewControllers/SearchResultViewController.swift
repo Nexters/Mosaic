@@ -100,7 +100,7 @@ class SearchResultViewController: UIViewController {
     }
     
 }
-extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource, SearchResultDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return (self.articles?.count ?? 0) + 1
@@ -118,6 +118,7 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.reuseIdentifier, for: indexPath) as? SearchResultTableViewCell else { return UITableViewCell() }
             cell.configure(type: self.type!, article: self.articles?[indexPath.row])
+            cell.delegate = self
             return cell
             
         }
@@ -150,6 +151,10 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
         view.backgroundColor = .clear
         return view
     }
+    
+    func articleDidDelete() {
+        self.requestArticles()
+    }
 }
 class SearchResultCountTableViewCell: UITableViewCell {
     
@@ -175,6 +180,9 @@ class SearchResultCountTableViewCell: UITableViewCell {
     }
 }
 
+protocol SearchResultDelegate {
+    func articleDidDelete()
+}
 class SearchResultTableViewCell: UITableViewCell {
     
     static var height: CGFloat { return 141 }
@@ -197,7 +205,9 @@ class SearchResultTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lineView: UIView!
     var type: ResultType?
+    var article: Article?
     
+    var delegate: SearchResultDelegate?
     let descriptionAttribute: [NSAttributedStringKey: Any] = [
         .font: UIFont.nanumRegular(size: 13),
         .foregroundColor: UIColor(hex: "#474747")
@@ -209,6 +219,9 @@ class SearchResultTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         
         self.setupLables()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(deleteLabelDidTap))
+        self.commentLabel.addGestureRecognizer(tapGestureRecognizer)
     }
     
     func setupLables() {
@@ -252,13 +265,13 @@ class SearchResultTableViewCell: UITableViewCell {
     
     func configure(type: ResultType, article: Article?) {
         guard let article = article else { return }
-
+        self.article = article
         let typeView = TypeView.create(frame: self.typeView.bounds)
         
         typeView.setup(fontSize: 14)
         typeView.configure(title: "공모전🏆")
         self.typeView.addSubview(typeView)
-        
+        self.type = type
         self.descriptionLabel.attributedText = NSAttributedString(string: article.content ?? "", attributes: self.descriptionAttribute)
         
         if article.imageUrls?.isEmpty == true {
@@ -287,6 +300,23 @@ class SearchResultTableViewCell: UITableViewCell {
             self.commentLabelForMine.text = "댓글 \(article.replies)"
             self.dateLabel.isHidden = true
             self.commentLabel.text = "삭제"
+            
+        }
+    }
+    @objc
+    func deleteLabelDidTap() {
+        switch self.type! {
+        case .myArticles:
+            if let article = self.article {
+            ApiManager.shared.updateMyArticle(type: .delete, article: article) { (code, response) in
+                print(code, response)
+                if code == 200 {
+                    self.delegate?.articleDidDelete()
+                }
+            }
+        }
+        default:
+            return
             
         }
     }

@@ -83,7 +83,37 @@ class ApiManager {
         }
     }
     
+    func updateMyArticle(type: ArticleType, article: Article, completion: @escaping (_ code: Int?, _ response: Article?) -> Void) {
+        let url = "\(self.url)/apis/script"
+        var parameter: [String: Any] = [:]
+        switch type {
+        case .add:
+            parameter = [:]
+        case .delete:
+            parameter = [
+                "scriptUuid" : article.uuid!
+            ]
+        }
+        print(parameter)
+        Alamofire.request(url, method: type.method, parameters: parameter, headers:  ["Authorization": self.token]).responseObject { (response: DataResponse<Result<Article>>) in
+            let categories = response.result.value?.result
+            completion(response.response?.statusCode, categories)
+        }
+    }
     
+    
+}
+enum ArticleType {
+    case add
+    case delete
+    var method: HTTPMethod {
+        switch self {
+        case .add:
+            return .post
+        case .delete :
+            return .delete
+        }
+    }
 }
 
 enum BookMarkType {

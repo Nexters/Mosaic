@@ -265,6 +265,8 @@ class SearchResultTableViewCell: UITableViewCell {
             self.imageViewWidth.constant = 0
         } else {
             self.imageViewWidth.constant = 59
+           let url = URL(string: article.imageUrls?.first ?? "")
+            self.mainImageView.kf.setImage(with: url)
         }
         
         switch type {

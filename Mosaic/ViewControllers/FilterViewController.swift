@@ -14,22 +14,10 @@ class FilterViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    
     static func create() -> FilterViewController? {
         return UIStoryboard(name: "Filter", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? FilterViewController
     }
     var categories: [Categories] = []
-    
-    var typeTuple: [(emoji: String, title: String)] = [
-       (emoji: "🤫", title: "익명제보"),
-       (emoji: "🏆", title: "공모전"),
-       (emoji: "💃", title: "대외활동"),
-       (emoji: "✍️", title: "스터디"),
-       (emoji: "🍯", title: "대학생활 팁"),
-       (emoji: "🙋‍♀️", title: "아르바이트"),
-       (emoji: "👫", title: "동아리"),
-       (emoji: "👻", title: "아무말")
-    ]
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent

@@ -12,7 +12,8 @@ enum ColorPalette {
     static let searchView = UIColor(hex: "#e62f12")
 }
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, HomeDelegate {
+    
 
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -115,6 +116,17 @@ class HomeViewController: UIViewController {
         self.present(navigation, animated: true, completion: nil)
     }
     
+    func goToComment() {
+        //FIXME: -
+    }
+    
+    func bookmarkButtondDidTap(cell: HomeCollectionViewCell, isScraped: Bool) {
+        guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
+        
+        ApiManager.shared.updateBookMark(type: isScraped ? .delete : .add, article: self.articles![indexPath.item]) { (code, article) in
+            print(code, article)
+        }
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -126,7 +138,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
         cell.configure(article: self.articles?[indexPath.row])
-        
+        cell.delegate = self
         return cell
     }
     

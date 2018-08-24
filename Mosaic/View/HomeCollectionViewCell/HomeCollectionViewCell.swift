@@ -14,8 +14,13 @@ extension ColorPalette {
     static let description = UIColor(hex: "#474747")
 }
 
+protocol HomeDelegate {
+    func goToComment()
+    func bookmarkButtondDidTap(cell: HomeCollectionViewCell, isScraped: Bool)
+}
 class HomeCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var imageCollectionViewWidth: NSLayoutConstraint!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -35,8 +40,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bookMarkLabel: UILabel!
     
     @IBOutlet weak var lineView: UIView!
+    var delegate: HomeDelegate?
     
     var imageUrls: [String] = []
+    var article: Article?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,6 +57,13 @@ class HomeCollectionViewCell: UICollectionViewCell {
         
         self.layer.cornerRadius = 2
         self.lineView.backgroundColor = UIColor(hex: "#dbdbdb")
+        
+        let commentGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(commentDidTap))
+        self.commentContainerView.isUserInteractionEnabled = true
+        let bookMarkGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(bookMarkDidTap))
+        self.bookMarkContainerView.isUserInteractionEnabled = true
+        self.commentContainerView.addGestureRecognizer(commentGestureRecognizer)
+        self.bookMarkContainerView.addGestureRecognizer(bookMarkGestureRecognizer)
     }
     override func prepareForReuse() {
         self.setupCollectioView()
@@ -96,6 +110,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     func configure(article: Article?) {
         guard let article = article else { return }
+        self.article = article
         let attribute: [NSAttributedStringKey: Any] = [
             .font: UIFont.nanumBold(size: 10),
             .foregroundColor: ColorPalette.subText
@@ -126,8 +141,29 @@ class HomeCollectionViewCell: UICollectionViewCell {
             self.descriptionLabelHeight.constant = 124
             self.imageCollectionViewHeight.constant = 40
             self.imageCollectionView.reloadData()
-
         }
+        self.imageCollectionViewWidth.constant = CGFloat(min(3, self.imageUrls.count) * 40) + ((self.imageUrls.count == 2) ? 6 : 12)
+        
+        self.commentContainerView.backgroundColor = article.replies > 0 ? ColorPalette.collegeContainer : UIColor(hex: "#b3b3b3")
+        self.bookMarkContainerView.backgroundColor = article.isScraped ? ColorPalette.bookmarkContainer : UIColor(hex: "#b3b3b3")
+        self.timeLabel.text = "\(Date(milliseconds: article.createdAt))"
+        guard let imageUrlStr = article.writer?.university?.imageUrl else { return }
+        let url = URL(string: imageUrlStr)
+        self.collegeImageView.kf.setImage(with: url)
+    }
+    
+    @objc
+    func commentDidTap() {
+        self.delegate?.goToComment()
+    }
+    
+    @objc
+    func bookMarkDidTap() {
+        self.bookMarkContainerView.backgroundColor = self.article?.isScraped == true ? UIColor(hex: "#b3b3b3") : ColorPalette.bookmarkContainer
+        self.article?.isScraped = !(self.article?.isScraped)!
+        self.delegate?.bookmarkButtondDidTap(cell: self, isScraped: self.article?.isScraped ?? false)
+            
+        
     }
 }
 extension HomeCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -183,5 +219,15 @@ class HomeImageCollectionViewCell: UICollectionViewCell {
             self.blurView.isHidden = true
             self.countLabel.isHidden = true
         }
+    }
+}
+
+extension Date {
+    var millisecondsSince1970:Int {
+        return Int((self.timeIntervalSince1970 * 1000.0).rounded())
+    }
+    
+    init(milliseconds:Int) {
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
     }
 }

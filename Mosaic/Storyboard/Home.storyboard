@@ -369,6 +369,7 @@
                                             <outlet property="descriptionLabelHeight" destination="j28-3g-lwd" id="vjm-No-xfF"/>
                                             <outlet property="imageCollectionView" destination="gft-O9-65N" id="1TV-BW-pDG"/>
                                             <outlet property="imageCollectionViewHeight" destination="fmW-7Y-etc" id="d7Y-t9-lml"/>
+                                            <outlet property="imageCollectionViewWidth" destination="YuU-9v-PHx" id="s4L-7W-yVR"/>
                                             <outlet property="lineView" destination="DeG-ay-8SG" id="Zas-lV-fAG"/>
                                             <outlet property="timeLabel" destination="1GT-1H-whZ" id="hVc-4J-UGY"/>
                                             <outlet property="typeView" destination="cay-CX-bFh" id="LUX-aP-aTj"/>

@@ -8,21 +8,22 @@
 
 import UIKit
 
-enum AccessoryType {
-    case writing, comment
+protocol AccessoryViewDelegate: UICollectionViewDelegate, UICollectionViewDataSource {
 }
-protocol AccessoryViewDelegate {
-    func accessoryView(_ view: AccessoryView)
-}
-extension AccessoryViewDelegate where Self: UICollectionViewDelegate & UICollectionViewDataSource {
-}
+
 class AccessoryView: UIView {
     @IBOutlet weak private var contentView: UIView!
     @IBOutlet weak private var imageButton: UIButton!
     @IBOutlet weak private var collectionView: UICollectionView!
     
     static var height: CGFloat = 44.0
-    var delegate: AccessoryViewDelegate?
+    var delegate: AccessoryViewDelegate? {
+        didSet {
+            guard let delegate = self.delegate else {return}
+            self.collectionView.setUp(target: delegate,
+                                      cell: ImageCollectionViewCell.self)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,10 +50,6 @@ class AccessoryView: UIView {
     
     func setContentViewBackgroundColor(_ color: UIColor?) {
         self.contentView.backgroundColor = color
-    }
-    
-    func collectionView(_ delegateAndDataSource: UICollectionViewDelegate & UICollectionViewDataSource) {
-        self.collectionView.setUp(target: delegateAndDataSource, cell: ImageCollectionViewCell.self)
     }
     
     func reloadCollectionView() {

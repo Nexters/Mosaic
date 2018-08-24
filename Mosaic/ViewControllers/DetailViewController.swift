@@ -12,9 +12,10 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     //MARK: - PROPERTY
     //MARK: UI
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var pagingImageCollectionView: PagingImageCollectionView!
     @IBOutlet weak var categoryView: CategoryView!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var commentView: UIView!
     var scrapBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icScrapNol"),
                                                           style: .plain,
                                                           target: self,
@@ -23,6 +24,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     @IBOutlet weak var accessoryViewHeight: NSLayoutConstraint!
     @IBOutlet weak var deleteButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var deleteButtonBottomConstraint: NSLayoutConstraint!
+    //MARK: STORED OR COMPUTED
 
     //MARK: - METHOD
     //MARK: INIT
@@ -33,6 +35,8 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         setUpNavigationBar()
         setUpCategoryView()
         setUpTableView()
+        setUpCommentView()
+        setUpPagingImageCollectionView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -95,6 +99,18 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         self.categoryView.setUp()
     }
     
+    //MARK: SET UP COMMENTVIEW
+    func setUpCommentView() {
+        self.commentView.layer.addBorder([.top, .bottom],
+                                         color: UIColor.Palette.paleGrey,
+                                         width: 1.0)
+    }
+    
+    //MARK: SET UP PAGINGIMAGECOLLECTIONVIEW
+    func setUpPagingImageCollectionView() {
+        self.pagingImageCollectionView.images = [#imageLiteral(resourceName: "imgYonseiuniv"), #imageLiteral(resourceName: "imgBackEwhauniv"), #imageLiteral(resourceName: "imgBackKoreauniv"), #imageLiteral(resourceName: "imgBackKoreauniv2")]
+    }
+    
     //MAKR: ACTION
     @objc
     func closeButtonDidTap() {
@@ -126,6 +142,4 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-    
-    
 }

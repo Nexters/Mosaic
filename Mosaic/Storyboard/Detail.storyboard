@@ -39,19 +39,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="784"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="exS-61-eOt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="419"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="572"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6P-Nb-3tl">
-                                            <rect key="frame" x="87" y="10" width="200" height="200"/>
-                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6P-Nb-3tl" customClass="PagingImageCollectionView" customModule="Mosaic" customModuleProvider="target">
+                                            <rect key="frame" x="37" y="10" width="300" height="300"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="O6P-Nb-3tl" secondAttribute="height" multiplier="1:1" id="3l8-Yz-qLi"/>
-                                                <constraint firstAttribute="height" constant="200" id="REe-jy-iB4"/>
+                                                <constraint firstAttribute="height" constant="300" id="REe-jy-iB4"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qc6-L3-AXK" customClass="CategoryView" customModule="Mosaic" customModuleProvider="target">
-                                            <rect key="frame" x="157.5" y="226" width="60" height="24"/>
+                                            <rect key="frame" x="157.5" y="326" width="60" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="beD-aS-6m4"/>
@@ -59,37 +59,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJQ-Or-nAd">
-                                            <rect key="frame" x="20" y="266" width="335" height="88"/>
-                                            <mutableString key="text">올해 하반기에 열리는 전국 비보이
+                                            <rect key="frame" x="20" y="366" width="335" height="141"/>
+                                            <string key="text">올해 하반기에 열리는 전국 비보이
 댄스대회에 함께 할 팀원을 구합니다. 올해로 
 4회째 수상하고 있습니다. 체계적인 연습과
 끈끈한 팀워크로 대학 동안 즐거운 추억을
 만드실 여러분들의 연락 기다립니다.
-올해도 수상 가즈아 🔥
-올해 하반기에 열리는 전국 비보이
-댄스대회에 함께 할 팀원을 구합니다. 올해로 
-4회째 수상하고 있습니다. 체계적인 연습과
-끈끈한 팀워크로 대학 동안 즐거운 추억을
-만드실 여러분들의 연락 기다립니다.
-올해도 수상 가즈아 🔥
-올해 하반기에 열리는 전국 비보이
-댄스대회에 함께 할 팀원을 구합니다. 올해로 
-4회째 수상하고 있습니다. 체계적인 연습과
-끈끈한 팀워크로 대학 동안 즐거운 추억을
-만드실 여러분들의 연락 기다립니다.
-올해도 수상 가즈아 🔥
-올해 하반기에 열리는 전국 비보이
-댄스대회에 함께 할 팀원을 구합니다. 올해로 
-4회째 수상하고 있습니다. 체계적인 연습과
-끈끈한 팀워크로 대학 동안 즐거운 추억을
-만드실 여러분들의 연락 기다립니다.
-올해도 수상 가즈아 🔥</mutableString>
+올해도 수상 가즈아 🔥</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfq-15-WSN">
-                                            <rect key="frame" x="20" y="374" width="335" height="45"/>
+                                            <rect key="frame" x="20" y="527" width="335" height="45"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 3시 20분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPj-jn-G1y">
                                                     <rect key="frame" x="269" y="15.5" width="65.5" height="14"/>
@@ -138,7 +120,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="c6D-9o-Ke7">
-                                        <rect key="frame" x="0.0" y="447" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="600" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c6D-9o-Ke7" id="tBm-Yo-DZ0">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -168,30 +150,17 @@
                     <connections>
                         <outlet property="accessoryViewHeight" destination="ifl-wt-JJP" id="MfT-aT-qTa"/>
                         <outlet property="categoryView" destination="Qc6-L3-AXK" id="kIm-pF-fA4"/>
+                        <outlet property="commentView" destination="Jfq-15-WSN" id="yNA-jP-3pZ"/>
                         <outlet property="deleteButton" destination="3GQ-FV-tzL" id="0NJ-eB-Ytx"/>
                         <outlet property="deleteButtonBottomConstraint" destination="zgJ-2t-K9t" id="cQj-NC-1xD"/>
                         <outlet property="deleteButtonHeightConstraint" destination="Acz-4F-n9e" id="ugg-vF-SUS"/>
+                        <outlet property="pagingImageCollectionView" destination="O6P-Nb-3tl" id="sGD-NO-FE6"/>
                         <outlet property="tableView" destination="0dp-ls-bdZ" id="lsi-nc-Odc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jd9-oN-D6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-295.19999999999999" y="-219.49025487256372"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="8Pt-jy-5Ho">
-            <objects>
-                <viewController id="EcV-UM-bX7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vEI-IZ-hSm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="X8v-ve-wzu"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tnc-aC-ydL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="545" y="-219"/>
         </scene>
     </scenes>
     <resources>

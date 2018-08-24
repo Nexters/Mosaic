@@ -54,7 +54,7 @@ class CommentTableViewCell: UITableViewCell {
         
         self.replyButton.titleLabel?.font = UIFont.nanumBold(size: 10)
         self.replyButton.layer.borderWidth = 1
-        self.replyButton.layer.borderColor = UIColor.Palette.lgithGrayWhite.cgColor
+        self.replyButton.layer.borderColor = UIColor.Palette.lgithGreyWhite.cgColor
         self.replyButton.layer.cornerRadius = 2
         self.replyButton.clipsToBounds = true
     }

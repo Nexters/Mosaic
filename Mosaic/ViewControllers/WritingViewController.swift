@@ -118,7 +118,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     //MARK: SET UP ACCESSORYVIEW
     func setUpAccessoryView() {
-        self.accessoryView.collectionView(self)
+        self.accessoryView.delegate = self
         self.accessoryView.addTarget(self, selector: #selector(showImagePicker))
     }
     
@@ -247,11 +247,11 @@ extension WritingViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 33, height: 33)
+        return CGSize(width: 28, height: 28)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 6
     }
 }
 
@@ -295,7 +295,4 @@ extension WritingViewController: UITextViewDelegate {
 
 //MARK: ACCESSORYVIEWDELEGATE
 extension WritingViewController: AccessoryViewDelegate {
-    func accessoryView(_ view: AccessoryView) {
-        
-    }
 }

@@ -37,7 +37,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="xPR-fH-nhe" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="4Vh-p6-m4G"/>
                 <constraint firstItem="kcH-YW-rjw" firstAttribute="leading" secondItem="xPR-fH-nhe" secondAttribute="trailing" constant="2" id="ETx-D0-UoH"/>

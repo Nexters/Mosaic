@@ -24,6 +24,22 @@ extension UIColor {
         static var coral: UIColor {
             return UIColor(red: 252.0 / 255.0, green: 84.0 / 255.0, blue: 58.0 / 255.0, alpha: 1.0)
         }
+        static var grayWhite: UIColor {
+            return UIColor(white: 219.0 / 255.0, alpha: 1.0)
+        }
+        static var lightSkyBlue: UIColor {
+            return UIColor(red: 204.0 / 255.0, green: 246.0 / 255.0, blue: 1.0, alpha: 1.0)
+        }
+        static var lgithGreyWhite: UIColor {
+            return UIColor(red: 231.0 / 255.0, green: 231.0 / 255.0, blue: 231.0 / 255.0, alpha: 1.0)
+        }
+        static var paleGrey: UIColor {
+            return UIColor(red: 237.0 / 255.0, green: 237.0 / 255.0, blue: 240.0 / 255.0, alpha: 1.0)
+        }
+        static var silver: UIColor {
+            return UIColor(red: 205.0 / 255.0, green: 207.0 / 255.0, blue: 209.0 / 255.0, alpha: 1.0)
+        }
+
     }
     
     convenience init(hex: String, alpha: CGFloat = 1.0) {

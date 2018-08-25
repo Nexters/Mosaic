@@ -16,9 +16,6 @@
                 <outlet property="collectionView" destination="1mm-Me-61T" id="3Qc-Dg-EoY"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="4C2-2q-I0M"/>
                 <outlet property="imageButton" destination="Smd-j8-sjN" id="zoO-E5-E6D"/>
-                <outlet property="sendButton" destination="VJL-in-pWy" id="yFz-ts-6lb"/>
-                <outlet property="textContainerView" destination="sWV-IQ-SHd" id="uQB-i5-AKh"/>
-                <outlet property="textfield" destination="UDx-Xw-Yb1" id="wtg-Fr-f8U"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -46,57 +43,14 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWV-IQ-SHd">
-                    <rect key="frame" x="54" y="7" width="530" height="30"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Er-Wz-rrB">
-                            <rect key="frame" x="0.0" y="6" width="1" height="18"/>
-                            <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="1" id="MOS-Lx-N1k"/>
-                                <constraint firstAttribute="height" constant="18" id="lv1-Ii-ROT"/>
-                            </constraints>
-                        </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJL-in-pWy">
-                            <rect key="frame" x="500" y="0.0" width="30" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="30" id="Gc3-hW-sSL"/>
-                            </constraints>
-                            <state key="normal" image="icSendNol"/>
-                        </button>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDx-Xw-Yb1">
-                            <rect key="frame" x="17" y="0.0" width="473" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="Fjo-Uq-0MI"/>
-                            </constraints>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="9Er-Wz-rrB" firstAttribute="centerY" secondItem="sWV-IQ-SHd" secondAttribute="centerY" id="II0-14-1b1"/>
-                        <constraint firstItem="9Er-Wz-rrB" firstAttribute="leading" secondItem="sWV-IQ-SHd" secondAttribute="leading" id="Jy5-g6-V1D"/>
-                        <constraint firstItem="UDx-Xw-Yb1" firstAttribute="leading" secondItem="sWV-IQ-SHd" secondAttribute="leading" constant="17" id="Osc-Gw-r34"/>
-                        <constraint firstItem="VJL-in-pWy" firstAttribute="width" secondItem="sWV-IQ-SHd" secondAttribute="height" multiplier="1:1" id="P43-uE-mci"/>
-                        <constraint firstItem="VJL-in-pWy" firstAttribute="centerY" secondItem="sWV-IQ-SHd" secondAttribute="centerY" id="WBf-03-Yyg"/>
-                        <constraint firstAttribute="trailing" secondItem="VJL-in-pWy" secondAttribute="trailing" id="egS-Xc-3LU"/>
-                        <constraint firstItem="VJL-in-pWy" firstAttribute="leading" secondItem="UDx-Xw-Yb1" secondAttribute="trailing" constant="10" id="jK1-7M-Rvu"/>
-                        <constraint firstItem="UDx-Xw-Yb1" firstAttribute="centerY" secondItem="sWV-IQ-SHd" secondAttribute="centerY" id="xbz-1x-mfE"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="dao-Y6-jOb" firstAttribute="trailing" secondItem="sWV-IQ-SHd" secondAttribute="trailing" constant="16" id="2QF-g3-FPz"/>
-                <constraint firstItem="sWV-IQ-SHd" firstAttribute="centerY" secondItem="dao-Y6-jOb" secondAttribute="centerY" id="DIf-2O-lxj"/>
                 <constraint firstItem="Smd-j8-sjN" firstAttribute="centerY" secondItem="dao-Y6-jOb" secondAttribute="centerY" id="Inp-6y-lG9"/>
                 <constraint firstItem="Smd-j8-sjN" firstAttribute="width" secondItem="Smd-j8-sjN" secondAttribute="height" multiplier="1:1" id="eSy-Wa-ZXN"/>
                 <constraint firstItem="Smd-j8-sjN" firstAttribute="leading" secondItem="dao-Y6-jOb" secondAttribute="leading" constant="14" id="fBe-hc-U72"/>
                 <constraint firstItem="1mm-Me-61T" firstAttribute="centerY" secondItem="Smd-j8-sjN" secondAttribute="centerY" id="fzx-VP-ghZ"/>
                 <constraint firstAttribute="trailing" secondItem="1mm-Me-61T" secondAttribute="trailing" constant="20" id="gQb-k4-FdM"/>
-                <constraint firstItem="sWV-IQ-SHd" firstAttribute="leading" secondItem="Smd-j8-sjN" secondAttribute="trailing" constant="10" id="hCc-jk-aNM"/>
                 <constraint firstItem="1mm-Me-61T" firstAttribute="leading" secondItem="Smd-j8-sjN" secondAttribute="trailing" constant="10" id="qNG-xc-eFd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -106,6 +60,5 @@
     </objects>
     <resources>
         <image name="icImageupload" width="30" height="30"/>
-        <image name="icSendNol" width="30" height="30"/>
     </resources>
 </document>

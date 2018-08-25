@@ -7,25 +7,14 @@
 //
 
 import UIKit
+import TLPhotoPicker
 
-enum AccessoryType {
-    case writing, comment
-}
-protocol AccessoryViewDelegate {
-    func accessoryView(_ view: AccessoryView)
-}
-extension AccessoryViewDelegate where Self: UICollectionViewDelegate & UICollectionViewDataSource {
-}
 class AccessoryView: UIView {
     @IBOutlet weak private var contentView: UIView!
     @IBOutlet weak private var imageButton: UIButton!
-    @IBOutlet weak private var textContainerView: UIView!
-    @IBOutlet weak private var textfield: UITextField!
-    @IBOutlet weak private var sendButton: UIButton!
     @IBOutlet weak private var collectionView: UICollectionView!
     
-    static var height: CGFloat = 44.0
-    var delegate: AccessoryViewDelegate?
+    var selectedAssets = [TLPHAsset]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,6 +33,8 @@ class AccessoryView: UIView {
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.collectionView.transform = CGAffineTransform(scaleX: -1, y: 1)
+        self.collectionView.setUp(target: self,
+                                  cell: ImageCollectionViewCell.self)
     }
     
     func addTarget(_ target: Any?, selector: Selector) {
@@ -54,23 +45,47 @@ class AccessoryView: UIView {
         self.contentView.backgroundColor = color
     }
     
-    func setUp(_ type: AccessoryType, delegate: AccessoryViewDelegate? = nil) {
-        self.delegate = delegate
-        switch type {
-        case .writing :
-            self.textContainerView.isHidden = true
-            self.collectionView.isHidden = false
-            if let delegate = self.delegate as? UICollectionViewDelegate & UICollectionViewDataSource {
-                self.collectionView.setUp(target: delegate, cell: ImageCollectionViewCell.self)
-            }
-        case .comment :
-            self.textContainerView.isHidden = false
-            self.collectionView.isHidden = true
-        }
-    }
-    
     func reloadCollectionView() {
         self.collectionView.reloadData()
     }
 }
 
+//MARK: UICOLLECTIONVIEWDELEGATE, UICOLLECTIONVIEWDATASOURCE
+extension AccessoryView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.selectedAssets.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.setUpUI()
+        let asset = self.selectedAssets[indexPath.row]
+        if let image = asset.fullResolutionImage {
+            cell.image = image
+        }else {
+            print("Can't get image at local storage, try download image")
+            asset.cloudImageDownload(progressBlock: { (progress) in
+                DispatchQueue.main.async {
+                    cell.label.text = "\(100*progress)%"
+                }
+            }, completionBlock: { (image) in
+                if let image = image {
+                    DispatchQueue.main.async {
+                        cell.image = image
+                        cell.label.isHidden = true
+                    }
+                }
+            })
+        }
+        cell.transform = CGAffineTransform(scaleX: -1, y: 1)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 28, height: 28)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 6
+    }
+}

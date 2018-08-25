@@ -59,7 +59,7 @@
                             <constraint firstItem="6ai-WO-b32" firstAttribute="top" secondItem="UGf-RR-Nf9" secondAttribute="top" constant="8" id="bZo-pG-hJK"/>
                             <constraint firstItem="ISs-1f-RqV" firstAttribute="leading" secondItem="UGf-RR-Nf9" secondAttribute="leading" id="blf-Qa-d9G"/>
                             <constraint firstItem="ISs-1f-RqV" firstAttribute="top" secondItem="m6X-CW-cpo" secondAttribute="bottom" constant="8" id="gHr-oj-uhm"/>
-                            <constraint firstAttribute="bottom" secondItem="ISs-1f-RqV" secondAttribute="bottom" id="kMN-LU-26y"/>
+                            <constraint firstItem="UGf-RR-Nf9" firstAttribute="bottom" secondItem="ISs-1f-RqV" secondAttribute="bottom" id="kMN-LU-26y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UGf-RR-Nf9"/>
                     </view>
@@ -67,7 +67,6 @@
                     <connections>
                         <outlet property="accessoryView" destination="ISs-1f-RqV" id="Pwo-8k-jff"/>
                         <outlet property="accessoryViewBottomConstraint" destination="kMN-LU-26y" id="AS9-Jy-tby"/>
-                        <outlet property="accessoryViewHeightConstaint" destination="Qyu-6l-6FY" id="YmS-ac-kMo"/>
                         <outlet property="mimicPlaceholderView" destination="m6X-CW-cpo" id="Ww6-4O-eDp"/>
                         <outlet property="textView" destination="Zjj-hp-iqe" id="y3Q-wR-MHZ"/>
                     </connections>

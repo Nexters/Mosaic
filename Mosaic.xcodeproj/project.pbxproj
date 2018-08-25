@@ -60,6 +60,19 @@
 		FC06DAB9212D5E2F00B3C35B /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */; };
 		FC06DABE212D624C00B3C35B /* MimicPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC06DABD212D624C00B3C35B /* MimicPlaceholderView.xib */; };
 		FC06DAC0212D62B100B3C35B /* MimicPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */; };
+		FC627774212D9028008BAC6F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC627773212D9028008BAC6F /* Detail.storyboard */; };
+		FC627776212D903D008BAC6F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627775212D903D008BAC6F /* DetailViewController.swift */; };
+		FC627778212D974B008BAC6F /* CommentAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC627777212D974B008BAC6F /* CommentAccessoryView.xib */; };
+		FC62777A212D975A008BAC6F /* CommentAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627779212D975A008BAC6F /* CommentAccessoryView.swift */; };
+		FC62777E212DBF51008BAC6F /* CategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC62777D212DBF51008BAC6F /* CategoryView.xib */; };
+		FC627780212DBF5F008BAC6F /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62777F212DBF5F008BAC6F /* CategoryView.swift */; };
+		FC627789212E364E008BAC6F /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627787212E364E008BAC6F /* CommentTableViewCell.swift */; };
+		FC62778A212E364E008BAC6F /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC627788212E364E008BAC6F /* CommentTableViewCell.xib */; };
+		FC62778D212E477C008BAC6F /* RECommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC62778B212E477C008BAC6F /* RECommentTableViewCell.swift */; };
+		FC62778E212E477C008BAC6F /* RECommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC62778C212E477C008BAC6F /* RECommentTableViewCell.xib */; };
+		FC627791212F8C6C008BAC6F /* PagingImageCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC627790212F8C6C008BAC6F /* PagingImageCollectionView.xib */; };
+		FC627793212F8C7C008BAC6F /* PagingImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */; };
+		FCE9AA8C212FCCB3009FC713 /* CALayer + Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +133,19 @@
 		FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		FC06DABD212D624C00B3C35B /* MimicPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MimicPlaceholderView.xib; sourceTree = "<group>"; };
 		FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimicPlaceholderView.swift; sourceTree = "<group>"; };
+		FC627773212D9028008BAC6F /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		FC627775212D903D008BAC6F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FC627777212D974B008BAC6F /* CommentAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentAccessoryView.xib; sourceTree = "<group>"; };
+		FC627779212D975A008BAC6F /* CommentAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAccessoryView.swift; sourceTree = "<group>"; };
+		FC62777D212DBF51008BAC6F /* CategoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryView.xib; sourceTree = "<group>"; };
+		FC62777F212DBF5F008BAC6F /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		FC627787212E364E008BAC6F /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		FC627788212E364E008BAC6F /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		FC62778B212E477C008BAC6F /* RECommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RECommentTableViewCell.swift; sourceTree = "<group>"; };
+		FC62778C212E477C008BAC6F /* RECommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RECommentTableViewCell.xib; sourceTree = "<group>"; };
+		FC627790212F8C6C008BAC6F /* PagingImageCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagingImageCollectionView.xib; sourceTree = "<group>"; };
+		FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingImageCollectionView.swift; sourceTree = "<group>"; };
+		FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Border.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +221,7 @@
 				FC06DA9D212A505A00B3C35B /* TableCollectionView + SetUp.swift */,
 				FC06DAB2212A6C6400B3C35B /* UITextView + centerVertically.swift */,
 				FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */,
+				FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -209,6 +236,7 @@
 				141A8A502128278200362A47 /* SearchResultViewController.swift */,
 				FC06DAA1212A597400B3C35B /* WritingViewController.swift */,
 				FC06DAB4212AF6CB00B3C35B /* WritingFilterViewController.swift */,
+				FC627775212D903D008BAC6F /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -216,6 +244,7 @@
 		1463943221226ABC00FC601C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FC62777C212DBF42008BAC6F /* CategoryView */,
 				FC06DABA212D622500B3C35B /* MimicPlaceholderView */,
 				FC06DAA8212A5A2200B3C35B /* ImageCollectionViewCell */,
 				FC06DAA3212A59F200B3C35B /* AccessoryView */,
@@ -223,6 +252,10 @@
 				FC06DAAF212A5A4400B3C35B /* FilterCollectionViewCell */,
 				FC06DAAE212A5A3B00B3C35B /* TypeView */,
 				FC06DAC1212D6EA900B3C35B /* VerticallyCenteredTextView */,
+				FC62777B212D9765008BAC6F /* CommentAccessoryView */,
+				FC627786212E363A008BAC6F /* CommentTableViewCell */,
+				FC62778F212E4786008BAC6F /* RECommentTableViewCell */,
+				FC627794212F8C95008BAC6F /* PagingImageCollectionView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -249,6 +282,7 @@
 				143DD46B2127FDC500F5979D /* Filter.storyboard */,
 				141A8A4C212813D400362A47 /* Search.storyboard */,
 				FC06DA9F212A595C00B3C35B /* Writing.storyboard */,
+				FC627773212D9028008BAC6F /* Detail.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -341,6 +375,51 @@
 			path = VerticallyCenteredTextView;
 			sourceTree = "<group>";
 		};
+		FC62777B212D9765008BAC6F /* CommentAccessoryView */ = {
+			isa = PBXGroup;
+			children = (
+				FC627777212D974B008BAC6F /* CommentAccessoryView.xib */,
+				FC627779212D975A008BAC6F /* CommentAccessoryView.swift */,
+			);
+			path = CommentAccessoryView;
+			sourceTree = "<group>";
+		};
+		FC62777C212DBF42008BAC6F /* CategoryView */ = {
+			isa = PBXGroup;
+			children = (
+				FC62777D212DBF51008BAC6F /* CategoryView.xib */,
+				FC62777F212DBF5F008BAC6F /* CategoryView.swift */,
+			);
+			path = CategoryView;
+			sourceTree = "<group>";
+		};
+		FC627786212E363A008BAC6F /* CommentTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FC627787212E364E008BAC6F /* CommentTableViewCell.swift */,
+				FC627788212E364E008BAC6F /* CommentTableViewCell.xib */,
+			);
+			path = CommentTableViewCell;
+			sourceTree = "<group>";
+		};
+		FC62778F212E4786008BAC6F /* RECommentTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FC62778B212E477C008BAC6F /* RECommentTableViewCell.swift */,
+				FC62778C212E477C008BAC6F /* RECommentTableViewCell.xib */,
+			);
+			path = RECommentTableViewCell;
+			sourceTree = "<group>";
+		};
+		FC627794212F8C95008BAC6F /* PagingImageCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				FC627790212F8C6C008BAC6F /* PagingImageCollectionView.xib */,
+				FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */,
+			);
+			path = PagingImageCollectionView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -403,12 +482,16 @@
 			files = (
 				146394682122A8C100FC601C /* NanumSquareLight.ttf in Resources */,
 				FC06DAA0212A595C00B3C35B /* Writing.storyboard in Resources */,
+				FC62778E212E477C008BAC6F /* RECommentTableViewCell.xib in Resources */,
 				FC06DAAB212A5A2200B3C35B /* ImageCollectionViewCell.xib in Resources */,
 				143DD4682127F45B00F5979D /* MyPage.storyboard in Resources */,
 				14639429212269E900FC601C /* LaunchScreen.storyboard in Resources */,
 				143DD4762128073900F5979D /* FilterCollectionViewCell.xib in Resources */,
+				FC627791212F8C6C008BAC6F /* PagingImageCollectionView.xib in Resources */,
 				141A8A5321282C8700362A47 /* TypeView.xib in Resources */,
+				FC62777E212DBF51008BAC6F /* CategoryView.xib in Resources */,
 				146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */,
+				FC62778A212E364E008BAC6F /* CommentTableViewCell.xib in Resources */,
 				1463945421226B1000FC601C /* Home.storyboard in Resources */,
 				14639426212269E900FC601C /* Assets.xcassets in Resources */,
 				FC06DABE212D624C00B3C35B /* MimicPlaceholderView.xib in Resources */,
@@ -416,8 +499,10 @@
 				146394672122A8C100FC601C /* NanumSquareExtraBold.ttf in Resources */,
 				143DD46C2127FDC500F5979D /* Filter.storyboard in Resources */,
 				14639424212269E800FC601C /* Main.storyboard in Resources */,
+				FC627774212D9028008BAC6F /* Detail.storyboard in Resources */,
 				146394662122A8C100FC601C /* NanumSquareBold.ttf in Resources */,
 				141A8A4D212813D400362A47 /* Search.storyboard in Resources */,
+				FC627778212D974B008BAC6F /* CommentAccessoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,9 +567,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				143DD46E2127FDD400F5979D /* FilterViewController.swift in Sources */,
+				FCE9AA8C212FCCB3009FC713 /* CALayer + Border.swift in Sources */,
 				141A8A512128278200362A47 /* SearchResultViewController.swift in Sources */,
+				FC627793212F8C7C008BAC6F /* PagingImageCollectionView.swift in Sources */,
 				1463943D21226AE100FC601C /* String+Size.swift in Sources */,
+				FC62777A212D975A008BAC6F /* CommentAccessoryView.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,
+				FC627789212E364E008BAC6F /* CommentTableViewCell.swift in Sources */,
 				1463945621226B8800FC601C /* HomeViewController.swift in Sources */,
 				FC06DAB1212A5AF000B3C35B /* ImagePickerControllerPresentable.swift in Sources */,
 				FC06DAC0212D62B100B3C35B /* MimicPlaceholderView.swift in Sources */,
@@ -508,12 +597,15 @@
 				1463944921226AEC00FC601C /* TransparentNavBarService.swift in Sources */,
 				1463943E21226AE100FC601C /* UIAlertController+Show.swift in Sources */,
 				143DD46A2127F46800F5979D /* MyPageViewController.swift in Sources */,
+				FC627776212D903D008BAC6F /* DetailViewController.swift in Sources */,
+				FC627780212DBF5F008BAC6F /* CategoryView.swift in Sources */,
 				1463944021226AE100FC601C /* String+NilOrEmpty.swift in Sources */,
 				FC06DAB9212D5E2F00B3C35B /* VerticallyCenteredTextView.swift in Sources */,
 				FC06DA9E212A505A00B3C35B /* TableCollectionView + SetUp.swift in Sources */,
 				1463944221226AE100FC601C /* UIColor+.swift in Sources */,
 				141A8A5721290DE200362A47 /* Me.swift in Sources */,
 				1463944D21226AEC00FC601C /* GradientService.swift in Sources */,
+				FC62778D212E477C008BAC6F /* RECommentTableViewCell.swift in Sources */,
 				FC06DAA2212A597400B3C35B /* WritingViewController.swift in Sources */,
 				14812FE9212BF9F2004AC6F5 /* Category.swift in Sources */,
 			);

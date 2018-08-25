@@ -222,6 +222,7 @@ class SearchResultTableViewCell: UITableViewCell {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(deleteLabelDidTap))
         self.commentLabel.addGestureRecognizer(tapGestureRecognizer)
+        self.commentLabel.isUserInteractionEnabled = true
     }
     
     func setupLables() {
@@ -276,6 +277,7 @@ class SearchResultTableViewCell: UITableViewCell {
         
         if article.imageUrls?.isEmpty == true {
             self.imageViewWidth.constant = 0
+            self.imageView?.image = nil
         } else {
             self.imageViewWidth.constant = 59
            let url = URL(string: article.imageUrls?.first ?? "")

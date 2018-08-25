@@ -20,6 +20,12 @@ protocol HomeDelegate {
 }
 class HomeCollectionViewCell: UICollectionViewCell {
 
+    var fommater: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M월 d일"
+        return formatter
+    }
+    
     @IBOutlet weak var imageCollectionViewWidth: NSLayoutConstraint!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -146,10 +152,20 @@ class HomeCollectionViewCell: UICollectionViewCell {
         
         self.commentContainerView.backgroundColor = article.replies > 0 ? ColorPalette.collegeContainer : UIColor(hex: "#b3b3b3")
         self.bookMarkContainerView.backgroundColor = article.isScraped ? ColorPalette.bookmarkContainer : UIColor(hex: "#b3b3b3")
-        self.timeLabel.text = "\(Date(milliseconds: article.createdAt))"
         guard let imageUrlStr = article.writer?.university?.imageUrl else { return }
         let url = URL(string: imageUrlStr)
         self.collegeImageView.kf.setImage(with: url)
+        
+        let df = DateFormatter()
+        df.dateFormat = "M월 d일"
+        let now = df.string(from: Date(milliseconds: article.createdAt))
+        self.timeLabel.text = "\(now)"
+        
+        let calendar = Calendar.current
+        let myDate = Date(milliseconds: article.createdAt)
+        print(calendar.isDateInYesterday(myDate))
+        print(calendar.isDateInToday(myDate))
+
     }
     
     @objc
@@ -160,16 +176,15 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @objc
     func bookMarkDidTap() {
         self.bookMarkContainerView.backgroundColor = self.article?.isScraped == true ? UIColor(hex: "#b3b3b3") : ColorPalette.bookmarkContainer
-        self.article?.isScraped = !(self.article?.isScraped)!
         self.delegate?.bookmarkButtondDidTap(cell: self, isScraped: self.article?.isScraped ?? false)
-            
+        self.article?.isScraped = !(self.article?.isScraped)!
+        
         
     }
 }
 extension HomeCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(min(3, self.imageUrls.count))
         return min(3, self.imageUrls.count)
     }
     
@@ -183,9 +198,11 @@ extension HomeCollectionViewCell: UICollectionViewDelegate, UICollectionViewData
 
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 40, height: 40)
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 6
     }

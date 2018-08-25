@@ -188,7 +188,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icYonseiUnivIos" translatesAutoresizingMaskIntoConstraints="NO" id="2WO-eH-aQ8">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2WO-eH-aQ8">
                                                             <rect key="frame" x="268" y="19" width="59" height="59"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="59" id="IdQ-Vt-K0d"/>
@@ -348,6 +348,5 @@
     <resources>
         <image name="icScrapPr" width="30" height="30"/>
         <image name="icSearch" width="17" height="17"/>
-        <image name="icYonseiUnivIos" width="52" height="52"/>
     </resources>
 </document>

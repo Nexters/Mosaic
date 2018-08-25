@@ -13,11 +13,13 @@ import Alamofire
 class ApiManager {
     
     static let shared: ApiManager = ApiManager()
+    
     var url: String {
         return ""
     }
+    
     var token: String  {
-        return "eyJhbGciOiJIUzI1NiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAACXLSQqAMAwAwL_kbKHRJlF_E9MGelJcQBD_ruJ1YC6o2wYjzLbPS1kdGqi6w4jUUZQBmRso5_IDMtEHx1Hze3ozKdjGIO5dSJPFoEO0QIbqKRdRFrgfNRyYX2IAAAA.HvWhphIPJwbSSqE0hcpWAO1CJn5sKfMMuBQknqcQxmU"
+        return "eyJhbGciOiJIUzI1NiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAACXLSwqAIBAA0LvMWiE_o-Ztxh-4UlIhiO5e0fbBu6COAR5anK3nowCDShO8QIXCGL1bBvnsP0iU7oO1anoPqlxiiIlHkorrbC0ntRlOpViDwSUhNdwPyesGPGIAAAA.BMewenYjwxnPZUpKkysyCuh4_0LhmGYlPA6AUlMpg1s"
     }
     
     func requestMyProfile(completion: @escaping (_ code: Int?, _ response: Me?) -> Void) {

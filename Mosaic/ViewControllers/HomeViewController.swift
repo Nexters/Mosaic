@@ -14,7 +14,6 @@ enum ColorPalette {
 
 class HomeViewController: UIViewController, HomeDelegate {
     
-
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     var articles: [Article]?
@@ -133,6 +132,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.articles?.count ?? 0
+        //return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

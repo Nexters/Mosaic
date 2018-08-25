@@ -73,6 +73,7 @@
 		FC627791212F8C6C008BAC6F /* PagingImageCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC627790212F8C6C008BAC6F /* PagingImageCollectionView.xib */; };
 		FC627793212F8C7C008BAC6F /* PagingImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */; };
 		FCE9AA8C212FCCB3009FC713 /* CALayer + Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */; };
+		FCE9AA8E21312359009FC713 /* UIPageControl + shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +147,7 @@
 		FC627790212F8C6C008BAC6F /* PagingImageCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagingImageCollectionView.xib; sourceTree = "<group>"; };
 		FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingImageCollectionView.swift; sourceTree = "<group>"; };
 		FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Border.swift"; sourceTree = "<group>"; };
+		FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl + shadow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				FC06DAB2212A6C6400B3C35B /* UITextView + centerVertically.swift */,
 				FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */,
 				FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */,
+				FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				FC06DAB9212D5E2F00B3C35B /* VerticallyCenteredTextView.swift in Sources */,
 				FC06DA9E212A505A00B3C35B /* TableCollectionView + SetUp.swift in Sources */,
 				1463944221226AE100FC601C /* UIColor+.swift in Sources */,
+				FCE9AA8E21312359009FC713 /* UIPageControl + shadow.swift in Sources */,
 				141A8A5721290DE200362A47 /* Me.swift in Sources */,
 				1463944D21226AEC00FC601C /* GradientService.swift in Sources */,
 				FC62778D212E477C008BAC6F /* RECommentTableViewCell.swift in Sources */,

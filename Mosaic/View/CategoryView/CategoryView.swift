@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable
+
 class CategoryView: UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak private var label: UILabel!
@@ -16,8 +16,6 @@ class CategoryView: UIView {
     @IBOutlet weak private var highlightViewHeightConstrinat: NSLayoutConstraint!
     var highlighHeight: CGFloat = 9.0
     var highlightColor: UIColor? = UIColor.Palette.lightSkyBlue
-//    @IBInspectable
-//    var text: String?
     var textColor: UIColor? = UIColor(hex: "#474747")
     var category: Category?
     

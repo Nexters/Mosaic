@@ -15,7 +15,7 @@ class ApiManager {
     static let shared: ApiManager = ApiManager()
     
     var url: String {
-        return ""
+        return "http://13.209.57.250:8080"
     }
     
     var token: String  {

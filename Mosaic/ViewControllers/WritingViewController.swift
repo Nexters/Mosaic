@@ -38,6 +38,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     @IBOutlet weak var accessoryViewBottomConstraint: NSLayoutConstraint!
     //MARK: STORED OR COMPUTED
     var selectedCategory: Category?
+    var selectedAssets = [TLPHAsset]()
     
     //MARK: - METHOD
     //MARK: INITIALIZE
@@ -149,7 +150,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         let photoPicker = TLPhotosPickerViewController()
         photoPicker.delegate = self
         photoPicker.configure = configure
-        photoPicker.selectedAssets = self.accessoryView.selectedAssets
+        photoPicker.selectedAssets = self.selectedAssets
         photoPicker.didExceedMaximumNumberOfSelection = { (picker) in
             UIAlertController.showMessage("선택가능한 숫자를 초과했습니다.")
         }
@@ -223,7 +224,10 @@ extension WritingViewController: TLPhotosPickerViewControllerDelegate {
     }
     
     func dismissPhotoPicker(withTLPHAssets: [TLPHAsset]) {
-        self.accessoryView.selectedAssets = withTLPHAssets
+        self.selectedAssets = withTLPHAssets
+        self.accessoryView.selectedImages = withTLPHAssets.map { (asset) -> UIImage? in
+            return asset.fullResolutionImage
+        }
         self.accessoryView.reloadCollectionView()
     }
 }

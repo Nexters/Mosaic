@@ -15,19 +15,18 @@ class PagingImageCollectionView: UIView {
     var images = [UIImage]() {
         didSet {
             self.collectionView.reloadData()
+            self.pageControl.numberOfPages = images.count
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpView()
-        setUpCollectionView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUpView()
-        setUpCollectionView()
     }
     
     private func setUpView() {
@@ -37,11 +36,13 @@ class PagingImageCollectionView: UIView {
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-    }
-    
-    func setUpCollectionView() {
         self.collectionView.isPagingEnabled = true
         self.collectionView.setUp(target: self, cell: ImageCollectionViewCell.self)
+        self.collectionView.showsHorizontalScrollIndicator = false
+        
+        self.pageControl.addShadow(shadowColor: .black,
+                                   shadowOffset: CGSize(width: 1, height: 1),
+                                   shadowOpacity: 0.5)
     }
     
 }
@@ -53,7 +54,7 @@ extension PagingImageCollectionView: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-        cell.image = self.images[indexPath.row]
+        cell.thumbnail.image = self.images[indexPath.row]
         return cell
     }
     
@@ -91,4 +92,16 @@ extension PagingImageCollectionView: UICollectionViewDelegate, UICollectionViewD
             scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset), y: scrollView.contentOffset.y), animated: true)
         }
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView is UICollectionView {
+            let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
+            let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+            guard let indexPath = self.collectionView.indexPathForItem(at: visiblePoint) else {return}
+            self.pageControl.currentPage = indexPath.row
+        }
+        
+    }
 }
+
+

@@ -62,7 +62,7 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVk-Ll-vXI">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVk-Ll-vXI" customClass="ParameterButton" customModule="Mosaic" customModuleProvider="target">
                         <rect key="frame" x="48" y="213.5" width="38" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="GQp-eC-Pd9"/>

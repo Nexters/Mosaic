@@ -16,7 +16,7 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var replyButton: UIButton!
+    @IBOutlet weak var replyButton: ParameterButton!
 
     var str: String? {
         didSet {
@@ -59,4 +59,9 @@ class CommentTableViewCell: UITableViewCell {
         self.replyButton.clipsToBounds = true
     }
     
+}
+
+//PARAMETER BUTTON
+class ParameterButton: UIButton {
+    var params: Dictionary<String, Any> = [:]
 }

@@ -12,8 +12,8 @@ enum ColorPalette {
     static let searchView = UIColor(hex: "#e62f12")
 }
 
-class HomeViewController: UIViewController, HomeDelegate {
-    
+class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
+    var requestCategories: [[String : String]] = [[:]]
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     var articles: [Article]?
@@ -39,17 +39,18 @@ class HomeViewController: UIViewController, HomeDelegate {
         
         self.setNeedsStatusBarAppearanceUpdate()
         
-        ApiManager.shared.requestHomeArticles { (code, articles) in
-            if code == 200 {
-                self.articles = articles
-                self.collectionView.reloadData()
-            }
-        }
+       
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        ApiManager.shared.requestHomeArticles(with: self.requestCategories) { (code, articles) in
+            if code == 200 {
+                self.articles = articles
+                self.collectionView.reloadData()
+            }
+        }
     }
 
     @objc
@@ -80,6 +81,7 @@ class HomeViewController: UIViewController, HomeDelegate {
     @objc
     func filterButtonDidTap() {
         guard let viewController = FilterViewController.create() else { return }
+        viewController.datasource = self
         let navigation = UINavigationController(rootViewController: viewController)
         self.present(navigation, animated: true, completion: nil)
     }

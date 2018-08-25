@@ -58,6 +58,8 @@ class SearchViewController: UIViewController {
         self.searchTextField.returnKeyType = .search
         self.searchTextField.delegate = self
         self.searchTextField.textColor = .white
+        
+        self.searchView.layer.cornerRadius = 2
     }
     
     func setupTableView() {

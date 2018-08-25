@@ -41,9 +41,14 @@ class ApiManager {
         }
     }
     
-    func requestHomeArticles(completion: @escaping (_ code: Int?, _ response: [Article]?) -> Void) {
+    func requestHomeArticles(with category: [[String: String]], completion: @escaping (_ code: Int?, _ response: [Article]?) -> Void) {
         let url = "\(self.url)/apis/scripts"
-        Alamofire.request(url, method: .get, parameters: [:], headers: ["Authorization": self.token]).responseObject { (response: DataResponse<ResultArray>) in
+   
+        let dd: [String: Any] = [
+            "categories" : ["7d798e3e-cb09-4fde-9158-f43f84c0cb4f", "f9afc3ad-999d-4ceb-8381-11a1bd176bf1"]
+        ]
+
+        Alamofire.request(url, method: .get, parameters: dd, headers: ["Authorization": self.token]).responseObject { (response: DataResponse<ResultArray>) in
             let articles = response.result.value?.result
             completion(response.response?.statusCode, articles)
         }
@@ -51,6 +56,7 @@ class ApiManager {
     
     func requestArticle(at keyword: String, completion: @escaping (_ code: Int?, _ response: [Article]?) -> Void) {
         let url = "\(self.url)/apis/scripts/search"
+        print(keyword)
         Alamofire.request(url, method: .get, parameters: ["keyword": keyword], headers: ["Authorization": self.token]).responseObject { (response: DataResponse<ResultArray>) in
             let articles = response.result.value?.result
             completion(response.response?.statusCode, articles)

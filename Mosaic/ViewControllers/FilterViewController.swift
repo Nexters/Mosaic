@@ -7,17 +7,20 @@
 //
 
 import UIKit
-//protocol FilterDataSource {
-//    var categories: [String: String] { get set }
-//}
+protocol FilterDataSource {
+    var requestCategories: [[String: String]] { get set }
+}
 class FilterViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
 
     static func create() -> FilterViewController? {
         return UIStoryboard(name: "Filter", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? FilterViewController
     }
     var categories: [Categories] = []
+    var datasource: FilterDataSource?
+    var categoryUuid: [String] = []
+
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -36,6 +39,8 @@ class FilterViewController: UIViewController {
             self.collectionView.reloadData()
         }
         
+        self.datasource?.requestCategories = [[:]]
+        
     }
     
     func setupNavigation() {
@@ -50,7 +55,9 @@ class FilterViewController: UIViewController {
     
     @objc
     func colseButtonDidTap() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            
+        })
     }
     
     func setupBackgroundView() {
@@ -92,13 +99,19 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        let item = collectionView.cellForItem(at: indexPath)
-        if item?.isSelected ?? false {
-            self.collectionView.deselectItem(at: indexPath, animated: true)
-        } else {
             self.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-            //self.categories.updateValue(self.typ, forKey: "categories")
-        }
+            self.categoryUuid.append(self.categories[indexPath.item].uuid)
+
+            self.datasource?.requestCategories.append(["categories": self.categories[indexPath.item].uuid])
+
+            print(self.categoryUuid)
+            return false
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        self.collectionView.deselectItem(at: indexPath, animated: true)
+        self.categoryUuid = self.categoryUuid.filter({ $0 != self.categories[indexPath.item].uuid })
+        self.datasource?.requestCategories = (self.datasource?.requestCategories.filter({ $0 != ["categories": self.categories[indexPath.item].uuid] }))!
         return false
     }
     

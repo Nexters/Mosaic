@@ -31,8 +31,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var typeView: CategoryView!
     @IBOutlet weak var descriptionLabelHeight: NSLayoutConstraint!
-    @IBOutlet weak var typeView: UIView!
     @IBOutlet weak var commentContainerView: UIView!
     @IBOutlet weak var collegeImageView: UIImageView!
     @IBOutlet weak var collegeNameLabel: UILabel!
@@ -70,20 +70,24 @@ class HomeCollectionViewCell: UICollectionViewCell {
         self.bookMarkContainerView.isUserInteractionEnabled = true
         self.commentContainerView.addGestureRecognizer(commentGestureRecognizer)
         self.bookMarkContainerView.addGestureRecognizer(bookMarkGestureRecognizer)
+        
     }
+
     override func prepareForReuse() {
         self.setupCollectioView()
+
     }
     
     func setupTopView() {
         self.setupTopLabels()
-        let typeView = TypeView.create(frame: self.typeView.bounds)
-        typeView.setup()
-        typeView.configure(title: "공모전🏆")
-        self.typeView.addSubview(typeView)
+//        let typeView = TypeView.create(frame: self.typeView.bounds)
+//        typeView.setup()
+//        typeView.configure(title: "공모전🏆")
+//        self.typeView.addSubview(typeView)
         self.setupCollectioView()
         
     }
+    
     
     func setupTopLabels() {
         self.timeLabel.font = UIFont.nanumBold(size: 12)
@@ -156,15 +160,24 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let url = URL(string: imageUrlStr)
         self.collegeImageView.kf.setImage(with: url)
         
-        let df = DateFormatter()
-        df.dateFormat = "M월 d일"
-        let now = df.string(from: Date(milliseconds: article.createdAt))
-        self.timeLabel.text = "\(now)"
-        
         let calendar = Calendar.current
         let myDate = Date(milliseconds: article.createdAt)
-        print(calendar.isDateInYesterday(myDate))
-        print(calendar.isDateInToday(myDate))
+        
+        if calendar.isDateInToday(myDate) {
+            let df = DateFormatter()
+            df.dateFormat = "HH시 mm분"
+            let now = df.string(from: myDate)
+            self.timeLabel.text = "\(now)"
+        } else {
+            let df = DateFormatter()
+            df.dateFormat = "M월 d일"
+            let now = df.string(from: myDate)
+            self.timeLabel.text = "\(now)"
+        }
+        
+        self.typeView.backgroundColor = .clear
+        self.typeView.category = (emoji: article.category!.emoji, title: article.category!.name)
+        self.typeView.setUp()
 
     }
     

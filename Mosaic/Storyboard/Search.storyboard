@@ -171,11 +171,11 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqW-3E-AOL">
                                                     <rect key="frame" x="0.0" y="0.0" width="347" height="92"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k97-ix-f5F">
+                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k97-ix-f5F" customClass="CategoryView" customModule="Mosaic" customModuleProvider="target">
                                                             <rect key="frame" x="47" y="15" width="60" height="24"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="60" id="PLI-Aw-PaJ"/>
+                                                                <constraint firstAttribute="width" constant="120" id="1uA-EW-gS8"/>
                                                                 <constraint firstAttribute="height" constant="24" id="Z97-YY-eEC"/>
                                                             </constraints>
                                                         </view>
@@ -195,14 +195,14 @@
                                                                 <constraint firstAttribute="height" constant="59" id="baA-fz-0hi"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IB1-fM-N6q">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IB1-fM-N6q">
                                                             <rect key="frame" x="121" y="18" width="18" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="18" id="QY6-UF-WjA"/>
                                                                 <constraint firstAttribute="height" constant="18" id="dW3-83-d9X"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqe-yC-kea">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqe-yC-kea">
                                                             <rect key="frame" x="126.5" y="23.5" width="7" height="7"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="7" id="2Tk-HX-rTh"/>
@@ -321,7 +321,8 @@
                                             <outlet property="nickNameLabel" destination="UNM-AO-WQw" id="c3C-f8-ySL"/>
                                             <outlet property="scrapImageView" destination="iYc-jG-GQ1" id="Lev-B9-h63"/>
                                             <outlet property="scrapImageViewWidth" destination="Kl9-R5-BUU" id="n8a-qk-2tC"/>
-                                            <outlet property="typeView" destination="k97-ix-f5F" id="hbo-hL-CaA"/>
+                                            <outlet property="typeView" destination="k97-ix-f5F" id="dH1-WC-6P7"/>
+                                            <outlet property="typeViewWidth" destination="1uA-EW-gS8" id="mgA-Nx-uud"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

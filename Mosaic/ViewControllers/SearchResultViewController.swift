@@ -51,6 +51,7 @@ class SearchResultViewController: UIViewController {
         switch self.type! {
         case .search(let keyword):
             navigationTitle = keyword
+            self.searchKeyowrd = keyword
         case .scrap:
             navigationTitle = "내가 스크랩한 글"
         case .myArticles:
@@ -73,6 +74,7 @@ class SearchResultViewController: UIViewController {
             ApiManager.shared.requestMyScraps { (code, articles) in
                 if code == 200 {
                     self.articles = articles
+                    print(self.articles)
                     self.tableView.reloadData()
                 }
             }
@@ -117,7 +119,7 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.reuseIdentifier, for: indexPath) as? SearchResultTableViewCell else { return UITableViewCell() }
-            cell.configure(type: self.type!, article: self.articles?[indexPath.row])
+            cell.configure(type: self.type!, article: self.articles?[indexPath.section-1])
             cell.delegate = self
             return cell
             
@@ -187,11 +189,13 @@ class SearchResultTableViewCell: UITableViewCell {
     
     static var height: CGFloat { return 141 }
 
+    @IBOutlet weak var typeViewWidth: NSLayoutConstraint!
     @IBOutlet weak var scrapImageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var scrapImageView: UIImageView!
     @IBOutlet weak var commentLabelForMine: UILabel!
     @IBOutlet weak var typeViewTrailing: NSLayoutConstraint!
-    @IBOutlet weak var typeView: UIView!
+    
+    @IBOutlet weak var typeView: CategoryView!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nickNameLabel: UILabel!
@@ -267,12 +271,9 @@ class SearchResultTableViewCell: UITableViewCell {
     func configure(type: ResultType, article: Article?) {
         guard let article = article else { return }
         self.article = article
-        let typeView = TypeView.create(frame: self.typeView.bounds)
-        
-        typeView.setup(fontSize: 14)
-        typeView.configure(title: "공모전🏆")
-        self.typeView.addSubview(typeView)
+
         self.type = type
+        
         self.descriptionLabel.attributedText = NSAttributedString(string: article.content ?? "", attributes: self.descriptionAttribute)
         
         if article.imageUrls?.isEmpty == true {
@@ -284,6 +285,13 @@ class SearchResultTableViewCell: UITableViewCell {
             self.mainImageView.kf.setImage(with: url)
         }
         
+        
+        self.typeView.backgroundColor = .clear
+        self.typeView.category = (emoji: article.category!.emoji, title: article.category!.name)
+        self.typeView.setUp()
+        self.typeView.layoutIfNeeded()
+        self.typeViewWidth.constant = (article.category!.emoji + article.category!.name).width(font: UIFont.nanumExtraBold(size: 14)) + 10
+        
         switch type {
         case .search:
             self.commentLabel.text = "댓글 \(article.replies)"
@@ -294,7 +302,6 @@ class SearchResultTableViewCell: UITableViewCell {
             self.commentLabel.text = "댓글 \(article.replies)"
             self.nickNameLabel.text = "\(article.writer?.university?.name ?? "") | \(article.writer?.nickName ?? "")"
         case .myArticles:
-            self.nickNameLabel.text = "3월 22일"
             self.nickNameLabel.font = UIFont.nanumBold(size: 10)
             self.nickNameLabel.textColor = UIColor(hex: "#999999")
             self.nickNameLabel.sizeToFit()
@@ -302,7 +309,35 @@ class SearchResultTableViewCell: UITableViewCell {
             self.commentLabelForMine.text = "댓글 \(article.replies)"
             self.dateLabel.isHidden = true
             self.commentLabel.text = "삭제"
+            let calendar = Calendar.current
+            let myDate = Date(milliseconds: article.createdAt)
             
+            if calendar.isDateInToday(myDate) {
+                let df = DateFormatter()
+                df.dateFormat = "HH시 mm분"
+                let now = df.string(from: myDate)
+                self.nickNameLabel.text = "\(now)"
+            } else {
+                let df = DateFormatter()
+                df.dateFormat = "M월 d일"
+                let now = df.string(from: myDate)
+                self.nickNameLabel.text = "\(now)"
+            }
+            
+        }
+        let calendar = Calendar.current
+        let myDate = Date(milliseconds: article.createdAt)
+        
+        if calendar.isDateInToday(myDate) {
+            let df = DateFormatter()
+            df.dateFormat = "HH시 mm분"
+            let now = df.string(from: myDate)
+            self.dateLabel.text = "\(now)"
+        } else {
+            let df = DateFormatter()
+            df.dateFormat = "M월 d일"
+            let now = df.string(from: myDate)
+            self.dateLabel.text = "\(now)"
         }
     }
     @objc

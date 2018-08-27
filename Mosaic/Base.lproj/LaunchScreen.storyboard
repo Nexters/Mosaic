@@ -56,7 +56,7 @@
                             <constraint firstItem="Yxj-4Z-mQb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="YjG-Kg-xEK"/>
                             <constraint firstItem="S03-78-zgq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aPB-lh-ixF"/>
                             <constraint firstItem="S03-78-zgq" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="o6K-1J-D5d"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Yxj-4Z-mQb" secondAttribute="bottom" id="xbf-Rl-43y"/>
+                            <constraint firstAttribute="bottom" secondItem="Yxj-4Z-mQb" secondAttribute="bottom" id="xbf-Rl-43y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

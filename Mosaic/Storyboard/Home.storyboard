@@ -82,7 +82,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cay-CX-bFh">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cay-CX-bFh" customClass="CategoryView" customModule="Mosaic" customModuleProvider="target">
                                                                     <rect key="frame" x="129" y="66" width="68" height="24"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
@@ -372,7 +372,7 @@
                                             <outlet property="imageCollectionViewWidth" destination="YuU-9v-PHx" id="s4L-7W-yVR"/>
                                             <outlet property="lineView" destination="DeG-ay-8SG" id="Zas-lV-fAG"/>
                                             <outlet property="timeLabel" destination="1GT-1H-whZ" id="hVc-4J-UGY"/>
-                                            <outlet property="typeView" destination="cay-CX-bFh" id="LUX-aP-aTj"/>
+                                            <outlet property="typeView" destination="cay-CX-bFh" id="JqO-6x-Aas"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -411,7 +411,7 @@
                             <constraint firstItem="nPs-S2-xOc" firstAttribute="trailing" secondItem="6ED-04-JXr" secondAttribute="trailing" constant="9" id="4g5-v2-jlQ"/>
                             <constraint firstItem="0jx-Ow-faJ" firstAttribute="top" secondItem="nPs-S2-xOc" secondAttribute="top" constant="14" id="I6g-CF-b6f"/>
                             <constraint firstItem="6ED-04-JXr" firstAttribute="top" secondItem="0jx-Ow-faJ" secondAttribute="bottom" constant="20" id="M9N-my-Mko"/>
-                            <constraint firstItem="WAT-IZ-Veh" firstAttribute="bottom" secondItem="nPs-S2-xOc" secondAttribute="bottom" id="Nka-Nr-B1x"/>
+                            <constraint firstItem="WAT-IZ-Veh" firstAttribute="bottom" secondItem="oVh-W5-5NT" secondAttribute="bottom" id="Nka-Nr-B1x"/>
                             <constraint firstItem="0jx-Ow-faJ" firstAttribute="leading" secondItem="nPs-S2-xOc" secondAttribute="leading" constant="16" id="Odq-wb-jrQ"/>
                             <constraint firstItem="nPs-S2-xOc" firstAttribute="trailing" secondItem="0jx-Ow-faJ" secondAttribute="trailing" constant="16" id="btP-Yh-0WE"/>
                             <constraint firstItem="Uaj-ty-lz2" firstAttribute="centerX" secondItem="nPs-S2-xOc" secondAttribute="centerX" id="lD0-6V-Dfm"/>

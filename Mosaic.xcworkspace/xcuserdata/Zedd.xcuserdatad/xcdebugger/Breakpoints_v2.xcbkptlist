@@ -26,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mosaic/ViewControllers/SearchResultViewController.swift"
-            timestampString = "556813246.644508"
+            timestampString = "556872888.809366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "requestArticles()"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
+            landmarkName = "deleteLabelDidTap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mosaic/ViewControllers/SearchResultViewController.swift"
+            timestampString = "556872888.809444"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
+            landmarkName = "deleteLabelDidTap()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mosaic/View/HomeCollectionViewCell/HomeCollectionViewCell.swift"
-            timestampString = "556813246.644592"
+            timestampString = "556872888.809507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "collectionView(_:numberOfItemsInSection:)"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "configure(article:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mosaic/View/HomeCollectionViewCell/HomeCollectionViewCell.swift"
-            timestampString = "556813246.645076"
+            filePath = "Mosaic/Model/ApiManager.swift"
+            timestampString = "556872888.8095551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "setupCollectioView()"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "requestHomeArticles(with:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,45 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mosaic/View/HomeCollectionViewCell/HomeCollectionViewCell.swift"
-            timestampString = "556813246.645454"
+            filePath = "Mosaic/Model/ApiManager.swift"
+            timestampString = "556872895.384984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "prepareForReuse()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mosaic/ViewControllers/FilterViewController.swift"
-            timestampString = "556813246.645787"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mosaic/View/HomeCollectionViewCell/HomeCollectionViewCell.swift"
-            timestampString = "556813246.6458499"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "bookMarkDidTap()"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "requestHomeArticles(with:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

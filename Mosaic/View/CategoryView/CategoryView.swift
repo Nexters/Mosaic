@@ -10,11 +10,10 @@ import UIKit
 
 
 class CategoryView: UIView {
-    @IBOutlet weak private var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak private var label: UILabel!
-    @IBOutlet weak private var highlightView: UIView!
+    @IBOutlet weak var highlightView: UIView!
     @IBOutlet weak private var highlightViewHeightConstrinat: NSLayoutConstraint!
-    @IBInspectable
     var highlighHeight: CGFloat = 9.0
     var highlightColor: UIColor? = UIColor.Palette.lightSkyBlue
     var textColor: UIColor? = UIColor(hex: "#474747")
@@ -36,7 +35,7 @@ class CategoryView: UIView {
         
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
+
         self.highlightView.backgroundColor = self.highlightColor
     }
     

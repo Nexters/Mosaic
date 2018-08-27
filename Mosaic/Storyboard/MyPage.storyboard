@@ -125,7 +125,7 @@
                             <constraint firstItem="qba-SI-zQc" firstAttribute="top" secondItem="OBL-Fb-xQR" secondAttribute="bottom" constant="-20" id="UMe-AK-chs"/>
                             <constraint firstItem="72D-MY-yti" firstAttribute="top" secondItem="qba-SI-zQc" secondAttribute="bottom" id="VE7-Xn-A2G"/>
                             <constraint firstAttribute="trailing" secondItem="qba-SI-zQc" secondAttribute="trailing" id="azA-RH-jWM"/>
-                            <constraint firstItem="DMT-EE-OiX" firstAttribute="top" secondItem="72D-MY-yti" secondAttribute="bottom" id="edt-zu-TbV"/>
+                            <constraint firstAttribute="bottom" secondItem="72D-MY-yti" secondAttribute="bottom" id="edt-zu-TbV"/>
                             <constraint firstItem="72D-MY-yti" firstAttribute="leading" secondItem="mjU-eh-APt" secondAttribute="leading" id="hmT-Oh-noR"/>
                         </constraints>
                     </view>

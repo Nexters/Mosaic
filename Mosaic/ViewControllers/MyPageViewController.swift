@@ -41,7 +41,11 @@ class MyPageViewController: UIViewController {
         self.setupTableView()
         
         self.view.backgroundColor = UIColor(hex: "#ff573d")
-        
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         ApiManager.shared.requestMyProfile { (code, response) in
             if code == 200 {
                 self.me = response

@@ -75,15 +75,12 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         self.setupCollectioView()
-
+        self.typeView.category = (emoji: "", title: "")
     }
     
     func setupTopView() {
         self.setupTopLabels()
-//        let typeView = TypeView.create(frame: self.typeView.bounds)
-//        typeView.setup()
-//        typeView.configure(title: "공모전🏆")
-//        self.typeView.addSubview(typeView)
+
         self.setupCollectioView()
         
     }

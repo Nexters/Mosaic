@@ -16,7 +16,6 @@ class TypeView: UIView {
         let view = UINib(nibName: "TypeView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! TypeView
         view.frame = frame
         return view
-        
     }
     
     func setup(fontSize: CGFloat = 16) {

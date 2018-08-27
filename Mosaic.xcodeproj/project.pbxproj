@@ -60,6 +60,8 @@
 		FC06DAB9212D5E2F00B3C35B /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */; };
 		FC06DABE212D624C00B3C35B /* MimicPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC06DABD212D624C00B3C35B /* MimicPlaceholderView.xib */; };
 		FC06DAC0212D62B100B3C35B /* MimicPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */; };
+		FC1ED33F213125EC0071056B /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1ED33E213125EC0071056B /* SignUp.storyboard */; };
+		FC54608921312CE10008E564 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54608821312CE10008E564 /* SignUpViewController.swift */; };
 		FC627774212D9028008BAC6F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC627773212D9028008BAC6F /* Detail.storyboard */; };
 		FC627776212D903D008BAC6F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627775212D903D008BAC6F /* DetailViewController.swift */; };
 		FC627778212D974B008BAC6F /* CommentAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC627777212D974B008BAC6F /* CommentAccessoryView.xib */; };
@@ -72,6 +74,8 @@
 		FC62778E212E477C008BAC6F /* RECommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC62778C212E477C008BAC6F /* RECommentTableViewCell.xib */; };
 		FC627791212F8C6C008BAC6F /* PagingImageCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC627790212F8C6C008BAC6F /* PagingImageCollectionView.xib */; };
 		FC627793212F8C7C008BAC6F /* PagingImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */; };
+		FCB097ED2133027E002E05F6 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097EC2133027E002E05F6 /* AuthViewController.swift */; };
+		FCB097EF21330CD5002E05F6 /* EmailCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097EE21330CD5002E05F6 /* EmailCheckViewController.swift */; };
 		FCE9AA8C212FCCB3009FC713 /* CALayer + Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */; };
 		FCE9AA8E21312359009FC713 /* UIPageControl + shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */; };
 /* End PBXBuildFile section */
@@ -134,6 +138,8 @@
 		FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		FC06DABD212D624C00B3C35B /* MimicPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MimicPlaceholderView.xib; sourceTree = "<group>"; };
 		FC06DABF212D62B100B3C35B /* MimicPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimicPlaceholderView.swift; sourceTree = "<group>"; };
+		FC1ED33E213125EC0071056B /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		FC54608821312CE10008E564 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FC627773212D9028008BAC6F /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		FC627775212D903D008BAC6F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FC627777212D974B008BAC6F /* CommentAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentAccessoryView.xib; sourceTree = "<group>"; };
@@ -146,6 +152,8 @@
 		FC62778C212E477C008BAC6F /* RECommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RECommentTableViewCell.xib; sourceTree = "<group>"; };
 		FC627790212F8C6C008BAC6F /* PagingImageCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagingImageCollectionView.xib; sourceTree = "<group>"; };
 		FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingImageCollectionView.swift; sourceTree = "<group>"; };
+		FCB097EC2133027E002E05F6 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		FCB097EE21330CD5002E05F6 /* EmailCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckViewController.swift; sourceTree = "<group>"; };
 		FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Border.swift"; sourceTree = "<group>"; };
 		FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl + shadow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -237,9 +245,9 @@
 				143DD46D2127FDD400F5979D /* FilterViewController.swift */,
 				141A8A4E212813E500362A47 /* SearchViewController.swift */,
 				141A8A502128278200362A47 /* SearchResultViewController.swift */,
-				FC06DAA1212A597400B3C35B /* WritingViewController.swift */,
-				FC06DAB4212AF6CB00B3C35B /* WritingFilterViewController.swift */,
-				FC627775212D903D008BAC6F /* DetailViewController.swift */,
+				FC54608721312CCE0008E564 /* SignUp */,
+				FC54608521312CBD0008E564 /* Writing */,
+				FC54608621312CC60008E564 /* Detail */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -286,6 +294,7 @@
 				141A8A4C212813D400362A47 /* Search.storyboard */,
 				FC06DA9F212A595C00B3C35B /* Writing.storyboard */,
 				FC627773212D9028008BAC6F /* Detail.storyboard */,
+				FC1ED33E213125EC0071056B /* SignUp.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -376,6 +385,33 @@
 				FC06DAB8212D5E2F00B3C35B /* VerticallyCenteredTextView.swift */,
 			);
 			path = VerticallyCenteredTextView;
+			sourceTree = "<group>";
+		};
+		FC54608521312CBD0008E564 /* Writing */ = {
+			isa = PBXGroup;
+			children = (
+				FC06DAA1212A597400B3C35B /* WritingViewController.swift */,
+				FC06DAB4212AF6CB00B3C35B /* WritingFilterViewController.swift */,
+			);
+			path = Writing;
+			sourceTree = "<group>";
+		};
+		FC54608621312CC60008E564 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				FC627775212D903D008BAC6F /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		FC54608721312CCE0008E564 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				FC54608821312CE10008E564 /* SignUpViewController.swift */,
+				FCB097EC2133027E002E05F6 /* AuthViewController.swift */,
+				FCB097EE21330CD5002E05F6 /* EmailCheckViewController.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		FC62777B212D9765008BAC6F /* CommentAccessoryView */ = {
@@ -497,6 +533,7 @@
 				FC62778A212E364E008BAC6F /* CommentTableViewCell.xib in Resources */,
 				1463945421226B1000FC601C /* Home.storyboard in Resources */,
 				14639426212269E900FC601C /* Assets.xcassets in Resources */,
+				FC1ED33F213125EC0071056B /* SignUp.storyboard in Resources */,
 				FC06DABE212D624C00B3C35B /* MimicPlaceholderView.xib in Resources */,
 				FC06DAA6212A59F200B3C35B /* AccessoryView.xib in Resources */,
 				146394672122A8C100FC601C /* NanumSquareExtraBold.ttf in Resources */,
@@ -576,6 +613,7 @@
 				1463943D21226AE100FC601C /* String+Size.swift in Sources */,
 				FC62777A212D975A008BAC6F /* CommentAccessoryView.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,
+				FCB097ED2133027E002E05F6 /* AuthViewController.swift in Sources */,
 				FC627789212E364E008BAC6F /* CommentTableViewCell.swift in Sources */,
 				1463945621226B8800FC601C /* HomeViewController.swift in Sources */,
 				FC06DAB1212A5AF000B3C35B /* ImagePickerControllerPresentable.swift in Sources */,
@@ -586,11 +624,13 @@
 				1463944121226AE100FC601C /* NSObject+reuseIdentifier.swift in Sources */,
 				1463944A21226AEC00FC601C /* EnumCollection.swift in Sources */,
 				FC06DAAC212A5A2200B3C35B /* ImageCollectionViewCell.swift in Sources */,
+				FCB097EF21330CD5002E05F6 /* EmailCheckViewController.swift in Sources */,
 				FC06DAB5212AF6CB00B3C35B /* WritingFilterViewController.swift in Sources */,
 				1463944E21226AEC00FC601C /* KeyboardControlService.swift in Sources */,
 				1463945221226AFB00FC601C /* HomeCollectionViewCell.swift in Sources */,
 				1463943F21226AE100FC601C /* UIApplication+topViewController.swift in Sources */,
 				FC06DAA7212A59F200B3C35B /* AccessoryView.swift in Sources */,
+				FC54608921312CE10008E564 /* SignUpViewController.swift in Sources */,
 				14587D772122A9D400F13CCA /* UIFont+.swift in Sources */,
 				141A8A4F212813E500362A47 /* SearchViewController.swift in Sources */,
 				14587D7A2122D9C100F13CCA /* Post.swift in Sources */,

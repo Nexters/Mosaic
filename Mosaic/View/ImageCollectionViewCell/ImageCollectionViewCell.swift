@@ -11,7 +11,11 @@ import UIKit
 class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbnail:UIImageView!
     @IBOutlet weak var label:UILabel!
-    
+    var image: UIImage? {
+        didSet {
+            self.thumbnail.image = image
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpUI()

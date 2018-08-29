@@ -91,9 +91,6 @@
                                 <state key="normal" title="이메일 인증">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="authButtonDidTapped:" destination="8RG-fg-Pxp" eventType="touchUpInside" id="HeY-ii-ew1"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

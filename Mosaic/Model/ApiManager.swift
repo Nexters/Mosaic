@@ -22,6 +22,8 @@ class ApiManager {
         return "eyJhbGciOiJIUzI1NiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAACXLSwqAIBAA0LvMWiE_o-Ztxh-4UlIhiO5e0fbBu6COAR5anK3nowCDShO8QIXCGL1bBvnsP0iU7oO1anoPqlxiiIlHkorrbC0ntRlOpViDwSUhNdwPyesGPGIAAAA.BMewenYjwxnPZUpKkysyCuh4_0LhmGYlPA6AUlMpg1s"
     }
     
+    
+    
     func requestMyProfile(completion: @escaping (_ code: Int?, _ response: Me?) -> Void) {
         let url = "\(self.url)/apis/me"
         

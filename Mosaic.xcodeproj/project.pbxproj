@@ -76,6 +76,8 @@
 		FC627793212F8C7C008BAC6F /* PagingImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */; };
 		FCB097ED2133027E002E05F6 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097EC2133027E002E05F6 /* AuthViewController.swift */; };
 		FCB097EF21330CD5002E05F6 /* EmailCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097EE21330CD5002E05F6 /* EmailCheckViewController.swift */; };
+		FCB097F121354C16002E05F6 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F021354C16002E05F6 /* APIRouter.swift */; };
+		FCB097F32136514A002E05F6 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F22136514A002E05F6 /* URL.swift */; };
 		FCE9AA8C212FCCB3009FC713 /* CALayer + Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */; };
 		FCE9AA8E21312359009FC713 /* UIPageControl + shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */; };
 /* End PBXBuildFile section */
@@ -154,6 +156,8 @@
 		FC627792212F8C7C008BAC6F /* PagingImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingImageCollectionView.swift; sourceTree = "<group>"; };
 		FCB097EC2133027E002E05F6 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		FCB097EE21330CD5002E05F6 /* EmailCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckViewController.swift; sourceTree = "<group>"; };
+		FCB097F021354C16002E05F6 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		FCB097F22136514A002E05F6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Border.swift"; sourceTree = "<group>"; };
 		FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl + shadow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,6 +181,8 @@
 				141A8A5621290DE200362A47 /* Me.swift */,
 				141A8A582129146E00362A47 /* ApiManager.swift */,
 				14812FE8212BF9F2004AC6F5 /* Category.swift */,
+				FCB097F021354C16002E05F6 /* APIRouter.swift */,
+				FCB097F22136514A002E05F6 /* URL.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -629,6 +635,7 @@
 				1463944E21226AEC00FC601C /* KeyboardControlService.swift in Sources */,
 				1463945221226AFB00FC601C /* HomeCollectionViewCell.swift in Sources */,
 				1463943F21226AE100FC601C /* UIApplication+topViewController.swift in Sources */,
+				FCB097F32136514A002E05F6 /* URL.swift in Sources */,
 				FC06DAA7212A59F200B3C35B /* AccessoryView.swift in Sources */,
 				FC54608921312CE10008E564 /* SignUpViewController.swift in Sources */,
 				14587D772122A9D400F13CCA /* UIFont+.swift in Sources */,
@@ -638,6 +645,7 @@
 				1463941F212269E800FC601C /* AppDelegate.swift in Sources */,
 				FC06DAB7212AFDF400B3C35B /* UIViewController + create.swift in Sources */,
 				1463944921226AEC00FC601C /* TransparentNavBarService.swift in Sources */,
+				FCB097F121354C16002E05F6 /* APIRouter.swift in Sources */,
 				1463943E21226AE100FC601C /* UIAlertController+Show.swift in Sources */,
 				143DD46A2127F46800F5979D /* MyPageViewController.swift in Sources */,
 				FC627776212D903D008BAC6F /* DetailViewController.swift in Sources */,

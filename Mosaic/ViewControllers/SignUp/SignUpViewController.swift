@@ -81,6 +81,7 @@ class SignUpViewController: UIViewController, TransparentNavBarService, Keyboard
         self.termsOfServiceLabel.attributedText = text
         
         self.authButton.titleLabel?.font = UIFont.nanumExtraBold(size: 14)
+        self.authButton.addTarget(self, action: #selector(authButtonDidTapped), for: .touchUpInside)
         self.isValidEmail(nil)
     }
     
@@ -102,8 +103,14 @@ class SignUpViewController: UIViewController, TransparentNavBarService, Keyboard
         self.present(viewController, animated: true, completion: nil)
     }
     
-    func presentEmailCheckViewController() {
+    @objc
+    func authButtonDidTapped() {
         if self.authButton.isEnabled {
+            guard let email = self.textField.text else {return}
+            APIRouter.shared.request(logIn: APIRouter.LogIn.email(value: email)) { (code: Int?, value: User?) in
+                print(code)
+                
+            }
             let viewcontroller = EmailCheckViewController.create(storyboard: "SignUp")
             self.navigationController?.pushViewController(viewcontroller, animated: true)
         }
@@ -123,27 +130,6 @@ class SignUpViewController: UIViewController, TransparentNavBarService, Keyboard
         self.authButton.isEnabled = value
         self.authButton.backgroundColor = value ? UIColor.Palette.coral : UIColor.Palette.silver
     }
-    
-//    @objc
-//    func autoPaging() {
-//        //get cell size
-//        let cellSize = CGSize(width: self.collectionView.bounds.width,
-//                              height: self.collectionView.bounds.height)
-//
-//        //get current content Offset of the Collection view
-//        let contentOffset = collectionView.contentOffset
-//
-//        //scroll to next cell
-//        self.collectionView.scrollRectToVisible(CGRect(x: contentOffset.x + cellSize.width,
-//                                                       y: contentOffset.y,
-//                                                       width: cellSize.width,
-//                                                       height: cellSize.height),
-//                                                animated: true)
-//    }
-    
-    @IBAction func authButtonDidTapped(_ sender: UIButton) {
-        presentEmailCheckViewController()
-    }
 }
 
 extension SignUpViewController: UITextFieldDelegate {
@@ -158,7 +144,7 @@ extension SignUpViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        presentEmailCheckViewController()
+        authButtonDidTapped()
         return true
     }
 }

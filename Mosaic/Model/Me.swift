@@ -48,6 +48,7 @@ class ResultArray: Mappable {
     }
     
 }
+
 class ResutlCategories: Mappable {
     var status: Int = 0
     var message: String?

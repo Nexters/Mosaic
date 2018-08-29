@@ -60,3 +60,10 @@ enum ArticleService: APIService {
         return ["Authorization": APIRouter.token]
     }
 }
+
+//APIRouter.shared.requestArray(ArticleService.get(category: self.requestCategories)) { (code: Int?, articles: [Article]?) in
+//    if code == 200 {
+//        self.articles = articles
+//        self.collectionView.reloadData()
+//    }
+//}

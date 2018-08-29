@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+typealias Category = (emoji: String, title: String)
 class CategoryView: UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak private var label: UILabel!

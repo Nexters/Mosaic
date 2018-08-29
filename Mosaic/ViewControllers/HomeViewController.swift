@@ -51,6 +51,12 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
                 self.collectionView.reloadData()
             }
         }
+        APIRouter.shared.requestArray(ArticleService.get(category: self.requestCategories)) { (code: Int?, articles: [Article]?) in
+            if code == 200 {
+                self.articles = articles
+                self.collectionView.reloadData()
+            }
+        }
     }
 
     @objc

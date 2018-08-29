@@ -165,5 +165,4 @@ class Article: Mappable {
     required init?(map: Map) {
         self.mapping(map: map)
     }
-    
 }

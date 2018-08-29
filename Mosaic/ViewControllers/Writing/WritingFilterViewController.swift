@@ -8,12 +8,12 @@
 
 import UIKit
 
-typealias Category = (emoji: String, title: String)
+
 class WritingFilterViewController: UIViewController, TransparentNavBarService {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var previousViewController: WritingViewController?
-    var selectedCategory: Category? {
+    var selectedCategory: Categories? {
         set {
             self.previousViewController?.selectedCategory = newValue
         }
@@ -23,16 +23,7 @@ class WritingFilterViewController: UIViewController, TransparentNavBarService {
         }
     }
     
-    var categories: [Category] = [
-        (emoji: "🤫", title: "익명제보"),
-        (emoji: "🏆", title: "공모전"),
-        (emoji: "💃", title: "대외활동"),
-        (emoji: "✍️", title: "스터디"),
-        (emoji: "🍯", title: "대학생활 팁"),
-        (emoji: "🙋‍♀️", title: "아르바이트"),
-        (emoji: "👫", title: "동아리"),
-        (emoji: "👻", title: "아무말")
-    ]
+    var categories: [Categories] = []
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -47,11 +38,21 @@ class WritingFilterViewController: UIViewController, TransparentNavBarService {
         self.setUpCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        APIRouter.shared.requestArray(CategoryService.get) { (code: Int?, categories: [Categories]?) in
+            guard let categories = categories else {return}
+            self.categories = categories
+            self.collectionView.reloadData()
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         for (index, item) in self.categories.enumerated() {
             guard let selectedCategory = self.selectedCategory else {return}
-            if item.title == selectedCategory.title {
+            if item.uuid == selectedCategory.uuid {
                 self.collectionView.selectItem(at:  IndexPath(row: index, section: 0),
                                                animated: true,
                                                scrollPosition: .top)
@@ -88,31 +89,33 @@ class WritingFilterViewController: UIViewController, TransparentNavBarService {
         self.collectionView.backgroundColor = UIColor(hex: "#f0f0f0")
         self.collectionView.setUp(target: self, cell: FilterCollectionViewCell.self)
         self.collectionView.allowsMultipleSelection = false
+        self.collectionView.showsVerticalScrollIndicator = false
     }
     
 }
 extension WritingFilterViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return self.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.reuseIdentifier, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
-        //cell.configure(data: self.categories[indexPath.item])
+        cell.configure(data: self.categories[indexPath.row])
         cell.setColor(.writing)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 162, height: 122)
+        let width = ((collectionView.bounds.width - 51) / 2)
+        return CGSize(width: width, height: 122)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 15
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15
     }
     
@@ -120,7 +123,7 @@ extension WritingFilterViewController: UICollectionViewDelegate, UICollectionVie
         let item = collectionView.cellForItem(at: indexPath)
         if item?.isSelected ?? false {
             self.collectionView.deselectItem(at: indexPath, animated: true)
-            if self.selectedCategory?.title == self.categories[indexPath.row].title {
+            if self.selectedCategory?.uuid == self.categories[indexPath.row].uuid {
                 self.selectedCategory = nil
             }
         } else {

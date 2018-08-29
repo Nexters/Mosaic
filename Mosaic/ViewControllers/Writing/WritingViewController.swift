@@ -37,7 +37,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     //MARK: CONSTRAINT
     @IBOutlet weak var accessoryViewBottomConstraint: NSLayoutConstraint!
     //MARK: STORED OR COMPUTED
-    var selectedCategory: Category?
+    var selectedCategory: Categories?
     var selectedAssets = [TLPHAsset]()
     
     //MARK: - METHOD
@@ -165,7 +165,21 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     @objc
     func saveButtonDidTap() {
-        print("save")
+        guard let uuid = self.selectedCategory?.uuid else {return}
+        guard let text = self.textView.text else {return}
+        guard let images = self.accessoryView.selectedImages as? [UIImage] else {return}
+        
+        APIRouter.shared.upload(ArticleService.write(uuid: uuid,
+                                                     content: text),
+                                images: images) { (code: Int?, article: Article?) in
+                                    guard let code = code else {return}
+                                    switch code {
+                                    case 200:
+                                        self.dismiss(animated: true, completion: nil)
+                                    default:
+                                        break
+                                    }
+        }
     }
     
     @objc
@@ -176,9 +190,9 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         self.present(navigation, animated: true, completion: nil)
     }
     
-    func updateNavigationBarTitle(category: Category?) {
+    func updateNavigationBarTitle(category: Categories?) {
         if let category = category {
-            navigationBarTitleButton.setTitle(category.title + category.emoji, for: .normal)
+            navigationBarTitleButton.setTitle(category.name + category.emoji, for: .normal)
         } else {
             navigationBarTitleButton.setTitle("카테고리 선택", for: .normal)
         }

@@ -18,8 +18,10 @@ enum ArticleService: APIService {
     
     var path: String {
         switch self {
-        case .add, .delete, .get:
+        case .add, .delete:
             return "/apis/script"
+        case .get:
+            return "/apis/scripts"
         case .search:
             return "/apis/scripts/search"
         case .mine:
@@ -54,6 +56,7 @@ enum ArticleService: APIService {
     }
     
     var header: HTTPHeaders?{
+        print(APIRouter.token)
         return ["Authorization": APIRouter.token]
     }
 }

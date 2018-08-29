@@ -31,7 +31,7 @@ class APIRouter {
         Alamofire.request(url,
                           method: service.method,
                           parameters: service.parameters,
-                          headers: ["Authorization": APIRouter.token])
+                          headers: service.header)
             .responseObject { (response: DataResponse<Results<T>>) in
                 let results = response.result.value?.results
                 completion(response.response?.statusCode, results)

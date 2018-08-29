@@ -78,6 +78,14 @@
 		FCB097EF21330CD5002E05F6 /* EmailCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097EE21330CD5002E05F6 /* EmailCheckViewController.swift */; };
 		FCB097F121354C16002E05F6 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F021354C16002E05F6 /* APIRouter.swift */; };
 		FCB097F32136514A002E05F6 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F22136514A002E05F6 /* URL.swift */; };
+		FCB097F5213669B4002E05F6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F4213669B4002E05F6 /* Result.swift */; };
+		FCB097F7213669C7002E05F6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F6213669C7002E05F6 /* Model.swift */; };
+		FCB097F921366AF1002E05F6 /* LogInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F821366AF1002E05F6 /* LogInService.swift */; };
+		FCB097FB21366CDE002E05F6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097FA21366CDE002E05F6 /* APIService.swift */; };
+		FCB097FD21366D1A002E05F6 /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097FC21366D1A002E05F6 /* ArticleService.swift */; };
+		FCB0980021366FB9002E05F6 /* BookMarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097FF21366FB9002E05F6 /* BookMarkService.swift */; };
+		FCB0980221367395002E05F6 /* MyProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0980121367395002E05F6 /* MyProfileService.swift */; };
+		FCB09804213678C9002E05F6 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB09803213678C9002E05F6 /* CategoryService.swift */; };
 		FCE9AA8C212FCCB3009FC713 /* CALayer + Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */; };
 		FCE9AA8E21312359009FC713 /* UIPageControl + shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */; };
 /* End PBXBuildFile section */
@@ -158,6 +166,14 @@
 		FCB097EE21330CD5002E05F6 /* EmailCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckViewController.swift; sourceTree = "<group>"; };
 		FCB097F021354C16002E05F6 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		FCB097F22136514A002E05F6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		FCB097F4213669B4002E05F6 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		FCB097F6213669C7002E05F6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		FCB097F821366AF1002E05F6 /* LogInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInService.swift; sourceTree = "<group>"; };
+		FCB097FA21366CDE002E05F6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		FCB097FC21366D1A002E05F6 /* ArticleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
+		FCB097FF21366FB9002E05F6 /* BookMarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkService.swift; sourceTree = "<group>"; };
+		FCB0980121367395002E05F6 /* MyProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileService.swift; sourceTree = "<group>"; };
+		FCB09803213678C9002E05F6 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Border.swift"; sourceTree = "<group>"; };
 		FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl + shadow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,8 +197,8 @@
 				141A8A5621290DE200362A47 /* Me.swift */,
 				141A8A582129146E00362A47 /* ApiManager.swift */,
 				14812FE8212BF9F2004AC6F5 /* Category.swift */,
-				FCB097F021354C16002E05F6 /* APIRouter.swift */,
 				FCB097F22136514A002E05F6 /* URL.swift */,
+				FCB097F6213669C7002E05F6 /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +224,7 @@
 		1463941D212269E800FC601C /* Mosaic */ = {
 			isa = PBXGroup;
 			children = (
+				FCB098052136793F002E05F6 /* API */,
 				14587D782122D9AF00F13CCA /* Model */,
 				146394592122A7BA00FC601C /* Font */,
 				1463943021226AAD00FC601C /* Extension */,
@@ -465,6 +482,29 @@
 			path = PagingImageCollectionView;
 			sourceTree = "<group>";
 		};
+		FCB097FE21366D30002E05F6 /* APIServices */ = {
+			isa = PBXGroup;
+			children = (
+				FCB097FC21366D1A002E05F6 /* ArticleService.swift */,
+				FCB097F821366AF1002E05F6 /* LogInService.swift */,
+				FCB097FF21366FB9002E05F6 /* BookMarkService.swift */,
+				FCB0980121367395002E05F6 /* MyProfileService.swift */,
+				FCB09803213678C9002E05F6 /* CategoryService.swift */,
+			);
+			path = APIServices;
+			sourceTree = "<group>";
+		};
+		FCB098052136793F002E05F6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				FCB097F4213669B4002E05F6 /* Result.swift */,
+				FCB097F021354C16002E05F6 /* APIRouter.swift */,
+				FCB097FA21366CDE002E05F6 /* APIService.swift */,
+				FCB097FE21366D30002E05F6 /* APIServices */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -620,12 +660,17 @@
 				FC62777A212D975A008BAC6F /* CommentAccessoryView.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,
 				FCB097ED2133027E002E05F6 /* AuthViewController.swift in Sources */,
+				FCB097F7213669C7002E05F6 /* Model.swift in Sources */,
 				FC627789212E364E008BAC6F /* CommentTableViewCell.swift in Sources */,
 				1463945621226B8800FC601C /* HomeViewController.swift in Sources */,
+				FCB097F921366AF1002E05F6 /* LogInService.swift in Sources */,
 				FC06DAB1212A5AF000B3C35B /* ImagePickerControllerPresentable.swift in Sources */,
 				FC06DAC0212D62B100B3C35B /* MimicPlaceholderView.swift in Sources */,
 				141A8A5521282C9300362A47 /* TypeView.swift in Sources */,
+				FCB097FD21366D1A002E05F6 /* ArticleService.swift in Sources */,
 				1463943C21226AE100FC601C /* NSObject+.swift in Sources */,
+				FCB0980221367395002E05F6 /* MyProfileService.swift in Sources */,
+				FCB0980021366FB9002E05F6 /* BookMarkService.swift in Sources */,
 				141A8A592129146E00362A47 /* ApiManager.swift in Sources */,
 				1463944121226AE100FC601C /* NSObject+reuseIdentifier.swift in Sources */,
 				1463944A21226AEC00FC601C /* EnumCollection.swift in Sources */,
@@ -636,7 +681,9 @@
 				1463945221226AFB00FC601C /* HomeCollectionViewCell.swift in Sources */,
 				1463943F21226AE100FC601C /* UIApplication+topViewController.swift in Sources */,
 				FCB097F32136514A002E05F6 /* URL.swift in Sources */,
+				FCB097FB21366CDE002E05F6 /* APIService.swift in Sources */,
 				FC06DAA7212A59F200B3C35B /* AccessoryView.swift in Sources */,
+				FCB09804213678C9002E05F6 /* CategoryService.swift in Sources */,
 				FC54608921312CE10008E564 /* SignUpViewController.swift in Sources */,
 				14587D772122A9D400F13CCA /* UIFont+.swift in Sources */,
 				141A8A4F212813E500362A47 /* SearchViewController.swift in Sources */,
@@ -660,6 +707,7 @@
 				FC62778D212E477C008BAC6F /* RECommentTableViewCell.swift in Sources */,
 				FC06DAA2212A597400B3C35B /* WritingViewController.swift in Sources */,
 				14812FE9212BF9F2004AC6F5 /* Category.swift in Sources */,
+				FCB097F5213669B4002E05F6 /* Result.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

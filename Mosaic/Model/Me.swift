@@ -26,8 +26,8 @@ class Result<T: Mappable>: Mappable {
     required init?(map: Map) {
         self.mapping(map: map)
     }
-    
 }
+
 
 class ResultArray: Mappable {
     

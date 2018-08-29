@@ -18,14 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
-//        if let viewController = HomeViewController.create() {
-//            let navigationController = UINavigationController(rootViewController: viewController)
-//            self.window?.rootViewController = navigationController
-//        }
-        let viewController = SignUpViewController.create(storyboard: "SignUp")
-        let navigationController = UINavigationController(rootViewController: viewController)
-        self.window?.rootViewController = navigationController
-        
+
+        if let auth = UserDefaults.standard.value(forKey: "Authorization") as? String {
+            APIRouter.token = auth
+            let viewController = HomeViewController.create(storyboard: "Home")
+            let navigationController = UINavigationController(rootViewController: viewController)
+            self.window?.rootViewController = navigationController
+        } else {
+            let viewController = SignUpViewController.create(storyboard: "SignUp")
+            let navigationController = UINavigationController(rootViewController: viewController)
+            self.window?.rootViewController = navigationController
+        }
         self.window?.makeKeyAndVisible()
         return true
     }

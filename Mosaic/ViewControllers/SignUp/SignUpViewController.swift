@@ -107,12 +107,29 @@ class SignUpViewController: UIViewController, TransparentNavBarService, Keyboard
     func authButtonDidTapped() {
         if self.authButton.isEnabled {
             guard let email = self.textField.text else {return}
-            APIRouter.shared.request(logIn: APIRouter.LogIn.email(value: email)) { (code: Int?, value: User?) in
-                print(code)
-                
+            APIRouter.shared.request(LogInService.email(value: email)) { (code: Int?, value: User?) in
+                guard let code = code else {return}
+                switch code {
+                case 200:
+                    guard let user = value else {return}
+                    APIRouter.shared.request(LogInService.token(value: user)) { (code: Int?, value: Token?) in
+                        guard let code = code else {return}
+                        switch code {
+                        case 200:
+                            guard let token = value?.header else {return}
+                            APIRouter.token = token
+                            UserDefaults.standard.set(APIRouter.token, forKey: "Authorization")
+                            let viewcontroller = EmailCheckViewController.create(storyboard: "SignUp")
+                            self.navigationController?.pushViewController(viewcontroller, animated: true)
+                        default:
+                            break
+                        }
+                    }
+                default:
+                    break
+                }
             }
-            let viewcontroller = EmailCheckViewController.create(storyboard: "SignUp")
-            self.navigationController?.pushViewController(viewcontroller, animated: true)
+            
         }
     }
     

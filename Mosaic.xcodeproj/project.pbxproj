@@ -86,6 +86,7 @@
 		FCB0980021366FB9002E05F6 /* BookMarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097FF21366FB9002E05F6 /* BookMarkService.swift */; };
 		FCB0980221367395002E05F6 /* MyProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0980121367395002E05F6 /* MyProfileService.swift */; };
 		FCB09804213678C9002E05F6 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB09803213678C9002E05F6 /* CategoryService.swift */; };
+		FCB0980721379908002E05F6 /* ReplyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0980621379908002E05F6 /* ReplyService.swift */; };
 		FCE9AA8C212FCCB3009FC713 /* CALayer + Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */; };
 		FCE9AA8E21312359009FC713 /* UIPageControl + shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */; };
 /* End PBXBuildFile section */
@@ -174,6 +175,7 @@
 		FCB097FF21366FB9002E05F6 /* BookMarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkService.swift; sourceTree = "<group>"; };
 		FCB0980121367395002E05F6 /* MyProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileService.swift; sourceTree = "<group>"; };
 		FCB09803213678C9002E05F6 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
+		FCB0980621379908002E05F6 /* ReplyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyService.swift; sourceTree = "<group>"; };
 		FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Border.swift"; sourceTree = "<group>"; };
 		FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl + shadow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -490,6 +492,7 @@
 				FCB097FF21366FB9002E05F6 /* BookMarkService.swift */,
 				FCB0980121367395002E05F6 /* MyProfileService.swift */,
 				FCB09803213678C9002E05F6 /* CategoryService.swift */,
+				FCB0980621379908002E05F6 /* ReplyService.swift */,
 			);
 			path = APIServices;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				FCB0980021366FB9002E05F6 /* BookMarkService.swift in Sources */,
 				141A8A592129146E00362A47 /* ApiManager.swift in Sources */,
 				1463944121226AE100FC601C /* NSObject+reuseIdentifier.swift in Sources */,
+				FCB0980721379908002E05F6 /* ReplyService.swift in Sources */,
 				1463944A21226AEC00FC601C /* EnumCollection.swift in Sources */,
 				FC06DAAC212A5A2200B3C35B /* ImageCollectionViewCell.swift in Sources */,
 				FCB097EF21330CD5002E05F6 /* EmailCheckViewController.swift in Sources */,

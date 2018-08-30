@@ -115,12 +115,14 @@ class University: Mappable {
     }
 }
 
+typealias Category = (emoji: String, title: String)
 class Categories: Mappable {
     
     var emoji: String = ""
     var idx: Int = 0
     var name: String = ""
     var uuid: String = ""
+    lazy var emojiTitle: Category = (emoji: self.emoji, title: self.name)
    
     func mapping(map: Map) {
         emoji <- map["emoji"]

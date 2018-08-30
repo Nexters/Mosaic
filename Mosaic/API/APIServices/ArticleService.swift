@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 
 enum ArticleService: APIService {
-    case get(category: [[String: String]])
+    case get(scriptUuid: String)
+    case getAll(category: [[String: String]])
     case write(uuid: String, content: String)
     case search(keywork: String)
     case delete(article: Article)
@@ -18,9 +19,9 @@ enum ArticleService: APIService {
     
     var path: String {
         switch self {
-        case .delete, .write:
+        case .get, .delete, .write:
             return "/apis/script"
-        case .get:
+        case .getAll:
             return "/apis/scripts"
         case .search:
             return "/apis/scripts/search"
@@ -31,9 +32,11 @@ enum ArticleService: APIService {
     
     var parameters: Parameters? {
         switch self {
+        case .get(let scriptUuid):
+            return ["scriptUuid"    : scriptUuid]
         case .search(let keyword):
             return ["keyword"       : keyword]
-        case .get(let category):
+        case .getAll(let category):
             return ["categories"    : category]
         case .delete(let article):
             return ["scriptUuid"    : article.uuid!]
@@ -49,7 +52,7 @@ enum ArticleService: APIService {
         switch self {
         case .write:
             return .post
-        case .search, .get, .mine:
+        case .get, .search, .getAll, .mine:
             return .get
         case .delete:
             return .delete

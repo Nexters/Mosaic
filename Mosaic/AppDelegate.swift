@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
 
-        if let auth = UserDefaults.standard.value(forKey: "Authorization") as? String {
+        if let auth = UserDefaults.standard.value(forKey: "Authorization") as? String, !auth.isEmpty {
             APIRouter.token = auth
             let viewController = HomeViewController.create(storyboard: "Home")
             let navigationController = UINavigationController(rootViewController: viewController)

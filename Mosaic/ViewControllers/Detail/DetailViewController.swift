@@ -15,6 +15,9 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     //MARK: UI
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var pagingImageCollectionView: PagingImageCollectionView!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var commentCountLable: UILabel!
+    @IBOutlet weak var datelabel: UILabel!
     @IBOutlet weak var categoryView: CategoryView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentView: UIView!
@@ -34,6 +37,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         }
     }
     var selectedImage: UIImage?
+    var article: Article?
     //MARK: - METHOD
     //MARK: INIT
     override func viewDidLoad() {
@@ -46,7 +50,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         setUpCommentView()
         setUpPagingImageCollectionView()
         setUpAccessoryView()
-//        showDeleteButton()
+        setUpUI(article: self.article!)
     }
     
     override func viewDidLayoutSubviews() {
@@ -89,25 +93,37 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         self.navigationItem.rightBarButtonItem = scrapBarButton
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.Palette.silver
 //        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.Palette.coral
-        self.navigationItem.title = "서강대학교 | SOGANG2039"
-        
+    }
+    
+    //MARK: SET UP UI
+    func setUpUI(article: Article) {
         let label = UILabel()
-        let university = NSMutableAttributedString(string: "서강대학교", attributes:[
+        guard let writer = article.writer else {return}
+        
+        let university = NSMutableAttributedString(string: writer.university?.name ?? "", attributes:[
             NSAttributedStringKey.foregroundColor: UIColor.Palette.coral,
             NSAttributedStringKey.font: UIFont.nanumBold(size: 14.0)])
         let section = NSMutableAttributedString(string: " | ", attributes:[
             NSAttributedStringKey.foregroundColor: UIColor.Palette.silver,
             NSAttributedStringKey.font: UIFont.nanumBold(size: 14.0)])
-        let nickname = NSMutableAttributedString(string: "SOGANG2039", attributes:[
+        let nickname = NSMutableAttributedString(string: writer.nickName, attributes:[
             NSAttributedStringKey.foregroundColor: UIColor.Palette.coolGrey,
             NSAttributedStringKey.font: UIFont.nanumBold(size: 14.0)])
-        
         university.append(section)
         university.append(nickname)
-        
         label.attributedText = university
         self.navigationItem.titleView = label
+        
+        guard let category = article.category?.emojiTitle else {return}
+        self.categoryView.category = category
+        
+        self.contentLabel.text = article.content
+        
+        self.commentCountLable.text = String(describing: article.replies)
+        
+        self.datelabel.text = Date().text(article.createdAt) 
     }
+    
     //MARK: SET UP TABLEVIEW
     func setUpTableView() {
         self.tableView.setUp(target: self, cell: CommentTableViewCell.self)
@@ -208,7 +224,16 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             self.view.layoutIfNeeded()
         }
     }
-
+    
+    
+    func fetchArticle() {
+        guard let article = self.article,
+            let uuid = article.uuid else {return}
+        APIRouter.shared.request(ArticleService.get(scriptUuid: uuid)) { [weak self] (code: Int?, article: Article?) in
+            guard let `self` = self else {return}
+            self.article = article
+        }
+    }
 }
 
 //MARK: - EXTENSION

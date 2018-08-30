@@ -157,20 +157,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let url = URL(string: imageUrlStr)
         self.collegeImageView.kf.setImage(with: url)
         
-        let calendar = Calendar.current
-        let myDate = Date(milliseconds: article.createdAt)
-        
-        if calendar.isDateInToday(myDate) {
-            let df = DateFormatter()
-            df.dateFormat = "HH시 mm분"
-            let now = df.string(from: myDate)
-            self.timeLabel.text = "\(now)"
-        } else {
-            let df = DateFormatter()
-            df.dateFormat = "M월 d일"
-            let now = df.string(from: myDate)
-            self.timeLabel.text = "\(now)"
-        }
+        self.timeLabel.text = Date().text(article.createdAt)
         
         self.typeView.backgroundColor = .clear
         self.typeView.category = (emoji: article.category!.emoji, title: article.category!.name)
@@ -257,4 +244,23 @@ extension Date {
     init(milliseconds:Int) {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
     }
+    
+    func text(_ millisecons: Int) -> String {
+        return Date(milliseconds: millisecons).text
+    }
+    
+    var text: String {
+        let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
+        if calendar.isDateInToday(self) {
+            dateFormatter.dateFormat = "HH시 mm분"
+            let now = dateFormatter.string(from: self)
+            return String(describing: now)
+        } else {
+            dateFormatter.dateFormat = "M월 d일"
+            let now = dateFormatter.string(from: self)
+            return String(describing: now)
+        }
+    }
 }
+

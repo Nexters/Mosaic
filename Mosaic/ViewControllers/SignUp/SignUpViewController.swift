@@ -112,15 +112,14 @@ class SignUpViewController: UIViewController, TransparentNavBarService, Keyboard
                 switch code {
                 case 200:
                     guard let user = value else {return}
-                    APIRouter.shared.request(LogInService.token(value: user)) { (code: Int?, value: Token?) in
+                    APIRouter.shared.request(LogInService.token(value: user)) { [weak self] (code: Int?, value: Token?) in
+                        guard let `self` = self else {return}
                         guard let code = code else {return}
                         switch code {
                         case 200:
                             guard let token = value?.header else {return}
-                            APIRouter.token = token
-                            UserDefaults.standard.set(APIRouter.token, forKey: "Authorization")
-                            let viewcontroller = EmailCheckViewController.create(storyboard: "SignUp")
-                            self.navigationController?.pushViewController(viewcontroller, animated: true)
+                            self.saveToken(token)
+                            self.temp()
                         default:
                             break
                         }
@@ -131,6 +130,22 @@ class SignUpViewController: UIViewController, TransparentNavBarService, Keyboard
             }
             
         }
+    }
+    
+    func temp() {
+        let viewcontroller = HomeViewController.create(storyboard: "Home")
+        let navigation = UINavigationController(rootViewController: viewcontroller)
+        self.present(navigation, animated: true, completion: nil)
+    }
+    
+    func saveToken(_ token: String) {
+        UserDefaults.standard.set(token, forKey: "Authorization")
+        APIRouter.token = token
+    }
+    
+    func navigateToEmailCheckViewController() {
+        let viewcontroller = EmailCheckViewController.create(storyboard: "SignUp")
+        self.navigationController?.pushViewController(viewcontroller, animated: true)
     }
     
     func isValidEmail(_ text: String?) {

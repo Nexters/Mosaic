@@ -151,7 +151,10 @@
                         <outlet property="accessoryView" destination="2mg-RA-kdN" id="lma-pj-zXO"/>
                         <outlet property="accessoryViewHeightConstraint" destination="ifl-wt-JJP" id="MfT-aT-qTa"/>
                         <outlet property="categoryView" destination="Qc6-L3-AXK" id="kIm-pF-fA4"/>
+                        <outlet property="commentCountLable" destination="6vp-Y4-2FR" id="Mkd-WQ-efx"/>
                         <outlet property="commentView" destination="Jfq-15-WSN" id="yNA-jP-3pZ"/>
+                        <outlet property="contentLabel" destination="EJQ-Or-nAd" id="gjX-K3-JIG"/>
+                        <outlet property="datelabel" destination="lPj-jn-G1y" id="b1R-MT-akI"/>
                         <outlet property="deleteButton" destination="3GQ-FV-tzL" id="0NJ-eB-Ytx"/>
                         <outlet property="deleteButtonBottomConstraint" destination="zgJ-2t-K9t" id="cQj-NC-1xD"/>
                         <outlet property="deleteButtonHeightConstraint" destination="Acz-4F-n9e" id="ugg-vF-SUS"/>

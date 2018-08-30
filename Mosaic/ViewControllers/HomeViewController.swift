@@ -45,13 +45,13 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ApiManager.shared.requestHomeArticles(with: self.requestCategories) { (code, articles) in
-            if code == 200 {
-                self.articles = articles
-                self.collectionView.reloadData()
-            }
-        }
-        APIRouter.shared.requestArray(ArticleService.get(category: self.requestCategories)) { (code: Int?, articles: [Article]?) in
+//        ApiManager.shared.requestHomeArticles(with: self.requestCategories) { (code, articles) in
+//            if code == 200 {
+//                self.articles = articles
+//                self.collectionView.reloadData()
+//            }
+//        }
+        APIRouter.shared.requestArray(ArticleService.getAll(category: self.requestCategories)) { (code: Int?, articles: [Article]?) in
             if code == 200 {
                 self.articles = articles
                 self.collectionView.reloadData()
@@ -151,7 +151,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let articles = self.articles else {return}
+        let article = articles[indexPath.row]
         guard let viewController = DetailViewController.create(storyboard: "Detail") as? DetailViewController else {return}
+        viewController.article = article
         let navigation = UINavigationController(rootViewController: viewController)
         self.present(navigation, animated: true, completion: nil)
     }

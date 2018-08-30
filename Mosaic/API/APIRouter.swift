@@ -28,6 +28,7 @@ class APIRouter {
 
     func requestArray<T: Mappable>(_ service: APIService, completion: @escaping (_ code: Int?, _ response: [T]?) -> Void) {
         let url = "\(self.baseURL)" + service.path
+        print(service.header)
         Alamofire.request(url,
                           method: service.method,
                           parameters: service.parameters,

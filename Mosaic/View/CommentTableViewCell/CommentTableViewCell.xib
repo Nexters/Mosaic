@@ -89,6 +89,13 @@
                             <constraint firstAttribute="height" constant="110" id="aoB-rX-ZEO"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3k-6p-3AO">
+                        <rect key="frame" x="0.0" y="248.5" width="538" height="1"/>
+                        <color key="backgroundColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="chu-Yq-449"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="SoN-W7-BII" secondAttribute="trailing" constant="27" id="0zH-kB-1yZ"/>
@@ -107,10 +114,13 @@
                     <constraint firstItem="eBY-Od-4Sz" firstAttribute="top" secondItem="u7r-RT-ZXc" secondAttribute="bottom" constant="12" id="baY-gY-BbH"/>
                     <constraint firstItem="Cmd-Y9-bes" firstAttribute="centerY" secondItem="Jh6-4P-iaz" secondAttribute="centerY" id="dBP-1n-XrA"/>
                     <constraint firstItem="u7r-RT-ZXc" firstAttribute="centerY" secondItem="tsu-xA-6cX" secondAttribute="centerY" id="hcW-cN-ATp"/>
+                    <constraint firstAttribute="trailing" secondItem="b3k-6p-3AO" secondAttribute="trailing" id="kyW-Pr-H74"/>
+                    <constraint firstAttribute="bottom" secondItem="b3k-6p-3AO" secondAttribute="bottom" id="loW-Aa-Swm"/>
                     <constraint firstItem="Jh6-4P-iaz" firstAttribute="centerY" secondItem="u7r-RT-ZXc" secondAttribute="centerY" id="mhg-b1-WnA"/>
                     <constraint firstItem="Cmd-Y9-bes" firstAttribute="leading" secondItem="Jh6-4P-iaz" secondAttribute="trailing" constant="4" id="qCu-8u-Qgr"/>
                     <constraint firstItem="SoN-W7-BII" firstAttribute="top" secondItem="eBY-Od-4Sz" secondAttribute="bottom" constant="12" id="rsc-K7-4dC"/>
                     <constraint firstItem="ZVk-Ll-vXI" firstAttribute="top" secondItem="OaG-3m-pVR" secondAttribute="bottom" constant="16" id="wwj-xS-Aqh"/>
+                    <constraint firstItem="b3k-6p-3AO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="z1Y-ke-IO2"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -120,6 +130,7 @@
                 <outlet property="nicknameLabel" destination="Cmd-Y9-bes" id="MYy-lj-0VJ"/>
                 <outlet property="replyButton" destination="ZVk-Ll-vXI" id="ACc-3a-RHg"/>
                 <outlet property="thumbnail" destination="eBY-Od-4Sz" id="b1T-xO-hyY"/>
+                <outlet property="thumbnailHeightConstraint" destination="aoB-rX-ZEO" id="4Y3-Dz-5vm"/>
                 <outlet property="timeLabel" destination="OaG-3m-pVR" id="C8s-Rf-Za2"/>
                 <outlet property="universityLabel" destination="u7r-RT-ZXc" id="hbR-Xv-Ni8"/>
                 <outlet property="universityLogoImageView" destination="tsu-xA-6cX" id="ouA-lc-o33"/>

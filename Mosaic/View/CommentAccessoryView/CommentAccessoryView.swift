@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct UpperReply {
+    var uuid: String = ""
+    var name: String = ""
+}
+
 class CommentAccessoryView: UIView {
 
     @IBOutlet weak private var contentView: UIView!
@@ -21,6 +26,7 @@ class CommentAccessoryView: UIView {
     
     static var normalHeight: CGFloat = 52
     static var changedHeight: CGFloat = 112
+    var upperReply = UpperReply()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,7 +61,10 @@ class CommentAccessoryView: UIView {
         self.deleteButton.alpha = 0.0
         self.nicknameLabel.text = nil
         self.textField.delegate = self
+        self.textField.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
         self.textField.observeBackDelegate = self
+        
+        self.sendButton.setEnable(false, color: UIColor.Palette.silver)
     }
     
     func showImageView(_ image: UIImage?) {
@@ -65,8 +74,9 @@ class CommentAccessoryView: UIView {
         self.deleteButton.alpha = value ? 1.0 : 0.0
     }
     
-    func setNicknameLabel(_ nickname: String?) {
-        self.nicknameLabel.text = nickname
+    func setNicknameLabel(_ upper: UpperReply) {
+        self.upperReply = upper
+        self.nicknameLabel.text = self.upperReply.name
     }
     
     func setTextField(_ text: String?) {
@@ -89,11 +99,38 @@ class CommentAccessoryView: UIView {
 extension CommentAccessoryView: ObserveBackTextFieldDelegate, UITextFieldDelegate {
     func textFieldDidDelete(_ textField: ObserveBackTextField, previousText: String?) {
         guard let text = previousText else {
-            self.setNicknameLabel(nil)
+            self.setNicknameLabel(UpperReply())
             return
         }
         if text.isEmpty {
-            self.setNicknameLabel(nil)
+            self.setNicknameLabel(UpperReply())
+        }
+    }
+    
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        guard let text = textField.text else {return true}
+//        let prospectiveText = (text as NSString).replacingCharacters(in: range, with: string)
+//        let length = prospectiveText.count
+//
+//        print("???", text.utf16.count + string.utf16.count - range.length)
+//        print("text", text)
+//        print("prospectiveText", prospectiveText)
+//        print("length", length)
+//        if !prospectiveText.isNilOrEmpty()  {
+//            self.sendButton.setEnable(true, color: UIColor.Palette.coral)
+//        } else {
+//            self.sendButton.setEnable(false, color: UIColor.Palette.silver)
+//        }
+//        return true
+//    }
+    
+    @objc
+    func textFieldDidChanged(_ textField: UITextField) {
+        guard let text = textField.text else {return}
+        if !text.isNilOrEmpty() {
+            self.sendButton.setEnable(true, color: UIColor.Palette.coral)
+        } else {
+            self.sendButton.setEnable(false, color: UIColor.Palette.silver)
         }
     }
 }

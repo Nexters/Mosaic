@@ -12,10 +12,10 @@ class PagingImageCollectionView: UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
-    var images = [UIImage]() {
+    var imageURLs = [String]() {
         didSet {
+            self.pageControl.numberOfPages = imageURLs.count
             self.collectionView.reloadData()
-            self.pageControl.numberOfPages = images.count
         }
     }
     
@@ -49,12 +49,12 @@ class PagingImageCollectionView: UIView {
 
 extension PagingImageCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return self.imageURLs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-        cell.thumbnail.image = self.images[indexPath.row]
+        cell.thumbnail.kf.setImage(with: URL(string: self.imageURLs[indexPath.row]))
         return cell
     }
     

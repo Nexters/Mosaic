@@ -87,6 +87,7 @@
 		FCB0980221367395002E05F6 /* MyProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0980121367395002E05F6 /* MyProfileService.swift */; };
 		FCB09804213678C9002E05F6 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB09803213678C9002E05F6 /* CategoryService.swift */; };
 		FCB0980721379908002E05F6 /* ReplyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0980621379908002E05F6 /* ReplyService.swift */; };
+		FCD0BEB42137D9DA0077B08C /* UIButton + setEnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0BEB32137D9DA0077B08C /* UIButton + setEnable.swift */; };
 		FCE9AA8C212FCCB3009FC713 /* CALayer + Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */; };
 		FCE9AA8E21312359009FC713 /* UIPageControl + shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */; };
 /* End PBXBuildFile section */
@@ -176,6 +177,7 @@
 		FCB0980121367395002E05F6 /* MyProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileService.swift; sourceTree = "<group>"; };
 		FCB09803213678C9002E05F6 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		FCB0980621379908002E05F6 /* ReplyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyService.swift; sourceTree = "<group>"; };
+		FCD0BEB32137D9DA0077B08C /* UIButton + setEnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + setEnable.swift"; sourceTree = "<group>"; };
 		FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Border.swift"; sourceTree = "<group>"; };
 		FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl + shadow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -258,6 +260,7 @@
 				FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */,
 				FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */,
 				FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */,
+				FCD0BEB32137D9DA0077B08C /* UIButton + setEnable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				14587D7A2122D9C100F13CCA /* Post.swift in Sources */,
 				FC06DAB3212A6C6400B3C35B /* UITextView + centerVertically.swift in Sources */,
 				1463941F212269E800FC601C /* AppDelegate.swift in Sources */,
+				FCD0BEB42137D9DA0077B08C /* UIButton + setEnable.swift in Sources */,
 				FC06DAB7212AFDF400B3C35B /* UIViewController + create.swift in Sources */,
 				1463944921226AEC00FC601C /* TransparentNavBarService.swift in Sources */,
 				FCB097F121354C16002E05F6 /* APIRouter.swift in Sources */,

@@ -113,7 +113,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         self.saveButton.titleLabel?.font = UIFont.nanumExtraBold(size: 14.0)
         self.saveButton.setTitleColor(UIColor.Palette.coolBlue, for: .normal)
         self.navigationItem.setRightBarButton(UIBarButtonItem(customView: self.saveButton), animated: true)
-        enableButton(self.saveButton, false)
+        self.saveButton.setEnable(false, color: UIColor.Palette.coolBlue)
     }
     
     //MARK: SET UP ACCESSORYVIEW
@@ -171,6 +171,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         
         APIRouter.shared.upload(ArticleService.write(uuid: uuid,
                                                      content: text),
+                                imageKey: "imgUrls",
                                 images: images) { (code: Int?, article: Article?) in
                                     guard let code = code else {return}
                                     switch code {
@@ -195,27 +196,6 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
             navigationBarTitleButton.setTitle(category.name + category.emoji, for: .normal)
         } else {
             navigationBarTitleButton.setTitle("카테고리 선택", for: .normal)
-        }
-    }
-    
-    func enableButton(_ button: UIButton, _ enable: Bool) {
-        button.isEnabled = enable
-        switch button.isEnabled {
-        case true:
-            button.setTitleColor(.white, for: .normal)
-        case false:
-            button.setTitleColor(UIColor.Palette.coolBlue, for: .normal)
-        }
-    }
-    
-    func enableSaveButton(_ length: Int) {
-        let isEmpty = !(0 < length)
-        self.textView.isHidden = isEmpty
-        self.mimicPlaceholderView.isHidden = !isEmpty
-        if !isEmpty && self.selectedCategory != nil {
-            enableButton(self.saveButton, true)
-        } else {
-            enableButton(self.saveButton, false)
         }
     }
 }
@@ -248,16 +228,22 @@ extension WritingViewController: TLPhotosPickerViewControllerDelegate {
 
 //MARK: UITEXTVIEWDELEGATE
 extension WritingViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        let prospectiveText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-        let length = prospectiveText.count
-        enableSaveButton(length)
-        
-        return true
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        let length = self.textView.text.count
-        enableSaveButton(length)
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        let prospectiveText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+//        let length = prospectiveText.count
+//        enableSaveButton(length)
+//
+//        return true
+//    }
+//
+    func textViewDidChange(_ textView: UITextView) {
+        let isEmpty = textView.text.isNilOrEmpty()
+        self.textView.isHidden = isEmpty
+        self.mimicPlaceholderView.isHidden = !isEmpty
+        if !isEmpty && self.selectedCategory != nil {
+            self.saveButton.setEnable(true, color: .white)
+        } else {
+            self.saveButton.setEnable(false, color: UIColor.Palette.coolBlue)
+        }
     }
 }

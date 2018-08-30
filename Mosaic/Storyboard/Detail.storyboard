@@ -27,15 +27,15 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6P-Nb-3tl" customClass="PagingImageCollectionView" customModule="Mosaic" customModuleProvider="target">
-                                            <rect key="frame" x="37" y="10" width="300" height="300"/>
+                                            <rect key="frame" x="187" y="10" width="0.0" height="0.0"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="O6P-Nb-3tl" secondAttribute="height" multiplier="1:1" id="3l8-Yz-qLi"/>
-                                                <constraint firstAttribute="height" constant="300" id="REe-jy-iB4"/>
+                                                <constraint firstAttribute="height" id="REe-jy-iB4"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qc6-L3-AXK" customClass="CategoryView" customModule="Mosaic" customModuleProvider="target">
-                                            <rect key="frame" x="157.5" y="326" width="60" height="24"/>
+                                            <rect key="frame" x="157.5" y="26" width="60" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="beD-aS-6m4"/>
@@ -43,7 +43,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJQ-Or-nAd">
-                                            <rect key="frame" x="20" y="366" width="335" height="141"/>
+                                            <rect key="frame" x="20" y="66" width="335" height="441"/>
                                             <string key="text">올해 하반기에 열리는 전국 비보이
 댄스대회에 함께 할 팀원을 구합니다. 올해로 
 4회째 수상하고 있습니다. 체계적인 연습과
@@ -159,6 +159,7 @@
                         <outlet property="deleteButtonBottomConstraint" destination="zgJ-2t-K9t" id="cQj-NC-1xD"/>
                         <outlet property="deleteButtonHeightConstraint" destination="Acz-4F-n9e" id="ugg-vF-SUS"/>
                         <outlet property="pagingImageCollectionView" destination="O6P-Nb-3tl" id="sGD-NO-FE6"/>
+                        <outlet property="pagingImageCollectionViewHeightConstraint" destination="REe-jy-iB4" id="gSL-Pr-Ly9"/>
                         <outlet property="tableView" destination="0dp-ls-bdZ" id="lsi-nc-Odc"/>
                     </connections>
                 </viewController>

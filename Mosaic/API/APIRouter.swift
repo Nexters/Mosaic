@@ -28,7 +28,6 @@ class APIRouter {
 
     func requestArray<T: Mappable>(_ service: APIService, completion: @escaping (_ code: Int?, _ response: [T]?) -> Void) {
         let url = "\(self.baseURL)" + service.path
-        print(service.header)
         Alamofire.request(url,
                           method: service.method,
                           parameters: service.parameters,
@@ -39,11 +38,13 @@ class APIRouter {
         }
     }
     
-    func upload<T: Mappable>(_ service: APIService, images: [UIImage], completion: @escaping (_ code: Int?, _ response: T?) -> Void ) {
+    func upload<T: Mappable>(_ service: APIService, imageKey: String?, images: [UIImage?], completion: @escaping (_ code: Int?, _ response: T?) -> Void ) {
         let url = "\(self.baseURL)" + service.path
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             for (index, item) in images.enumerated() {
-                multipartFormData.append(item, key: "imgUrls", fileName: "\(index)")
+                if let item = item, let imageKey = imageKey {
+                    multipartFormData.append(item, key: imageKey, fileName: "\(index)")
+                }
             }
             if let parameters = service.parameters as? [String: String] {
                 multipartFormData.append(parameters)

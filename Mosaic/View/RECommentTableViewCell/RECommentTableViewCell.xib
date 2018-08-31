@@ -78,16 +78,25 @@
                             <constraint firstAttribute="width" secondItem="AvJ-gz-Tvt" secondAttribute="height" multiplier="1:1" id="qL6-iR-TyW"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWk-OD-meQ">
+                        <rect key="frame" x="0.0" y="244.5" width="463" height="1"/>
+                        <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="SnH-Oo-wfl"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="fVb-Pv-ZJd" firstAttribute="leading" secondItem="4x1-w9-GQm" secondAttribute="leading" id="2Wy-yV-LHQ"/>
                     <constraint firstAttribute="trailingMargin" secondItem="fVb-Pv-ZJd" secondAttribute="trailing" constant="27" id="9jD-Vh-KhD"/>
+                    <constraint firstAttribute="trailing" secondItem="mWk-OD-meQ" secondAttribute="trailing" id="CJa-wn-dAl"/>
                     <constraint firstItem="AvJ-gz-Tvt" firstAttribute="top" secondItem="4x1-w9-GQm" secondAttribute="bottom" constant="12" id="DJz-xq-3zC"/>
                     <constraint firstItem="AvJ-gz-Tvt" firstAttribute="width" secondItem="AvJ-gz-Tvt" secondAttribute="height" multiplier="1:1" id="GPj-KJ-CCW"/>
                     <constraint firstItem="PYm-NM-zxE" firstAttribute="centerY" secondItem="4x1-w9-GQm" secondAttribute="centerY" id="KU5-Gh-qsA"/>
                     <constraint firstItem="bDn-w6-vv3" firstAttribute="leading" secondItem="PYm-NM-zxE" secondAttribute="trailing" constant="4" id="MYo-g9-NwR"/>
                     <constraint firstItem="bDn-w6-vv3" firstAttribute="centerY" secondItem="PYm-NM-zxE" secondAttribute="centerY" id="Qxj-n3-EYc"/>
+                    <constraint firstItem="mWk-OD-meQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aTc-yc-mfj"/>
                     <constraint firstItem="4x1-w9-GQm" firstAttribute="centerY" secondItem="7b4-I7-e04" secondAttribute="centerY" id="e9F-7F-Ti8"/>
                     <constraint firstItem="bDn-w6-vv3" firstAttribute="centerY" secondItem="Mlv-rD-ley" secondAttribute="centerY" id="hY9-I3-JQn"/>
                     <constraint firstItem="7b4-I7-e04" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="48" id="iEp-HL-d5N"/>
@@ -100,6 +109,7 @@
                     <constraint firstItem="fVb-Pv-ZJd" firstAttribute="top" secondItem="AvJ-gz-Tvt" secondAttribute="bottom" constant="12" id="v1a-US-VEU"/>
                     <constraint firstItem="PYm-NM-zxE" firstAttribute="leading" secondItem="4x1-w9-GQm" secondAttribute="trailing" constant="4" id="v3G-ep-QiX"/>
                     <constraint firstItem="Ir8-Sa-VwQ" firstAttribute="top" secondItem="fVb-Pv-ZJd" secondAttribute="bottom" constant="11" id="wtz-a3-LnA"/>
+                    <constraint firstAttribute="bottom" secondItem="mWk-OD-meQ" secondAttribute="bottom" id="zqP-PQ-QBp"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -108,6 +118,8 @@
                 <outlet property="myMimicLableButton" destination="Mlv-rD-ley" id="IXX-l8-tZJ"/>
                 <outlet property="nicknameLabel" destination="bDn-w6-vv3" id="tx9-Ia-0tt"/>
                 <outlet property="thumbnail" destination="AvJ-gz-Tvt" id="wBI-ST-Nxu"/>
+                <outlet property="thumbnailHeightConstraint" destination="Wkm-3h-0Cu" id="pyH-JT-fwk"/>
+                <outlet property="thumbnailTopMarginConstraint" destination="DJz-xq-3zC" id="A6l-n6-rrL"/>
                 <outlet property="timeLabel" destination="Ir8-Sa-VwQ" id="iiT-mD-ba1"/>
                 <outlet property="universityLabel" destination="4x1-w9-GQm" id="RgQ-FD-5Dz"/>
                 <outlet property="universityLogoImageView" destination="7b4-I7-e04" id="tWg-A1-fLZ"/>

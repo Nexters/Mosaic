@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct UpperReply {
+    var uuid: String = ""
+    var name: String = ""
+}
+
 class CommentAccessoryView: UIView {
 
     @IBOutlet weak private var contentView: UIView!
@@ -21,6 +26,7 @@ class CommentAccessoryView: UIView {
     
     static var normalHeight: CGFloat = 52
     static var changedHeight: CGFloat = 112
+    var upperReply = UpperReply()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,20 +48,29 @@ class CommentAccessoryView: UIView {
         setUpView()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.layer.addBorder([.top], color: UIColor.Palette.grayWhite, width: 1)
+    }
+    
     private func setUpView() {
         Bundle.main.loadNibNamed(CommentAccessoryView.reuseIdentifier, owner: self, options: nil)
         addSubview(self.contentView)
         
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        self.contentView.layer.addBorder([.top], color: UIColor.Palette.grayWhite, width: 1)
         
         self.thumbnail.alpha = 0.0
         self.downloadLabel.isHidden = true
         self.deleteButton.alpha = 0.0
         self.nicknameLabel.text = nil
+        
         self.textField.delegate = self
+        self.textField.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
         self.textField.observeBackDelegate = self
+        self.textField.autocorrectionType = .no
+        
+        enableSendButton(false)
     }
     
     func showImageView(_ image: UIImage?) {
@@ -65,8 +80,9 @@ class CommentAccessoryView: UIView {
         self.deleteButton.alpha = value ? 1.0 : 0.0
     }
     
-    func setNicknameLabel(_ nickname: String?) {
-        self.nicknameLabel.text = nickname
+    func setNicknameLabel(_ upper: UpperReply) {
+        self.upperReply = upper
+        self.nicknameLabel.text = self.upperReply.name
     }
     
     func setTextField(_ text: String?) {
@@ -84,17 +100,53 @@ class CommentAccessoryView: UIView {
     func deleteButtonAddTarget(_ target: Any?, action: Selector) {
         self.deleteButton.addTarget(target, action: action, for: .touchUpInside)
     }
+    
+    func reset() {
+        setNicknameLabel(UpperReply())
+        self.textField.text = ""
+        enableSendButton(false)
+    }
+    
+    func enableSendButton(_ value: Bool) {
+        switch value {
+        case true:
+            self.sendButton.setEnable(true, color: UIColor.Palette.coral)
+        case false:
+            self.sendButton.setEnable(false, color: UIColor.Palette.silver)
+        }
+    }
 }
 
 extension CommentAccessoryView: ObserveBackTextFieldDelegate, UITextFieldDelegate {
     func textFieldDidDelete(_ textField: ObserveBackTextField, previousText: String?) {
         guard let text = previousText else {
-            self.setNicknameLabel(nil)
+            self.setNicknameLabel(UpperReply())
             return
         }
         if text.isEmpty {
-            self.setNicknameLabel(nil)
+            self.setNicknameLabel(UpperReply())
         }
+    }
+    
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        guard let text = textField.text else {return true}
+//        let prospectiveText = (text as NSString).replacingCharacters(in: range, with: string)
+//        let length = prospectiveText.count
+//
+//        return true
+//    }
+    
+    @objc
+    func textFieldDidChanged(_ textField: UITextField) {
+        guard let text = textField.text else {return}
+        enableSendButton(!text.isNilOrEmpty())
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if self.sendButton.isEnabled {
+            self.sendButton.sendActions(for: .touchUpInside)
+        }
+        return true
     }
 }
 

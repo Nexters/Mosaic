@@ -22,11 +22,9 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var accessoryView: CommentAccessoryView!
-    var scrapBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icScrapNol")?.withRenderingMode(.alwaysTemplate),
-                                                          style: .plain,
-                                                          target: self,
-                                                          action: #selector(scrapButtonDidTap))
+    var scrapBarButton: UIBarButtonItem!
     //MARK: CONSTRAINT
+    @IBOutlet weak var pagingImageCollectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var accessoryViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var deleteButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var deleteButtonBottomConstraint: NSLayoutConstraint!
@@ -38,6 +36,13 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     }
     var selectedImage: UIImage?
     var article: Article?
+    var upperReplyUUID: String = ""
+    var replies: [Reply] = []
+    var isScraped: Bool = false {
+        didSet {
+            setScrapButton(self.isScraped)
+        }
+    }
     //MARK: - METHOD
     //MARK: INIT
     override func viewDidLoad() {
@@ -47,10 +52,25 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         setUpNavigationBar()
         setUpCategoryView()
         setUpTableView()
-        setUpCommentView()
-        setUpPagingImageCollectionView()
         setUpAccessoryView()
-        setUpUI(article: self.article!)
+        if let article = self.article {
+            setUpUI(article: article)
+        }
+        fetchReplies()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .default
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,6 +82,10 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             tableView.tableHeaderView = headerView
             tableView.layoutIfNeeded()
         }
+        
+        self.commentView.layer.addBorder([.top, .bottom],
+                                         color: UIColor.Palette.paleGrey,
+                                         width: 1.0)
     }
     
     //MARK: SET UP KEYBOARD
@@ -90,9 +114,12 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
                                                                 target: self,
                                                                 action: #selector(closeButtonDidTap))
         
-        self.navigationItem.rightBarButtonItem = scrapBarButton
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.Palette.silver
-//        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.Palette.coral
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icScrapNol")?.withRenderingMode(.alwaysTemplate),
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(scrapButtonDidTap))
+        self.scrapBarButton = self.navigationItem.rightBarButtonItem
+        setScrapButton(false)
     }
     
     //MARK: SET UP UI
@@ -114,24 +141,38 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         label.attributedText = university
         self.navigationItem.titleView = label
         
+        self.pagingImageCollectionViewHeightConstraint.constant = 0
+        if let articleURLs = article.imageUrls, !articleURLs.isEmpty {
+            self.pagingImageCollectionViewHeightConstraint.constant = 300
+            setUpPagingImageCollectionView(imageURLS: articleURLs)
+        }
+        
         guard let category = article.category?.emojiTitle else {return}
         self.categoryView.category = category
         
         self.contentLabel.text = article.content
         
-        self.commentCountLable.text = String(describing: article.replies)
+        self.datelabel.text = Date().text(article.createdAt)
         
-        self.datelabel.text = Date().text(article.createdAt) 
+        self.isScraped = article.isScraped
     }
     
     //MARK: SET UP TABLEVIEW
     func setUpTableView() {
         self.tableView.setUp(target: self, cell: CommentTableViewCell.self)
         self.tableView.setUp(target: self, cell: RECommentTableViewCell.self)
-        self.tableView.allowsSelection = false
         self.tableView.estimatedRowHeight = 50
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.tableFooterView = UIView()
+        self.tableView.separatorStyle = .none
+        self.tableView.alwaysBounceVertical = false
+        self.tableView.showsVerticalScrollIndicator = false
+        self.tableView.allowsSelection = false
         self.tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tableViewDidTapped)))
+        
+//        let v = UIView()
+//        v.backgroundColor = .black
+//        self.tableView.addSubview(v)
     }
     
     @objc
@@ -151,16 +192,9 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         self.categoryView.setUp()
     }
     
-    //MARK: SET UP COMMENTVIEW
-    func setUpCommentView() {
-        self.commentView.layer.addBorder([.top, .bottom],
-                                         color: UIColor.Palette.paleGrey,
-                                         width: 1.0)
-    }
-    
     //MARK: SET UP PAGINGIMAGECOLLECTIONVIEW
-    func setUpPagingImageCollectionView() {
-        self.pagingImageCollectionView.images = [#imageLiteral(resourceName: "imgYonseiuniv"), #imageLiteral(resourceName: "imgBackEwhauniv"), #imageLiteral(resourceName: "imgBackKoreauniv"), #imageLiteral(resourceName: "imgBackKoreauniv2")]
+    func setUpPagingImageCollectionView(imageURLS: [String]) {
+        self.pagingImageCollectionView.imageURLs = imageURLS
     }
     
     //MARK: SET UP ACCESSORYVIEW
@@ -168,6 +202,10 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         self.accessoryView.imageButtonAddTarget(self, action: #selector(imageButtonDidTapped))
         self.accessoryView.sendButtonAddTarget(self, action: #selector(messageButtonDidTapped))
         self.accessoryView.deleteButtonAddTarget(self, action: #selector(deleteButtonDidTapped))
+    }
+    
+    func setScrapButton(_ value: Bool) {
+        self.scrapBarButton.tintColor = value ? UIColor.Palette.coral : UIColor.Palette.silver//setEnable(value, color: value ? UIColor.Palette.coral : UIColor.Palette.silver)
     }
     
     //MAKR: - ACTION
@@ -178,13 +216,16 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     
     @objc
     func scrapButtonDidTap() {
-        
+        guard let uuid = self.article?.uuid else {return}
+        requestScrap(uuid)
     }
     
     @objc
     func replyButtonDidTap(_ sender: ParameterButton) {
+        guard let uuid = sender.params["uuid"] as? String else {return}
         guard let nickname = sender.params["nickname"] as? String else {return}
-        self.accessoryView.setNicknameLabel(nickname)
+        self.accessoryView.setNicknameLabel(UpperReply(uuid: uuid, name: nickname))
+        self.accessoryView.textField.becomeFirstResponder()
     }
     
     @objc
@@ -207,16 +248,24 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     }
     
     @IBAction func messageButtonDidTapped(_ sender: UIButton) {
-        self.view.endEditing(true)
+        postReply(method: {
+            self.accessoryView.reset()
+            self.changeAccessoryViewHeight(true)
+            self.view.endEditing(true)
+            self.fetchReplies()
+        })
+        
     }
     
     @objc
     func deleteButtonDidTapped() {
-        self.selectedAssets = []
         changeAccessoryViewHeight(true)
     }
     
     func changeAccessoryViewHeight(_ hide: Bool) {
+        if hide {
+            self.selectedAssets = []
+        }
         UIView.animate(withDuration: 0.5) {
             self.accessoryViewHeightConstraint.constant =
                 hide ? CommentAccessoryView.normalHeight : CommentAccessoryView.changedHeight
@@ -226,12 +275,54 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     }
     
     
-    func fetchArticle() {
+//    func fetchArticle() {
+//        guard let article = self.article,
+//            let uuid = article.uuid else {return}
+//        APIRouter.shared.request(ArticleService.get(scriptUuid: uuid)) { [weak self] (code: Int?, article: Article?) in
+//            guard let `self` = self else {return}
+//            self.article = article
+//            guard let article = self.article else {return}
+//            self.setUpUI(article: article)
+//        }
+//    }
+    
+    func fetchReplies() {
         guard let article = self.article,
             let uuid = article.uuid else {return}
-        APIRouter.shared.request(ArticleService.get(scriptUuid: uuid)) { [weak self] (code: Int?, article: Article?) in
+        APIRouter.shared.requestArray(ReplyService.getReplies(scriptUuid: uuid)) { [weak self] (code: Int?, replies: [Reply]?) in
             guard let `self` = self else {return}
-            self.article = article
+            guard let replies = replies else {return}
+            self.replies = replies
+            self.commentCountLable.text = String(describing: self.replies.count)
+            self.tableView.reloadData()
+        }
+    }
+    
+    func postReply(method: (()->())? = nil) {
+        guard let content = self.accessoryView.textField.text else {return}
+        guard let article = self.article,
+                let uuid = article.uuid else {return}
+        
+        APIRouter.shared.upload(ReplyService.add(content: content,
+                                                 scriptUuid: uuid,
+                                                 upperReplyUuid: self.accessoryView.upperReply.uuid),
+                                imageKey: "imgFile",
+                                images: [self.selectedImage]) { [weak self] (code: Int?, reply: Reply?) in
+                                    method?()
+        }
+    }
+    
+    func requestScrap(_ uuid: String) {
+        APIRouter.shared.request(ScrapService.add(scriptUuid: uuid)) { [weak self] (code: Int?, article: Article?) in
+            guard let `self` = self else {return}
+            guard let code = code else {return}
+            switch code {
+            case 200:
+                guard let article = article else {return}
+                self.isScraped = article.isScraped
+            default:
+                break
+            }
         }
     }
 }
@@ -241,21 +332,27 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 1 {
-            let recell: RECommentTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            recell.str = "Note we have also set the tableview’s rowHeight property. By doing so, we have can expect the self-sizing behavior for a cell. Furthermore, I have noticed some developers override heightForRowAtIndexPath to achieve a similar effect. This should be avoided for the following reason."
-            return recell
-        }
-        else {
+        let reply = self.replies[indexPath.row]
+        if reply.upperReplyUuid.isEmpty  {
             let cell: CommentTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.replyButton.params = ["nickname" : cell.nicknameLabel.text!]
+            cell.replyButton.params = ["uuid"       : reply.uuid,
+                                       "nickname"   : reply.writer?.nickName ?? ""]
             cell.replyButton.addTarget(self, action: #selector(replyButtonDidTap(_:)), for: .touchUpInside)
+            cell.reply = reply
             return cell
+        } else {
+            let recell: RECommentTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            recell.reply = reply
+            return recell
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.replies.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(self.replies[indexPath.row].idx)
     }
 }
 

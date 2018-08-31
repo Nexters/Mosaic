@@ -87,6 +87,10 @@
 		FCB0980221367395002E05F6 /* MyProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0980121367395002E05F6 /* MyProfileService.swift */; };
 		FCB09804213678C9002E05F6 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB09803213678C9002E05F6 /* CategoryService.swift */; };
 		FCB0980721379908002E05F6 /* ReplyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0980621379908002E05F6 /* ReplyService.swift */; };
+		FCD0BEB42137D9DA0077B08C /* UIButton + setEnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0BEB32137D9DA0077B08C /* UIButton + setEnable.swift */; };
+		FCD0BEB62138CF620077B08C /* UIImage + compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0BEB52138CF620077B08C /* UIImage + compress.swift */; };
+		FCD0BEB82139092B0077B08C /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0BEB72139092B0077B08C /* ScrapService.swift */; };
+		FCD0BEBA21391ADF0077B08C /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = FCD0BEB921391ADF0077B08C /* loader.json */; };
 		FCE9AA8C212FCCB3009FC713 /* CALayer + Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */; };
 		FCE9AA8E21312359009FC713 /* UIPageControl + shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */; };
 /* End PBXBuildFile section */
@@ -176,6 +180,10 @@
 		FCB0980121367395002E05F6 /* MyProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileService.swift; sourceTree = "<group>"; };
 		FCB09803213678C9002E05F6 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		FCB0980621379908002E05F6 /* ReplyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyService.swift; sourceTree = "<group>"; };
+		FCD0BEB32137D9DA0077B08C /* UIButton + setEnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + setEnable.swift"; sourceTree = "<group>"; };
+		FCD0BEB52138CF620077B08C /* UIImage + compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + compress.swift"; sourceTree = "<group>"; };
+		FCD0BEB72139092B0077B08C /* ScrapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
+		FCD0BEB921391ADF0077B08C /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
 		FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Border.swift"; sourceTree = "<group>"; };
 		FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl + shadow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,6 +216,7 @@
 		14639412212269E800FC601C = {
 			isa = PBXGroup;
 			children = (
+				FCD0BEB921391ADF0077B08C /* loader.json */,
 				1463941D212269E800FC601C /* Mosaic */,
 				1463941C212269E800FC601C /* Products */,
 				40F5263A8526811E1E5CF97D /* Pods */,
@@ -258,6 +267,8 @@
 				FC06DAB6212AFDF400B3C35B /* UIViewController + create.swift */,
 				FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */,
 				FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */,
+				FCD0BEB32137D9DA0077B08C /* UIButton + setEnable.swift */,
+				FCD0BEB52138CF620077B08C /* UIImage + compress.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -493,6 +504,7 @@
 				FCB0980121367395002E05F6 /* MyProfileService.swift */,
 				FCB09803213678C9002E05F6 /* CategoryService.swift */,
 				FCB0980621379908002E05F6 /* ReplyService.swift */,
+				FCD0BEB72139092B0077B08C /* ScrapService.swift */,
 			);
 			path = APIServices;
 			sourceTree = "<group>";
@@ -572,6 +584,7 @@
 				FC06DAA0212A595C00B3C35B /* Writing.storyboard in Resources */,
 				FC62778E212E477C008BAC6F /* RECommentTableViewCell.xib in Resources */,
 				FC06DAAB212A5A2200B3C35B /* ImageCollectionViewCell.xib in Resources */,
+				FCD0BEBA21391ADF0077B08C /* loader.json in Resources */,
 				143DD4682127F45B00F5979D /* MyPage.storyboard in Resources */,
 				14639429212269E900FC601C /* LaunchScreen.storyboard in Resources */,
 				143DD4762128073900F5979D /* FilterCollectionViewCell.xib in Resources */,
@@ -662,6 +675,7 @@
 				1463943D21226AE100FC601C /* String+Size.swift in Sources */,
 				FC62777A212D975A008BAC6F /* CommentAccessoryView.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,
+				FCD0BEB82139092B0077B08C /* ScrapService.swift in Sources */,
 				FCB097ED2133027E002E05F6 /* AuthViewController.swift in Sources */,
 				FCB097F7213669C7002E05F6 /* Model.swift in Sources */,
 				FC627789212E364E008BAC6F /* CommentTableViewCell.swift in Sources */,
@@ -685,6 +699,7 @@
 				1463945221226AFB00FC601C /* HomeCollectionViewCell.swift in Sources */,
 				1463943F21226AE100FC601C /* UIApplication+topViewController.swift in Sources */,
 				FCB097F32136514A002E05F6 /* URL.swift in Sources */,
+				FCD0BEB62138CF620077B08C /* UIImage + compress.swift in Sources */,
 				FCB097FB21366CDE002E05F6 /* APIService.swift in Sources */,
 				FC06DAA7212A59F200B3C35B /* AccessoryView.swift in Sources */,
 				FCB09804213678C9002E05F6 /* CategoryService.swift in Sources */,
@@ -694,6 +709,7 @@
 				14587D7A2122D9C100F13CCA /* Post.swift in Sources */,
 				FC06DAB3212A6C6400B3C35B /* UITextView + centerVertically.swift in Sources */,
 				1463941F212269E800FC601C /* AppDelegate.swift in Sources */,
+				FCD0BEB42137D9DA0077B08C /* UIButton + setEnable.swift in Sources */,
 				FC06DAB7212AFDF400B3C35B /* UIViewController + create.swift in Sources */,
 				1463944921226AEC00FC601C /* TransparentNavBarService.swift in Sources */,
 				FCB097F121354C16002E05F6 /* APIRouter.swift in Sources */,

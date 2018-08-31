@@ -35,6 +35,38 @@ class User: Mappable {
     }
 }
 
- 
+class Reply: Mappable {
+    var content: String = ""
+    var createdAt: Int = 0
+    var depth: Int = 0
+    var idx: Int = 0
+    var imgUrl: String?
+    var scriptUuid: String = ""
+    var thumbnailUrl: String?
+    var updatedAt: Int = 0
+    var upperReplyNick: String = ""
+    var upperReplyUuid: String = ""
+    var uuid: String = ""
+    var writer: Me?
+
+    func mapping(map: Map) {
+        content         <- map["content"]
+        createdAt       <- map["createdAt"]
+        depth           <- map["depth"]
+        idx             <- map["idx"]
+        imgUrl          <- map["imgUrl"]
+        scriptUuid      <- map["scriptUuid"]
+        thumbnailUrl    <- map["thumbnailUrl"]
+        updatedAt       <- map["updatedAt"]
+        upperReplyNick  <- map["upperReplyNick"]
+        upperReplyUuid  <- map["upperReplyUuid"]
+        uuid            <- map["uuid"]
+        writer          <- map["writer"]
+    }
+
+    required init?(map: Map) {
+        self.mapping(map: map)
+    }
+}
 
 

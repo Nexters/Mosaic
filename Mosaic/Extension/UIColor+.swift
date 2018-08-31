@@ -48,7 +48,9 @@ extension UIColor {
         static var warmGrey: UIColor {
             return UIColor(white: 136.0 / 255.0, alpha: 1.0)
         }
-
+        static var greyishBrown: UIColor {
+            return UIColor(white: 71.0 / 255.0, alpha: 1.0)
+        }
     }
     
     convenience init(hex: String, alpha: CGFloat = 1.0) {

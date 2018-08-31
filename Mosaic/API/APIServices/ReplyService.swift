@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-enum ReplykService: APIService {
+enum ReplyService: APIService {
     case getReplies(scriptUuid: String)
     case add(content: String, scriptUuid: String, upperReplyUuid: String)
     case delete(replyUuid: String)

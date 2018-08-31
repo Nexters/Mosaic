@@ -10,6 +10,7 @@ target 'Mosaic' do
 	pod 'Moya', '~> 11.0'
 	pod 'Kingfisher', '~> 4.0'
 	pod "Hero"
+	pod 'lottie-ios'
   # Pods for Mosaic
 
 end

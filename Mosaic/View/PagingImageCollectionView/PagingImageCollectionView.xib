@@ -35,7 +35,6 @@
                     <rect key="frame" x="168" y="333" width="39" height="37"/>
                 </pageControl>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="u8Y-R0-QUE" firstAttribute="centerX" secondItem="dj2-qH-g0Q" secondAttribute="centerX" id="5GO-19-SBi"/>
                 <constraint firstItem="dj2-qH-g0Q" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Dw6-Re-LoA"/>

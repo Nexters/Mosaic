@@ -18,6 +18,7 @@
                 <outlet property="downloadLabel" destination="Wo4-PN-q2a" id="apw-vT-6qX"/>
                 <outlet property="imageButton" destination="Izh-5m-49E" id="AQd-WS-fHC"/>
                 <outlet property="nicknameLabel" destination="Cuf-fN-8H5" id="vVy-Ma-ZNg"/>
+                <outlet property="nicknameLabelWidthConstraint" destination="DJX-M5-ND4" id="hde-P4-pnn"/>
                 <outlet property="sendButton" destination="HY1-zr-24e" id="dnd-mg-UAP"/>
                 <outlet property="textField" destination="hM8-Z9-0vy" id="LIw-Pj-lav"/>
                 <outlet property="thumbnail" destination="V6U-Oa-E34" id="4qh-Az-U0T"/>
@@ -63,13 +64,16 @@
                             <state key="normal" image="icSendNol"/>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="댓글을 입력하세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hM8-Z9-0vy" customClass="ObserveBackTextField" customModule="Mosaic" customModuleProvider="target">
-                            <rect key="frame" x="149" y="0.0" width="170" height="52"/>
+                            <rect key="frame" x="154" y="0.0" width="175" height="52"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@EWHA0001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuf-fN-8H5">
-                            <rect key="frame" x="69" y="19" width="75" height="14.5"/>
+                            <rect key="frame" x="69" y="19" width="80" height="14.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="DJX-M5-ND4"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="1" green="0.3411764705882353" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -78,7 +82,7 @@
                     <constraints>
                         <constraint firstItem="cMG-5g-FOD" firstAttribute="centerY" secondItem="YC1-tG-XVN" secondAttribute="centerY" id="5Mv-sc-VO8"/>
                         <constraint firstItem="hM8-Z9-0vy" firstAttribute="centerY" secondItem="YC1-tG-XVN" secondAttribute="centerY" id="AP2-OJ-xrA"/>
-                        <constraint firstItem="HY1-zr-24e" firstAttribute="leading" secondItem="hM8-Z9-0vy" secondAttribute="trailing" constant="10" id="AVv-8N-F2Z"/>
+                        <constraint firstItem="HY1-zr-24e" firstAttribute="leading" secondItem="hM8-Z9-0vy" secondAttribute="trailing" id="AVv-8N-F2Z"/>
                         <constraint firstItem="Izh-5m-49E" firstAttribute="centerY" secondItem="YC1-tG-XVN" secondAttribute="centerY" id="GN6-jD-OBm"/>
                         <constraint firstItem="cMG-5g-FOD" firstAttribute="leading" secondItem="Izh-5m-49E" secondAttribute="trailing" constant="10" id="LqZ-Nc-qSQ"/>
                         <constraint firstAttribute="height" constant="52" id="PEx-tV-wLf"/>

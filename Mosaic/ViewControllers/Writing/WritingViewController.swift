@@ -39,10 +39,10 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     //MARK: STORED OR COMPUTED
     var selectedCategory: Categories?
     var selectedAssets = [TLPHAsset]()
+    var maxLength = 500
     
     //MARK: - METHOD
     //MARK: INITIALIZE
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
@@ -247,14 +247,12 @@ extension WritingViewController: TLPhotosPickerViewControllerDelegate {
 
 //MARK: UITEXTVIEWDELEGATE
 extension WritingViewController: UITextViewDelegate {
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        let prospectiveText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-//        let length = prospectiveText.count
-//        enableSaveButton(length)
-//
-//        return true
-//    }
-//
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let prospectiveText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let length = prospectiveText.count
+        return length <= self.maxLength
+    }
+
     func textViewDidChange(_ textView: UITextView) {
         enableSaveButton(textView)
     }

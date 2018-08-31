@@ -307,7 +307,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         
         APIRouter.shared.upload(ReplyService.add(content: content,
                                                  scriptUuid: uuid,
-                                                 upperReplyUuid: self.accessoryView.upperReply.uuid),
+                                                 upperReplyUuid: self.accessoryView.upperReply?.uuid ?? ""),
                                 imageKey: "imgFile",
                                 images: [self.selectedImage]) { [weak self] (code: Int?, reply: Reply?) in
                                     method?()

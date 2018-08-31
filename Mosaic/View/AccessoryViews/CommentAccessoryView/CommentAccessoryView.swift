@@ -23,10 +23,12 @@ class CommentAccessoryView: UIView {
     @IBOutlet weak var downloadLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var nicknameLabel: UILabel!
+    @IBOutlet weak var nicknameLabelWidthConstraint: NSLayoutConstraint!
     
     static var normalHeight: CGFloat = 52
     static var changedHeight: CGFloat = 112
-    var upperReply = UpperReply()
+    var upperReply: UpperReply?
+    var maxLength = 140
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -69,7 +71,9 @@ class CommentAccessoryView: UIView {
         self.textField.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
         self.textField.observeBackDelegate = self
         self.textField.autocorrectionType = .no
+        self.textField.returnKeyType = .done
         
+        setNicknameLabel(nil)
         enableSendButton(false)
     }
     
@@ -80,9 +84,16 @@ class CommentAccessoryView: UIView {
         self.deleteButton.alpha = value ? 1.0 : 0.0
     }
     
-    func setNicknameLabel(_ upper: UpperReply) {
+    func setNicknameLabel(_ upper: UpperReply?) {
         self.upperReply = upper
-        self.nicknameLabel.text = self.upperReply.name
+        if let upper = upper {
+            
+            self.upperReply = upper
+            self.nicknameLabel.text = upper.name
+        } else {
+            self.nicknameLabel.text = ""
+        }
+        self.nicknameLabelWidthConstraint.constant = self.nicknameLabel.textSize.width + 1
     }
     
     func setTextField(_ text: String?) {
@@ -102,7 +113,7 @@ class CommentAccessoryView: UIView {
     }
     
     func reset() {
-        setNicknameLabel(UpperReply())
+        setNicknameLabel(nil)
         self.textField.text = ""
         enableSendButton(false)
     }
@@ -120,21 +131,20 @@ class CommentAccessoryView: UIView {
 extension CommentAccessoryView: ObserveBackTextFieldDelegate, UITextFieldDelegate {
     func textFieldDidDelete(_ textField: ObserveBackTextField, previousText: String?) {
         guard let text = previousText else {
-            self.setNicknameLabel(UpperReply())
+            self.setNicknameLabel(nil)
             return
         }
         if text.isEmpty {
-            self.setNicknameLabel(UpperReply())
+            self.setNicknameLabel(nil)
         }
     }
     
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        guard let text = textField.text else {return true}
-//        let prospectiveText = (text as NSString).replacingCharacters(in: range, with: string)
-//        let length = prospectiveText.count
-//
-//        return true
-//    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {return true}
+        let prospectiveText = (text as NSString).replacingCharacters(in: range, with: string)
+        let length = prospectiveText.count
+        return length <= self.maxLength
+    }
     
     @objc
     func textFieldDidChanged(_ textField: UITextField) {

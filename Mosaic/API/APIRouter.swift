@@ -13,32 +13,42 @@ import ObjectMapper
 class APIRouter {
     static let shared = APIRouter()
     static var token: String = ""
+    private static let activityIndicator = FullActivityIndicatorView()
     
     func request<T: Mappable>(_ service: APIService, completion: @escaping (_ code: Int?, _ response: T?) -> Void ) {
+        APIRouter.activityIndicator.play()
+        
         let url = "\(self.baseURL)" + service.path
         Alamofire.request(url,
                           method: service.method,
                           parameters: service.parameters,
                           headers: service.header)
             .responseObject { (response: DataResponse<Result<T>>) in
+                APIRouter.activityIndicator.stop()
                 let result = response.result.value?.result
                 completion(response.response?.statusCode, result)
         }
     }
 
     func requestArray<T: Mappable>(_ service: APIService, completion: @escaping (_ code: Int?, _ response: [T]?) -> Void) {
+        APIRouter.activityIndicator.play()
+        
         let url = "\(self.baseURL)" + service.path
         Alamofire.request(url,
                           method: service.method,
                           parameters: service.parameters,
                           headers: service.header)
             .responseObject { (response: DataResponse<Results<T>>) in
+                APIRouter.activityIndicator.stop()
+                
                 let results = response.result.value?.results
                 completion(response.response?.statusCode, results)
         }
     }
     
     func upload<T: Mappable>(_ service: APIService, imageKey: String?, images: [UIImage?], completion: @escaping (_ code: Int?, _ response: T?) -> Void ) {
+        APIRouter.activityIndicator.play()
+        
         let url = "\(self.baseURL)" + service.path
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             for (index, item) in images.enumerated() {
@@ -62,10 +72,14 @@ class APIRouter {
                                     print(value)
                                 }
                                 upload.responseObject{ (response: DataResponse<Result<T>>) in
+                                    APIRouter.activityIndicator.stop()
+                                    
                                     let result = response.result.value?.result
                                     completion(response.response?.statusCode, result)
                                 }
                             case .failure(let error) :
+                                APIRouter.activityIndicator.stop()
+                                
                                 print(error.localizedDescription)
                             }
         }

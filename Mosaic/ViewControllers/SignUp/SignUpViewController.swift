@@ -65,6 +65,8 @@ class SignUpViewController: UIViewController, TransparentNavBarService, Keyboard
         
         self.textField.font = UIFont.nanumRegular(size: 12)
         self.textField.delegate = self
+        self.textField.keyboardType = .emailAddress
+        self.textField.autocorrectionType = .no
         
         self.termsOfServiceLabel.isUserInteractionEnabled = true
         self.termsOfServiceLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(termsOfServiceLabelDidTapped(_:))))

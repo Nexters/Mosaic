@@ -63,7 +63,7 @@
                             <state key="normal" image="icSendNol"/>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="댓글을 입력하세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hM8-Z9-0vy" customClass="ObserveBackTextField" customModule="Mosaic" customModuleProvider="target">
-                            <rect key="frame" x="146" y="18.5" width="173" height="15"/>
+                            <rect key="frame" x="149" y="0.0" width="170" height="52"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <textInputTraits key="textInputTraits"/>
@@ -83,10 +83,11 @@
                         <constraint firstItem="cMG-5g-FOD" firstAttribute="leading" secondItem="Izh-5m-49E" secondAttribute="trailing" constant="10" id="LqZ-Nc-qSQ"/>
                         <constraint firstAttribute="height" constant="52" id="PEx-tV-wLf"/>
                         <constraint firstAttribute="trailing" secondItem="HY1-zr-24e" secondAttribute="trailing" constant="16" id="SQ3-Wk-mfs"/>
-                        <constraint firstItem="hM8-Z9-0vy" firstAttribute="leading" secondItem="Cuf-fN-8H5" secondAttribute="trailing" constant="2" id="V9s-eO-tYK"/>
+                        <constraint firstItem="hM8-Z9-0vy" firstAttribute="leading" secondItem="Cuf-fN-8H5" secondAttribute="trailing" constant="5" id="V9s-eO-tYK"/>
                         <constraint firstItem="Cuf-fN-8H5" firstAttribute="centerY" secondItem="cMG-5g-FOD" secondAttribute="centerY" id="Zwv-wR-eRp"/>
                         <constraint firstItem="HY1-zr-24e" firstAttribute="centerY" secondItem="YC1-tG-XVN" secondAttribute="centerY" id="bFr-Pt-G2U"/>
                         <constraint firstItem="Izh-5m-49E" firstAttribute="leading" secondItem="YC1-tG-XVN" secondAttribute="leading" constant="14" id="f1O-wX-pwP"/>
+                        <constraint firstItem="hM8-Z9-0vy" firstAttribute="height" secondItem="YC1-tG-XVN" secondAttribute="height" id="gl7-RA-2ci"/>
                         <constraint firstItem="Cuf-fN-8H5" firstAttribute="leading" secondItem="cMG-5g-FOD" secondAttribute="trailing" constant="14" id="gqr-MU-Oid"/>
                     </constraints>
                 </view>

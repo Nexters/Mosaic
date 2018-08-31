@@ -55,9 +55,14 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.textView.becomeFirstResponder()
         updateNavigationBarTitle(category: self.selectedCategory)
         self.mimicPlaceholderView.blinking()
+        enableSaveButton(self.textView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.textView.becomeFirstResponder()
     }
 
     
@@ -65,13 +70,8 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         self.removeKeyboardControl()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     //MARK: SET UP
     func setUp() {
-        self.view.backgroundColor = UIColor.Palette.robinSEgg
     }
     
     //MARK: SET UP KEYBOARD
@@ -127,6 +127,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         self.textView.isHidden = true
         self.textView.font = UIFont.nanumRegular(size: 16)
         self.textView.tintColor = UIColor.Palette.coral
+        self.textView.autocorrectionType = .no
     }
     
     //MARK: SET UP MIMICPLACEHOLDERVIEW
@@ -135,6 +136,8 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         self.mimicPlaceholderView.backgroundColor = .clear
         self.mimicPlaceholderView.setBlinkView(color: self.textView.tintColor)
         self.mimicPlaceholderView.setLabel(text: "내용을 적어보세요.", font: UIFont.nanumRegular(size: 16))
+        self.mimicPlaceholderView.isUserInteractionEnabled = true
+        self.mimicPlaceholderView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(mimicPlaceholderViewDidTapped)))
     }
     
     //MARK: ACTION
@@ -191,6 +194,11 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         self.present(navigation, animated: true, completion: nil)
     }
     
+    @objc
+    func mimicPlaceholderViewDidTapped() {
+        self.textView.becomeFirstResponder()
+    }
+    
     func updateNavigationBarTitle(category: Categories?) {
         if let category = category {
             navigationBarTitleButton.setTitle(category.name + category.emoji, for: .normal)
@@ -224,6 +232,17 @@ extension WritingViewController: TLPhotosPickerViewControllerDelegate {
         }
         self.accessoryView.reloadCollectionView()
     }
+    
+    func enableSaveButton(_ textView: UITextView) {
+        let isEmpty = textView.text.isNilOrEmpty()
+        self.textView.isHidden = isEmpty
+        self.mimicPlaceholderView.isHidden = !isEmpty
+        if !isEmpty && self.selectedCategory != nil {
+            self.saveButton.setEnable(true, color: .white)
+        } else {
+            self.saveButton.setEnable(false, color: UIColor.Palette.coolBlue)
+        }
+    }
 }
 
 //MARK: UITEXTVIEWDELEGATE
@@ -237,13 +256,6 @@ extension WritingViewController: UITextViewDelegate {
 //    }
 //
     func textViewDidChange(_ textView: UITextView) {
-        let isEmpty = textView.text.isNilOrEmpty()
-        self.textView.isHidden = isEmpty
-        self.mimicPlaceholderView.isHidden = !isEmpty
-        if !isEmpty && self.selectedCategory != nil {
-            self.saveButton.setEnable(true, color: .white)
-        } else {
-            self.saveButton.setEnable(false, color: UIColor.Palette.coolBlue)
-        }
+        enableSaveButton(textView)
     }
 }

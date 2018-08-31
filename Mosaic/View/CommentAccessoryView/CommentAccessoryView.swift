@@ -48,23 +48,29 @@ class CommentAccessoryView: UIView {
         setUpView()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.layer.addBorder([.top], color: UIColor.Palette.grayWhite, width: 1)
+    }
+    
     private func setUpView() {
         Bundle.main.loadNibNamed(CommentAccessoryView.reuseIdentifier, owner: self, options: nil)
         addSubview(self.contentView)
         
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        self.contentView.layer.addBorder([.top], color: UIColor.Palette.grayWhite, width: 1)
         
         self.thumbnail.alpha = 0.0
         self.downloadLabel.isHidden = true
         self.deleteButton.alpha = 0.0
         self.nicknameLabel.text = nil
+        
         self.textField.delegate = self
         self.textField.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
         self.textField.observeBackDelegate = self
+        self.textField.autocorrectionType = .no
         
-        self.sendButton.setEnable(false, color: UIColor.Palette.silver)
+        enableSendButton(false)
     }
     
     func showImageView(_ image: UIImage?) {
@@ -98,7 +104,16 @@ class CommentAccessoryView: UIView {
     func reset() {
         setNicknameLabel(UpperReply())
         self.textField.text = ""
-        self.sendButton.setEnable(false, color: UIColor.Palette.silver)
+        enableSendButton(false)
+    }
+    
+    func enableSendButton(_ value: Bool) {
+        switch value {
+        case true:
+            self.sendButton.setEnable(true, color: UIColor.Palette.coral)
+        case false:
+            self.sendButton.setEnable(false, color: UIColor.Palette.silver)
+        }
     }
 }
 
@@ -118,26 +133,20 @@ extension CommentAccessoryView: ObserveBackTextFieldDelegate, UITextFieldDelegat
 //        let prospectiveText = (text as NSString).replacingCharacters(in: range, with: string)
 //        let length = prospectiveText.count
 //
-//        print("???", text.utf16.count + string.utf16.count - range.length)
-//        print("text", text)
-//        print("prospectiveText", prospectiveText)
-//        print("length", length)
-//        if !prospectiveText.isNilOrEmpty()  {
-//            self.sendButton.setEnable(true, color: UIColor.Palette.coral)
-//        } else {
-//            self.sendButton.setEnable(false, color: UIColor.Palette.silver)
-//        }
 //        return true
 //    }
     
     @objc
     func textFieldDidChanged(_ textField: UITextField) {
         guard let text = textField.text else {return}
-        if !text.isNilOrEmpty() {
-            self.sendButton.setEnable(true, color: UIColor.Palette.coral)
-        } else {
-            self.sendButton.setEnable(false, color: UIColor.Palette.silver)
+        enableSendButton(!text.isNilOrEmpty())
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if self.sendButton.isEnabled {
+            self.sendButton.sendActions(for: .touchUpInside)
         }
+        return true
     }
 }
 

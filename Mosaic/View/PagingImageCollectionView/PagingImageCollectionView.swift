@@ -39,10 +39,12 @@ class PagingImageCollectionView: UIView {
         self.collectionView.isPagingEnabled = true
         self.collectionView.setUp(target: self, cell: ImageCollectionViewCell.self)
         self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.alwaysBounceHorizontal = false
+        self.collectionView.alwaysBounceVertical = false
         
-        self.pageControl.addShadow(shadowColor: .black,
-                                   shadowOffset: CGSize(width: 1, height: 1),
-                                   shadowOpacity: 0.5)
+//        self.pageControl.addShadow(shadowColor: .black,
+//                                   shadowOffset: CGSize(width: 1, height: 1),
+//                                   shadowOpacity: 0.5)
     }
     
 }

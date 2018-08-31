@@ -89,6 +89,7 @@
 		FCB0980721379908002E05F6 /* ReplyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0980621379908002E05F6 /* ReplyService.swift */; };
 		FCD0BEB42137D9DA0077B08C /* UIButton + setEnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0BEB32137D9DA0077B08C /* UIButton + setEnable.swift */; };
 		FCD0BEB62138CF620077B08C /* UIImage + compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0BEB52138CF620077B08C /* UIImage + compress.swift */; };
+		FCD0BEB82139092B0077B08C /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0BEB72139092B0077B08C /* ScrapService.swift */; };
 		FCE9AA8C212FCCB3009FC713 /* CALayer + Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */; };
 		FCE9AA8E21312359009FC713 /* UIPageControl + shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */; };
 /* End PBXBuildFile section */
@@ -180,6 +181,7 @@
 		FCB0980621379908002E05F6 /* ReplyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyService.swift; sourceTree = "<group>"; };
 		FCD0BEB32137D9DA0077B08C /* UIButton + setEnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + setEnable.swift"; sourceTree = "<group>"; };
 		FCD0BEB52138CF620077B08C /* UIImage + compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + compress.swift"; sourceTree = "<group>"; };
+		FCD0BEB72139092B0077B08C /* ScrapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
 		FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Border.swift"; sourceTree = "<group>"; };
 		FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl + shadow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -499,6 +501,7 @@
 				FCB0980121367395002E05F6 /* MyProfileService.swift */,
 				FCB09803213678C9002E05F6 /* CategoryService.swift */,
 				FCB0980621379908002E05F6 /* ReplyService.swift */,
+				FCD0BEB72139092B0077B08C /* ScrapService.swift */,
 			);
 			path = APIServices;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				1463943D21226AE100FC601C /* String+Size.swift in Sources */,
 				FC62777A212D975A008BAC6F /* CommentAccessoryView.swift in Sources */,
 				1463944B21226AEC00FC601C /* ShadowRoundService.swift in Sources */,
+				FCD0BEB82139092B0077B08C /* ScrapService.swift in Sources */,
 				FCB097ED2133027E002E05F6 /* AuthViewController.swift in Sources */,
 				FCB097F7213669C7002E05F6 /* Model.swift in Sources */,
 				FC627789212E364E008BAC6F /* CommentTableViewCell.swift in Sources */,

@@ -27,15 +27,14 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6P-Nb-3tl" customClass="PagingImageCollectionView" customModule="Mosaic" customModuleProvider="target">
-                                            <rect key="frame" x="187" y="10" width="0.0" height="0.0"/>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <rect key="frame" x="37" y="10" width="300" height="300"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="O6P-Nb-3tl" secondAttribute="height" multiplier="1:1" id="3l8-Yz-qLi"/>
-                                                <constraint firstAttribute="height" id="REe-jy-iB4"/>
+                                                <constraint firstAttribute="height" constant="300" id="REe-jy-iB4"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qc6-L3-AXK" customClass="CategoryView" customModule="Mosaic" customModuleProvider="target">
-                                            <rect key="frame" x="157.5" y="26" width="60" height="24"/>
+                                            <rect key="frame" x="157.5" y="326" width="60" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="beD-aS-6m4"/>
@@ -43,7 +42,10 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJQ-Or-nAd">
-                                            <rect key="frame" x="20" y="66" width="335" height="441"/>
+                                            <rect key="frame" x="37.5" y="366" width="300" height="141"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="300" id="9rr-91-heV"/>
+                                            </constraints>
                                             <string key="text">올해 하반기에 열리는 전국 비보이
 댄스대회에 함께 할 팀원을 구합니다. 올해로 
 4회째 수상하고 있습니다. 체계적인 연습과
@@ -89,15 +91,14 @@
                                         </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="EJQ-Or-nAd" firstAttribute="centerX" secondItem="exS-61-eOt" secondAttribute="centerX" id="DB5-Ew-6m1"/>
                                         <constraint firstItem="Qc6-L3-AXK" firstAttribute="centerX" secondItem="exS-61-eOt" secondAttribute="centerX" id="NaS-Ld-tQr"/>
-                                        <constraint firstItem="EJQ-Or-nAd" firstAttribute="leading" secondItem="exS-61-eOt" secondAttribute="leading" constant="20" id="R65-vb-tpc"/>
                                         <constraint firstItem="Jfq-15-WSN" firstAttribute="top" secondItem="EJQ-Or-nAd" secondAttribute="bottom" constant="20" id="RBa-aD-Poq"/>
                                         <constraint firstAttribute="bottom" secondItem="Jfq-15-WSN" secondAttribute="bottom" id="SJF-g9-jZT"/>
                                         <constraint firstItem="EJQ-Or-nAd" firstAttribute="top" secondItem="Qc6-L3-AXK" secondAttribute="bottom" constant="16" id="SX9-bA-Fdq"/>
                                         <constraint firstItem="Jfq-15-WSN" firstAttribute="leading" secondItem="exS-61-eOt" secondAttribute="leading" constant="20" id="T2g-5G-94c"/>
                                         <constraint firstItem="O6P-Nb-3tl" firstAttribute="centerX" secondItem="exS-61-eOt" secondAttribute="centerX" id="W11-uC-4Ez"/>
                                         <constraint firstItem="Qc6-L3-AXK" firstAttribute="top" secondItem="O6P-Nb-3tl" secondAttribute="bottom" constant="16" id="YTA-s5-eIY"/>
-                                        <constraint firstAttribute="trailing" secondItem="EJQ-Or-nAd" secondAttribute="trailing" constant="20" id="i2Y-Qb-7W3"/>
                                         <constraint firstItem="O6P-Nb-3tl" firstAttribute="top" secondItem="exS-61-eOt" secondAttribute="top" constant="10" id="jcb-1J-5yf"/>
                                         <constraint firstAttribute="trailing" secondItem="Jfq-15-WSN" secondAttribute="trailing" constant="20" id="zbo-kq-XpZ"/>
                                     </constraints>

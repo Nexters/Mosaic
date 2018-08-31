@@ -18,3 +18,12 @@ extension UIButton {
         self.tintColor = color
     }
 }
+
+extension UIBarButtonItem {
+    func setEnable(_ value: Bool, color: UIColor) {
+        self.isEnabled = value
+        let image = self.image?.withRenderingMode(.alwaysTemplate)
+        self.image = image
+        self.tintColor = color
+    }
+}

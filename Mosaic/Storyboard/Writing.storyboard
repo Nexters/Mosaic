@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,11 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xm1-Oy-QSO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.35686274509999999" green="0.87450980389999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ai-WO-b32">
-                                <rect key="frame" x="8" y="72" width="359" height="432"/>
+                                <rect key="frame" x="8" y="72" width="359" height="587"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zjj-hp-iqe" customClass="VerticallyCenteredTextView" customModule="Mosaic" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="8" width="343" height="535"/>
+                                        <rect key="frame" x="29.5" y="8" width="300" height="535"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="MBT-Uk-3pK"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -35,12 +41,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="m6X-CW-cpo" firstAttribute="top" secondItem="6ai-WO-b32" secondAttribute="top" constant="8" id="GVf-cM-I4g"/>
-                                    <constraint firstAttribute="width" secondItem="6ai-WO-b32" secondAttribute="height" multiplier="358:431" id="KBl-fk-NU4"/>
                                     <constraint firstItem="Zjj-hp-iqe" firstAttribute="top" secondItem="6ai-WO-b32" secondAttribute="top" constant="8" id="Omj-RW-tS4"/>
                                     <constraint firstItem="m6X-CW-cpo" firstAttribute="leading" secondItem="6ai-WO-b32" secondAttribute="leading" constant="8" id="QS8-z4-Gn6"/>
-                                    <constraint firstAttribute="trailing" secondItem="Zjj-hp-iqe" secondAttribute="trailing" constant="8" id="cwX-oo-7vl"/>
                                     <constraint firstAttribute="trailing" secondItem="m6X-CW-cpo" secondAttribute="trailing" constant="8" id="wj5-zI-mUu"/>
-                                    <constraint firstItem="Zjj-hp-iqe" firstAttribute="leading" secondItem="6ai-WO-b32" secondAttribute="leading" constant="8" id="yUe-Zq-a0Y"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISs-1f-RqV" customClass="AccessoryView" customModule="Mosaic" customModuleProvider="target">
@@ -50,16 +53,22 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.35686274509803922" green="0.87450980392156863" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xm1-Oy-QSO" secondAttribute="trailing" id="0ad-eb-Npy"/>
+                            <constraint firstItem="UGf-RR-Nf9" firstAttribute="bottom" secondItem="xm1-Oy-QSO" secondAttribute="bottom" id="1Ny-EQ-vOV"/>
                             <constraint firstItem="6ai-WO-b32" firstAttribute="leading" secondItem="UGf-RR-Nf9" secondAttribute="leading" constant="8" id="4hh-Gv-454"/>
+                            <constraint firstItem="xm1-Oy-QSO" firstAttribute="leading" secondItem="69f-cT-dlq" secondAttribute="leading" id="HFc-aM-avX"/>
+                            <constraint firstItem="UGf-RR-Nf9" firstAttribute="bottom" secondItem="6ai-WO-b32" secondAttribute="bottom" constant="8" id="HLu-Ny-cmV"/>
                             <constraint firstItem="ISs-1f-RqV" firstAttribute="top" secondItem="Zjj-hp-iqe" secondAttribute="bottom" constant="8" id="Ic8-qY-wuM"/>
+                            <constraint firstItem="xm1-Oy-QSO" firstAttribute="top" secondItem="69f-cT-dlq" secondAttribute="top" id="JOx-mO-ycy"/>
                             <constraint firstItem="UGf-RR-Nf9" firstAttribute="trailing" secondItem="ISs-1f-RqV" secondAttribute="trailing" id="Ke2-8v-TvX"/>
                             <constraint firstItem="UGf-RR-Nf9" firstAttribute="trailing" secondItem="6ai-WO-b32" secondAttribute="trailing" constant="8" id="Z9Y-bu-I3j"/>
                             <constraint firstItem="6ai-WO-b32" firstAttribute="top" secondItem="UGf-RR-Nf9" secondAttribute="top" constant="8" id="bZo-pG-hJK"/>
                             <constraint firstItem="ISs-1f-RqV" firstAttribute="leading" secondItem="UGf-RR-Nf9" secondAttribute="leading" id="blf-Qa-d9G"/>
                             <constraint firstItem="ISs-1f-RqV" firstAttribute="top" secondItem="m6X-CW-cpo" secondAttribute="bottom" constant="8" id="gHr-oj-uhm"/>
                             <constraint firstItem="UGf-RR-Nf9" firstAttribute="bottom" secondItem="ISs-1f-RqV" secondAttribute="bottom" id="kMN-LU-26y"/>
+                            <constraint firstItem="Zjj-hp-iqe" firstAttribute="centerX" secondItem="UGf-RR-Nf9" secondAttribute="centerX" id="pcB-gy-qEA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UGf-RR-Nf9"/>
                     </view>

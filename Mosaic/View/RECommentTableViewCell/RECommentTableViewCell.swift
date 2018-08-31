@@ -18,7 +18,7 @@ class RECommentTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var thumbnailHeightConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var thumbnailTopMarginConstraint: NSLayoutConstraint!
     var reply: Reply? {
         didSet {
             guard let reply = reply else {return}
@@ -29,10 +29,11 @@ class RECommentTableViewCell: UITableViewCell {
             self.nicknameLabel.text = reply.writer?.nickName
             if let imageURL = reply.imgUrl, !imageURL.isEmpty {
                 self.thumbnailHeightConstraint.constant = 110
+                self.thumbnailTopMarginConstraint.constant = 12
                 self.thumbnail.kf.setImage(with: URL(string: imageURL))
             }
             
-            let content = NSMutableAttributedString(string: reply.upperReplyNick,
+            let content = NSMutableAttributedString(string: reply.upperReplyNick + " ",
                                                     attributes: [.font : UIFont.nanumRegular(size: 12),
                                                                  .foregroundColor : UIColor.Palette.coral])
             content.append(NSMutableAttributedString(string: reply.content,
@@ -68,6 +69,7 @@ class RECommentTableViewCell: UITableViewCell {
         self.thumbnail.layer.cornerRadius = 5
         
         self.thumbnailHeightConstraint.constant = 0
+        self.thumbnailTopMarginConstraint.constant = 0
     }
 
     

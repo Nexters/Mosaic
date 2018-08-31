@@ -22,10 +22,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var accessoryView: CommentAccessoryView!
-    var scrapBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icScrapNol")?.withRenderingMode(.alwaysTemplate),
-                                                          style: .plain,
-                                                          target: self,
-                                                          action: #selector(scrapButtonDidTap))
+    var scrapBarButton: UIBarButtonItem!
     //MARK: CONSTRAINT
     @IBOutlet weak var pagingImageCollectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var accessoryViewHeightConstraint: NSLayoutConstraint!
@@ -41,6 +38,11 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     var article: Article?
     var upperReplyUUID: String = ""
     var replies: [Reply] = []
+    var isScraped: Bool = false {
+        didSet {
+            setScrapButton(self.isScraped)
+        }
+    }
     //MARK: - METHOD
     //MARK: INIT
     override func viewDidLoad() {
@@ -50,10 +52,23 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         setUpNavigationBar()
         setUpCategoryView()
         setUpTableView()
-        setUpCommentView()
         setUpAccessoryView()
         fetchArticle()
         fetchReplies()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .default
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
     }
     
     override func viewDidLayoutSubviews() {
@@ -65,6 +80,10 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             tableView.tableHeaderView = headerView
             tableView.layoutIfNeeded()
         }
+        
+        self.commentView.layer.addBorder([.top, .bottom],
+                                         color: UIColor.Palette.paleGrey,
+                                         width: 1.0)
     }
     
     //MARK: SET UP KEYBOARD
@@ -93,9 +112,12 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
                                                                 target: self,
                                                                 action: #selector(closeButtonDidTap))
         
-        self.navigationItem.rightBarButtonItem = scrapBarButton
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.Palette.silver
-//        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.Palette.coral
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icScrapNol")?.withRenderingMode(.alwaysTemplate),
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(scrapButtonDidTap))
+        self.scrapBarButton = self.navigationItem.rightBarButtonItem
+        setScrapButton(false)
     }
     
     //MARK: SET UP UI
@@ -128,9 +150,9 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         
         self.contentLabel.text = article.content
         
-        self.commentCountLable.text = String(describing: article.replies)
+        self.datelabel.text = Date().text(article.createdAt)
         
-        self.datelabel.text = Date().text(article.createdAt) 
+        self.isScraped = article.isScraped
     }
     
     //MARK: SET UP TABLEVIEW
@@ -145,6 +167,10 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         self.tableView.showsVerticalScrollIndicator = false
         self.tableView.allowsSelection = false
         self.tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tableViewDidTapped)))
+        
+//        let v = UIView()
+//        v.backgroundColor = .black
+//        self.tableView.addSubview(v)
     }
     
     @objc
@@ -162,13 +188,6 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         self.categoryView.backgroundColor = .clear
         self.categoryView.category = (emoji: "🤫", title: "익명제보")
         self.categoryView.setUp()
-    }
-    
-    //MARK: SET UP COMMENTVIEW
-    func setUpCommentView() {
-        self.commentView.layer.addBorder([.top, .bottom],
-                                         color: UIColor.Palette.paleGrey,
-                                         width: 1.0)
     }
     
     //MARK: SET UP PAGINGIMAGECOLLECTIONVIEW
@@ -191,7 +210,20 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     
     @objc
     func scrapButtonDidTap() {
+        guard let uuid = self.article?.uuid else {return}
         
+        print(uuid)
+        APIRouter.shared.request(ScrapService.add(scriptUuid: uuid)) { [weak self] (code: Int?, article: Article?) in
+            guard let `self` = self else {return}
+            guard let code = code else {return}
+            switch code {
+            case 200:
+                guard let article = article else {return}
+                self.isScraped = article.isScraped
+            default:
+                break
+            }
+        }
     }
     
     @objc
@@ -199,6 +231,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         guard let uuid = sender.params["uuid"] as? String else {return}
         guard let nickname = sender.params["nickname"] as? String else {return}
         self.accessoryView.setNicknameLabel(UpperReply(uuid: uuid, name: nickname))
+        self.accessoryView.textField.becomeFirstResponder()
     }
     
     @objc
@@ -266,6 +299,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             guard let `self` = self else {return}
             guard let replies = replies else {return}
             self.replies = replies
+            self.commentCountLable.text = String(describing: self.replies.count)
             self.tableView.reloadData()
         }
     }
@@ -280,9 +314,12 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
                                                  upperReplyUuid: self.accessoryView.upperReply.uuid),
                                 imageKey: "imgFile",
                                 images: [self.selectedImage]) { [weak self] (code: Int?, reply: Reply?) in
-                                    guard let `self` = self else {return}
                                     method?()
         }
+    }
+    
+    func setScrapButton(_ value: Bool) {
+        self.scrapBarButton.tintColor = value ? UIColor.Palette.coral : UIColor.Palette.silver//setEnable(value, color: value ? UIColor.Palette.coral : UIColor.Palette.silver)
     }
 }
 

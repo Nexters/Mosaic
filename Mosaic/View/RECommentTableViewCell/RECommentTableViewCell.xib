@@ -119,6 +119,7 @@
                 <outlet property="nicknameLabel" destination="bDn-w6-vv3" id="tx9-Ia-0tt"/>
                 <outlet property="thumbnail" destination="AvJ-gz-Tvt" id="wBI-ST-Nxu"/>
                 <outlet property="thumbnailHeightConstraint" destination="Wkm-3h-0Cu" id="pyH-JT-fwk"/>
+                <outlet property="thumbnailTopMarginConstraint" destination="DJz-xq-3zC" id="A6l-n6-rrL"/>
                 <outlet property="timeLabel" destination="Ir8-Sa-VwQ" id="iiT-mD-ba1"/>
                 <outlet property="universityLabel" destination="4x1-w9-GQm" id="RgQ-FD-5Dz"/>
                 <outlet property="universityLogoImageView" destination="7b4-I7-e04" id="tWg-A1-fLZ"/>

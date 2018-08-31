@@ -131,6 +131,7 @@
                 <outlet property="replyButton" destination="ZVk-Ll-vXI" id="ACc-3a-RHg"/>
                 <outlet property="thumbnail" destination="eBY-Od-4Sz" id="b1T-xO-hyY"/>
                 <outlet property="thumbnailHeightConstraint" destination="aoB-rX-ZEO" id="4Y3-Dz-5vm"/>
+                <outlet property="thumbnailTopMarginConstraint" destination="baY-gY-BbH" id="V1V-lQ-kcf"/>
                 <outlet property="timeLabel" destination="OaG-3m-pVR" id="C8s-Rf-Za2"/>
                 <outlet property="universityLabel" destination="u7r-RT-ZXc" id="hbR-Xv-Ni8"/>
                 <outlet property="universityLogoImageView" destination="tsu-xA-6cX" id="ouA-lc-o33"/>

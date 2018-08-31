@@ -18,6 +18,7 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var replyButton: ParameterButton!
     @IBOutlet weak var thumbnailHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var thumbnailTopMarginConstraint: NSLayoutConstraint!
     
     var reply: Reply? {
         didSet {
@@ -29,6 +30,7 @@ class CommentTableViewCell: UITableViewCell {
             self.nicknameLabel.text = reply.writer?.nickName
             if let imageURL = reply.imgUrl, !imageURL.isEmpty {
                 self.thumbnailHeightConstraint.constant = 110
+                self.self.thumbnailTopMarginConstraint.constant = 12
                 self.thumbnail.kf.setImage(with: URL(string: imageURL))
             }
             self.contentLabel.text = reply.content
@@ -72,7 +74,7 @@ class CommentTableViewCell: UITableViewCell {
         self.replyButton.clipsToBounds = true
         
         self.thumbnailHeightConstraint.constant = 0
-        
+        self.thumbnailTopMarginConstraint.constant = 0
         
     }
     

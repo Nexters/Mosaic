@@ -50,10 +50,6 @@ class PagingImageCollectionView: UIView {
         
         self.pageControlBackgroundLayer.backgroundColor = UIColor.black.withAlphaComponent(0.3).cgColor
         self.pageControl.layer.addSublayer(self.pageControlBackgroundLayer)
-        
-//        self.pageControl.addShadow(shadowColor: .black,
-//                                   shadowOffset: CGSize(width: 1, height: 1),
-//                                   shadowOpacity: 0.5)
     }
     
     func updatePageControlBackgrounLayer() {

@@ -142,7 +142,9 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         self.navigationItem.titleView = label
         
         self.pagingImageCollectionViewHeightConstraint.constant = 0
+        self.pagingImageCollectionView.isHidden = true
         if let articleURLs = article.imageUrls, !articleURLs.isEmpty {
+            self.pagingImageCollectionView.isHidden = false
             self.pagingImageCollectionViewHeightConstraint.constant = 300
             setUpPagingImageCollectionView(imageURLS: articleURLs)
         }

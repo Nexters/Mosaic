@@ -94,6 +94,12 @@ class CommentAccessoryView: UIView {
     func deleteButtonAddTarget(_ target: Any?, action: Selector) {
         self.deleteButton.addTarget(target, action: action, for: .touchUpInside)
     }
+    
+    func reset() {
+        setNicknameLabel(UpperReply())
+        self.textField.text = ""
+        self.sendButton.setEnable(false, color: UIColor.Palette.silver)
+    }
 }
 
 extension CommentAccessoryView: ObserveBackTextFieldDelegate, UITextFieldDelegate {

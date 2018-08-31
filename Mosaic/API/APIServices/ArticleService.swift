@@ -60,7 +60,6 @@ enum ArticleService: APIService {
     }
     
     var header: HTTPHeaders?{
-        print(APIRouter.token)
         return ["Authorization": APIRouter.token]
     }
 }

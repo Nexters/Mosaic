@@ -222,8 +222,8 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     
     @IBAction func messageButtonDidTapped(_ sender: UIButton) {
         postReply(method: {
-            self.accessoryView.setNicknameLabel(UpperReply())
-            self.accessoryView.textField.text = ""
+            self.accessoryView.reset()
+            self.changeAccessoryViewHeight(true)
             self.view.endEditing(true)
             self.fetchReplies()
         })
@@ -232,11 +232,13 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     
     @objc
     func deleteButtonDidTapped() {
-        self.selectedAssets = []
         changeAccessoryViewHeight(true)
     }
     
     func changeAccessoryViewHeight(_ hide: Bool) {
+        if hide {
+            self.selectedAssets = []
+        }
         UIView.animate(withDuration: 0.5) {
             self.accessoryViewHeightConstraint.constant =
                 hide ? CommentAccessoryView.normalHeight : CommentAccessoryView.changedHeight

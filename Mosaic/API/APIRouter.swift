@@ -81,6 +81,8 @@ extension MultipartFormData {
     }
     
     func append(_ image: UIImage, key: String, fileName: String) {
+        guard let image = image.compress(toWidth: 512) else {return}
+        print(image.description)
         guard let data = UIImagePNGRepresentation(image) else {return}
         self.append(data, withName: key, fileName: fileName+".png", mimeType: "image/png")
     }

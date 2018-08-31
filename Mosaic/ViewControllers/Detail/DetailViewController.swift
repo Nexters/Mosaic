@@ -43,6 +43,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             setScrapButton(self.isScraped)
         }
     }
+    let footerView = FooterView()
     //MARK: - METHOD
     //MARK: INIT
     override func viewDidLoad() {
@@ -165,16 +166,11 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         self.tableView.setUp(target: self, cell: RECommentTableViewCell.self)
         self.tableView.estimatedRowHeight = 50
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = .none
         self.tableView.alwaysBounceVertical = false
         self.tableView.showsVerticalScrollIndicator = false
         self.tableView.allowsSelection = false
         self.tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tableViewDidTapped)))
-        
-//        let v = UIView()
-//        v.backgroundColor = .black
-//        self.tableView.addSubview(v)
     }
     
     @objc
@@ -296,6 +292,20 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             guard let replies = replies else {return}
             self.replies = replies
             self.commentCountLable.text = String(describing: self.replies.count)
+            if self.replies.isEmpty {
+                guard let headerView = self.tableView.tableHeaderView else {return }
+                let bounds = self.tableView.bounds
+                var height: CGFloat = 50
+                if bounds.height > headerView.bounds.height {
+                    height = bounds.height - headerView.bounds.height
+                }
+                self.footerView.frame = CGRect(x: 0, y: 0,
+                                               width: bounds.width,
+                                               height: height)
+                self.tableView.tableFooterView = self.footerView
+            } else {
+                self.tableView.tableFooterView = UIView()
+            }
             self.tableView.reloadData()
         }
     }
@@ -350,6 +360,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return self.replies.count
     }
     

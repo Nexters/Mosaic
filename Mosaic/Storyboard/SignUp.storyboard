@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgBackEwhauniv" translatesAutoresizingMaskIntoConstraints="NO" id="qDk-FA-ljS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="425" height="667"/>
                             </imageView>
                             <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QJ-6h-wGM">
                                 <rect key="frame" x="-50" y="0.0" width="475" height="667"/>
@@ -56,7 +56,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학교 이메일을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uxf-jH-yF5">
-                                        <rect key="frame" x="78.5" y="16.5" width="232.5" height="15"/>
+                                        <rect key="frame" x="78.5" y="0.0" width="232.5" height="48"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -64,6 +64,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="uxf-jH-yF5" firstAttribute="height" secondItem="RK0-Ab-W15" secondAttribute="height" id="D2T-5i-WJT"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="327" id="Fvv-4J-0st"/>
                                     <constraint firstItem="uxf-jH-yF5" firstAttribute="leading" secondItem="NVU-K0-Irh" secondAttribute="trailing" constant="15" id="I6n-aY-BRD"/>
                                     <constraint firstAttribute="trailing" secondItem="uxf-jH-yF5" secondAttribute="trailing" constant="16" id="NGY-48-Dff"/>
@@ -108,11 +109,11 @@
                             <constraint firstItem="Rhy-Nu-7FY" firstAttribute="centerX" secondItem="RK0-Ab-W15" secondAttribute="centerX" id="PHa-h1-3O0"/>
                             <constraint firstItem="qDk-FA-ljS" firstAttribute="leading" secondItem="lyL-so-XQy" secondAttribute="leading" id="WES-5Z-Q78"/>
                             <constraint firstItem="Rhy-Nu-7FY" firstAttribute="top" secondItem="RK0-Ab-W15" secondAttribute="bottom" constant="16" id="cbt-s4-xkh"/>
-                            <constraint firstItem="lyL-so-XQy" firstAttribute="trailing" secondItem="qDk-FA-ljS" secondAttribute="trailing" id="fQ1-1G-gQA"/>
+                            <constraint firstItem="lyL-so-XQy" firstAttribute="trailing" secondItem="qDk-FA-ljS" secondAttribute="trailing" constant="-50" id="fQ1-1G-gQA"/>
                             <constraint firstItem="0QJ-6h-wGM" firstAttribute="leading" secondItem="qDk-FA-ljS" secondAttribute="leading" constant="-50" id="ggF-Gq-2Wa"/>
                             <constraint firstItem="0QJ-6h-wGM" firstAttribute="bottom" secondItem="qDk-FA-ljS" secondAttribute="bottom" id="hlx-2G-4qH"/>
                             <constraint firstAttribute="bottom" secondItem="qDk-FA-ljS" secondAttribute="bottom" id="jT3-m9-Eha"/>
-                            <constraint firstItem="0QJ-6h-wGM" firstAttribute="trailing" secondItem="qDk-FA-ljS" secondAttribute="trailing" constant="50" id="jiz-bl-AfN"/>
+                            <constraint firstItem="0QJ-6h-wGM" firstAttribute="trailing" secondItem="qDk-FA-ljS" secondAttribute="trailing" id="jiz-bl-AfN"/>
                             <constraint firstItem="RK0-Ab-W15" firstAttribute="leading" secondItem="lyL-so-XQy" secondAttribute="leading" constant="24" id="mqf-2N-DGf"/>
                             <constraint firstItem="lyL-so-XQy" firstAttribute="trailing" secondItem="RK0-Ab-W15" secondAttribute="trailing" constant="24" id="qsK-ge-WLf"/>
                             <constraint firstItem="Rhy-Nu-7FY" firstAttribute="leading" secondItem="RK0-Ab-W15" secondAttribute="leading" id="y1Y-3T-UqS"/>

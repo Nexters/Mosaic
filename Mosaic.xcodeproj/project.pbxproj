@@ -90,6 +90,7 @@
 		FCD0BEB42137D9DA0077B08C /* UIButton + setEnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0BEB32137D9DA0077B08C /* UIButton + setEnable.swift */; };
 		FCD0BEB62138CF620077B08C /* UIImage + compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0BEB52138CF620077B08C /* UIImage + compress.swift */; };
 		FCD0BEB82139092B0077B08C /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0BEB72139092B0077B08C /* ScrapService.swift */; };
+		FCD0BEBA21391ADF0077B08C /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = FCD0BEB921391ADF0077B08C /* loader.json */; };
 		FCE9AA8C212FCCB3009FC713 /* CALayer + Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */; };
 		FCE9AA8E21312359009FC713 /* UIPageControl + shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */; };
 /* End PBXBuildFile section */
@@ -182,6 +183,7 @@
 		FCD0BEB32137D9DA0077B08C /* UIButton + setEnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + setEnable.swift"; sourceTree = "<group>"; };
 		FCD0BEB52138CF620077B08C /* UIImage + compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + compress.swift"; sourceTree = "<group>"; };
 		FCD0BEB72139092B0077B08C /* ScrapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
+		FCD0BEB921391ADF0077B08C /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
 		FCE9AA8B212FCCB3009FC713 /* CALayer + Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Border.swift"; sourceTree = "<group>"; };
 		FCE9AA8D21312359009FC713 /* UIPageControl + shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl + shadow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +216,7 @@
 		14639412212269E800FC601C = {
 			isa = PBXGroup;
 			children = (
+				FCD0BEB921391ADF0077B08C /* loader.json */,
 				1463941D212269E800FC601C /* Mosaic */,
 				1463941C212269E800FC601C /* Products */,
 				40F5263A8526811E1E5CF97D /* Pods */,
@@ -581,6 +584,7 @@
 				FC06DAA0212A595C00B3C35B /* Writing.storyboard in Resources */,
 				FC62778E212E477C008BAC6F /* RECommentTableViewCell.xib in Resources */,
 				FC06DAAB212A5A2200B3C35B /* ImageCollectionViewCell.xib in Resources */,
+				FCD0BEBA21391ADF0077B08C /* loader.json in Resources */,
 				143DD4682127F45B00F5979D /* MyPage.storyboard in Resources */,
 				14639429212269E900FC601C /* LaunchScreen.storyboard in Resources */,
 				143DD4762128073900F5979D /* FilterCollectionViewCell.xib in Resources */,

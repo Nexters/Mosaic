@@ -53,7 +53,9 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         setUpCategoryView()
         setUpTableView()
         setUpAccessoryView()
-        fetchArticle()
+        if let article = self.article {
+            setUpUI(article: article)
+        }
         fetchReplies()
     }
     
@@ -202,6 +204,10 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         self.accessoryView.deleteButtonAddTarget(self, action: #selector(deleteButtonDidTapped))
     }
     
+    func setScrapButton(_ value: Bool) {
+        self.scrapBarButton.tintColor = value ? UIColor.Palette.coral : UIColor.Palette.silver//setEnable(value, color: value ? UIColor.Palette.coral : UIColor.Palette.silver)
+    }
+    
     //MAKR: - ACTION
     @objc
     func closeButtonDidTap() {
@@ -211,19 +217,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     @objc
     func scrapButtonDidTap() {
         guard let uuid = self.article?.uuid else {return}
-        
-        print(uuid)
-        APIRouter.shared.request(ScrapService.add(scriptUuid: uuid)) { [weak self] (code: Int?, article: Article?) in
-            guard let `self` = self else {return}
-            guard let code = code else {return}
-            switch code {
-            case 200:
-                guard let article = article else {return}
-                self.isScraped = article.isScraped
-            default:
-                break
-            }
-        }
+        requestScrap(uuid)
     }
     
     @objc
@@ -281,16 +275,16 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     }
     
     
-    func fetchArticle() {
-        guard let article = self.article,
-            let uuid = article.uuid else {return}
-        APIRouter.shared.request(ArticleService.get(scriptUuid: uuid)) { [weak self] (code: Int?, article: Article?) in
-            guard let `self` = self else {return}
-            self.article = article
-            guard let article = self.article else {return}
-            self.setUpUI(article: article)
-        }
-    }
+//    func fetchArticle() {
+//        guard let article = self.article,
+//            let uuid = article.uuid else {return}
+//        APIRouter.shared.request(ArticleService.get(scriptUuid: uuid)) { [weak self] (code: Int?, article: Article?) in
+//            guard let `self` = self else {return}
+//            self.article = article
+//            guard let article = self.article else {return}
+//            self.setUpUI(article: article)
+//        }
+//    }
     
     func fetchReplies() {
         guard let article = self.article,
@@ -318,8 +312,18 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         }
     }
     
-    func setScrapButton(_ value: Bool) {
-        self.scrapBarButton.tintColor = value ? UIColor.Palette.coral : UIColor.Palette.silver//setEnable(value, color: value ? UIColor.Palette.coral : UIColor.Palette.silver)
+    func requestScrap(_ uuid: String) {
+        APIRouter.shared.request(ScrapService.add(scriptUuid: uuid)) { [weak self] (code: Int?, article: Article?) in
+            guard let `self` = self else {return}
+            guard let code = code else {return}
+            switch code {
+            case 200:
+                guard let article = article else {return}
+                self.isScraped = article.isScraped
+            default:
+                break
+            }
+        }
     }
 }
 

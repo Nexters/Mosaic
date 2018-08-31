@@ -12,6 +12,7 @@ class PagingImageCollectionView: UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
+    let pageControlBackgroundLayer = CALayer()
     var imageURLs = [String]() {
         didSet {
             self.pageControl.numberOfPages = imageURLs.count
@@ -29,6 +30,11 @@ class PagingImageCollectionView: UIView {
         setUpView()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        updatePageControlBackgrounLayer()
+    }
+    
     private func setUpView() {
         Bundle.main.loadNibNamed(PagingImageCollectionView.reuseIdentifier, owner: self, options: nil)
         addSubview(self.contentView)
@@ -42,9 +48,20 @@ class PagingImageCollectionView: UIView {
         self.collectionView.alwaysBounceHorizontal = false
         self.collectionView.alwaysBounceVertical = false
         
+        self.pageControlBackgroundLayer.backgroundColor = UIColor.black.withAlphaComponent(0.3).cgColor
+        self.pageControl.layer.addSublayer(self.pageControlBackgroundLayer)
+        
 //        self.pageControl.addShadow(shadowColor: .black,
 //                                   shadowOffset: CGSize(width: 1, height: 1),
 //                                   shadowOpacity: 0.5)
+    }
+    
+    func updatePageControlBackgrounLayer() {
+        let height: CGFloat = 20
+        let margin: CGFloat = 10
+        let bounds = self.pageControl.bounds
+        self.pageControlBackgroundLayer.frame = CGRect(x: -margin, y: bounds.height / 2 - margin, width: bounds.width + margin * 2, height: height)
+        self.pageControlBackgroundLayer.cornerRadius = height/2
     }
     
 }

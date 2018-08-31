@@ -108,8 +108,6 @@ class ApiManager {
             completion(response.response?.statusCode, categories)
         }
     }
-    
-    
 }
 enum ArticleType {
     case add

@@ -69,4 +69,10 @@ class Reply: Mappable {
     }
 }
 
+extension Reply: Equatable {
+    static func ==(lhs: Reply, rhs: Reply) -> Bool {
+        return lhs.uuid == rhs.uuid
+    }
+}
+
 

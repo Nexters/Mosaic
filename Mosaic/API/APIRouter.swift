@@ -12,7 +12,9 @@ import ObjectMapper
 
 class APIRouter {
     static let shared = APIRouter()
-    static var token: String = ""
+    var token: String = ""
+    var me: Me?
+    
     private static let activityIndicator = FullActivityIndicatorView()
     
     func request<T: Mappable>(_ service: APIService, completion: @escaping (_ code: Int?, _ response: T?) -> Void ) {

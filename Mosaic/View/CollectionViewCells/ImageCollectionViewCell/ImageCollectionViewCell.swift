@@ -23,11 +23,13 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        setUpUI()
     }
     
     func setUpUI() { 
         self.thumbnail.layer.cornerRadius = 2
         self.thumbnail.clipsToBounds = true
         self.label.isHidden = true
+        self.thumbnail.kf.indicatorType = .activity
     }
 }

@@ -66,6 +66,8 @@ class CommentTableViewCell: UITableViewCell {
         
         self.thumbnail.clipsToBounds = true
         self.thumbnail.layer.cornerRadius = 5
+        self.thumbnail.image = nil
+        self.thumbnail.kf.indicatorType = .activity
         
         self.replyButton.titleLabel?.font = UIFont.nanumBold(size: 10)
         self.replyButton.layer.borderWidth = 1
@@ -76,6 +78,11 @@ class CommentTableViewCell: UITableViewCell {
         self.thumbnailHeightConstraint.constant = 0
         self.thumbnailTopMarginConstraint.constant = 0
         
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        setUpUI()
     }
     
 }

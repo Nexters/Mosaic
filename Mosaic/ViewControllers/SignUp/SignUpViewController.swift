@@ -142,7 +142,7 @@ class SignUpViewController: UIViewController, TransparentNavBarService, Keyboard
     
     func saveToken(_ token: String) {
         UserDefaults.standard.set(token, forKey: "Authorization")
-        APIRouter.token = token
+        APIRouter.shared.token = token
     }
     
     func navigateToEmailCheckViewController() {

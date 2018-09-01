@@ -23,6 +23,8 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var accessoryView: CommentAccessoryView!
     var scrapBarButton: UIBarButtonItem!
+    let footerView = FooterView()
+    let refreshControl = UIRefreshControl()
     //MARK: CONSTRAINT
     @IBOutlet weak var pagingImageCollectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var accessoryViewHeightConstraint: NSLayoutConstraint!
@@ -37,13 +39,20 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     var selectedImage: UIImage?
     var article: Article?
     var upperReplyUUID: String = ""
-    var replies: [Reply] = []
+    var replies: [Reply] = [] {
+        didSet {
+            let sequence = compare(oldValue, self.replies, with: {$0 == $1})
+            guard let inserted = sequence.inserted.first else {return}
+            let index = self.replies.index(where: { $0 == inserted } )
+             //forEach({ print($0.content) })
+        }
+    }
     var isScraped: Bool = false {
         didSet {
             setScrapButton(self.isScraped)
         }
     }
-    let footerView = FooterView()
+    var showDeleteButton: Bool = false
     //MARK: - METHOD
     //MARK: INIT
     override func viewDidLoad() {
@@ -58,6 +67,10 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             setUpUI(article: article)
         }
         fetchReplies()
+        setUpDeleteButton()
+        if showDeleteButton {
+            changeDeleteButtonHeight()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,12 +109,16 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             UIView.animate(withDuration: duration, animations: {
                 self.deleteButtonBottomConstraint.constant = rect.height - bottomInset
                 self.view.layoutIfNeeded()
+            }, completion: { (value) in
+                self.scrollToBottom()
             })
         }, willHide: { [weak self] (rect, duration) in
             guard let `self` = self else {return}
             UIView.animate(withDuration: duration, animations: {
                 self.deleteButtonBottomConstraint.constant = 0
                 self.view.layoutIfNeeded()
+            }, completion: { (value) in
+                self.scrollToBottom()
             })
         })
     }
@@ -164,13 +181,22 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     func setUpTableView() {
         self.tableView.setUp(target: self, cell: CommentTableViewCell.self)
         self.tableView.setUp(target: self, cell: RECommentTableViewCell.self)
-        self.tableView.estimatedRowHeight = 50
+        self.tableView.estimatedRowHeight = 30
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.separatorStyle = .none
-        self.tableView.alwaysBounceVertical = false
+        self.tableView.alwaysBounceVertical = true
         self.tableView.showsVerticalScrollIndicator = false
         self.tableView.allowsSelection = false
         self.tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tableViewDidTapped)))
+        
+        self.refreshControl.tintColor = UIColor.Palette.coral
+        self.refreshControl.addTarget(self, action: #selector(fetchReplies), for: .valueChanged)
+        self.tableView.addSubview(refreshControl)
+    }
+    
+    func setUpDeleteButton() {
+//        showDeleteButton()
+        self.deleteButton.addTarget(self, action: #selector(showDeleteAlert), for: .touchUpInside)
     }
     
     @objc
@@ -179,7 +205,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     }
     
     //MARK: SET UP NAVIGATIONBAR
-    func showDeleteButton() {
+    func changeDeleteButtonHeight() {
         self.deleteButtonHeightConstraint.constant = 52
     }
     
@@ -199,7 +225,8 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     func setUpAccessoryView() {
         self.accessoryView.imageButtonAddTarget(self, action: #selector(imageButtonDidTapped))
         self.accessoryView.sendButtonAddTarget(self, action: #selector(messageButtonDidTapped))
-        self.accessoryView.deleteButtonAddTarget(self, action: #selector(deleteButtonDidTapped))
+        self.accessoryView.deleteButtonAddTarget(self, action: #selector(accessoryViewDeleteButtonDidTapped))
+        self.accessoryView.textFieldAddTarget(self, action: #selector(textfieldDidTapped(_:)))
     }
     
     func setScrapButton(_ value: Bool) {
@@ -256,7 +283,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     }
     
     @objc
-    func deleteButtonDidTapped() {
+    func accessoryViewDeleteButtonDidTapped() {
         changeAccessoryViewHeight(true)
     }
     
@@ -284,9 +311,11 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
 //        }
 //    }
     
+    @objc
     func fetchReplies() {
         guard let article = self.article,
             let uuid = article.uuid else {return}
+        self.refreshControl.endRefreshing()
         APIRouter.shared.requestArray(ReplyService.getReplies(scriptUuid: uuid)) { [weak self] (code: Int?, replies: [Reply]?) in
             guard let `self` = self else {return}
             guard let replies = replies else {return}
@@ -332,6 +361,55 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             case 200:
                 guard let article = article else {return}
                 self.isScraped = article.isScraped
+            default:
+                break
+            }
+        }
+    }
+    
+    @objc
+    func textfieldDidTapped(_ textField: UITextField) {
+        
+        
+    }
+    
+    func scrollToBottom() {
+        if !self.replies.isEmpty {
+            var indexPath = IndexPath(row: 0, section: 0)
+            if let upper = self.accessoryView.upperReply,
+                let index = self.replies.index(where: {$0.uuid == upper.uuid}){
+                indexPath = IndexPath(row: index, section: 0)
+
+            } else {
+                indexPath = IndexPath(row: self.replies.count - 1, section: 0)
+            }
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        } else {
+            self.tableView.setContentOffset(CGPoint(x: 0,
+                                                    y: self.tableView.contentSize.height - self.tableView.bounds.height),
+                                            animated: true)
+        }
+    }
+    
+    @objc
+    func showDeleteAlert() {
+        UIAlertController.showAlert(title: "삭제",
+                                    message: "게시글을 삭제하시겠습니까?",
+                                    actions: [UIAlertAction(title: "취소", style: .default, handler: nil),
+                                              UIAlertAction(title: "삭제", style: .destructive, handler: { (action) in
+                                                self.deleteScript()
+                                              })])
+    }
+    
+    func deleteScript() {
+        guard let article = self.article else {return}
+        guard let uuid = article.uuid else {return}
+        APIRouter.shared.request(ArticleService.delete(scriptUuid: uuid)) { (code: Int?, article: Article?) in
+            guard let code = code else {return}
+            switch code {
+            case 200:
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
             default:
                 break
             }

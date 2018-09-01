@@ -63,6 +63,7 @@ class CommentAccessoryView: UIView {
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         self.thumbnail.alpha = 0.0
+        self.thumbnail.kf.indicatorType = .activity
         self.downloadLabel.isHidden = true
         self.deleteButton.alpha = 0.0
         self.nicknameLabel.text = nil
@@ -110,6 +111,10 @@ class CommentAccessoryView: UIView {
     
     func deleteButtonAddTarget(_ target: Any?, action: Selector) {
         self.deleteButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func textFieldAddTarget(_ target: Any?, action: Selector) {
+        self.textField.addTarget(target, action: action, for: .touchDown)
     }
     
     func reset() {

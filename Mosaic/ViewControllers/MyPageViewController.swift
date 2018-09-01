@@ -46,13 +46,24 @@ class MyPageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ApiManager.shared.requestMyProfile { (code, response) in
-            if code == 200 {
-                self.me = response
+        APIRouter.shared.request(MyProfileService.me) { (code: Int?, me: Me?) in
+            guard let code = code else {return}
+            switch code {
+            case 200:
+                self.me = me
                 self.updateMyPage()
                 self.tableView.reloadData()
+            default:
+                break
             }
         }
+//        ApiManager.shared.requestMyProfile { (code, response) in
+//            if code == 200 {
+//                self.me = response
+//                self.updateMyPage()
+//                self.tableView.reloadData()
+//            }
+//        }
     }
 
     func setupNavigation() {

@@ -38,9 +38,6 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
         self.view.backgroundColor = ColorPalette.background
         
         self.setNeedsStatusBarAppearanceUpdate()
-        
-       
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,6 +152,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let article = articles[indexPath.row]
         guard let viewController = DetailViewController.create(storyboard: "Detail") as? DetailViewController else {return}
         viewController.article = article
+        viewController.showDeleteButton = true
         let navigation = UINavigationController(rootViewController: viewController)
         self.present(navigation, animated: true, completion: nil)
     }

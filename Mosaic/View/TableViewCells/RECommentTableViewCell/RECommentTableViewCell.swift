@@ -67,10 +67,16 @@ class RECommentTableViewCell: UITableViewCell {
         
         self.thumbnail.clipsToBounds = true
         self.thumbnail.layer.cornerRadius = 5
+        self.thumbnail.image = nil
+        self.thumbnail.kf.indicatorType = .activity
         
         self.thumbnailHeightConstraint.constant = 0
         self.thumbnailTopMarginConstraint.constant = 0
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        setUpUI()
+    }
     
 }

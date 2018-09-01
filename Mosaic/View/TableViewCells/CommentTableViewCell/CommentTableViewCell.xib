@@ -82,7 +82,7 @@
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgBackKoreauniv" translatesAutoresizingMaskIntoConstraints="NO" id="eBY-Od-4Sz">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgBackKoreauniv" translatesAutoresizingMaskIntoConstraints="NO" id="eBY-Od-4Sz">
                         <rect key="frame" x="48" y="44.5" width="110" height="110"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="eBY-Od-4Sz" secondAttribute="height" multiplier="1:1" id="OpD-An-lIp"/>

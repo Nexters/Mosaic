@@ -37,6 +37,6 @@ enum MyProfileService: APIService {
     }
     
     var header: HTTPHeaders? {
-        return ["Authorization": APIRouter.token]
+        return ["Authorization": APIRouter.shared.token]
     }
 }

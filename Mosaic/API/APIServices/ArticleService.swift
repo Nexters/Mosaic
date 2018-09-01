@@ -14,7 +14,7 @@ enum ArticleService: APIService {
     case getAll(category: [[String: String]])
     case write(uuid: String, content: String)
     case search(keywork: String)
-    case delete(article: Article)
+    case delete(scriptUuid: String)
     case mine
     
     var path: String {
@@ -38,8 +38,8 @@ enum ArticleService: APIService {
             return ["keyword"       : keyword]
         case .getAll(let category):
             return ["categories"    : category]
-        case .delete(let article):
-            return ["scriptUuid"    : article.uuid!]
+        case .delete(let scriptUuid):
+            return ["scriptUuid"    : scriptUuid]
         case .mine:
             return nil
         case .write(let uuid, let content):
@@ -60,7 +60,7 @@ enum ArticleService: APIService {
     }
     
     var header: HTTPHeaders?{
-        return ["Authorization": APIRouter.token]
+        return ["Authorization": APIRouter.shared.token]
     }
 }
 

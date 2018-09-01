@@ -21,6 +21,16 @@ class Token: Mappable {
     }
 }
 
+class None: Mappable {
+    required init?(map: Map) {
+        self.mapping(map: map)
+    }
+    
+    func mapping(map: Map) {
+        
+    }
+}
+
 class User: Mappable {
     var authKey: String = ""
     var uuid: String = ""

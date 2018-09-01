@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mosaic/ViewControllers/Detail/DetailViewController.swift"
-            timestampString = "557464547.8399301"
+            timestampString = "557478674.404523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
             landmarkName = "textfieldDidTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mosaic/ViewControllers/Detail/DetailViewController.swift"
-            timestampString = "557464547.840011"
+            timestampString = "557478674.404621"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
             landmarkName = "postReply(method:)"
             landmarkType = "7">
             <Locations>
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mosaic/ViewControllers/Detail/DetailViewController.swift"
-            timestampString = "557464547.840065"
+            timestampString = "557478674.404711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
-            landmarkName = "fetchReplies()"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
+            landmarkName = "fetchReplies(method:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mosaic/View/TableViewCells/RECommentTableViewCell/RECommentTableViewCell.swift"
-            timestampString = "557464547.8401181"
+            timestampString = "557478674.40479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mosaic/View/TableViewCells/RECommentTableViewCell/RECommentTableViewCell.swift"
-            timestampString = "557464547.840162"
+            timestampString = "557478674.404853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mosaic/ViewControllers/Detail/DetailViewController.swift"
-            timestampString = "557464547.840204"
+            timestampString = "557478674.404899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mosaic/ViewControllers/Detail/DetailViewController.swift"
-            timestampString = "557464547.84025"
+            timestampString = "557478674.4049619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -223,6 +223,214 @@
                   startingLineNumber = "46"
                   endingLineNumber = "46"
                   offsetFromSymbolStart = "18">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mosaic/ViewControllers/Detail/DetailViewController.swift"
+            timestampString = "557478674.405019"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "473"
+            endingLineNumber = "473"
+            landmarkName = "tableView(_:commit:forRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mosaic.DetailViewController.tableView(__ObjC.UITableView, commit: __C.UITableViewCellEditingStyle, forRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Mosaic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igwang-yong/Mosaic/Mosaic/ViewControllers/Detail/DetailViewController.swift"
+                  timestampString = "557475483.893101"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "473"
+                  endingLineNumber = "473"
+                  offsetFromSymbolStart = "277">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Mosaic.DetailViewController.tableView(__ObjC.UITableView, commit: __C.UITableViewCellEditingStyle, forRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Mosaic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igwang-yong/Mosaic/Mosaic/ViewControllers/Detail/DetailViewController.swift"
+                  timestampString = "557475483.895691"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "474"
+                  endingLineNumber = "474"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mosaic/ViewControllers/Detail/DetailViewController.swift"
+            timestampString = "557478674.4050699"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
+            landmarkName = "tableView(_:commit:forRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mosaic/ViewControllers/Detail/DetailViewController.swift"
+            timestampString = "557478674.405126"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
+            landmarkName = "deleteReply(uuid:method:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mosaic/ViewControllers/Detail/DetailViewController.swift"
+            timestampString = "557478674.405179"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "474"
+            endingLineNumber = "474"
+            landmarkName = "tableView(_:commit:forRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mosaic/ViewControllers/Detail/DetailViewController.swift"
+            timestampString = "557478674.405223"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
+            landmarkName = "fetchReplies(method:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mosaic/ViewControllers/Detail/DetailViewController.swift"
+            timestampString = "557478674.405293"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
+            landmarkName = "deleteReply(uuid:method:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mosaic.DetailViewController.deleteReply(uuid: Swift.String, method: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Mosaic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igwang-yong/Mosaic/Mosaic/ViewControllers/Detail/DetailViewController.swift"
+                  timestampString = "557478139.2153521"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "431"
+                  endingLineNumber = "431"
+                  offsetFromSymbolStart = "271">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Int&gt;, Swift.Optional&lt;Mosaic.None&gt;) -&gt; () in Mosaic.DetailViewController.deleteReply(uuid: Swift.String, method: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Mosaic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igwang-yong/Mosaic/Mosaic/ViewControllers/Detail/DetailViewController.swift"
+                  timestampString = "557478139.218612"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "432"
+                  endingLineNumber = "432"
+                  offsetFromSymbolStart = "70">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mosaic/ViewControllers/HomeViewController.swift"
+            timestampString = "557478674.405342"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "getMyProfile(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mosaic.HomeViewController.getMyProfile(completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "Mosaic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igwang-yong/Mosaic/Mosaic/ViewControllers/HomeViewController.swift"
+                  timestampString = "557478616.790639"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "130">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Int&gt;, Swift.Optional&lt;Mosaic.Me&gt;) -&gt; () in Mosaic.HomeViewController.getMyProfile(completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "Mosaic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igwang-yong/Mosaic/Mosaic/ViewControllers/HomeViewController.swift"
+                  timestampString = "557478616.79347"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "43">
                </Location>
             </Locations>
          </BreakpointContent>

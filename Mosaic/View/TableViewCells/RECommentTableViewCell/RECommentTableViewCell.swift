@@ -42,6 +42,10 @@ class RECommentTableViewCell: UITableViewCell {
             self.contentLabel.attributedText = content
             
             self.timeLabel.text = Date().text(reply.createdAt)
+            
+            if APIRouter.shared.me?.uuid == reply.writer?.uuid {
+                self.myMimicLableButton.isHidden = false
+            }
         }
     }
     

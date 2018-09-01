@@ -18,8 +18,10 @@ enum ReplyService: APIService {
         switch self {
         case .getReplies:
             return "/apis/replies"
-        case .add, .delete:
+        case .add:
             return "/apis/reply"
+        case .delete(let replyUuid):
+            return "/apis/reply/" + replyUuid
         }
     }
     

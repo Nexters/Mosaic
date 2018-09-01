@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         if let auth = UserDefaults.standard.value(forKey: "Authorization") as? String, !auth.isEmpty {
             APIRouter.shared.token = auth
+            print("token: ", APIRouter.shared.token)
             let viewController = HomeViewController.create(storyboard: "Home")
             let navigationController = UINavigationController(rootViewController: viewController)
             self.window?.rootViewController = navigationController

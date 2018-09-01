@@ -190,7 +190,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         self.tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tableViewDidTapped)))
         
         self.refreshControl.tintColor = UIColor.Palette.coral
-        self.refreshControl.addTarget(self, action: #selector(fetchReplies), for: .valueChanged)
+        self.refreshControl.addTarget(self, action: #selector(pullRefresh), for: .valueChanged)
         self.tableView.addSubview(refreshControl)
     }
     
@@ -273,10 +273,10 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     }
     
     @IBAction func messageButtonDidTapped(_ sender: UIButton) {
+        self.view.endEditing(true)
         postReply(method: {
             self.accessoryView.reset()
             self.changeAccessoryViewHeight(true)
-            self.view.endEditing(true)
             self.fetchReplies()
         })
         
@@ -312,7 +312,12 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
 //    }
     
     @objc
-    func fetchReplies() {
+    func pullRefresh() {
+        fetchReplies()
+    }
+    
+    @objc
+    func fetchReplies(method: (()->())? = nil) {
         guard let article = self.article,
             let uuid = article.uuid else {return}
         self.refreshControl.endRefreshing()
@@ -336,6 +341,9 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
                 self.tableView.tableFooterView = UIView()
             }
             self.tableView.reloadData()
+            if let method = method {
+                method()
+            }
         }
     }
     
@@ -349,7 +357,9 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
                                                  upperReplyUuid: self.accessoryView.upperReply?.uuid ?? ""),
                                 imageKey: "imgFile",
                                 images: [self.selectedImage]) { [weak self] (code: Int?, reply: Reply?) in
-                                    method?()
+                                    if let method = method {
+                                        method()
+                                    }
         }
     }
     
@@ -415,6 +425,21 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             }
         }
     }
+    
+    func deleteReply(uuid: String, method: (()->())? = nil) {
+        print(uuid)
+        APIRouter.shared.request(ReplyService.delete(replyUuid: uuid)) { (code: Int?, _: None?) in
+            guard let code = code else {return}
+            switch code {
+            case 200:
+                if let method = method {
+                    method()
+                }
+            default:
+                break
+            }
+        }
+    }
 }
 
 //MARK: - EXTENSION
@@ -442,8 +467,24 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         return self.replies.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(self.replies[indexPath.row].idx)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let reply = self.replies[indexPath.row]
+            self.deleteReply(uuid: reply.uuid) {
+                self.fetchReplies(method: {
+                    if tableView.cellForRow(at: indexPath) != nil{
+                        tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    }
+                })
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "삭제"
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return self.replies[indexPath.row].writer?.uuid == APIRouter.shared.me?.uuid
     }
 }
 

@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0dp-ls-bdZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="784"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="786"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="exS-61-eOt">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="572"/>
@@ -139,7 +139,7 @@
                             <constraint firstItem="3GQ-FV-tzL" firstAttribute="centerX" secondItem="fBB-5P-nft" secondAttribute="centerX" id="P2P-AB-GW0"/>
                             <constraint firstItem="2mg-RA-kdN" firstAttribute="leading" secondItem="fBB-5P-nft" secondAttribute="leading" id="SVK-lq-Cgw"/>
                             <constraint firstItem="0dp-ls-bdZ" firstAttribute="top" secondItem="fBB-5P-nft" secondAttribute="top" id="YM6-nT-cB6"/>
-                            <constraint firstItem="2mg-RA-kdN" firstAttribute="top" secondItem="0dp-ls-bdZ" secondAttribute="bottom" id="bFt-0p-N0F"/>
+                            <constraint firstItem="2mg-RA-kdN" firstAttribute="top" secondItem="0dp-ls-bdZ" secondAttribute="bottom" constant="-2" id="bFt-0p-N0F"/>
                             <constraint firstItem="3GQ-FV-tzL" firstAttribute="width" secondItem="D1b-mD-p6V" secondAttribute="width" id="lyT-QT-yWD"/>
                             <constraint firstItem="0dp-ls-bdZ" firstAttribute="leading" secondItem="fBB-5P-nft" secondAttribute="leading" id="xGt-Je-MN4"/>
                             <constraint firstItem="fBB-5P-nft" firstAttribute="bottom" secondItem="3GQ-FV-tzL" secondAttribute="bottom" id="zgJ-2t-K9t"/>

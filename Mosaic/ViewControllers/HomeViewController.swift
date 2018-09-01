@@ -38,6 +38,38 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
         self.view.backgroundColor = ColorPalette.background
         
         self.setNeedsStatusBarAppearanceUpdate()
+        
+        getMyProfile(completion: showMeAlert)
+    }
+    
+    @objc
+    func showMeAlert() {
+        UIAlertController.showAlert(title: "인증",
+                                    message: "인증이 필요합니다.",
+                                    actions: [UIAlertAction(title: "인증하기",
+                                                            style: .default,
+                                                            handler: { (action) in
+                                                                self.getMyProfile(completion: self.showMeAlert)
+                                    })])
+    }
+    
+    func getMyProfile(completion: @escaping ()->()) {
+        APIRouter.shared.request(MyProfileService.me) { (code: Int?, me: Me?) in
+            guard let code = code else {
+                completion()
+                return
+            }
+            switch code {
+            case 200:
+                guard let me = me else {
+                    completion()
+                    return
+                }
+                APIRouter.shared.me = me
+            default:
+                completion()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,6 +163,7 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
             print(code, article)
         }
     }
+    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -152,7 +185,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let article = articles[indexPath.row]
         guard let viewController = DetailViewController.create(storyboard: "Detail") as? DetailViewController else {return}
         viewController.article = article
-        viewController.showDeleteButton = true
+        viewController.showDeleteButton = false
         let navigation = UINavigationController(rootViewController: viewController)
         self.present(navigation, animated: true, completion: nil)
     }

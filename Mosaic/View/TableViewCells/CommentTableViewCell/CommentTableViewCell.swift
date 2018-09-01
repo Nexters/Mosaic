@@ -35,6 +35,10 @@ class CommentTableViewCell: UITableViewCell {
             }
             self.contentLabel.text = reply.content
             self.timeLabel.text = Date().text(reply.createdAt)
+            
+            if APIRouter.shared.me?.uuid == reply.writer?.uuid {
+                self.myMimicLableButton.isHidden = false
+            }
         }
     }
     

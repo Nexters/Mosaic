@@ -152,8 +152,6 @@
                         <outlet property="accessoryView" destination="2mg-RA-kdN" id="lma-pj-zXO"/>
                         <outlet property="accessoryViewHeightConstraint" destination="ifl-wt-JJP" id="MfT-aT-qTa"/>
                         <outlet property="categoryView" destination="Qc6-L3-AXK" id="kIm-pF-fA4"/>
-                        <outlet property="commentCountLable" destination="6vp-Y4-2FR" id="Mkd-WQ-efx"/>
-                        <outlet property="commentView" destination="Jfq-15-WSN" id="yNA-jP-3pZ"/>
                         <outlet property="contentLabel" destination="EJQ-Or-nAd" id="gjX-K3-JIG"/>
                         <outlet property="datelabel" destination="lPj-jn-G1y" id="b1R-MT-akI"/>
                         <outlet property="deleteButton" destination="3GQ-FV-tzL" id="0NJ-eB-Ytx"/>
@@ -161,6 +159,8 @@
                         <outlet property="deleteButtonHeightConstraint" destination="Acz-4F-n9e" id="ugg-vF-SUS"/>
                         <outlet property="pagingImageCollectionView" destination="O6P-Nb-3tl" id="sGD-NO-FE6"/>
                         <outlet property="pagingImageCollectionViewHeightConstraint" destination="REe-jy-iB4" id="gSL-Pr-Ly9"/>
+                        <outlet property="replyCountLable" destination="6vp-Y4-2FR" id="Mkd-WQ-efx"/>
+                        <outlet property="replyView" destination="Jfq-15-WSN" id="yNA-jP-3pZ"/>
                         <outlet property="tableView" destination="0dp-ls-bdZ" id="lsi-nc-Odc"/>
                     </connections>
                 </viewController>

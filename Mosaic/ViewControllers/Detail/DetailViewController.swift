@@ -16,11 +16,11 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var pagingImageCollectionView: PagingImageCollectionView!
     @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var commentCountLable: UILabel!
+    @IBOutlet weak var replyCountLable: UILabel!
     @IBOutlet weak var datelabel: UILabel!
     @IBOutlet weak var categoryView: CategoryView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var commentView: UIView!
+    @IBOutlet weak var replyView: UIView!
     @IBOutlet weak var accessoryView: CommentAccessoryView!
     var scrapBarButton: UIBarButtonItem!
     let footerView = FooterView()
@@ -97,7 +97,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             tableView.layoutIfNeeded()
         }
         
-        self.commentView.layer.addBorder([.top, .bottom],
+        self.replyView.layer.addBorder([.top, .bottom],
                                          color: UIColor.Palette.paleGrey,
                                          width: 1.0)
     }
@@ -277,7 +277,6 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
         postReply(method: {
             self.accessoryView.reset()
             self.changeAccessoryViewHeight(true)
-            self.fetchReplies()
         })
         
     }
@@ -325,7 +324,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             guard let `self` = self else {return}
             guard let replies = replies else {return}
             self.replies = replies
-            self.commentCountLable.text = String(describing: self.replies.count)
+            self.replyCountLable.text = String(describing: self.replies.filter{$0.valid}.count)
             if self.replies.isEmpty {
                 guard let headerView = self.tableView.tableHeaderView else {return }
                 let bounds = self.tableView.bounds
@@ -341,9 +340,9 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
                 self.tableView.tableFooterView = UIView()
             }
             self.tableView.reloadData()
-            if let method = method {
-                method()
-            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                method?()
+            })
         }
     }
     
@@ -357,9 +356,19 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
                                                  upperReplyUuid: self.accessoryView.upperReply?.uuid ?? ""),
                                 imageKey: "imgFile",
                                 images: [self.selectedImage]) { [weak self] (code: Int?, reply: Reply?) in
+                                    guard let `self` = self else {return}
                                     if let method = method {
                                         method()
                                     }
+                                    guard let reply = reply else {return}
+                                    self.fetchReplies(method: {
+                                        
+                                        guard let index = self.replies.index(where: {$0.uuid == reply.uuid}) else {return}
+                                        let indexPath = IndexPath(row: index, section: 0)
+                                        if self.tableView.cellForRow(at: indexPath) != nil {
+                                            self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
+                                        }
+                                    })
         }
     }
     
@@ -393,7 +402,7 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
             } else {
                 indexPath = IndexPath(row: self.replies.count - 1, section: 0)
             }
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         } else {
             self.tableView.setContentOffset(CGPoint(x: 0,
                                                     y: self.tableView.contentSize.height - self.tableView.bounds.height),
@@ -463,28 +472,37 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return self.replies.count
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let reply = self.replies[indexPath.row]
-            self.deleteReply(uuid: reply.uuid) {
-                self.fetchReplies(method: {
-                    if tableView.cellForRow(at: indexPath) != nil{
-                        tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                    }
-                })
-            }
+        switch editingStyle {
+        case .delete:
+            UIAlertController.showAlert(title: "삭제",
+                                        message: "선택한 댓글을 삭제하시겠습니까?",
+                                        actions: [UIAlertAction(title: "취소", style: .default, handler: nil),
+                                                  UIAlertAction(title: "삭제", style: .destructive, handler: { (alertAction) in
+                                                    let reply = self.replies[indexPath.row]
+                                                    self.deleteReply(uuid: reply.uuid) {
+                                                        self.fetchReplies(method: {
+                                                            if tableView.cellForRow(at: indexPath) != nil{
+                                                                tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                                                            }
+                                                        })
+                                                    }
+                                                  })])
+        default:
+            break
         }
     }
+    
     
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "삭제"
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return self.replies[indexPath.row].writer?.uuid == APIRouter.shared.me?.uuid
+        let reply = self.replies[indexPath.row]
+        return (reply.writer?.uuid == APIRouter.shared.me?.uuid) && reply.valid
     }
 }
 

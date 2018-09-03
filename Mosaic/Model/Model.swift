@@ -58,6 +58,7 @@ class Reply: Mappable {
     var upperReplyUuid: String = ""
     var uuid: String = ""
     var writer: Me?
+    var valid: Bool = true
 
     func mapping(map: Map) {
         content         <- map["content"]
@@ -72,6 +73,7 @@ class Reply: Mappable {
         upperReplyUuid  <- map["upperReplyUuid"]
         uuid            <- map["uuid"]
         writer          <- map["writer"]
+        valid           <- map["valid"]
     }
 
     required init?(map: Map) {

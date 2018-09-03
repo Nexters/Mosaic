@@ -28,12 +28,18 @@ class CommentTableViewCell: UITableViewCell {
             }
             self.universityLabel.text = reply.writer?.university?.name
             self.nicknameLabel.text = reply.writer?.nickName
-            if let imageURL = reply.imgUrl, !imageURL.isEmpty {
-                self.thumbnailHeightConstraint.constant = 110
-                self.self.thumbnailTopMarginConstraint.constant = 12
-                self.thumbnail.kf.setImage(with: URL(string: imageURL))
+            if reply.valid {
+                if let imageURL = reply.imgUrl, !imageURL.isEmpty {
+                    self.thumbnailHeightConstraint.constant = 110
+                    self.self.thumbnailTopMarginConstraint.constant = 12
+                    self.thumbnail.kf.setImage(with: URL(string: imageURL))
+                }
+                self.contentLabel.text = reply.content
+            } else {
+                self.contentLabel.text = "삭제된 댓글입니다."
+                self.contentLabel.textColor = UIColor.Palette.greyish
             }
-            self.contentLabel.text = reply.content
+            
             self.timeLabel.text = Date().text(reply.createdAt)
             
             if APIRouter.shared.me?.uuid == reply.writer?.uuid {
@@ -59,6 +65,7 @@ class CommentTableViewCell: UITableViewCell {
         
         self.nicknameLabel.font = UIFont.nanumRegular(size: 12)
         
+        self.contentLabel.textColor = .black
         self.contentLabel.font = UIFont.nanumRegular(size: 12)
         
         self.timeLabel.font = UIFont.nanumRegular(size: 10)

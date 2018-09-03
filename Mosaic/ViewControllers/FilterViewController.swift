@@ -34,7 +34,12 @@ class FilterViewController: UIViewController {
         
         self.setupBackgroundView()
         
-        ApiManager.shared.requestCategories { (code, categories) in
+//        ApiManager.shared.requestCategories { (code, categories) in
+//            self.categories = categories ?? []
+//            self.collectionView.reloadData()
+//        }
+        
+        APIRouter.shared.requestArray(CategoryService.get) { (code: Int?, categories: [Categories]?) in
             self.categories = categories ?? []
             self.collectionView.reloadData()
         }

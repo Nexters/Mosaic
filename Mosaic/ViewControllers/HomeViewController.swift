@@ -159,8 +159,22 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
     func bookmarkButtondDidTap(cell: HomeCollectionViewCell, isScraped: Bool) {
         guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
         
-        ApiManager.shared.updateBookMark(type: isScraped ? .delete : .add, article: self.articles![indexPath.item]) { (code, article) in
-            print(code, article)
+//        ApiManager.shared.updateBookMark(type: isScraped ? .delete : .add, article: self.articles![indexPath.item]) { (code, article) in
+//            print(code, article)
+//        }
+        
+        guard let articles = self.articles else {return}
+        let article = articles[indexPath.item]
+        let service: BookMarkService = isScraped ? .add(article: article) : BookMarkService.delete(article: article)
+            
+        APIRouter.shared.request(service) { (code: Int?, article: Article?) in
+            guard let code = code else {return}
+            switch code {
+            case 200:
+                break
+            default:
+                break
+            }
         }
     }
     

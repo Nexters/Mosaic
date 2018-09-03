@@ -27,19 +27,26 @@ class RECommentTableViewCell: UITableViewCell {
             }
             self.universityLabel.text = reply.writer?.university?.name
             self.nicknameLabel.text = reply.writer?.nickName
-            if let imageURL = reply.imgUrl, !imageURL.isEmpty {
-                self.thumbnailHeightConstraint.constant = 110
-                self.thumbnailTopMarginConstraint.constant = 12
-                self.thumbnail.kf.setImage(with: URL(string: imageURL))
+            
+            if reply.valid {
+                if let imageURL = reply.imgUrl, !imageURL.isEmpty {
+                    self.thumbnailHeightConstraint.constant = 110
+                    self.thumbnailTopMarginConstraint.constant = 12
+                    self.thumbnail.kf.setImage(with: URL(string: imageURL))
+                }
             }
             
             let content = NSMutableAttributedString(string: reply.upperReplyNick + " ",
                                                     attributes: [.font : UIFont.nanumRegular(size: 12),
                                                                  .foregroundColor : UIColor.Palette.coral])
-            content.append(NSMutableAttributedString(string: reply.content,
+            let text = reply.valid ? reply.content : "삭제된 댓글입니다."
+            let color = reply.valid ? UIColor.Palette.greyishBrown : UIColor.Palette.greyish
+            content.append(NSMutableAttributedString(string: text,
                                                      attributes: [.font : UIFont.nanumRegular(size: 12),
-                                                                  .foregroundColor : UIColor.Palette.greyishBrown]))
+                                                                  .foregroundColor : color]))
             self.contentLabel.attributedText = content
+            
+            
             
             self.timeLabel.text = Date().text(reply.createdAt)
             

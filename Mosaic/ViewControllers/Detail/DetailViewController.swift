@@ -212,7 +212,6 @@ class DetailViewController: UIViewController, TransparentNavBarService, Keyboard
     //MARK: SET UP CATEGORYVIEW
     func setUpCategoryView() {
         self.categoryView.backgroundColor = .clear
-        self.categoryView.category = (emoji: "🤫", title: "익명제보")
         self.categoryView.setUp()
     }
     

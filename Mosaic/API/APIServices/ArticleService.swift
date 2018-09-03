@@ -11,7 +11,7 @@ import Alamofire
 
 enum ArticleService: APIService {
     case get(scriptUuid: String)
-    case getAll(category: [[String: String]])
+    case getAll(category: [String])
     case write(uuid: String, content: String)
     case search(keywork: String)
     case delete(scriptUuid: String)

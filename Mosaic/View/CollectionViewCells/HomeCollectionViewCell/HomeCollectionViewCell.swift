@@ -173,6 +173,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @objc
     func bookMarkDidTap() {
         self.bookMarkContainerView.backgroundColor = self.article?.isScraped == true ? UIColor(hex: "#b3b3b3") : ColorPalette.bookmarkContainer
+        print(self.article?.content)
         self.delegate?.bookmarkButtondDidTap(cell: self, isScraped: self.article?.isScraped ?? false)
         self.article?.isScraped = !(self.article?.isScraped)!
         

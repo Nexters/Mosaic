@@ -84,7 +84,6 @@
 		FCB097F921366AF1002E05F6 /* LogInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F821366AF1002E05F6 /* LogInService.swift */; };
 		FCB097FB21366CDE002E05F6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097FA21366CDE002E05F6 /* APIService.swift */; };
 		FCB097FD21366D1A002E05F6 /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097FC21366D1A002E05F6 /* ArticleService.swift */; };
-		FCB0980021366FB9002E05F6 /* BookMarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097FF21366FB9002E05F6 /* BookMarkService.swift */; };
 		FCB0980221367395002E05F6 /* MyProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0980121367395002E05F6 /* MyProfileService.swift */; };
 		FCB09804213678C9002E05F6 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB09803213678C9002E05F6 /* CategoryService.swift */; };
 		FCB0980721379908002E05F6 /* ReplyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB0980621379908002E05F6 /* ReplyService.swift */; };
@@ -182,7 +181,6 @@
 		FCB097F821366AF1002E05F6 /* LogInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInService.swift; sourceTree = "<group>"; };
 		FCB097FA21366CDE002E05F6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		FCB097FC21366D1A002E05F6 /* ArticleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
-		FCB097FF21366FB9002E05F6 /* BookMarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkService.swift; sourceTree = "<group>"; };
 		FCB0980121367395002E05F6 /* MyProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileService.swift; sourceTree = "<group>"; };
 		FCB09803213678C9002E05F6 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		FCB0980621379908002E05F6 /* ReplyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyService.swift; sourceTree = "<group>"; };
@@ -510,7 +508,6 @@
 			children = (
 				FCB097FC21366D1A002E05F6 /* ArticleService.swift */,
 				FCB097F821366AF1002E05F6 /* LogInService.swift */,
-				FCB097FF21366FB9002E05F6 /* BookMarkService.swift */,
 				FCB0980121367395002E05F6 /* MyProfileService.swift */,
 				FCB09803213678C9002E05F6 /* CategoryService.swift */,
 				FCB0980621379908002E05F6 /* ReplyService.swift */,
@@ -737,7 +734,6 @@
 				FCB097FD21366D1A002E05F6 /* ArticleService.swift in Sources */,
 				1463943C21226AE100FC601C /* NSObject+.swift in Sources */,
 				FCB0980221367395002E05F6 /* MyProfileService.swift in Sources */,
-				FCB0980021366FB9002E05F6 /* BookMarkService.swift in Sources */,
 				141A8A592129146E00362A47 /* ApiManager.swift in Sources */,
 				1463944121226AE100FC601C /* NSObject+reuseIdentifier.swift in Sources */,
 				FCB0980721379908002E05F6 /* ReplyService.swift in Sources */,

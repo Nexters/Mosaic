@@ -80,7 +80,7 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
 //                self.collectionView.reloadData()
 //            }
 //        }().
-        APIRouter.shared.requestArray(ArticleService.getAll(category: self.requestCategories)) { (code: Int?, articles: [Article]?) in
+        APIRouter.shared.requestArray(ArticleService.getAll(category: ["7d798e3e-cb09-4fde-9158-f43f84c0cb4f"])) { (code: Int?, articles: [Article]?) in
             if code == 200 {
                 self.articles = articles
                 self.collectionView.reloadData()
@@ -158,26 +158,14 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
     
     func bookmarkButtondDidTap(cell: HomeCollectionViewCell, isScraped: Bool) {
         guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
-        
-//        ApiManager.shared.updateBookMark(type: isScraped ? .delete : .add, article: self.articles![indexPath.item]) { (code, article) in
-//            print(code, article)
-//        }
-        
         guard let articles = self.articles else {return}
         let article = articles[indexPath.item]
-        let service: BookMarkService = isScraped ? .add(article: article) : BookMarkService.delete(article: article)
-            
-        APIRouter.shared.request(service) { (code: Int?, article: Article?) in
-            guard let code = code else {return}
-            switch code {
-            case 200:
-                break
-            default:
-                break
-            }
+        guard let uuid = article.uuid else {return}
+        let service: ScrapService = isScraped ? ScrapService.delete(scriptUuid: uuid) : ScrapService.add(scriptUuid: uuid)
+        APIRouter.shared.request(ScrapService.add(scriptUuid: uuid)) { [weak self] (code: Int?, article: Article?) in
+           
         }
     }
-    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

@@ -16,7 +16,14 @@ class CategoryView: UIView {
     var highlighHeight: CGFloat = 9.0
     var highlightColor: UIColor? = UIColor.Palette.lightSkyBlue
     var textColor: UIColor? = UIColor(hex: "#474747")
-    var category: Category?
+    var category: Category? {
+        didSet {
+            if let title = category?.title,
+                let emoji = category?.emoji {
+                self.label.text = title + emoji
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,9 +53,6 @@ class CategoryView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         self.highlightView.backgroundColor = self.highlightColor
-        if let category = self.category {
-            self.label.text = category.title + category.emoji
-        }
         self.label.textColor = self.textColor
         self.highlightViewHeightConstrinat.constant = self.highlighHeight
     }

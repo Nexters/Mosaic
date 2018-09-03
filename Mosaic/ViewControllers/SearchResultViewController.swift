@@ -142,6 +142,17 @@ class SearchResultViewController: UIViewController {
         
         print(uuid)
         
+       
+        
+
+    }
+    
+}
+extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource, SearchResultDelegate {
+    func deleteDidTapped(_ article: Article) {
+        guard let uuid = article.uuid else {return}
+        print(article.content)
+        
         UIAlertController.showAlert(title: "삭제",
                                     message: "선택한 게시글을 삭제하시겠습니까?",
                                     actions: [UIAlertAction(title: "취소", style: .default, handler: nil),
@@ -152,8 +163,6 @@ class SearchResultViewController: UIViewController {
                                               })])
     }
     
-}
-extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource, SearchResultDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return (self.articles?.count ?? 0) + 1
@@ -170,19 +179,8 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.reuseIdentifier, for: indexPath) as? SearchResultTableViewCell else { return UITableViewCell() }
+            cell.delegate = self
             cell.configure(type: self.type!, article: self.articles?[indexPath.section-1])
-            if let type = self.type {
-                switch type {
-                case .myArticles:
-                    cell.commentLabelMimicButton.addTarget(self, action: #selector(deleteButtonDidTap(_:)), for: .touchUpInside)
-                    if let articles = self.articles,
-                        let uuid = articles[indexPath.section - 1].uuid {
-                        cell.commentLabelMimicButton.params = ["uuid": uuid]
-                    }
-                default:
-                    break
-                }
-            }
             return cell
             
         }
@@ -231,10 +229,6 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
         let navigationController = UINavigationController(rootViewController: viewController)
         self.present(navigationController, animated: true, completion: nil)
     }
-    
-    func articleDidDelete() {
-        self.requestArticles()
-    }
 }
 class SearchResultCountTableViewCell: UITableViewCell {
     
@@ -261,7 +255,7 @@ class SearchResultCountTableViewCell: UITableViewCell {
 }
 
 protocol SearchResultDelegate {
-    func articleDidDelete()
+    func deleteDidTapped(_ article: Article)
 }
 class SearchResultTableViewCell: UITableViewCell {
     
@@ -274,8 +268,7 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var typeViewTrailing: NSLayoutConstraint!
     
     @IBOutlet weak var typeView: CategoryView!
-//    @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var commentLabelMimicButton: ParameterButton!
+    @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var mainImageView: UIImageView!
@@ -287,8 +280,9 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var newCommentCountLabel: UILabel!
     
     @IBOutlet weak var lineView: UIView!
-    
-//    var delegate: SearchResultDelegate?
+    var article: Article?
+    var type: ResultType?
+    var delegate: SearchResultDelegate?
     let descriptionAttribute: [NSAttributedStringKey: Any] = [
         .font: UIFont.nanumRegular(size: 13),
         .foregroundColor: UIColor(hex: "#474747")
@@ -323,11 +317,10 @@ class SearchResultTableViewCell: UITableViewCell {
         
         self.nickNameLabel.font = UIFont.nanumExtraBold(size: 10)
         self.nickNameLabel.textColor = UIColor(hex: "#474747")
-//        self.commentLabel.font = UIFont.nanumBold(size: 10)
-//        self.commentLabel.textColor = UIColor(hex: "#fc543a")
-        self.commentLabelMimicButton.titleLabel?.font = UIFont.nanumBold(size: 10)
-        self.commentLabelMimicButton.setTitleColor(UIColor(hex: "#fc543a"), for: .normal)
-        self.commentLabelMimicButton.isEnabled = false
+        self.commentLabel.font = UIFont.nanumBold(size: 10)
+        self.commentLabel.textColor = UIColor(hex: "#fc543a")
+        self.commentLabel.isUserInteractionEnabled = false
+
         self.lineView.backgroundColor = UIColor(hex: "#dbdbdb")
         self.imageViewWidth.constant = 0
         self.mainImageView.clipsToBounds = true
@@ -349,9 +342,9 @@ class SearchResultTableViewCell: UITableViewCell {
         
     func configure(type: ResultType, article: Article?) {
         guard let article = article else { return }
-//        self.article = article
+        self.article = article
 
-//        self.type = type
+        self.type = type
         
         self.descriptionLabel.attributedText = NSAttributedString(string: article.content ?? "", attributes: self.descriptionAttribute)
         
@@ -372,14 +365,12 @@ class SearchResultTableViewCell: UITableViewCell {
         
         switch type {
         case .search:
-//            self.commentLabel.text = "댓글 \(article.replies)"
-            self.commentLabelMimicButton.setTitle("댓글 \(article.replies)", for: .normal)
+            self.commentLabel.text = "댓글 \(article.replies)"
             self.nickNameLabel.text = "\(article.writer?.university?.name ?? "") | \(article.writer?.nickName ?? "")"
         case .scrap:
             self.scrapImageViewWidth.constant = 30
             self.scrapImageView.isHidden = false
-//            self.commentLabel.text = "댓글 \(article.replies)"
-            self.commentLabelMimicButton.setTitle("댓글 \(article.replies)", for: .normal)
+            self.commentLabel.text = "댓글 \(article.replies)"
             self.nickNameLabel.text = "\(article.writer?.university?.name ?? "") | \(article.writer?.nickName ?? "")"
         case .myArticles:
             self.nickNameLabel.font = UIFont.nanumBold(size: 10)
@@ -388,12 +379,19 @@ class SearchResultTableViewCell: UITableViewCell {
             self.commentLabelForMine.isHidden = false
             self.commentLabelForMine.text = "댓글 \(article.replies)"
             self.dateLabel.isHidden = true
-//            self.commentLabel.text = "삭제"
-            self.commentLabelMimicButton.setTitle("삭제", for: .normal)
+            self.commentLabel.text = "삭제"
             self.nickNameLabel.text = Date().text(article.createdAt)
-            self.commentLabelMimicButton.isEnabled = true
+            
+            self.commentLabel.isUserInteractionEnabled = true
+            self.commentLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(deleteLabelDidTap)))
         }
         self.dateLabel.text = Date().text(article.createdAt)
         self.layoutIfNeeded()
+    }
+    
+    @objc
+    func deleteLabelDidTap() {
+        guard let article = self.article else {return}
+        self.delegate?.deleteDidTapped(article)
     }
 }

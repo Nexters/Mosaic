@@ -85,7 +85,7 @@ class ApiManager {
             "scriptUuid" : article.uuid!
         ]
         print(parameter)
-        Alamofire.request(url, method: type.method, parameters: parameter, headers:  ["Authorization": self.token]).responseObject { (response: DataResponse<Result<Article>>) in
+        Alamofire.request(url, method: type.method, parameters: parameter, headers:  ["Authorization": APIRouter.shared.token]).responseObject { (response: DataResponse<Result<Article>>) in
             let categories = response.result.value?.result
             completion(response.response?.statusCode, categories)
         }

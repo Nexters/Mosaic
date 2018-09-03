@@ -257,7 +257,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3월 22일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbT-ts-IRV">
-                                                            <rect key="frame" x="209" y="14" width="64" height="21"/>
+                                                            <rect key="frame" x="213" y="14" width="64" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -268,22 +268,22 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYp-2V-82l" customClass="ParameterButton" customModule="Mosaic" customModuleProvider="target">
-                                                            <rect key="frame" x="281" y="10" width="46" height="30"/>
-                                                            <state key="normal" title="Button">
-                                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </state>
-                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86l-X0-G3b">
+                                                            <rect key="frame" x="285" y="14" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="QYp-2V-82l" secondAttribute="trailing" constant="20" id="Aa4-ni-OZn"/>
                                                         <constraint firstItem="UNM-AO-WQw" firstAttribute="leading" secondItem="LxE-FQ-95w" secondAttribute="leading" constant="20" id="I69-fH-dsG"/>
                                                         <constraint firstItem="XbT-ts-IRV" firstAttribute="centerY" secondItem="LxE-FQ-95w" secondAttribute="centerY" id="hmN-Bu-VtK"/>
+                                                        <constraint firstItem="86l-X0-G3b" firstAttribute="leading" secondItem="XbT-ts-IRV" secondAttribute="trailing" constant="8" id="j93-vJ-kb7"/>
                                                         <constraint firstItem="UNM-AO-WQw" firstAttribute="centerY" secondItem="LxE-FQ-95w" secondAttribute="centerY" id="jBY-nK-C7t"/>
-                                                        <constraint firstItem="QYp-2V-82l" firstAttribute="centerY" secondItem="LxE-FQ-95w" secondAttribute="centerY" id="q8N-YM-Dij"/>
+                                                        <constraint firstItem="86l-X0-G3b" firstAttribute="centerY" secondItem="LxE-FQ-95w" secondAttribute="centerY" id="l3A-3q-TAp"/>
+                                                        <constraint firstAttribute="trailing" secondItem="86l-X0-G3b" secondAttribute="trailing" constant="20" id="nyu-k2-C7A"/>
                                                         <constraint firstItem="t4a-KB-1Gx" firstAttribute="leading" secondItem="UNM-AO-WQw" secondAttribute="trailing" constant="12" id="rIa-DE-qFm"/>
-                                                        <constraint firstItem="QYp-2V-82l" firstAttribute="leading" secondItem="XbT-ts-IRV" secondAttribute="trailing" constant="8" id="sGp-Ua-DbV"/>
                                                         <constraint firstItem="t4a-KB-1Gx" firstAttribute="centerY" secondItem="LxE-FQ-95w" secondAttribute="centerY" id="wRb-wM-fd0"/>
                                                     </constraints>
                                                 </view>
@@ -309,8 +309,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="commentLabel" destination="86l-X0-G3b" id="9Tw-ox-Jxx"/>
                                             <outlet property="commentLabelForMine" destination="t4a-KB-1Gx" id="TfF-s2-zjB"/>
-                                            <outlet property="commentLabelMimicButton" destination="QYp-2V-82l" id="Pi0-87-aP1"/>
                                             <outlet property="dateLabel" destination="XbT-ts-IRV" id="6YA-rg-Zhk"/>
                                             <outlet property="descriptionLabel" destination="KV5-Gl-wLD" id="Abi-ZE-7Db"/>
                                             <outlet property="imageViewWidth" destination="IdQ-Vt-K0d" id="5dn-Ux-Zcx"/>

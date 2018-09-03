@@ -168,6 +168,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     @objc
     func saveButtonDidTap() {
+        self.view.endEditing(true)
         guard let uuid = self.selectedCategory?.uuid else {return}
         guard let text = self.textView.text else {return}
         guard let images = self.accessoryView.selectedImages as? [UIImage] else {return}

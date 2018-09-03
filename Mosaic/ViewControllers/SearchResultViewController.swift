@@ -38,9 +38,15 @@ class SearchResultViewController: UIViewController {
         
         self.view.backgroundColor = UIColor(hex: "#ff573d")
         
-        self.requestArticles()
+        
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.requestArticles()
+    }
+    
     func setupNaviation() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icSearchBack"), style: .plain, target: self, action: #selector(backButtonDidTap))
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -64,28 +70,57 @@ class SearchResultViewController: UIViewController {
     func requestArticles() {
         switch self.type! {
         case .search:
-            ApiManager.shared.requestArticle(at: self.searchKeyowrd) { (code, articles) in
-                if code == 200 {
+//            ApiManager.shared.requestArticle(at: self.searchKeyowrd) { (code, articles) in
+//                if code == 200 {
+//                    self.articles = articles
+//                    self.tableView.reloadData()
+//                }
+//            }
+            APIRouter.shared.requestArray(ArticleService.search(keywork: self.searchKeyowrd)) { (code: Int?, articles: [Article]?) in
+                guard let code = code else {return}
+                switch code {
+                case 200:
                     self.articles = articles
                     self.tableView.reloadData()
+                default:
+                    break
                 }
             }
         case .scrap:
-            ApiManager.shared.requestMyScraps { (code, articles) in
-                if code == 200 {
+//            ApiManager.shared.requestMyScraps { (code, articles) in
+//                if code == 200 {
+//                    self.articles = articles
+//                    print(self.articles)
+//                    self.tableView.reloadData()
+//                }
+//            }
+            APIRouter.shared.requestArray(MyProfileService.scraps) { (code: Int?, articles: [Article]?) in
+                guard let code = code else {return}
+                switch code {
+                case 200:
                     self.articles = articles
-                    print(self.articles)
                     self.tableView.reloadData()
+                default:
+                    break
                 }
             }
         case .myArticles:
-            ApiManager.shared.requestMyArticles { (code, articles) in
-                if code == 200 {
+//            ApiManager.shared.requestMyArticles { (code, articles) in
+//                if code == 200 {
+//                    self.articles = articles
+//                    self.tableView.reloadData()
+//                }
+//            }
+            APIRouter.shared.requestArray(ArticleService.mine) { (code: Int?, articles: [Article]?) in
+                guard let code = code else {return}
+                switch code {
+                case 200:
                     self.articles = articles
                     self.tableView.reloadData()
+                default:
+                    break
                 }
             }
-
         }
 
     }
@@ -99,6 +134,22 @@ class SearchResultViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = UIColor(hex: "#ff573d")
+    }
+    
+    @objc
+    func deleteButtonDidTap(_ sender: ParameterButton) {
+        guard let uuid = sender.params["uuid"] as? String else {return}
+        
+        print(uuid)
+        
+        UIAlertController.showAlert(title: "삭제",
+                                    message: "선택한 게시글을 삭제하시겠습니까?",
+                                    actions: [UIAlertAction(title: "취소", style: .default, handler: nil),
+                                              UIAlertAction(title: "삭제", style: .destructive, handler: { (alertAction) in
+                                                APIRouter.shared.request(ArticleService.delete(scriptUuid: uuid)) { (code: Int?, article: Article?) in
+                                                    self.requestArticles()
+                                                }
+                                              })])
     }
     
 }
@@ -120,7 +171,18 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.reuseIdentifier, for: indexPath) as? SearchResultTableViewCell else { return UITableViewCell() }
             cell.configure(type: self.type!, article: self.articles?[indexPath.section-1])
-            cell.delegate = self
+            if let type = self.type {
+                switch type {
+                case .myArticles:
+                    cell.commentLabelMimicButton.addTarget(self, action: #selector(deleteButtonDidTap(_:)), for: .touchUpInside)
+                    if let articles = self.articles,
+                        let uuid = articles[indexPath.section - 1].uuid {
+                        cell.commentLabelMimicButton.params = ["uuid": uuid]
+                    }
+                default:
+                    break
+                }
+            }
             return cell
             
         }
@@ -152,6 +214,22 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
         let view = UIView()
         view.backgroundColor = .clear
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewController: DetailViewController = DetailViewController.create(storyboard: "Detail") as? DetailViewController else {return}
+        guard let articles = self.articles else {return}
+        viewController.article = articles[indexPath.section - 1]
+        if let type = self.type {
+            switch type {
+            case .myArticles:
+                viewController.showDeleteButton = true
+            default:
+                break
+            }
+        }
+        let navigationController = UINavigationController(rootViewController: viewController)
+        self.present(navigationController, animated: true, completion: nil)
     }
     
     func articleDidDelete() {
@@ -196,7 +274,8 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var typeViewTrailing: NSLayoutConstraint!
     
     @IBOutlet weak var typeView: CategoryView!
-    @IBOutlet weak var commentLabel: UILabel!
+//    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var commentLabelMimicButton: ParameterButton!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var mainImageView: UIImageView!
@@ -208,10 +287,8 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var newCommentCountLabel: UILabel!
     
     @IBOutlet weak var lineView: UIView!
-    var type: ResultType?
-    var article: Article?
     
-    var delegate: SearchResultDelegate?
+//    var delegate: SearchResultDelegate?
     let descriptionAttribute: [NSAttributedStringKey: Any] = [
         .font: UIFont.nanumRegular(size: 13),
         .foregroundColor: UIColor(hex: "#474747")
@@ -219,17 +296,12 @@ class SearchResultTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.selectionStyle = .none
-        
-        self.setupLables()
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(deleteLabelDidTap))
-        self.commentLabel.addGestureRecognizer(tapGestureRecognizer)
-        self.commentLabel.isUserInteractionEnabled = true
+        self.setUpUI()
     }
     
-    func setupLables() {
+    func setUpUI() {
+        self.selectionStyle = .none
+        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 7
         let descriptionAttribute: [NSAttributedStringKey: Any] = [
@@ -251,10 +323,15 @@ class SearchResultTableViewCell: UITableViewCell {
         
         self.nickNameLabel.font = UIFont.nanumExtraBold(size: 10)
         self.nickNameLabel.textColor = UIColor(hex: "#474747")
-        self.commentLabel.font = UIFont.nanumBold(size: 10)
-        self.commentLabel.textColor = UIColor(hex: "#fc543a")
+//        self.commentLabel.font = UIFont.nanumBold(size: 10)
+//        self.commentLabel.textColor = UIColor(hex: "#fc543a")
+        self.commentLabelMimicButton.titleLabel?.font = UIFont.nanumBold(size: 10)
+        self.commentLabelMimicButton.setTitleColor(UIColor(hex: "#fc543a"), for: .normal)
+        self.commentLabelMimicButton.isEnabled = false
         self.lineView.backgroundColor = UIColor(hex: "#dbdbdb")
         self.imageViewWidth.constant = 0
+        self.mainImageView.clipsToBounds = true
+        self.mainImageView.kf.indicatorType = .activity
         
         self.commentLabelForMine.font = UIFont.nanumBold(size: 10)
         self.commentLabelForMine.textColor = UIColor(hex: "#999999")
@@ -262,17 +339,19 @@ class SearchResultTableViewCell: UITableViewCell {
         
         self.scrapImageView.isHidden = true
         self.scrapImageViewWidth.constant = 0
+        
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.setUpUI()
     }
-    
+        
     func configure(type: ResultType, article: Article?) {
         guard let article = article else { return }
-        self.article = article
+//        self.article = article
 
-        self.type = type
+//        self.type = type
         
         self.descriptionLabel.attributedText = NSAttributedString(string: article.content ?? "", attributes: self.descriptionAttribute)
         
@@ -284,8 +363,7 @@ class SearchResultTableViewCell: UITableViewCell {
            let url = URL(string: article.imageUrls?.first ?? "")
             self.mainImageView.kf.setImage(with: url)
         }
-        
-        
+
         self.typeView.backgroundColor = .clear
         self.typeView.category = (emoji: article.category!.emoji, title: article.category!.name)
         self.typeView.setUp()
@@ -294,12 +372,14 @@ class SearchResultTableViewCell: UITableViewCell {
         
         switch type {
         case .search:
-            self.commentLabel.text = "댓글 \(article.replies)"
+//            self.commentLabel.text = "댓글 \(article.replies)"
+            self.commentLabelMimicButton.setTitle("댓글 \(article.replies)", for: .normal)
             self.nickNameLabel.text = "\(article.writer?.university?.name ?? "") | \(article.writer?.nickName ?? "")"
         case .scrap:
             self.scrapImageViewWidth.constant = 30
             self.scrapImageView.isHidden = false
-            self.commentLabel.text = "댓글 \(article.replies)"
+//            self.commentLabel.text = "댓글 \(article.replies)"
+            self.commentLabelMimicButton.setTitle("댓글 \(article.replies)", for: .normal)
             self.nickNameLabel.text = "\(article.writer?.university?.name ?? "") | \(article.writer?.nickName ?? "")"
         case .myArticles:
             self.nickNameLabel.font = UIFont.nanumBold(size: 10)
@@ -308,53 +388,12 @@ class SearchResultTableViewCell: UITableViewCell {
             self.commentLabelForMine.isHidden = false
             self.commentLabelForMine.text = "댓글 \(article.replies)"
             self.dateLabel.isHidden = true
-            self.commentLabel.text = "삭제"
-            let calendar = Calendar.current
-            let myDate = Date(milliseconds: article.createdAt)
-            
-            if calendar.isDateInToday(myDate) {
-                let df = DateFormatter()
-                df.dateFormat = "HH시 mm분"
-                let now = df.string(from: myDate)
-                self.nickNameLabel.text = "\(now)"
-            } else {
-                let df = DateFormatter()
-                df.dateFormat = "M월 d일"
-                let now = df.string(from: myDate)
-                self.nickNameLabel.text = "\(now)"
-            }
-            
+//            self.commentLabel.text = "삭제"
+            self.commentLabelMimicButton.setTitle("삭제", for: .normal)
+            self.nickNameLabel.text = Date().text(article.createdAt)
+            self.commentLabelMimicButton.isEnabled = true
         }
-        let calendar = Calendar.current
-        let myDate = Date(milliseconds: article.createdAt)
-        
-        if calendar.isDateInToday(myDate) {
-            let df = DateFormatter()
-            df.dateFormat = "HH시 mm분"
-            let now = df.string(from: myDate)
-            self.dateLabel.text = "\(now)"
-        } else {
-            let df = DateFormatter()
-            df.dateFormat = "M월 d일"
-            let now = df.string(from: myDate)
-            self.dateLabel.text = "\(now)"
-        }
-    }
-    @objc
-    func deleteLabelDidTap() {
-        switch self.type! {
-        case .myArticles:
-            if let article = self.article {
-            ApiManager.shared.updateMyArticle(type: .delete, article: article) { (code, response) in
-                print(code, response)
-                if code == 200 {
-                    self.delegate?.articleDidDelete()
-                }
-            }
-        }
-        default:
-            return
-            
-        }
+        self.dateLabel.text = Date().text(article.createdAt)
+        self.layoutIfNeeded()
     }
 }

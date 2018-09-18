@@ -116,7 +116,12 @@ class University: Mappable {
 }
 
 typealias Category = (emoji: String, title: String)
-class Categories: Mappable {
+class Categories: Mappable, Equatable {
+    
+    static func == (lhs: Categories, rhs: Categories) -> Bool {
+        return lhs.uuid == rhs.uuid
+    }
+    
     
     var emoji: String = ""
     var idx: Int = 0

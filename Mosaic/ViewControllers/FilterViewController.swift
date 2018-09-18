@@ -18,8 +18,9 @@ class FilterViewController: UIViewController {
         return UIStoryboard(name: "Filter", bundle: nil).instantiateViewController(withIdentifier: classNameToString) as? FilterViewController
     }
     var categories: [Categories] = []
-    var datasource: FilterDataSource?
-    var categoryUuid: [String] = []
+//    var datasource: FilterDataSource?
+    var datasource: FilterViewDataSource?
+//    var categoryUuid: [String] = []
 
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -42,10 +43,37 @@ class FilterViewController: UIViewController {
         APIRouter.shared.requestArray(CategoryService.get) { (code: Int?, categories: [Categories]?) in
             self.categories = categories ?? []
             self.collectionView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                guard let selected = self.datasource?.selectedCategories else {return}
+                self.select(selected, self.categories)
+            })
         }
         
-        self.datasource?.requestCategories = [[:]]
-        
+//        self.datasource?.requestCategories = [[:]]
+//        self.datasource?.selectedCategories = []
+    }
+    
+    func select(_ selectedCategories: [Categories],_ categories: [Categories]) {
+        let indexs = categories.contains(array: selectedCategories)
+        let indexPaths = indexs.map({IndexPath(row: $0, section: 0)})
+        indexPaths.forEach({
+            if self.collectionView.cellForItem(at: $0) != nil {
+                self.collectionView.selectItem(at: $0, animated: true, scrollPosition: UICollectionViewScrollPosition.top)
+            }
+        })
+//
+//        
+//        categories.enumerated().contains(where: { $1.uuid ==  })
+//        for (index, item) in categories.enumerated() {
+//            let indexPath = IndexPath(row: index, section: 0)
+//            if item.uuid == category.uuid,
+//                self.collectionView.cellForItem(at: indexPath) != nil {
+//                self.collectionView.selectItem(at:  indexPath,
+//                                               animated: true,
+//                                               scrollPosition: .top)
+//                return
+//            }
+//        }
     }
     
     func setupNavigation() {
@@ -111,18 +139,20 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
             self.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-            self.categoryUuid.append(self.categories[indexPath.item].uuid)
+//            self.categoryUuid.append(self.categories[indexPath.item].uuid)
 
-            self.datasource?.requestCategories.append(["categories": self.categories[indexPath.item].uuid])
-
-            print(self.categoryUuid)
+//            self.datasource?.requestCategories.append(["categories": self.categories[indexPath.item].uuid])
+            self.datasource?.selectedCategories.append(self.categories[indexPath.item])
+//            print(self.categoryUuid)
             return false
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
         self.collectionView.deselectItem(at: indexPath, animated: true)
-        self.categoryUuid = self.categoryUuid.filter({ $0 != self.categories[indexPath.item].uuid })
-        self.datasource?.requestCategories = (self.datasource?.requestCategories.filter({ $0 != ["categories": self.categories[indexPath.item].uuid] }))!
+//        self.categoryUuid = self.categoryUuid.filter({ $0 != self.categories[indexPath.item].uuid })
+//        self.datasource?.requestCategories = (self.datasource?.requestCategories.filter({ $0 != ["categories": self.categories[indexPath.item].uuid] }))!
+        let categories =  self.datasource?.selectedCategories.filter({ $0.uuid != self.categories[indexPath.row].uuid }) ?? [Categories]()
+        self.datasource?.selectedCategories = categories
         return false
     }
     
@@ -182,5 +212,15 @@ class FilterCollectionViewCell: UICollectionViewCell {
             self.selectedBackgroundColor = UIColor.Palette.robinSEgg
             self.deselectedBackgroundColor = .white
         }
+    }
+}
+
+extension Array where Element: Equatable {
+    func contains(array: [Element]) -> [Int] {
+        return array.flatMap({self.find(include: $0)})
+    }
+    
+    func find(include: Element) -> Int? {
+        return self.index(where: { $0 == include})
     }
 }

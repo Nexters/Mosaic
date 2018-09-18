@@ -25,7 +25,9 @@ var bottomInset: CGFloat {
     return 0
 }
 
-class WritingViewController: UIViewController, KeyboardControlService, TransparentNavBarService {
+class WritingViewController: UIViewController, KeyboardControlService, TransparentNavBarService, FilterViewDataSource {
+    
+    
     
     //MARK: - PROPERTY
     //MARK: UI
@@ -37,7 +39,8 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     //MARK: CONSTRAINT
     @IBOutlet weak var accessoryViewBottomConstraint: NSLayoutConstraint!
     //MARK: STORED OR COMPUTED
-    var selectedCategory: Categories?
+//    var selectedCategory: Categories?
+    var selectedCategories: [Categories] = []
     var selectedAssets = [TLPHAsset]()
     var maxLength = 500
     
@@ -55,7 +58,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateNavigationBarTitle(category: self.selectedCategory)
+        updateNavigationBarTitle(categories: self.selectedCategories)
         self.mimicPlaceholderView.blinking()
         enableSaveButton(self.textView)
     }
@@ -169,11 +172,11 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     @objc
     func saveButtonDidTap() {
         self.view.endEditing(true)
-        guard let uuid = self.selectedCategory?.uuid else {return}
+        guard let selectedCategory = self.selectedCategories.first else {return}
         guard let text = self.textView.text else {return}
         guard let images = self.accessoryView.selectedImages as? [UIImage] else {return}
         
-        APIRouter.shared.upload(ArticleService.write(uuid: uuid,
+        APIRouter.shared.upload(ArticleService.write(uuid: selectedCategory.uuid,
                                                      content: text),
                                 imageKey: "imgUrls",
                                 images: images) { (code: Int?, article: Article?) in
@@ -190,7 +193,7 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
     @objc
     func categoryButtonDidTap() {
         guard let viewController = WritingFilterViewController.create(storyboard: "Filter") as? WritingFilterViewController else {return}
-        viewController.previousViewController = self
+        viewController.dataSource = self
         let navigation = UINavigationController(rootViewController: viewController)
         self.present(navigation, animated: true, completion: nil)
     }
@@ -200,8 +203,8 @@ class WritingViewController: UIViewController, KeyboardControlService, Transpare
         self.textView.becomeFirstResponder()
     }
     
-    func updateNavigationBarTitle(category: Categories?) {
-        if let category = category {
+    func updateNavigationBarTitle(categories: [Categories]) {
+        if let category = categories.first {
             navigationBarTitleButton.setTitle(category.name + category.emoji, for: .normal)
         } else {
             navigationBarTitleButton.setTitle("카테고리 선택", for: .normal)
@@ -238,7 +241,7 @@ extension WritingViewController: TLPhotosPickerViewControllerDelegate {
         let isEmpty = textView.text.isNilOrEmpty()
         self.textView.isHidden = isEmpty
         self.mimicPlaceholderView.isHidden = !isEmpty
-        if !isEmpty && self.selectedCategory != nil {
+        if !isEmpty && self.selectedCategories.first != nil {
             self.saveButton.setEnable(true, color: .white)
         } else {
             self.saveButton.setEnable(false, color: UIColor.Palette.coolBlue)

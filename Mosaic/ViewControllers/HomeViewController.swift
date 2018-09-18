@@ -12,8 +12,10 @@ enum ColorPalette {
     static let searchView = UIColor(hex: "#e62f12")
 }
 
-class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
-    var requestCategories: [[String : String]] = [[:]]
+class HomeViewController: UIViewController, HomeDelegate, FilterViewDataSource {
+    var selectedCategories: [Categories] = []
+    
+//    var requestCategories: [[String : String]] = [[:]]
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     var articles: [Article]?
@@ -67,7 +69,8 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
                 }
                 APIRouter.shared.me = me
             default:
-                completion()
+                break
+//                completion()
             }
         }
     }
@@ -79,8 +82,10 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
 //                self.articles = articles
 //                self.collectionView.reloadData()
 //            }
-//        }().
-        APIRouter.shared.requestArray(ArticleService.getAll(category: ["7d798e3e-cb09-4fde-9158-f43f84c0cb4f"])) { (code: Int?, articles: [Article]?) in
+//        }()
+        let value = self.selectedCategories.map({$0.uuid}).joined(separator: ", ")
+        
+        APIRouter.shared.requestArray(ArticleService.getAll(categories: value)) { (code: Int?, articles: [Article]?) in
             if code == 200 {
                 self.articles = articles
                 self.collectionView.reloadData()
@@ -162,7 +167,7 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
         let article = articles[indexPath.item]
         guard let uuid = article.uuid else {return}
         let service: ScrapService = isScraped ? ScrapService.delete(scriptUuid: uuid) : ScrapService.add(scriptUuid: uuid)
-        APIRouter.shared.request(ScrapService.add(scriptUuid: uuid)) { [weak self] (code: Int?, article: Article?) in
+        APIRouter.shared.request(service) { [weak self] (code: Int?, article: Article?) in
            
         }
     }
@@ -171,7 +176,7 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.articles?.count ?? 0
+        return self.articles?.count ?? 1
         //return 4
     }
     

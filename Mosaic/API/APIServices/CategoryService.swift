@@ -37,9 +37,3 @@ enum CategoryService: APIService {
         return ["Authorization": APIRouter.shared.token]
     }
 }
-
-//APIRouter.shared.requestArray(CategoryService.get) { (code: Int?, categories: [Categories]?) in
-//    self.categories = categories ?? []
-//    self.collectionView.reloadData()
-//}
-

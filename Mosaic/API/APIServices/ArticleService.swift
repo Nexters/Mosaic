@@ -9,9 +9,10 @@
 import Foundation
 import Alamofire
 
+
 enum ArticleService: APIService {
-    case get(scriptUuid: String)
-    case getAll(category: [String])
+    case get(ucid: String)
+    case getAll(categories: String)
     case write(uuid: String, content: String)
     case search(keywork: String)
     case delete(scriptUuid: String)
@@ -36,8 +37,8 @@ enum ArticleService: APIService {
             return ["scriptUuid"    : scriptUuid]
         case .search(let keyword):
             return ["keyword"       : keyword]
-        case .getAll(let category):
-            return ["categories"    : category]
+        case .getAll(let categories):
+            return ["categories"    : categories]
         case .delete(let scriptUuid):
             return ["scriptUuid"    : scriptUuid]
         case .mine:

@@ -8,21 +8,25 @@
 
 import UIKit
 
+protocol FilterViewDataSource {
+    var selectedCategories: [Categories] {set get}
+}
 
 class WritingFilterViewController: UIViewController, TransparentNavBarService {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    var previousViewController: WritingViewController?
-    var selectedCategory: Categories? {
-        set {
-            self.previousViewController?.selectedCategory = newValue
-        }
-        get {
-            guard let selectedCategory = self.previousViewController?.selectedCategory else {return nil}
-            return selectedCategory
-        }
-    }
+//    var previousViewController: WritingViewController?
+//    var selectedCategory: Categories? {
+//        set {
+//            self.previousViewController?.selectedCategory = newValue
+//        }
+//        get {
+//            guard let selectedCategory = self.previousViewController?.selectedCategory else {return nil}
+//            return selectedCategory
+//        }
+//    }
     
+    var dataSource: FilterViewDataSource?
     var categories: [Categories] = []
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -42,21 +46,18 @@ class WritingFilterViewController: UIViewController, TransparentNavBarService {
         super.viewWillAppear(animated)
         
         APIRouter.shared.requestArray(CategoryService.get) { (code: Int?, categories: [Categories]?) in
-            guard let categories = categories else {return}
-            self.categories = categories
-            self.collectionView.reloadData()
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        for (index, item) in self.categories.enumerated() {
-            guard let selectedCategory = self.selectedCategory else {return}
-            if item.uuid == selectedCategory.uuid {
-                self.collectionView.selectItem(at:  IndexPath(row: index, section: 0),
-                                               animated: true,
-                                               scrollPosition: .top)
-                return
+            guard let code = code else {return}
+            switch code {
+            case 200:
+                guard let categories = categories else {return}
+                self.categories = categories
+                self.collectionView.reloadData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    guard let selectedCategory = self.dataSource?.selectedCategories.first else {return}
+                    self.select(selectedCategory, self.categories)
+                })
+            default:
+                break
             }
         }
     }
@@ -92,6 +93,18 @@ class WritingFilterViewController: UIViewController, TransparentNavBarService {
         self.collectionView.showsVerticalScrollIndicator = false
     }
     
+    func select(_ category: Categories,_ categories: [Categories]) {
+        for (index, item) in categories.enumerated() {
+            let indexPath = IndexPath(row: index, section: 0)
+            if item.uuid == category.uuid,
+                self.collectionView.cellForItem(at: indexPath) != nil {
+                self.collectionView.selectItem(at:  indexPath,
+                                               animated: true,
+                                               scrollPosition: .top)
+                return
+            }
+        }
+    }
 }
 extension WritingFilterViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -123,12 +136,13 @@ extension WritingFilterViewController: UICollectionViewDelegate, UICollectionVie
         let item = collectionView.cellForItem(at: indexPath)
         if item?.isSelected ?? false {
             self.collectionView.deselectItem(at: indexPath, animated: true)
-            if self.selectedCategory?.uuid == self.categories[indexPath.row].uuid {
-                self.selectedCategory = nil
+            if let selectedCategory = self.dataSource?.selectedCategories.first,
+                selectedCategory.uuid == self.categories[indexPath.row].uuid {
+                self.dataSource?.selectedCategories = []
             }
         } else {
             self.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-            self.selectedCategory = categories[indexPath.row]
+            self.dataSource?.selectedCategories = [categories[indexPath.row]]
         }
         return false
     }

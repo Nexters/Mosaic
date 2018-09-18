@@ -19,17 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
         UIApplication.shared.statusBarStyle = .lightContent
-        if let auth = UserDefaults.standard.value(forKey: "Authorization") as? String, !auth.isEmpty {
-            APIRouter.shared.token = auth
+//        if let auth = UserDefaults.standard.value(forKey: "Authorization") as? String, !auth.isEmpty {
+//            APIRouter.shared.token = auth
             print("token: ", APIRouter.shared.token)
             let viewController = HomeViewController.create(storyboard: "Home")
             let navigationController = UINavigationController(rootViewController: viewController)
             self.window?.rootViewController = navigationController
-        } else {
-            let viewController = SignUpViewController.create(storyboard: "SignUp")
-            let navigationController = UINavigationController(rootViewController: viewController)
-            self.window?.rootViewController = navigationController
-        }
+//        } else {
+//            let viewController = SignUpViewController.create(storyboard: "SignUp")
+//            let navigationController = UINavigationController(rootViewController: viewController)
+//            self.window?.rootViewController = navigationController
+//        }
         self.window?.makeKeyAndVisible()
         return true
     }

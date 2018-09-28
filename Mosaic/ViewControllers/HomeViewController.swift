@@ -13,11 +13,13 @@ enum ColorPalette {
 }
 
 class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
-    var requestCategories: [[String : String]] = [[:]]
+    
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     var articles: [Article]?
     var categories: [String: String] = [:]
+    var requestCategories: [[String : String]] = [[:]]
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -38,19 +40,11 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
         self.view.backgroundColor = ColorPalette.background
         
         self.setNeedsStatusBarAppearanceUpdate()
-        
-       
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        ApiManager.shared.requestHomeArticles(with: self.requestCategories) { (code, articles) in
-//            if code == 200 {
-//                self.articles = articles
-//                self.collectionView.reloadData()
-//            }
-//        }().
+        
         APIRouter.shared.requestArray(ArticleService.getAll(category: self.requestCategories)) { (code: Int?, articles: [Article]?) in
             if code == 200 {
                 self.articles = articles
@@ -58,10 +52,20 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
             }
         }
     }
-
+    
+    func setupCollectionView() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        
+        self.collectionView.isPagingEnabled = true
+        self.collectionView.showsHorizontalScrollIndicator = false
+        
+        self.collectionView.backgroundColor = .clear
+        self.collectionView.layer.cornerRadius = 2
+    }
+    
     @objc
     func setupNavigation() {
-        
         let logo = UIImage(named: "icLogotype")
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
@@ -106,17 +110,6 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
         self.present(navigation, animated: false, completion: nil)
     }
     
-    func setupCollectionView() {
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        
-        self.collectionView.isPagingEnabled = true
-        self.collectionView.showsHorizontalScrollIndicator = false
-        
-        self.collectionView.backgroundColor = .clear
-        self.collectionView.layer.cornerRadius = 2
-    }
-    
     @IBAction func writeButtonDidTap(_ sender: UIButton) {
         guard let viewController = WritingViewController.create(storyboard: "Writing") as? WritingViewController else {return}
         let navigation = UINavigationController(rootViewController: viewController)
@@ -129,9 +122,12 @@ class HomeViewController: UIViewController, HomeDelegate, FilterDataSource {
     
     func bookmarkButtondDidTap(cell: HomeCollectionViewCell, isScraped: Bool) {
         guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
-        
         ApiManager.shared.updateBookMark(type: isScraped ? .delete : .add, article: self.articles![indexPath.item]) { (code, article) in
-            print(code, article)
+            if code == 200 {
+                print(article as? Article)
+            } else {
+                // do nothing.
+            }
         }
     }
 }
@@ -140,7 +136,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.articles?.count ?? 0
-        //return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -9,6 +9,7 @@
 import Foundation
 import ObjectMapper
 import Moya
+
 class Result<T: Mappable>: Mappable {
     
     var status: Int = 0

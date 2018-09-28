@@ -45,6 +45,7 @@
 		146394682122A8C100FC601C /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146394632122A8BD00FC601C /* NanumSquareLight.ttf */; };
 		146394692122A8C100FC601C /* NanumSquareRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 146394652122A8BD00FC601C /* NanumSquareRegular.ttf */; };
 		14812FE9212BF9F2004AC6F5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14812FE8212BF9F2004AC6F5 /* Category.swift */; };
+		14BD86AC2148AD95007E4708 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD86AB2148AD95007E4708 /* URL.swift */; };
 		3D62673548BC0C0A4027AE41 /* Pods_Mosaic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736F2222DA5719142B55CF54 /* Pods_Mosaic.framework */; };
 		FC06DA9E212A505A00B3C35B /* TableCollectionView + SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06DA9D212A505A00B3C35B /* TableCollectionView + SetUp.swift */; };
 		FC06DAA0212A595C00B3C35B /* Writing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC06DA9F212A595C00B3C35B /* Writing.storyboard */; };
@@ -77,7 +78,6 @@
 		FCB097ED2133027E002E05F6 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097EC2133027E002E05F6 /* AuthViewController.swift */; };
 		FCB097EF21330CD5002E05F6 /* EmailCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097EE21330CD5002E05F6 /* EmailCheckViewController.swift */; };
 		FCB097F121354C16002E05F6 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F021354C16002E05F6 /* APIRouter.swift */; };
-		FCB097F32136514A002E05F6 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F22136514A002E05F6 /* URL.swift */; };
 		FCB097F5213669B4002E05F6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F4213669B4002E05F6 /* Result.swift */; };
 		FCB097F7213669C7002E05F6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F6213669C7002E05F6 /* Model.swift */; };
 		FCB097F921366AF1002E05F6 /* LogInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB097F821366AF1002E05F6 /* LogInService.swift */; };
@@ -138,6 +138,7 @@
 		146394642122A8BD00FC601C /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
 		146394652122A8BD00FC601C /* NanumSquareRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRegular.ttf; sourceTree = "<group>"; };
 		14812FE8212BF9F2004AC6F5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		14BD86AB2148AD95007E4708 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		5196FD7F98DEDB51AC5EC75E /* Pods-Mosaic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosaic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mosaic/Pods-Mosaic.release.xcconfig"; sourceTree = "<group>"; };
 		6FE8D32E4799239E2FBEBA77 /* Pods-Mosaic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosaic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mosaic/Pods-Mosaic.debug.xcconfig"; sourceTree = "<group>"; };
 		736F2222DA5719142B55CF54 /* Pods_Mosaic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mosaic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,7 +173,6 @@
 		FCB097EC2133027E002E05F6 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		FCB097EE21330CD5002E05F6 /* EmailCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckViewController.swift; sourceTree = "<group>"; };
 		FCB097F021354C16002E05F6 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
-		FCB097F22136514A002E05F6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		FCB097F4213669B4002E05F6 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		FCB097F6213669C7002E05F6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		FCB097F821366AF1002E05F6 /* LogInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInService.swift; sourceTree = "<group>"; };
@@ -211,8 +211,8 @@
 				141A8A5621290DE200362A47 /* Me.swift */,
 				141A8A582129146E00362A47 /* ApiManager.swift */,
 				14812FE8212BF9F2004AC6F5 /* Category.swift */,
-				FCB097F22136514A002E05F6 /* URL.swift */,
 				FCB097F6213669C7002E05F6 /* Model.swift */,
+				14BD86AB2148AD95007E4708 /* URL.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -721,6 +721,7 @@
 				FCB0980221367395002E05F6 /* MyProfileService.swift in Sources */,
 				FCB0980021366FB9002E05F6 /* BookMarkService.swift in Sources */,
 				141A8A592129146E00362A47 /* ApiManager.swift in Sources */,
+				14BD86AC2148AD95007E4708 /* URL.swift in Sources */,
 				1463944121226AE100FC601C /* NSObject+reuseIdentifier.swift in Sources */,
 				FCB0980721379908002E05F6 /* ReplyService.swift in Sources */,
 				1463944A21226AEC00FC601C /* EnumCollection.swift in Sources */,
@@ -730,7 +731,6 @@
 				1463944E21226AEC00FC601C /* KeyboardControlService.swift in Sources */,
 				1463945221226AFB00FC601C /* HomeCollectionViewCell.swift in Sources */,
 				1463943F21226AE100FC601C /* UIApplication+topViewController.swift in Sources */,
-				FCB097F32136514A002E05F6 /* URL.swift in Sources */,
 				FCD0BEB62138CF620077B08C /* UIImage + compress.swift in Sources */,
 				FCD0BEC121394B8A0077B08C /* Date + text.swift in Sources */,
 				FCB097FB21366CDE002E05F6 /* APIService.swift in Sources */,
@@ -907,7 +907,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EPWV8KDDJE;
+				DEVELOPMENT_TEAM = 9BD2FZATPN;
 				INFOPLIST_FILE = Mosaic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -926,7 +926,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EPWV8KDDJE;
+				DEVELOPMENT_TEAM = 9BD2FZATPN;
 				INFOPLIST_FILE = Mosaic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

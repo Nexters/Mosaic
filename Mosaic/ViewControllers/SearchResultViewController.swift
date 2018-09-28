@@ -346,7 +346,6 @@ class SearchResultTableViewCell: UITableViewCell {
         case .myArticles:
             if let article = self.article {
             ApiManager.shared.updateMyArticle(type: .delete, article: article) { (code, response) in
-                print(code, response)
                 if code == 200 {
                     self.delegate?.articleDidDelete()
                 }
